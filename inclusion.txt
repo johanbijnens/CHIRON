@@ -1,0 +1,15 @@
+// filename is part of the 
+// numerical library jbnumlib included with the 
+// CHIRON ChPT at two loops program collection
+// Copyright (C) 2015 Johan Bijnens, v1.0
+// except for the CERNLIB parts which have their own copyright (usually CERN)
+// CHIRON is licenced under the GNU GPL version 2 or later,
+// see COPYING for details.
+// Please respect the Guidelines, see GUIDELINES for details.
+
+// filename is part of the 
+// CHIRON ChPT at two loops program collection
+// Copyright (C) 2015 Johan Bijnens, v1.0
+// CHIRON is licenced under the GNU GPL version 2 or later,
+// see COPYING for details.
+// Please respect the Guidelines, see GUIDELINES for details.

@@ -1,0 +1,86 @@
+# this Makefile produces the numerical library jbnumlib
+# and the library libchiron.a
+# it also allows you to produce a number of testing/example programs
+# it is part of the CHIRON ChPT at two loops program collection
+#
+# Copyright (C) 2014-2015 Johan Bijnens, v1.01
+# CHIRON is licenced under the GNU GPL version 2 or later,
+# see COPYING for details.
+# Please respect the Guidelines, see GUIDELINES for details.
+
+# in both testing and library
+CC = g++ -O3  -I./include
+# added for the compilation of the libraries
+CFLAGS =
+#added for the testing files
+CFLAGSTEST = -std=c++0x
+
+OBJECTSJBNUMLIB = jbdgauss.o jbdcauch.o jbwgauss.o \
+  jbdgauss2.o jbdquad15.o jbdquad21.o \
+  jbdcauch2.o jbdsing15.o jbdsing21.o \
+  jbwgauss2.o jbwquad15.o jbwquad21.o \
+  jbdadmul.o \
+  jbdli2.o jbdbesik.o jbdtheta30.o jbdtheta30m1.o jbdtheta32.o jbdtheta34.o \
+  jbdtheta2d0.o jbdtheta2d0m1.o jbdtheta2d02.o
+
+OBJECTSCHIRON = inputs.o Li.o Ci.o inputsnf.o Linf.o Ki.o \
+       massdecayvev.o getfpimeta.o \
+       oneloopintegrals.o sunsetintegrals.o finitevolumeoneloopintegrals.o \
+       finitevolumesunsetintegrals.o quenchedsunsetintegrals.o
+
+OBJECTSCHIRON2 = massdecayvevVt.o massdecayvevVb.o
+
+INCLUDECHIRON =  include/inputs.h include/Li.h include/Ci.h\
+       include/inputsnf.h include/Linf.h include/Ki.h \
+       include/massdecayvev.h\
+       include/oneloopintegrals.h include/sunsetintegrals.h\
+       include/finitevolumeoneloopintegrals.h\
+       include/finitevolumesunsetintegrals.h\
+       include/massdecayvevV.h \
+       include/quenchedsunsetintegrals.h 
+
+TESTCHIRON = testintegralsreal testintegralsrealsingular \
+       testintegralscomplex \
+       testinputs testinputsnf testLi testCi testmassdecayvev \
+       testgetfpimeta testoneloopintegrals testsunsetintegrals \
+       testfinitevolumeoneloopintegrals testfinitevolumesunsetintegrals \
+       testmassdecayvevV testquenchedsunsetintegrals testLinf testKi
+
+all: libchiron.a libjbnumlib.a
+
+libchiron.a: $(OBJECTSCHIRON) $(OBJECTSCHIRON2)
+	ar r libchiron.a $(OBJECTSCHIRON) $(OBJECTSCHIRON2) $(INCLUDECHIRON) \
+        ; cp libchiron.a lib
+
+libjbnumlib.a: $(OBJECTSJBNUMLIB) include/jbnumlib.h
+	ar r libjbnumlib.a $(OBJECTSJBNUMLIB) include/jbnumlib.h ; cp libjbnumlib.a lib
+
+massdecayvevVt.o: src/massdecayvevV.cc include/massdecayvevV.h
+	$(CC) -c $(CFLAGS) -D CHIRONTHETA -o massdecayvevVt.o src/massdecayvevV.cc
+
+massdecayvevVb.o: src/massdecayvevV.cc include/massdecayvevV.h
+	$(CC) -c $(CFLAGS) -D CHIRONBESSEL -o massdecayvevVb.o src/massdecayvevV.cc
+
+$(OBJECTSJBNUMLIB): %.o: src/%.cc
+	$(CC) -c $(CFLAGS) $< -o $@
+
+$(OBJECTSCHIRON): %.o: src/%.cc include/%.h
+	$(CC) -c $(CFLAGS) $< -o $@
+
+# making testing programs, output is always a.out
+
+$(TESTCHIRON): %: test/%.cc  libjbnumlib.a libchiron.a
+	$(CC) $(CFLAGSTEST)  -o a.out $<  -lchiron -ljbnumlib -L./lib
+
+# some installing and cleaning up bits
+.PHONY: clean installjbnumlib installchiron
+
+installchiron: libjbnumlib.a libchiron.a
+	cp libjbnumlib.a libchiron ~/lib ; cp include/jbnumlib.h ~/include
+
+installjbnumlib: libjbnumlib.a
+	cp libjbnumlib.a ~/lib ; cp include/jbnumlib.h $INCLUDECHIRON ~/include
+
+clean:
+	rm *.o libjbnumlib.a libchiron.a a.out lib/libchiron.a \
+          lib/libjbnumlib.a temp.dat test.dat
