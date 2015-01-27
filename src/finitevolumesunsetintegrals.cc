@@ -1,6 +1,6 @@
 // finitevolumesunsetintegrals.cc is part of the CHIRON ChPT at two loops
 // program collection
-// Copyright (C) 2014-2015 Johan Bijnens, v1.0
+// Copyright (C) 2014-2015 Johan Bijnens, v1.01
 // CHIRON is licenced under the GNU GPL version 2 or later,
 // see COPYING for details.
 // Please respect the Guidelines, see GUIDELINES for details.
@@ -4593,6 +4593,7 @@ double hhvbd(const int nprop, const int ntype,
 
 
 ////////////// finite volume abbreviations in Minkowski convention //////////
+// normal case
 // theta function
 double hhVt(const double m1sq,const double m2sq,const double m3sq,
 	    const double qsq,const double xl,const double mu2){
@@ -4677,6 +4678,132 @@ double hh22dVb(const double m1sq,const double m2sq,const double m3sq,
 double hh27dVb(const double m1sq,const double m2sq,const double m3sq,
 	    const double qsq,const double xl,const double mu2){
   return -hhvbd(1,27,m1sq,m2sq,m3sq,-qsq,xl,mu2);
+}
+// with other powers of propagators //////////////////////////////////////
+// theta function
+double hhVt(const int nprop,
+	    const double m1sq,const double m2sq,const double m3sq,
+	    const double qsq,const double xl,const double mu2){
+  const double extrasign[9]={0.,-1.,1.,1.,1.,-1.,-1.,-1.,1};
+  return extrasign[nprop]*hhvt(nprop,0,m1sq,m2sq,m3sq,-qsq,xl,mu2);
+}
+double hh1Vt(const int nprop,
+	     const double m1sq,const double m2sq,const double m3sq,
+	     const double qsq,const double xl,const double mu2){
+  const double extrasign[9]={0.,-1.,1.,1.,1.,-1.,-1.,-1.,1};
+  return extrasign[nprop]*hhvt(nprop,1,m1sq,m2sq,m3sq,-qsq,xl,mu2);
+}
+double hh21Vt(const int nprop,
+	      const double m1sq,const double m2sq,const double m3sq,
+	      const double qsq,const double xl,const double mu2){
+  const double extrasign[9]={0.,-1.,1.,1.,1.,-1.,-1.,-1.,1};
+  return extrasign[nprop]*hhvt(nprop,21,m1sq,m2sq,m3sq,-qsq,xl,mu2);
+}
+double hh22Vt(const int nprop,
+	      const double m1sq,const double m2sq,const double m3sq,
+	      const double qsq,const double xl,const double mu2){
+  const double extrasign[9]={0.,1.,-1.,-1.,-1.,1.,1.,1.,-1};
+  return extrasign[nprop]*hhvt(nprop,22,m1sq,m2sq,m3sq,-qsq,xl,mu2);
+}
+double hh27Vt(const int nprop,
+	      const double m1sq,const double m2sq,const double m3sq,
+	      const double qsq,const double xl,const double mu2){
+  const double extrasign[9]={0.,1.,-1.,-1.,-1.,1.,1.,1.,-1};
+  return extrasign[nprop]*hhvt(nprop,27,m1sq,m2sq,m3sq,-qsq,xl,mu2);
+}
+
+double hhdVt(const int nprop,
+	     const double m1sq,const double m2sq,const double m3sq,
+	     const double qsq,const double xl,const double mu2){
+  const double extrasign[9]={0.,1.,-1.,-1.,-1.,1.,1.,1.,-1};
+  return extrasign[nprop]*hhvtd(nprop,0,m1sq,m2sq,m3sq,-qsq,xl,mu2);
+}
+double hh1dVt(const int nprop,
+	      const double m1sq,const double m2sq,const double m3sq,
+	      const double qsq,const double xl,const double mu2){
+  const double extrasign[9]={0.,1.,-1.,-1.,-1.,1.,1.,1.,-1};
+  return extrasign[nprop]*hhvtd(nprop,1,m1sq,m2sq,m3sq,-qsq,xl,mu2);
+}
+double hh21dVt(const int nprop,
+	       const double m1sq,const double m2sq,const double m3sq,
+	    const double qsq,const double xl,const double mu2){
+  const double extrasign[9]={0.,1.,-1.,-1.,-1.,1.,1.,1.,-1};
+  return extrasign[nprop]*hhvtd(nprop,21,m1sq,m2sq,m3sq,-qsq,xl,mu2);
+}
+double hh22dVt(const int nprop,
+	       const double m1sq,const double m2sq,const double m3sq,
+	       const double qsq,const double xl,const double mu2){
+  const double extrasign[9]={0.,-1.,1.,1.,1.,-1.,-1.,-1.,1};
+  return extrasign[nprop]*hhvtd(nprop,22,m1sq,m2sq,m3sq,-qsq,xl,mu2);
+}
+double hh27dVt(const int nprop,
+	       const double m1sq,const double m2sq,const double m3sq,
+	    const double qsq,const double xl,const double mu2){
+  const double extrasign[9]={0.,-1.,1.,1.,1.,-1.,-1.,-1.,1};
+  return extrasign[nprop]*hhvtd(nprop,27,m1sq,m2sq,m3sq,-qsq,xl,mu2);
+}
+
+//bessel function
+double hhVb(const int nprop,
+	    const double m1sq,const double m2sq,const double m3sq,
+	    const double qsq,const double xl,const double mu2){
+  const double extrasign[9]={0.,-1.,1.,1.,1.,-1.,-1.,-1.,1};
+  return extrasign[nprop]*hhvb(nprop,0,m1sq,m2sq,m3sq,-qsq,xl,mu2);
+}
+double hh1Vb(const int nprop,
+	     const double m1sq,const double m2sq,const double m3sq,
+	     const double qsq,const double xl,const double mu2){
+  const double extrasign[9]={0.,-1.,1.,1.,1.,-1.,-1.,-1.,1};
+  return extrasign[nprop]*hhvb(nprop,1,m1sq,m2sq,m3sq,-qsq,xl,mu2);
+}
+double hh21Vb(const int nprop,
+	      const double m1sq,const double m2sq,const double m3sq,
+	      const double qsq,const double xl,const double mu2){
+  const double extrasign[9]={0.,-1.,1.,1.,1.,-1.,-1.,-1.,1};
+  return extrasign[nprop]*hhvb(nprop,21,m1sq,m2sq,m3sq,-qsq,xl,mu2);
+}
+double hh22Vb(const int nprop,
+	      const double m1sq,const double m2sq,const double m3sq,
+	      const double qsq,const double xl,const double mu2){
+  const double extrasign[9]={0.,1.,-1.,-1.,-1.,1.,1.,1.,-1};
+  return extrasign[nprop]*hhvb(nprop,22,m1sq,m2sq,m3sq,-qsq,xl,mu2);
+}
+double hh27Vb(const int nprop,
+	      const double m1sq,const double m2sq,const double m3sq,
+	      const double qsq,const double xl,const double mu2){
+  const double extrasign[9]={0.,1.,-1.,-1.,-1.,1.,1.,1.,-1};
+  return extrasign[nprop]*hhvb(nprop,27,m1sq,m2sq,m3sq,-qsq,xl,mu2);
+}
+
+double hhdVb(const int nprop,
+	     const double m1sq,const double m2sq,const double m3sq,
+	     const double qsq,const double xl,const double mu2){
+  const double extrasign[9]={0.,1.,-1.,-1.,-1.,1.,1.,1.,-1};
+  return extrasign[nprop]*hhvbd(nprop,0,m1sq,m2sq,m3sq,-qsq,xl,mu2);
+}
+double hh1dVb(const int nprop,
+	      const double m1sq,const double m2sq,const double m3sq,
+	      const double qsq,const double xl,const double mu2){
+  const double extrasign[9]={0.,1.,-1.,-1.,-1.,1.,1.,1.,-1};
+  return extrasign[nprop]*hhvbd(nprop,1,m1sq,m2sq,m3sq,-qsq,xl,mu2);
+}
+double hh21dVb(const int nprop,
+	       const double m1sq,const double m2sq,const double m3sq,
+	       const double qsq,const double xl,const double mu2){
+  const double extrasign[9]={0.,1.,-1.,-1.,-1.,1.,1.,1.,-1};
+  return extrasign[nprop]*hhvbd(nprop,21,m1sq,m2sq,m3sq,-qsq,xl,mu2);
+}
+double hh22dVb(const int nprop,
+	       const double m1sq,const double m2sq,const double m3sq,
+	       const double qsq,const double xl,const double mu2){
+  const double extrasign[9]={0.,-1.,1.,1.,1.,-1.,-1.,-1.,1};
+  return extrasign[nprop]*hhvbd(nprop,22,m1sq,m2sq,m3sq,-qsq,xl,mu2);
+}
+double hh27dVb(const int nprop,
+	       const double m1sq,const double m2sq,const double m3sq,
+	       const double qsq,const double xl,const double mu2){
+  const double extrasign[9]={0.,-1.,1.,1.,1.,-1.,-1.,-1.,1};
+  return extrasign[nprop]*hhvbd(nprop,27,m1sq,m2sq,m3sq,-qsq,xl,mu2);
 }
 
 ////////////// accuracy setting //////////////////////////////////////

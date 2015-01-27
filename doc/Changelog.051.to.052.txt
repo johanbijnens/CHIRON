@@ -1,0 +1,10 @@
+Changes from v0.51 to 0.52
+
+150127
+Finite volume sunsetintegrals for partially quenched added
+finitevolumesunsetintegrals.cc
+finitevolumesunsetintegrals.h
+manual.tex
+small bug in testfinitevolumeintegrals.cc found and corrected plus bits added
+testfinitevolumesunsetintegrals.cc
+testfinitevolumesunsetintegrals.dat

@@ -72,8 +72,9 @@ $(OBJECTSCHIRON): %.o: src/%.cc include/%.h
 $(TESTCHIRON): %: test/%.cc  libjbnumlib.a libchiron.a
 	$(CC) $(CFLAGSTEST)  -o a.out $<  -lchiron -ljbnumlib -L./lib
 
+
 # some installing and cleaning up bits
-.PHONY: clean installjbnumlib installchiron
+.PHONY: clean installjbnumlib installchiron doc
 
 installchiron: libjbnumlib.a libchiron.a
 	cp libjbnumlib.a libchiron ~/lib ; cp include/jbnumlib.h ~/include
@@ -82,5 +83,11 @@ installjbnumlib: libjbnumlib.a
 	cp libjbnumlib.a ~/lib ; cp include/jbnumlib.h $INCLUDECHIRON ~/include
 
 clean:
-	rm *.o libjbnumlib.a libchiron.a a.out lib/libchiron.a \
-          lib/libjbnumlib.a temp.dat test.dat
+	rm *.o *.a a.out lib/*.a \
+          temp.dat test.dat *.log *.out *.toc *.aux \
+          *.idx *.ilg *.ind *.pdf
+
+doc:
+	pdflatex doc/manual.tex ;pdflatex doc/manual.tex ; makeindex manual ;\
+          pdflatex doc/manual.tex ; makeindex manual ; \
+          pdflatex doc/manual.tex ; mv manual.pdf doc

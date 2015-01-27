@@ -33,8 +33,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % change these when updating
 % remember to run makeindex manual and run latex a few times afterwards
-\newcommand{\chironversion}{v0.51}
-\newcommand{\versiondate}{January 2015}
+\newcommand{\chironversion}{v0.52alpha}
+\newcommand{\versiondate}{February 2015}
 
 \begin{document}
 \begin{titlepage}
@@ -1774,6 +1774,7 @@ examples of use in \newfunction{testfinitevolumeoneloopintegrals.cc}.
 \subsection{Finite volume sunsetintegrals}
 
 \subsubsection{Definitions}
+\label{defFVsunset}
 
 The sunset integrals are defined with
 \begin{equation}
@@ -1826,6 +1827,7 @@ $\tilde H^V_i= H_i+ H^V_i$. The infinite volume part has been
 discussed above.
 For the finite volume parts we define
 \begin{align}
+\label{defHVF}
 H^V =& \frac{\lambda_0}{16\pi^2}
  \left(\overline A^V(m_1^2)+\overline A^V(m_2^2)+\overline A^V(m_3^2)\right)
  +\frac{1}{16\pi^2}
@@ -1953,7 +1955,155 @@ cases.\\
 
 For most applications it makes sense to have a higher precision for
 the case with one loop momentum quantized, i.e. \mytt{racc} smaller than
-\mytt{rsacc}.
+\mytt{rsacc}.\\
+
+Defined in \newfunction{finitevolumesunsetintegrals.h},
+implemented in \newfunction{finitevolumesunsetintegrals.cc}
+and examples of use in \newfunction{testfinitevolumesunsetintegrals.cc}
+
+\subsection{Finite volume sunsetintegrals with different powers of propagators}
+
+\subsubsection{Definitions}
+
+The sunset integrals with different powers of momenta
+are defined with
+\begin{equation}
+\langle\langle X \rangle\rangle_{nV} =
+\frac{\mu^{8-2d}}{i^2}\int_V\frac{d^d r}{(2\pi)^d}\frac{d^d 1}{(2\pi)^d}
+\frac{\left\{1,r_\mu,r_\mu r_\nu\right\}}
+{\left(r^2-m_1^2\right)^i\left(s^2-m_2^2\right)^j\left((r+s-p)^2-m_3^2\right)^k}\,.
+\end{equation}
+The subscript $V$ indicates that the spatial dimensions are a discrete
+sum rather than an integral.
+The translation of $n$ to the powers $i,j,k$ is given in Tab.~\ref{tabn}.
+
+In the cms frame we define the functions\footnote{In the cms frame
+$t_{\mu\nu}= g_{\mu\nu}-p_\mu p_\nu/p^2$ but the separation
+appears naturally in the calculation \cite{Bijnens:2013doa}. In addition, it
+avoids singularities in the limit $p\to0$.}
+\begin{align}
+\label{defHiV}
+\tilde H^V_\mu =& \langle\langle X \rangle\rangle_{nV}
+\\\nonumber
+\tilde H^V_\mu =& \langle\langle r_\mu \rangle\rangle_{nV} = p_\mu \tilde H^V_1\,
+\\\nonumber
+\tilde H^V_{\mu\nu} =&  \langle\langle r_\mu r_\nu \rangle\rangle_{nV}
+=p_\mu p_\nu \tilde H^V_{21} + g_{\mu\nu} \tilde H^V_{22} + t_{\mu\nu} \tilde H^V_{27}\,.
+\end{align}
+The arguments of all functions in the cms frame are
+$(n,m_1^2,m_2^2,m_3^2,p^2,L,\mu^2)$.
+
+We split the functions in an infinite volume part, $H_i$, and a finite
+volume correction, $H^V_i$, with
+$\tilde H^V_i= H_i+ H^V_i$. The infinite volume part has been
+discussed above.
+Note that the functions in the section are defined with the derivative
+w.r.t. $m_l^2$ for the propagators with mass $m_l^2$.
+For the finite volume parts we define the subtraction
+as before in (\ref{defHVF}), i.e. we subtract the $A^{V\epsilon},B^{V\epsilon}$
+parts.
+
+The functions $H^{VF}_i$ can be computed with the methods
+of \cite{Bijnens:2013doa}.
+They are obtained by adding the parts labeled with $G$ and $H$ in Sect. 4.3 and
+the part of Sect. 4.4 in \cite{Bijnens:2013doa}.
+The derivatives w.r.t. $p^2$ can be treated using a simple adaptation of that method.
+
+The method for evaluation works only below threshold. The numerical evaluation
+is rather slow. Playing with the precision settings for the specific case
+you need is very strongly recommended.
+
+\subsubsection{Functions}
+
+\mytt{const int n} The propagator cases as given in Tab.~\ref{tabn}.\\
+\mytt{const double: m1sq,m2sq,m3sq,psq,L,mu2}. These correspond
+to $m_1^2,m_2^2,m_3^2,p^2,L,\mu^2$.\\
+
+Evaluation using theta functions:\\
+\mytt{double \newfunction{hhVt}(n,m1sq,m2sq,m3sq,psq,L,mu2)}:
+returns $H^{VF}(n,m_1^2,m_2^2,m_3^2,p^2,L,\mu^2)$.\\
+\mytt{double \newfunction{hh1Vt}(n,m1sq,m2sq,m3sq,psq,L,mu2)}:
+returns $H^{VF}_1(n,m_1^2,m_2^2,m_3^2,p^2,L,\mu^2)$.\\
+\mytt{double \newfunction{hh21Vt}(n,m1sq,m2sq,m3sq,psq,L,mu2)}:
+returns $H^{VF}_{21}(n,m_1^2,m_2^2,m_3^2,p^2,L,\mu^2)$.\\
+\mytt{double \newfunction{hh22Vt}(n,m1sq,m2sq,m3sq,psq,L,mu2)}:
+returns $H^{VF}_{22}(n,m_1^2,m_2^2,m_3^2,p^2,L,\mu^2)$.\\
+\mytt{double \newfunction{hh27Vt}(n,m1sq,m2sq,m3sq,psq,L,mu2)}:
+returns $H^{VF}_{27}(n,m_1^2,m_2^2,m_3^2,p^2,L,\mu^2)$.\\
+\mytt{double \newfunction{hhdVt}(n,m1sq,m2sq,m3sq,psq,L,mu2)}:
+returns $(\partial/\partial p^2)H^{VF}(n,m_1^2,m_2^2,m_3^2,p^2,L,\mu^2)$.\\
+\mytt{double \newfunction{hh1dVt}(n,m1sq,m2sq,m3sq,psq,L,mu2)}:
+returns $(\partial/\partial p^2)H^{VF}_1(n,m_1^2,m_2^2,m_3^2,p^2,L,\mu^2)$.\\
+\mytt{double \newfunction{hh21dVt}(n,m1sq,m2sq,m3sq,psq,L,mu2)}:
+returns $(\partial/\partial p^2)H^{VF}_{21}(n,m_1^2,m_2^2,m_3^2,p^2,L,\mu^2)$.\\
+\mytt{double \newfunction{hh22dVt}(n,m1sq,m2sq,m3sq,psq,L,mu2)}:
+returns $(\partial/\partial p^2)H^{VF}_{22}(n,m_1^2,m_2^2,m_3^2,p^2,L,\mu^2)$.\\
+\mytt{double \newfunction{hh27dVt}(n,m1sq,m2sq,m3sq,psq,L,mu2)}:
+returns $(\partial/\partial p^2)H^{VF}_{27}(n,m_1^2,m_2^2,m_3^2,p^2,L,\mu^2)$.\\
+
+Evaluation using Bessel functions:\\
+\mytt{double \newfunction{hhVb}(n,m1sq,m2sq,m3sq,psq,L,mu2)}:
+returns $H^{VF}(n,m_1^2,m_2^2,m_3^2,p^2,L,\mu^2)$.\\
+\mytt{double \newfunction{hh1Vb}(n,m1sq,m2sq,m3sq,psq,L,mu2)}:
+returns $H^{VF}_1(n,m_1^2,m_2^2,m_3^2,p^2,L,\mu^2)$.\\
+\mytt{double \newfunction{hh21Vb}(n,m1sq,m2sq,m3sq,psq,L,mu2)}:
+returns $H^{VF}_{21}(n,m_1^2,m_2^2,m_3^2,p^2,L,\mu^2)$.\\
+\mytt{double \newfunction{hh22Vb}(n,m1sq,m2sq,m3sq,psq,L,mu2)}:
+returns $H^{VF}_{22}(n,m_1^2,m_2^2,m_3^2,p^2,L,\mu^2)$.\\
+\mytt{double \newfunction{hh27Vb}(n,m1sq,m2sq,m3sq,psq,L,mu2)}:
+returns $H^{VF}_{27}(n,m_1^2,m_2^2,m_3^2,p^2,L,\mu^2)$.\\
+\mytt{double \newfunction{hhdVb}(n,m1sq,m2sq,m3sq,psq,L,mu2)}:
+returns $(\partial/\partial p^2)H^{VF}(n,m_1^2,m_2^2,m_3^2,p^2,L,\mu^2)$.\\
+\mytt{double \newfunction{hh1dVb}(n,m1sq,m2sq,m3sq,psq,L,mu2)}:
+returns $(\partial/\partial p^2)H^{VF}_1(n,m_1^2,m_2^2,m_3^2,p^2,L,\mu^2)$.\\
+\mytt{double \newfunction{hh21dVb}(n,m1sq,m2sq,m3sq,psq,L,mu2)}:
+returns $(\partial/\partial p^2)H^{VF}_{21}(n,m_1^2,m_2^2,m_3^2,p^2,L,\mu^2)$.\\
+\mytt{double \newfunction{hh22dVb}(n,m1sq,m2sq,m3sq,psq,L,mu2)}:
+returns $(\partial/\partial p^2)H^{VF}_{22}(n,m_1^2,m_2^2,m_3^2,p^2,L,\mu^2)$.\\
+\mytt{double \newfunction{hh27dVb}(n,m1sq,m2sq,m3sq,psq,L,mu2)}:
+returns $(\partial/\partial p^2)H^{VF}_{27}(n,m_1^2,m_2^2,m_3^2,p^2,L,\mu^2)$.\\
+
+For all cases discussed both methods, via Bessel or
+(generalized) Jacobi theta functions, give the same results.
+The derivatives w.r.t. $p^2$ for all the integrals
+were compared with taking a numerical derivative.\\
+
+Note that the sunset functions at finite volume call the tadpole integrals
+evaluated with the same method. Do not forget to set precision for those
+as well.\\
+
+\mytt{void \newfunction{setprecisionfinitevolumesunsett}(const double racc=1e-5,}\\\hspace*{5mm}\mytt{const double rsacc=1e-4,const bool printout=true)}\\
+The double values \mytt{sunsetracc} and \mytt{sunsetrsacc}
+set the accuracies
+of the numerical integration needed when one or two loop-momenta ``feel''
+the finite volume. Default values are \mytt{1e-5} and \mytt{1e-4}
+respectively.
+The bool variable \mytt{printout} defaults to \mytt{true}
+and sets whether the setting is
+printed. \\
+
+\mytt{void \newfunction{setprecisionfinitevolumesunsetb}(const int maxsum1=100,}
+\\\hspace*{5mm}\mytt{
+const int maxsum2=40,racc=1e-5,rsacc=1e-4,printout)}\\
+The integers \mytt{maxsum1} and \mytt{maxsum2} give how far the sum over
+Bessel functions
+is used for the case with one or two loop momenta
+``feeling'' the finite volume. The first is maximum 1000,
+the second maximum 40 in the present implementation.
+In the latter case a triple sum is needed, hence the much lower upper bound.
+The double values \mytt{sunsetracc} and \mytt{sunsetrsacc}
+set the accuracies
+of the numerical integration which is still needed after the sum for both
+cases.\\
+
+For most applications it makes sense to have a higher precision for
+the case with one loop momentum quantized, i.e. \mytt{racc} smaller than
+\mytt{rsacc}.\\
+
+Defined in \newfunction{finitevolumesunsetintegrals.h},
+implemented in \newfunction{finitevolumesunsetintegrals.cc}
+and examples of use in \newfunction{testfinitevolumesunsetintegrals.cc}
+
 
 \section{Three flavour isospin conserving results}
 

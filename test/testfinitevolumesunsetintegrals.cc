@@ -1,6 +1,6 @@
 // testfinitevolumesunsetintegrals.cc is part of 
 // the CHIRON ChPT at two loops program collection
-// Copyright (C) 2014 Johan Bijnens, v1.0
+// Copyright (C) 2014-2015 Johan Bijnens, v1.01
 // CHIRON is licenced under the GNU GPL version 2 or later,
 // see COPYING for details.
 // Please respect the Guidelines, see GUIDELINES for details.
@@ -38,6 +38,8 @@ int main(void){
   // sunset actually contain some calls to oneloop integrals AbV,A22bV and A23bV
   setprecisionfinitevolumeoneloopt(1e-6*pi162,1e-5,false);
   setprecisionfinitevolumeoneloopb(60,1e-5,false);
+
+  cout <<"standard cases\n";
   cout <<"eps_Theta sumBessel  hhVt      hhVb        hh1Vt          hh1Vb\n";
   for(int i=0; i<6; i++){
     setprecisionfinitevolumesunsett(epst[i],epst[i],false);
@@ -49,7 +51,7 @@ int main(void){
 	 <<setw(13)<<hh1Vb(m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
 	 <<'\n';
   }
-  cout <<"eps_Theta sumBessel  hh21Vt    hh2Vb       hh22Vt         hh22Vb\n";
+  cout <<"eps_Theta sumBessel  hh21Vt    hh21Vb       hh22Vt         hh22Vb\n";
   for(int i=0; i<6; i++){
     setprecisionfinitevolumesunsett(epst[i],epst[i],false);
     setprecisionfinitevolumesunsetb(nb[i],nb2[i],epst[i],epst[i],false);
@@ -71,29 +73,7 @@ int main(void){
 	 <<setw(13)<<hhdVb(m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
 	 <<'\n';
   }
-  cout <<"eps_Theta sumBessel  hh27Vt    hh27Vb       hhdVt         hhdVb\n";
-  for(int i=0; i<6; i++){
-    setprecisionfinitevolumesunsett(epst[i],epst[i],false);
-    setprecisionfinitevolumesunsetb(nb[i],nb2[i],epst[i],epst[i],false);
-    cout << setw(8)<<epst[i]<<' '<<setw(3)<<nb2[i]<<' '
-	 <<setw(13)<<hh27Vt(m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
-	 <<setw(13)<<hh27Vb(m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
-	 <<setw(13)<<hhdVt(m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
-	 <<setw(13)<<hhdVb(m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
-	 <<'\n';
-  }
-  cout <<"eps_Theta sumBessel  hh1dVt    hh1dVb       hh21dVt       hhd21Vb\n";
-  for(int i=0; i<6; i++){
-    setprecisionfinitevolumesunsett(epst[i],epst[i],false);
-    setprecisionfinitevolumesunsetb(nb[i],nb2[i],epst[i],epst[i],false);
-    cout << setw(8)<<epst[i]<<' '<<setw(3)<<nb2[i]<<' '
-	 <<setw(13)<<hh27Vt(m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
-	 <<setw(13)<<hh27Vb(m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
-	 <<setw(13)<<hhdVt(m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
-	 <<setw(13)<<hhdVb(m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
-	 <<'\n';
-  }
-  cout <<"eps_Theta sumBessel  hh1dVt    hh1dVb       hh21dVt       hhd21Vb\n";
+  cout <<"eps_Theta sumBessel  hh1dVt    hh1dVb       hh21dVt       hh212Vb\n";
   for(int i=0; i<6; i++){
     setprecisionfinitevolumesunsett(epst[i],epst[i],false);
     setprecisionfinitevolumesunsetb(nb[i],nb2[i],epst[i],epst[i],false);
@@ -115,5 +95,67 @@ int main(void){
 	 <<setw(13)<<hh27dVb(m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
 	 <<'\n';
   }
+  cout << "############################################################\n";
+  cout << "cases with different propagagotors\n";
+
+  for(int nprop=1;nprop<9;nprop++){
+    cout << "case propagator = "<<nprop<<'\n';
+
+  cout <<"eps_Theta sumBessel  hhVt      hhVb        hh1Vt          hh1Vb\n";
+  for(int i=0; i<6; i++){
+    setprecisionfinitevolumesunsett(epst[i],epst[i],false);
+    setprecisionfinitevolumesunsetb(nb[i],nb2[i],epst[i],epst[i],false);
+    cout << setw(8)<<epst[i]<<' '<<setw(3)<<nb2[i]<<' '
+	 <<setw(13)<<hhVt(nprop,m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
+	 <<setw(13)<<hhVb(nprop,m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
+	 <<setw(13)<<hh1Vt(nprop,m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
+	 <<setw(13)<<hh1Vb(nprop,m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
+	 <<'\n';
+  }
+  cout <<"eps_Theta sumBessel  hh21Vt    hh21Vb       hh22Vt         hh22Vb\n";
+  for(int i=0; i<6; i++){
+    setprecisionfinitevolumesunsett(epst[i],epst[i],false);
+    setprecisionfinitevolumesunsetb(nb[i],nb2[i],epst[i],epst[i],false);
+    cout << setw(8)<<epst[i]<<' '<<setw(3)<<nb2[i]<<' '
+	 <<setw(13)<<hh21Vt(nprop,m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
+	 <<setw(13)<<hh21Vb(nprop,m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
+	 <<setw(13)<<hh22Vt(nprop,m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
+	 <<setw(13)<<hh22Vb(nprop,m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
+	 <<'\n';
+  }
+  cout <<"eps_Theta sumBessel  hh27Vt    hh27Vb       hhdVt         hhdVb\n";
+  for(int i=0; i<6; i++){
+    setprecisionfinitevolumesunsett(epst[i],epst[i],false);
+    setprecisionfinitevolumesunsetb(nb[i],nb2[i],epst[i],epst[i],false);
+    cout << setw(8)<<epst[i]<<' '<<setw(3)<<nb2[i]<<' '
+	 <<setw(13)<<hh27Vt(nprop,m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
+	 <<setw(13)<<hh27Vb(nprop,m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
+	 <<setw(13)<<hhdVt(nprop,m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
+	 <<setw(13)<<hhdVb(nprop,m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
+	 <<'\n';
+  }
+  cout <<"eps_Theta sumBessel  hh1dVt    hh1dVb       hh21dVt       hh212Vb\n";
+  for(int i=0; i<6; i++){
+    setprecisionfinitevolumesunsett(epst[i],epst[i],false);
+    setprecisionfinitevolumesunsetb(nb[i],nb2[i],epst[i],epst[i],false);
+    cout << setw(8)<<epst[i]<<' '<<setw(3)<<nb2[i]<<' '
+	 <<setw(13)<<hh1Vt(nprop,m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
+	 <<setw(13)<<hh1Vb(nprop,m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
+	 <<setw(13)<<hh21dVt(nprop,m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
+	 <<setw(13)<<hh21dVb(nprop,m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
+	 <<'\n';
+  }
+  cout <<"eps_Theta sumBessel  hh22dVt   hh22dVb      hh27dVt       hhd27Vb\n";
+  for(int i=0; i<6; i++){
+    setprecisionfinitevolumesunsett(epst[i],epst[i],false);
+    setprecisionfinitevolumesunsetb(nb[i],nb2[i],epst[i],epst[i],false);
+    cout << setw(8)<<epst[i]<<' '<<setw(3)<<nb2[i]<<' '
+	 <<setw(13)<<hh22dVt(nprop,m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
+	 <<setw(13)<<hh22dVb(nprop,m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
+	 <<setw(13)<<hh27dVt(nprop,m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
+	 <<setw(13)<<hh27dVb(nprop,m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
+	 <<'\n';
+  }
+  } // nprop
   return 0;
 }

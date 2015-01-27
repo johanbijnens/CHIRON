@@ -58,6 +58,72 @@ double hh22dVb(const double m1sq,const double m2sq,const double m3sq,
 double hh27dVb(const double m1sq,const double m2sq,const double m3sq,
 	       const double qsq,const double xl,const double mu2);
 
+
+double hhVt(const int nprop,
+	    const double m1sq,const double m2sq,const double m3sq,
+	    const double qsq,const double xl,const double mu2);
+double hh1Vt(const int nprop,
+	     const double m1sq,const double m2sq,const double m3sq,
+	     const double qsq,
+const double xl,const double mu2);
+double hh21Vt(const int nprop,
+	      const double m1sq,const double m2sq,const double m3sq,
+	      const double qsq,const double xl,const double mu2);
+double hh22Vt(const int nprop,
+	      const double m1sq,const double m2sq,const double m3sq,
+	      const double qsq,const double xl,const double mu2);
+double hh27Vt(const int nprop,
+	      const double m1sq,const double m2sq,const double m3sq,
+	      const double qsq,const double xl,const double mu2);
+
+double hhdVt(const int nprop,
+	     const double m1sq,const double m2sq,const double m3sq,
+	     const double qsq,const double xl,const double mu2);
+double hh1dVt(const int nprop,
+	      const double m1sq,const double m2sq,const double m3sq,
+	      const double qsq,const double xl,const double mu2);
+double hh21dVt(const int nprop,
+	       const double m1sq,const double m2sq,const double m3sq,
+	       const double qsq,const double xl,const double mu2);
+double hh22dVt(const int nprop,
+	       const double m1sq,const double m2sq,const double m3sq,
+	       const double qsq,const double xl,const double mu2);
+double hh27dVt(const int nprop,
+	       const double m1sq,const double m2sq,const double m3sq,
+	       const double qsq,const double xl,const double mu2);
+
+double hhVb(const int nprop,
+	    const double m1sq,const double m2sq,const double m3sq,
+	     const double qsq,const double xl,const double mu2);
+double hh1Vb(const int nprop,
+	     const double m1sq,const double m2sq,const double m3sq,
+	      const double qsq,const double xl,const double mu2);
+double hh21Vb(const int nprop,
+	      const double m1sq,const double m2sq,const double m3sq,
+	       const double qsq,const double xl,const double mu2);
+double hh22Vb(const int nprop,
+	      const double m1sq,const double m2sq,const double m3sq,
+	       const double qsq,const double xl,const double mu2);
+double hh27Vb(const int nprop,
+	      const double m1sq,const double m2sq,const double m3sq,
+	       const double qsq,const double xl,const double mu2);
+
+double hhdVb(const int nprop,
+	     const double m1sq,const double m2sq,const double m3sq,
+	     const double qsq,const double xl,const double mu2);
+double hh1dVb(const int nprop,
+	      const double m1sq,const double m2sq,const double m3sq,
+	      const double qsq,const double xl,const double mu2);
+double hh21dVb(const int nprop,
+	       const double m1sq,const double m2sq,const double m3sq,
+	       const double qsq,const double xl,const double mu2);
+double hh22dVb(const int nprop,
+	       const double m1sq,const double m2sq,const double m3sq,
+	       const double qsq,const double xl,const double mu2);
+double hh27dVb(const int nprop,
+	       const double m1sq,const double m2sq,const double m3sq,
+	       const double qsq,const double xl,const double mu2);
+
 ////////////// accuracy setting //////////////////////////////////////
 void setprecisionfinitevolumesunsett(const double sunsetracc=1e-5,
 				     const double sunsetrsacc=1e-4,
