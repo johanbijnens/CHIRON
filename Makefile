@@ -25,6 +25,7 @@ OBJECTSJBNUMLIB = jbdgauss.o jbdcauch.o jbwgauss.o \
 
 OBJECTSCHIRON = inputs.o Li.o Ci.o inputsnf.o Linf.o Ki.o \
        massdecayvev.o getfpimeta.o \
+       massdecayvevlo.o \
        oneloopintegrals.o sunsetintegrals.o finitevolumeoneloopintegrals.o \
        finitevolumesunsetintegrals.o quenchedsunsetintegrals.o
 
@@ -44,7 +45,8 @@ TESTCHIRON = testintegralsreal testintegralsrealsingular \
        testinputs testinputsnf testLi testCi testmassdecayvev \
        testgetfpimeta testoneloopintegrals testsunsetintegrals \
        testfinitevolumeoneloopintegrals testfinitevolumesunsetintegrals \
-       testmassdecayvevV testquenchedsunsetintegrals testLinf testKi
+       testmassdecayvevV testquenchedsunsetintegrals testLinf testKi \
+       testmassdecayvevlo
 
 all: libchiron.a libjbnumlib.a
 

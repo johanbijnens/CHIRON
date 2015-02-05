@@ -8,3 +8,21 @@ manual.tex
 small bug in testfinitevolumeintegrals.cc found and corrected plus bits added
 testfinitevolumesunsetintegrals.cc
 testfinitevolumesunsetintegrals.dat
+Makefile now has 'make doc' to produce doc/manual.pdf from doc/manual.tex 
+
+150205
+masses, decay-constants and vevs in terms of lowest order added and put in
+manual
+massdecayvevlo.h
+massdecayvevlo.cc
+testmassdecayvevlo.cc
+testmassdecayvevlo.dat
+manual.tex
+
+
+
+
+
+
+To be done:
+add inputsnf Linf Ki to the manual

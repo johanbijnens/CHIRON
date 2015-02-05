@@ -38,6 +38,7 @@
 
 \begin{document}
 \begin{titlepage}
+\setcounter{page}{-1} % this avoids the pdflatex warning about same destination
 \phantom{p}
 \vfill
 \begin{center}
@@ -2107,8 +2108,11 @@ and examples of use in \newfunction{testfinitevolumesunsetintegrals.cc}
 
 \section{Three flavour isospin conserving results}
 
-\subsection{Masses, decay constants and vacuum-expectation-values}
+\subsection{Masses, decay constants and vacuum-expectation-values: in physical}
 \label{massdecayvev}
+
+The exansions in this subsection are defined in terms of the physical masses,
+$m_\pi, m_K, m_\eta$ and the physical pion decay constant $F_\pi$.
 
 \subsubsection{Masses}
 \label{masses}
@@ -2349,7 +2353,7 @@ on exactly the way the scalar densities are defined in QCD. ChPT can be
 used for them when a massindependent, chiral symmetry respecting subtraction
 scheme is used. $\overline{MS}$ in QCD satisfies this, but there are other
 possibilities. Even within a scheme, $B_0$ and the quark masses depend
-on the QCD subtraction scale $\mu_\textrm{QCD}$ is such a way that
+on the QCD subtraction scale $\mu_\textrm{QCD}$ in such a way that
 $B_0 m_q$ is independent of it. The higher order corrections in this
 case also depend on the LECs for fully local counter-terms,
 $H_1^r,H_2^r$ at order $p^4$ and $C_{91}^r,\ldots,C_{94}^r$ at $p^6$.
@@ -2409,6 +2413,279 @@ $\langle0\vert \overline q q \vert 0\rangle_{s\,\mathrm{phys}}$:\\
 The functions are defined in \newfunction{massesdecayvev.h},
 implemented in \newfunction{massesdecayvev.cc} and examples of use
 are in \newfunction{testmassesdecayvev.cc}
+
+\subsection{Masses, decay constants and vacuum-expectation-values: in lowest order}
+\label{massdecayvevlo}
+
+The exansions in this subsection are defined in terms of the
+lowest order masses,
+$m_{\pi\,0}, m_{K\,0}$, $m_\eta=\sqrt{(4m_{K\,0}^2-m_{\pi\,0}^2)/3}$ and the 
+lowest order, or chiral limit, pion decay constant $F_0$.
+
+\subsubsection{Masses: in lowest order}
+\label{masseslo}
+
+The masses of the pion, kaon and eta at two-loops in three flavour ChPT
+were evaluated in \cite{Amoros:1999dp}. The pion and eta mass were done
+earlier with a different subtraction scheme and a different way to perform the
+sunset integrals in \cite{Golowich:1997zs}.
+
+The expressions for the physical masses for $a=\pi,K,\eta$ are given by
+\begin{equation}
+m_{a\,\mathrm{phys}}^2 = m_{a\,0}^2+m_a^{2(4)0}+m_a^{2(6)0}\,.
+\end{equation}
+The superscripts indicate the order of the diagrams in $p$ that each
+contribution comes from and the extra $0$ that it is defined in terms
+of lowest-order quantities.
+ 
+The lowest order masses are
+\begin{equation}
+m_{\pi\,0}^2 = 2 B_0\hat m\,,\quad m_{K\,0}^2 = B_0\left(\hat m+m_s\right)\,,
+\quad m_{\eta\,0}^2 = \frac{2}{3}\left(\hat m+2m_2\right)\,.
+\end{equation}
+The higher order contributions are split in the parts
+depending on the NLO LECs $L_i^r$, on the NNLO LECs $C_i^r$ and the
+remainder as
+\begin{equation}
+\label{defmasseslo}
+m_a^{2(4)0}=m_{a\,L}^{2(4)0}+m_{a\,R}^{2(4)0}\,,
+\qquad
+m_a^{2(6)0}=m_{a\,L}^{2(6)0}+m_{a\,C}^{2(6)0}+m_{a\,R}^{2(6)0}\,.
+\end{equation}
+The expressions for were derived during the work for \cite{Amoros:1999dp}
+and on \cite{webpage}. Note that when combining these with results
+from other sources one should be sure to use a compatible LO and NLO.\\
+
+Pion mass:\\
+\mytt{double \newfunction{mpi4lo}(lomass,Li)}
+returns $m_\pi^{2(4)0}$\\ 
+\mytt{double \newfunction{mpi4Llo}(lomass,Li)}
+returns $m_{\pi\,L}^{2(4)0}$\\ 
+\mytt{double \newfunction{mpi4Rlo}(lomass,Li)}
+returns $m_{\pi\,R}^{2(4)0}$\\ 
+\mytt{double \newfunction{mpi6lo}(lomass,Li,Ci)}
+returns $m_\pi^{2(6)0}$\\ 
+\mytt{double \newfunction{mpi6Llo}(lomass,Li)}
+returns $m_{\pi\,L}^{2(6)0}$\\ 
+\mytt{double \newfunction{mpi6Clo}(lomass,Ci)}
+returns $m_{\pi\,C}^{2(6)0}$\\ 
+\mytt{double \newfunction{mpi6Rlo}(lomass)}
+returns $m_{\pi\,R}^{2(6)0}$\\ 
+
+Kaon mass:\\
+\mytt{double \newfunction{mk4lo}(lomass,Li)}
+returns $m_K^{2(4)0}$\\ 
+\mytt{double \newfunction{mk4Llo}(lomass,Li)}
+returns $m_{K\,L}^{2(4)0}$\\ 
+\mytt{double \newfunction{mk4Rlo}(lomass,Li)}
+returns $m_{K\,R}^{2(4)0}$\\ 
+\mytt{double \newfunction{mk6lo}(lomass,Li,Ci)}
+returns $m_K^{2(6)0}$\\ 
+\mytt{double \newfunction{mk6Llo}(lomass,Li)}
+returns $m_{K\,L}^{2(6)0}$\\ 
+\mytt{double \newfunction{mk6Clo}(lomass,Ci)}
+returns $m_{K\,C}^{2(6)0}$\\ 
+\mytt{double \newfunction{mk6Rlo}(lomass)}
+returns $m_{K\,R}^{2(6)0}$\\ 
+
+Eta mass:\\
+\mytt{double \newfunction{meta4lo}(lomass,Li)}
+returns $m_\eta^{2(4)0}$\\ 
+\mytt{double \newfunction{meta4Llo}(lomass,Li)}
+returns $m_{\eta\,L}^{2(4)0}$\\ 
+\mytt{double \newfunction{meta4Rlo}(lomass,Li)}
+returns $m_{\eta\,R}^{2(4)0}$\\ 
+\mytt{double \newfunction{meta6lo}(lomass,Li,Ci)}
+returns $m_\eta^{2(6)0}$\\ 
+\mytt{double \newfunction{meta6Llo}(lomass,Li)}
+returns $m_{\eta\,L}^{2(6)0}$\\ 
+\mytt{double \newfunction{meta6Clo}(lomass,Ci)}
+returns $m_{\eta\,C}^{2(6)0}$\\ 
+\mytt{double \newfunction{meta6Rlo}(lomass)}
+returns $m_{\eta\,R}^{2(6)0}$\\ 
+
+The functions are defined in \newfunction{massesdecayvevlo.h},
+implemented in \newfunction{massesdecayvevlo.cc} and examples of use
+are in \newfunction{testmassdecayvevlo.cc}.
+
+\subsubsection{Decay constants: in lowest order}
+\label{decaylo}
+
+The decay constants of the pion, kaon and eta at two-loops in three flavour ChPT
+were obtained in \cite{Amoros:1999dp}. The pion and eta decay constants
+were done earlier
+with a different subtraction scheme and a different way to perform the
+sunset integrals in \cite{Golowich:1997zs}.
+
+The expressions for the decay constants for $a=\pi,K,\eta$ are given by
+\begin{equation}
+\label{defdecayfirstlo}
+F_{a\,\mathrm{phys}} = F_0\left(1+F_a^{(4)0}+F_a^{(6)0}\right)\,.
+\end{equation}
+The superscripts indicate the order of the diagrams in $p$ that each
+contribution comes from. The extra $0$ indicates that the expansion
+is in terms of lowest-order quantities. 
+$F_0$ denotes the decay constant in the three-flavour
+chiral limit.
+The expressions were originally derived during the work for
+\cite{Amoros:1999dp} and can be found in the website
+\cite{webpage}. The normalization is such that $F_\pi\approx92$~MeV.
+
+The contributions themselves are divided into the parts
+depending on the NLO LECs $L_i^r$, on the NNLO LECs $C_i^r$ and the
+remainder as
+\begin{equation}
+\label{defdecaylo}
+F_a^{(4)0}=F_{a\,L}^{(4)0}+F_{a\,R}^{(4)0}\,,
+\qquad
+F_a^{(6)0}=F_{a\,L}^{(6)0}+F_{a\,C}^{(6)0}+F_{a\,R}^{(6)0}\,.
+\end{equation}
+
+For the $\eta$ the decay constant has been
+defined with the octet axial-vector current.\\
+
+Pion decay constant:\\
+\mytt{double \newfunction{fpi4lo}(lomass,Li)}
+returns $F_\pi^{(4)0}$\\ 
+\mytt{double \newfunction{fpi4Llo}(lomass,Li)}
+returns $F_{\pi\,L}^{(4)0}$\\ 
+\mytt{double \newfunction{fpi4Rlo}(lomass,Li)}
+returns $F_{\pi\,R}^{(4)0}$\\ 
+\mytt{double \newfunction{fpi6lo}(lomass,Li,Ci)}
+returns $F_\pi^{(6)0}$\\ 
+\mytt{double \newfunction{fpi6Llo}(lomass,Li)}
+returns $F_{\pi\,L}^{(6)0}$\\ 
+\mytt{double \newfunction{fpi6Clo}(lomass,Ci)}
+returns $F_{\pi\,C}^{(6)0}$\\ 
+\mytt{double \newfunction{fpi6Rlo}(lomass)}
+returns $F_{\pi\,R}^{(6)0}$\\ 
+
+Kaon decay constant:\\
+\mytt{double \newfunction{fk4lo}(lomass,Li)}
+returns $F_K^{(4)0}$\\ 
+\mytt{double \newfunction{fk4Llo}(lomass,Li)}
+returns $F_{K\,L}^{(4)0}$\\ 
+\mytt{double \newfunction{fk4Rlo}(lomass,Li)}
+returns $F_{K\,R}^{(4)0}$\\ 
+\mytt{double \newfunction{fk6lo}(lomass,Li,Ci)}
+returns $F_K^{(6)0}$\\ 
+\mytt{double \newfunction{fk6Llo}(lomass,Li)}
+returns $F_{K\,L}^{(6)0}$\\ 
+\mytt{double \newfunction{fk6Clo}(lomass,Ci)}
+returns $F_{K\,C}^{(6)0}$\\ 
+\mytt{double \newfunction{fk6Rlo}(lomass)}
+returns $F_{K\,R}^{(6)0}$\\ 
+
+Eta decay constant:\\
+\mytt{double \newfunction{feta4lo}(lomass,Li)}
+returns $F_\eta^{(4)0}$\\ 
+\mytt{double \newfunction{feta4Llo}(lomass,Li)}
+returns $F_{\eta\,L}^{(4)0}$\\ 
+\mytt{double \newfunction{feta4Rlo}(lomass,Li)}
+returns $F_{\eta\,R}^{(4)0}$\\ 
+\mytt{double \newfunction{feta6lo}(lomass,Li,Ci)}
+returns $F_\eta^{(6)0}$\\ 
+\mytt{double \newfunction{feta6Llo}(lomass,Li)}
+returns $F_{\eta\,L}^{(6)0}$\\ 
+\mytt{double \newfunction{feta6Clo}(lomass,Ci)}
+returns $F_{\eta\,C}^{(6)0}$\\ 
+\mytt{double \newfunction{feta6Rlo}(lomass)}
+returns $F_{\eta\,R}^{(6)0}$\\ 
+
+The functions are defined in \newfunction{massesdecayvevlo.h},
+implemented in \newfunction{massesdecayvevlo.cc} and examples of use
+are in \newfunction{testmassdecayvevlo.cc}.
+
+
+\subsubsection{Vacuum-expectation-values: in lowest order}
+\label{vevslo}
+
+The corrections to the vacuum expectation values (vevs)
+$\langle0\vert \overline q q \vert 0\rangle$
+for up, down and strange quarks in the isospin limit
+were  calculated at two-loops in three flavour ChPT
+in \cite{Amoros:2000mc}.
+The expression for the up and down quark vev are identical since we
+are in the isospin limit.
+
+We write the expressions in a form analoguous to the decay constant
+treatment:
+\begin{equation}
+\langle0\vert \overline q q \vert 0\rangle_{a\,\mathrm{phys}} =
+- F_0^2 B_0\left(1+\langle0\vert \overline q q \vert 0\rangle_a^{(4)0}+
+\langle0\vert \overline q q \vert 0\rangle_a^{(6)0}\right)\,.
+\end{equation}
+The superscripts indicate the order of the diagrams in $p$ that each
+contribution comes from. The extra $0$ indicates that the expansion
+is defined in terms of lowest-order quantities.
+The lowest order values are $-F_0^2 B_0$.
+
+Note that the vevs are not directly measurable quantities. They depend
+on exactly the way the scalar densities are defined in QCD. ChPT can be
+used for them when a massindependent, chiral symmetry respecting subtraction
+scheme is used. $\overline{MS}$ in QCD satisfies this, but there are other
+possibilities. Even within a scheme, $B_0$ and the quark masses depend
+on the QCD subtraction scale $\mu_\textrm{QCD}$ in such a way that
+$B_0 m_q$ is independent of it. The higher order corrections in this
+case also depend on the LECs for fully local counter-terms,
+$H_1^r,H_2^r$ at order $p^4$ and $C_{91}^r,\ldots,C_{94}^r$ at $p^6$.
+When the scalar density is fully defined, measuring these quantities in
+e.g. lattice QCD and comparing with the ChPT expressions is a well defined
+procedure.
+
+The contributions at the different orders themselves are split in the parts
+depending on the NLO LECs $L_i^r$, on the NNLO LECs $C_i^r$ and the
+remainder as
+\begin{eqnarray}
+\label{defvevlo}
+\langle0\vert \overline q q \vert 0\rangle_a^{(4)0}&=&
+\langle0\vert \overline q q \vert 0\rangle_{a\,L}^{(4)0}
++\langle0\vert \overline q q \vert 0\rangle_{a\,R}^{(4)0}\,,
+\nonumber\\
+\langle0\vert \overline q q \vert 0\rangle_a^{(6)0}&=&
+\langle0\vert \overline q q \vert 0\rangle_{a\,L}^{(6)0}
++\langle0\vert \overline q q \vert 0\rangle_{a\,C}^{(6)0}
++\langle0\vert \overline q q \vert 0\rangle_{a\,R}^{(6)0}\,.
+\end{eqnarray}
+These are defined for $q=u,s$.\\
+
+$\langle0\vert \overline q q \vert 0\rangle_{u\,\mathrm{phys}}$:\\
+\mytt{double \newfunction{qqup4lo}(lomass,Li)} returns
+  $\langle0\vert \overline q q \vert 0\rangle_{u}^{(4)0}$\\
+\mytt{double \newfunction{qqup4Llo}(lomass,Li)} returns
+  $\langle0\vert \overline q q \vert 0\rangle_{u\,L}^{(4)0}$\\
+\mytt{double \newfunction{qqup4Rlo}(lomass)} returns
+  $\langle0\vert \overline q q \vert 0\rangle_{u\,R}^{(4)0}$\\
+\mytt{double \newfunction{qqup6lo}(lomass,Li,Ci)} returns
+  $\langle0\vert \overline q q \vert 0\rangle_{u}^{(6)0}$\\
+\mytt{double \newfunction{qqup6Llo}(lomass,Li)} returns
+  $\langle0\vert \overline q q \vert 0\rangle_{u\,L}^{(6)0}$\\
+\mytt{double \newfunction{qqup6Clo}(lomass,Li)} returns
+  $\langle0\vert \overline q q \vert 0\rangle_{u\,C}^{(6)0}$\\
+\mytt{double \newfunction{qqup6Rlo}(lomass)} returns
+  $\langle0\vert \overline q q \vert 0\rangle_{u\,R}^{(6)0}$\\
+
+$\langle0\vert \overline q q \vert 0\rangle_{s\,\mathrm{phys}}$:\\
+\mytt{double \newfunction{qqstrange4lo}(lomass,Li)} returns
+  $\langle0\vert \overline q q \vert 0\rangle_{s}^{(4)0}$\\
+\mytt{double \newfunction{qqstrange4Llo}(lomass,Li)} returns
+  $\langle0\vert \overline q q \vert 0\rangle_{s\,L}^{(4)0}$\\
+\mytt{double \newfunction{qqstrange4Rlo}(lomass)} returns
+  $\langle0\vert \overline q q \vert 0\rangle_{s\,R}^{(4)0}$\\
+\mytt{double \newfunction{qqstrange6lo}(lomass,Li,Ci)} returns
+  $\langle0\vert \overline q q \vert 0\rangle_{s}^{(6)0}$\\
+\mytt{double \newfunction{qqstrange6Llo}(lomass,Li)} returns
+  $\langle0\vert \overline q q \vert 0\rangle_{s\,L}^{(6)0}$\\
+\mytt{double \newfunction{qqstrange6Clo}(lomass,Li)} returns
+  $\langle0\vert \overline q q \vert 0\rangle_{s\,C}^{(6)0}$\\
+\mytt{double \newfunction{qqstrange6Rlo}(lomass)} returns
+  $\langle0\vert \overline q q \vert 0\rangle_{s\,R}^{(6)0}$\\
+
+
+The functions are defined in \newfunction{massesdecayvevlo.h},
+implemented in \newfunction{massesdecayvevlo.cc} and examples of use
+are in \newfunction{testmassesdecayvevlo.cc}
+
 
 \subsection{Masses and decay constants at finite volume}
 \label{massdecayvevV}
