@@ -19,10 +19,41 @@ testmassdecayvevlo.cc
 testmassdecayvevlo.dat
 manual.tex
 
+started on adding partially quenched
+mass 1 valence mass, 1 sea mass, 3 sea quarks added
+massdecayvevPQ.cc
+massdecayvevPQ.h
 
+150209
+mass 1 valence mass, 2 sea mass, 3 sea quarks added
+mass 2 valence mass, 1 sea mass, 3 sea quarks added
+massdecayvevPQ.cc
+massdecayvevPQ.h
 
+150210
+mass 2 valence mass, 2 sea mass, 3 sea quarks added
+massdecayvevPQ.cc
+massdecayvevPQ.h
 
+150210
+mass 1 valence mass, 3 sea mass, 3 sea quarks added
+mass 2 valence mass, 3 sea mass, 3 sea quarks added
+massdecayvevPQ.cc
+massdecayvevPQ.h
+
+150216
+decay 1 valence mass, 1 sea mass, 3 sea quarks added
+decay 2 valence mass, 1 sea mass, 3 sea quarks added
+decay 1 valence mass, 2 sea mass, 3 sea quarks added
+decay 2 valence mass, 2 sea mass, 3 sea quarks added
+decay 1 valence mass, 3 sea mass, 3 sea quarks added
+decay 2 valence mass, 3 sea mass, 3 sea quarks added
+massdecayvevPQ.cc
+massdecayvevPQ.h
+testmassdecayvevPQ.cc
+testmassdecayvevPQ.dat
 
 
 To be done:
 add inputsnf Linf Ki to the manual
+massdecayvevPQ to the manual

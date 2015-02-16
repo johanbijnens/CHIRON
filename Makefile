@@ -3,7 +3,7 @@
 # it also allows you to produce a number of testing/example programs
 # it is part of the CHIRON ChPT at two loops program collection
 #
-# Copyright (C) 2014-2015 Johan Bijnens, v1.01
+# Copyright (C) 2014-2015 Johan Bijnens, v1.02
 # CHIRON is licenced under the GNU GPL version 2 or later,
 # see COPYING for details.
 # Please respect the Guidelines, see GUIDELINES for details.
@@ -25,7 +25,7 @@ OBJECTSJBNUMLIB = jbdgauss.o jbdcauch.o jbwgauss.o \
 
 OBJECTSCHIRON = inputs.o Li.o Ci.o inputsnf.o Linf.o Ki.o \
        massdecayvev.o getfpimeta.o \
-       massdecayvevlo.o \
+       massdecayvevlo.o massdecayvevPQ.o \
        oneloopintegrals.o sunsetintegrals.o finitevolumeoneloopintegrals.o \
        finitevolumesunsetintegrals.o quenchedsunsetintegrals.o
 
@@ -33,7 +33,7 @@ OBJECTSCHIRON2 = massdecayvevVt.o massdecayvevVb.o
 
 INCLUDECHIRON =  include/inputs.h include/Li.h include/Ci.h\
        include/inputsnf.h include/Linf.h include/Ki.h \
-       include/massdecayvev.h\
+       include/massdecayvev.h include/massdecayvevPQ.h\
        include/oneloopintegrals.h include/sunsetintegrals.h\
        include/finitevolumeoneloopintegrals.h\
        include/finitevolumesunsetintegrals.h\
@@ -46,7 +46,7 @@ TESTCHIRON = testintegralsreal testintegralsrealsingular \
        testgetfpimeta testoneloopintegrals testsunsetintegrals \
        testfinitevolumeoneloopintegrals testfinitevolumesunsetintegrals \
        testmassdecayvevV testquenchedsunsetintegrals testLinf testKi \
-       testmassdecayvevlo
+       testmassdecayvevlo testmassdecayvevPQ
 
 all: libchiron.a libjbnumlib.a
 
