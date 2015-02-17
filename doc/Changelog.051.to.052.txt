@@ -53,7 +53,9 @@ massdecayvevPQ.h
 testmassdecayvevPQ.cc
 testmassdecayvevPQ.dat
 
+150217
+inputsnf Linf Ki to manual
+masses and decay constants PQ nf=3 to manual
 
 To be done:
-add inputsnf Linf Ki to the manual
-massdecayvevPQ to the manual
+

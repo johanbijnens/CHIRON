@@ -53,7 +53,7 @@ Manual version of \versiondate
 \end{center}
 \begin{abstract}
 This manual and user guide describes the classes and functions contained
-in the ChPT program collection \textsc{CHIRON}\chironversion which includes
+in the ChPT program collection \textsc{CHIRON}\chironversion\ which includes
 the numerical library \mytt{jbnumlib} and the ChPT
 routine library \mytt{chiron}.
 \end{abstract}
@@ -63,6 +63,8 @@ routine library \mytt{chiron}.
 under their own license.
 \end{titlepage}
 
+\phantomsection % to make the loink go correctly
+\addcontentsline{toc}{section}{Contents}
 \tableofcontents
 
 \section{Introduction}
@@ -1081,7 +1083,7 @@ examples of use in \mytt{testLi.cc}.\\
 In the subdirectory \mytt{test} there is a file \newfunction{LiCiBE14.dat}
 that contains the last fit of the LECs \cite{Bijnens:2014lea}.
 
-\subsubsection{NLO LECs: Class \newfunction{Ci}}
+\subsubsection{NNLO LECs: Class \newfunction{Ci}}
 
 \mytt{Ci(Cr, mu=0.77,Name="nameless Ci")}\\
 \mytt{Ci(mu=0.77,Name="nameless Ci")}
@@ -1143,7 +1145,7 @@ Extra functions:\\
 \mytt{Ci \newfunction{Cirandom}(void)}\\
 \mytt{Ci \newfunction{CirandomlargeNc}(void)}\\
 \mytt{Ci \newfunction{CirandomlargeNc2}(void)}\\
-These return a set of random NLO LECs.
+These return a set of random NNLO LECs.
 The values are uniformly distributed between $\pm1/(16\pi^2)^2$
 for \mytt{Cirandom}. \mytt{CirandomlargeNc}
 does the same except that it leaves all LECs that are not single
@@ -1157,6 +1159,207 @@ system generator \mytt{rand()} so initializing using something like
 These latter functions were used in the random walks in the $C^r_i$ in \cite{Bijnens:2011tb}.\\
 Defined in \mytt{Ci.h}, implemented in \mytt{Ci.cc},
 examples of use in \mytt{testCi.cc}.
+
+\subsection{$n_F$ flavour ChPT}
+
+\subsubsection{Class: \newfunction{quarkmassnf}}
+
+\mytt{quarkmassnf(f0in=0.090, muin=0.77, nqin=3)}
+\mytt{quarkmassnf(f0in=0.090, muin=0.77, nqin=3)}
+
+
+\mytt{const double: f0in,muin}\\
+\mytt{const int: nfin}\\
+\mytt{const vector<double> B0mqin}\\
+Private data: \mytt{vector<double> B0mq},\mytt{double f0,mu},
+\mytt{int nq}.
+
+Physical quantities: $B_0 m_i$ quark masses multiplied by $B_0$,
+lowest order (pion-)decay constant and subtraction scale $\mu$.
+The quantities $B_0 mi$ are the $n_q=\mytt{nq}$
+quark masses multiplied by the LEC $B_0$ \cite{Gasser:1984gg},
+$B_0$ for the relevant number of quarks $n_F$.
+These are independent of the QCD scale. The lowest order charged kaon mass
+is given by $m_{K\,\text{LO}}=\sqrt{B_0 (m_u+m_s)}$
+
+Relevant physical case: $n_F$ flavour ChPT, possibly partially quenched
+where we need $n_q$ different quark masses.
+
+\mytt{void \newfunction{setB0mq}(const double B0miin,const int i)}\\
+\mytt{void \newfunction{setB0mq}(const int i, const double B0miin=0.)}\\
+\mytt{void \newfunction{setB0mq}(const vector<double> B0mqin)}\\
+\mytt{void \newfunction{setf0}(const double f0in=0.09)}\\
+\mytt{void \newfunction{setmu}(const double muin=0.77)}\\
+
+
+Output member functions exist in two varieties. Those that return
+all or a subset of values using references or those that
+return one value as the function value.\\
+\mytt{void \newfunction{out}(vector<double> \&B0mq) const;}\\
+\mytt{void \newfunction{out}(vector<double> \&B0mq, double \&f0out, double \&muout) const;}\\
+\mytt{void \newfunction{out}(vector<double> \&B0mq, double \&f0out, double \&muout, int \&nq) const;}\\
+\mytt{int \newfunction{getnq}(void) const;}
+\mytt{vector<double> \newfunction{getB0mq}(void) const;}
+\mytt{double \newfunction{getB0mq}(const int i) const;}
+\mytt{double \newfunction{getf0}(void) const;}
+\mytt{double \newfunction{getmu}(void) const;}
+
+Operators defined: \newfunction{<<}, \newfunction{>>} and \newfunction{==}.
+
+\mytt{<<} and \mytt{>>} are  defined such that output and input
+streams work as expected. The input stream should be exactly in the format
+provided by the output stream.
+
+\mytt{==} checks for equality within relative precision of $10^{-7}$.
+An error will occur if any of the data members is zero.\\
+
+Defined in \mytt{inputsnf.h}, implemented in \mytt{inputsnf.cc},
+examples of use in \mytt{testinputsnf.cc}.
+
+\subsubsection{NLO LECs: Class \newfunction{Linf}}
+
+\mytt{Linf(l1r=0.,l2r=0.,l3r=0.,l4r=0.,l5r=0.,l6r=0.,l7r=0.,l8r=0.,l9r=0.,l10r=0.,\\\hspace*{0.7cm}l11r=0.,h1r=0.,h2r=0.,mu=0.77,Name="nameless Linf",const int nfin=3)}
+
+\mytt{const double: l1r,\ldots,l11r,h1r,h2r,mu}
+
+\mytt{const string: Name}
+
+\mytt{const int: nfin}
+
+
+Private data: \mytt{double L1r,L2r,L3r,L4r,L5r,L6r,L7r,L8r,L9r,L10r,L11r,H1r,H2r,mu}, \mytt{int nf}
+and \mytt{string name}
+
+Physical quantities the 12 LECs, $L_{i=1,10}^r,H_i^r$
+(of which two are so-called contact terms) and the extra equation
+of motion term LEC $L_{11}^r$
+of $n_F$-flavour ChPT as introduced in \cite{Bijnens:1999hw}
+and the subtraction
+scale $\mu$. The extra constant $L_{11}^r$ is added to be able to deal
+with two-flavour partially quenched ChPT.
+
+Relevant physical case: $n_F$ flavour ChPT and partially quenched ChPT\\
+
+Input member functions:\\
+\mytt{void \newfunction{setnf}(const int nfin)}\\
+\mytt{void \newfunction{setli}(const int n, const double lin)}\\
+\mytt{void setli(const double lin, const int n)}\\
+Set the value of the LECs with index $n$. $n=12,13$ correspond to
+$H_1^r,H_2r$.\\
+\mytt{\newfunction{setmu}(const double muin)}\\
+Sets the scale $\mu$ to the value \mytt{muin}. This does \emph{not}
+change the LECs, for that use \mytt{changescale}.\\
+\mytt{\newfunction{setname}(const string namein)}
+Sets the name of the set of LECs.\\
+
+Output member functions:\\
+\mytt{double \newfunction{out}(const int n)} returns the value of the n'th LEC.\\
+\mytt{void out} exists in many varieties, 15 double references, a string
+and an integer
+returning all private data, 15 double references and an integer returning all LECS and the subtraction scale and the number of flavours, 13 double references
+and an integer returning all LECs and $n_F$,
+12 double and an integer references returning $L_1^r,\ldots,L_{11}^r$ and the subtraction scale and the number of flavours,
+11 double and an integer references returning $L_1^r,\ldots,L_{11}^r$  and the number of flavours,
+and 11 double references returning $L_1^r,\ldots,L_{11}^r$.\\
+
+\mytt{void \newfunction{changescale}(const double newmu)}\\
+This changes the subtraction scale to the new value given by \mytt{muin} and
+changes the LECs according to the running derived
+in \cite{Gasser:1984gg}.\\
+
+Operators defined: \newfunction{<<}, \newfunction{>>}, \newfunction{$+$}, \newfunction{$-$} and \newfunction{*}.
+
+\mytt{<<} and \mytt{>>} are  defined such that output and input
+streams work as expected. The input stream should be exactly in the format
+provided by the output stream.\\
+\mytt{*} allows to multiply an \mytt{Li} by a \mytt{double} in either order.
+The resulting value has all LECs multiplied by the value of the \mytt{double}.\\
+\mytt{$+$} and \mytt{$-$} allow to add or subtract set of LECs.
+The resulting value of all LECs is the sum respectively the difference.
+A warning is printed of the scales are different.
+
+Extra functions:\\
+\mytt{Linf \newfunction{Linfrandom}(void)}\\
+This returns a set of random NLO LECs.
+The values are uniformly distributed between $\pm1/(16\pi^2)$.
+The random numbers are generated using the
+system generator \mytt{rand()} so initializing using something like
+\mytt{srand(time(0))}.\\
+
+Defined in \mytt{Linf.h}, implemented in \mytt{Linf.cc},
+examples of use in \mytt{testLinf.cc}.
+
+\subsubsection{NNLO LECs: Class \newfunction{Ki}}
+
+\mytt{Ki(Kr, mu=0.77,Name="nameless Ci",nfin=3)}\\
+\mytt{Ci(mu=0.77,Name="nameless Ci")}
+
+\mytt{const double: mu}
+
+\mytt{const string: Name}
+
+\mytt{const int: nfin}
+
+Private data: \mytt{double Kr[116], mu}, \mytt{int nf}
+and \mytt{string name}
+
+Physical quantities the 115 LECs, $K_i^r$
+(of which three are so-called contact terms)
+of $n_F$-flavour ChPT as introduced in \cite{Bijnens:1999sh,Bijnens:1999hw}
+and the subtraction
+scale $\mu$. The $K_i^r$ are the dimensionless version.
+Scale to the dimensionfull version with appropriate powers of $F_0$
+but in practice normally with $F_\pi$.
+
+Relevant physical case: $n_F$ flavour ChPT\\
+
+Input member functions:\\
+\mytt{void \newfunction{setki}(const int n, const double kin)}\\
+\mytt{void setki(const double kin, const int n)}\\
+Set the value of the LECs with index $n$.\\
+\mytt{\newfunction{setmu}(const double muin)}\\
+Sets the scale $\mu$ to the value \mytt{muin}. This does \emph{not}
+change the LECs, for that use \mytt{changescale}.\\
+\mytt{\newfunction{setname}(const string namein)}
+Sets the name of the set of LECs.\\
+
+Output member functions:\\
+\mytt{double \newfunction{out}(const int n)} returns the value of the n'th LEC.\\
+\mytt{void out} exists in many varieties, with a \mytt{double Kit[116]},
+a double reference and a string
+returning all private data,  a \mytt{double Kit[116]},
+a double reference returning all LECS and the subtraction scale,
+and  a \mytt{double Kit[116]} returning the LECs only.\\
+
+\mytt{void \newfunction{changescale}(const double newmu, Linf \& Liin)}\\
+\mytt{void changescale(Linf \& Liin, const double newmu)}\\
+This changes the subtraction scale to the new value given by \mytt{muin} and
+changes the LECs according to the running derived
+in \cite{Bijnens:1999hw}. Note that it changes the scale of the values of the
+NLO LECs $L_i^r$ in \mytt{Liin} as well.\\
+
+Operators defined: \newfunction{<<}, \newfunction{>>}, \newfunction{$+$}, \newfunction{$-$} and \newfunction{*}.
+
+\mytt{<<} and \mytt{>>} are  defined such that output and input
+streams work as expected. The input stream should be exactly in the format
+provided by the output stream.\\
+\mytt{*} allows to multiply a \mytt{Ci} by a \mytt{double} in either order.
+The resulting value has all LECs multiplied by the value of the \mytt{double}.\\
+\mytt{$+$} and \mytt{$-$} allow to add or subtract set of LECs.
+The resulting value of all LECs is the sum respectively the difference.
+A warning is printed of the scales are different.
+
+Extra functions:\\
+\mytt{Ki \newfunction{Kirandom}(void)}\\
+This returns a set of random NNLO LECs.
+The values are uniformly distributed between $\pm1/(16\pi^2)^2$.
+The random numbers are generated using the
+system generator \mytt{rand()} so initializing using something like
+\mytt{srand(time(0))}.\\
+
+Defined in \mytt{Ki.h}, implemented in \mytt{Ki.cc},
+examples of use in \mytt{testKi.cc}.
+
 
 \section{Loop integrals}
 \index{Loop integrals}
@@ -2432,6 +2635,7 @@ sunset integrals in \cite{Golowich:1997zs}.
 
 The expressions for the physical masses for $a=\pi,K,\eta$ are given by
 \begin{equation}
+\label{massesinlo}
 m_{a\,\mathrm{phys}}^2 = m_{a\,0}^2+m_a^{2(4)0}+m_a^{2(6)0}\,.
 \end{equation}
 The superscripts indicate the order of the diagrams in $p$ that each
@@ -2872,6 +3076,206 @@ returns $F_{\eta\,R}^{V(6)}$.\\
 All these are defined in \newfunction{massdecayvevV.h}
 and implemented in \newfunction{massdecayvevV.h}.
 Examples of use are in \newfunction{testmassdecayvevV.cc}.
+
+\section{Three flavour partially quenched results}
+
+This section contains the routines used for the partially quenched
+results with three sea quark flavours
+of \cite{Bijnens:2006jv,Bijnens:2005ae,Bijnens:2004hk}.
+The formulas used are analytically equivalent to those in the published
+papers, but are longer and avoid some of the $0/0$ problems that can appear.
+
+Do not forget to set the precision for the needed sunset integrals
+with\\ \mytt{setprecisionquenchedsunsetintegral}.
+
+The interface is always defined with the $n_F$ flavour NLO and NNLO LECs
+\newfunction{Linf} and \newfunction{Ki} with $n_F=3$. The routines also
+expect a \newfunction{quarkmassnf} with precisely the number of quark masses
+needed for each case.
+
+The reason why the quarkmasses are alternatively lowest-order meson masses
+are used is that in these cases there are very many physical masses
+compared to the number of quark masses. There would thus have been a very
+large ambiguity in expressing the results in physical masses.
+
+The inputs used are $Bm_1=m_{11}^2/2$, $Bm_1=m_{11}^2/2$
+$Bm_3=m_{33}^2/2$, $Bm_4=m_{44}^2/2$, $Bm_5=m_{55}^2/2$,  $Bm_6=m_{66}^2/2$.
+
+We give the cases for equal or different valence quark mass ,cases \mytt{v1}
+or \mytt{v2}, and one, two or three different sea quark masses,
+cases \mytt{s1}, \mytt{s2}, \mytt{s3} for always three sea flavours, case \mytt{nf3}. For the one sea mass case we have $Bm_4=Bm_5=Bm_6$ and for the two sea
+mass case $Bm_4=Bm_5$.
+
+The quark masses 
+The masses are labelled starting with \mytt{m} and the decay constants starting with \mytt{f}. \mytt{f0} is $F_0$ the three flavour chiral limit decay constant
+and \mytt{mu} is the subtraction scale $\mu$.
+
+
+\subsection{Masses}
+
+The expansion are defined similar to (\ref{massesinlo}) via
+\begin{equation}
+\label{massesPQnf3}
+m_{a\,\mathrm{phys}}^2 = m_{a\,0}^2+m_a^{2(4)0}+m_a^{2(6)0}\,.
+\end{equation}
+The masses are for the off-diagonal or charged meson with two different
+valence quarks but the masses can be
+equal or different.
+
+\begin{equation}
+\label{defmassesPQlo}
+m_a^{2(4)0}=m_{a\,L}^{2(4)0}+m_{a\,R}^{2(4)0}\,,
+\qquad
+m_a^{2(6)0}=m_{a\,L}^{2(6)0}+m_{a\,K}^{2(6)0}+m_{a\,R}^{2(6)0}\,.
+\end{equation}
+\\
+
+One valence mass, one sea mass::\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm4\},f0,mu,2)}\\
+\mytt{double \newfunction{mv1s1nf3p4}(quarkmassnf mass, Linf Liin)} returns $m_a^{2(4)0}$\\
+\mytt{double \newfunction{mv1s1nf3p4L}(quarkmassnf mass, Linf Liin)} returns $m_{a\,L}^{2(4)0}$\\
+\mytt{double \newfunction{mv1s1nf3p4R}(quarkmassnf mass)} returns $m_{a\,R}^{2(4)0}$\\
+\mytt{double \newfunction{mv1s1nf3p6}(quarkmassnf mass, Linf Liin, Ki Kiin)} returns $m_{a}^{2(6)0}$\\
+\mytt{double \newfunction{mv1s1nf3p6L}(quarkmassnf mass, Linf Liin)} returns $m_{a\,L}^{2(6)0}$\\
+\mytt{double \newfunction{mv1s1nf3p6K}(quarkmassnf mass, Ki Kiin)} returns $m_{a\,K}^{2(6)0}$\\
+\mytt{double \newfunction{mv1s1nf3p6R}(quarkmassnf mass)} returns $m_{a\,R}^{2(6)0}$\\
+
+
+Two valence mass, one sea mass::\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4\},f0,mu,3)}\\
+\mytt{double \newfunction{mv2s1nf3p4}(quarkmassnf mass, Linf Liin)} returns $m_a^{2(4)0}$\\
+\mytt{double \newfunction{mv2s1nf3p4L}(quarkmassnf mass, Linf Liin)} returns $m_{a\,L}^{2(4)0}$\\
+\mytt{double \newfunction{mv2s1nf3p4R}(quarkmassnf mass)} returns $m_{a\,R}^{2(4)0}$\\
+\mytt{double \newfunction{mv2s1nf3p6}(quarkmassnf mass, Linf Liin, Ki Kiin)} returns $m_{a}^{2(6)0}$\\
+\mytt{double \newfunction{mv2s1nf3p6L}(quarkmassnf mass, Linf Liin)} returns $m_{a\,L}^{2(6)0}$\\
+\mytt{double \newfunction{mv2s1nf3p6K}(quarkmassnf mass, Ki Kiin)} returns $m_{a\,K}^{2(6)0}$\\
+\mytt{double \newfunction{mv2s1nf3p6R}(quarkmassnf mass)} returns $m_{a\,R}^{2(6)0}$\\
+
+One valence mass, two sea mass::\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm4,Bm6\},f0,mu,3)}\\
+\mytt{double \newfunction{mv1s1nf3p4}(quarkmassnf mass, Linf Liin)} returns $m_a^{2(4)0}$\\
+\mytt{double \newfunction{mv1s1nf3p4L}(quarkmassnf mass, Linf Liin)} returns $m_{a\,L}^{2(4)0}$\\
+\mytt{double \newfunction{mv1s1nf3p4R}(quarkmassnf mass)} returns $m_{a\,R}^{2(4)0}$\\
+\mytt{double \newfunction{mv1s1nf3p6}(quarkmassnf mass, Linf Liin, Ki Kiin)} returns $m_{a}^{2(6)0}$\\
+\mytt{double \newfunction{mv1s1nf3p6L}(quarkmassnf mass, Linf Liin)} returns $m_{a\,L}^{2(6)0}$\\
+\mytt{double \newfunction{mv1s1nf3p6K}(quarkmassnf mass, Ki Kiin)} returns $m_{a\,K}^{2(6)0}$\\
+\mytt{double \newfunction{mv1s1nf3p6R}(quarkmassnf mass)} returns $m_{a\,R}^{2(6)0}$\\
+
+Two valence mass, two sea mass::\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4,Bm6\},f0,mu,4)}\\
+\mytt{double \newfunction{mv2s2nf3p4}(quarkmassnf mass, Linf Liin)} returns $m_a^{2(4)0}$\\
+\mytt{double \newfunction{mv2s2nf3p4L}(quarkmassnf mass, Linf Liin)} returns $m_{a\,L}^{2(4)0}$\\
+\mytt{double \newfunction{mv2s2nf3p4R}(quarkmassnf mass)} returns $m_{a\,R}^{2(4)0}$\\
+\mytt{double \newfunction{mv2s2nf3p6}(quarkmassnf mass, Linf Liin, Ki Kiin)} returns $m_{a}^{2(6)0}$\\
+\mytt{double \newfunction{mv2s2nf3p6L}(quarkmassnf mass, Linf Liin)} returns $m_{a\,L}^{2(6)0}$\\
+\mytt{double \newfunction{mv2s2nf3p6K}(quarkmassnf mass, Ki Kiin)} returns $m_{a\,K}^{2(6)0}$\\
+\mytt{double \newfunction{mv2s2nf3p6R}(quarkmassnf mass)} returns $m_{a\,R}^{2(6)0}$\\
+
+One valence mass, three sea mass::\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm4,Bm5,Bm6\},f0,mu,4)}\\
+\mytt{double \newfunction{mv1s3nf3p4}(quarkmassnf mass, Linf Liin)} returns $m_a^{2(4)0}$\\
+\mytt{double \newfunction{mv1s3nf3p4L}(quarkmassnf mass, Linf Liin)} returns $m_{a\,L}^{2(4)0}$\\
+\mytt{double \newfunction{mv1s3nf3p4R}(quarkmassnf mass)} returns $m_{a\,R}^{2(4)0}$\\
+\mytt{double \newfunction{mv1s3nf3p6}(quarkmassnf mass, Linf Liin, Ki Kiin)} returns $m_{a}^{2(6)0}$\\
+\mytt{double \newfunction{mv1s3nf3p6L}(quarkmassnf mass, Linf Liin)} returns $m_{a\,L}^{2(6)0}$\\
+\mytt{double \newfunction{mv1s3nf3p6K}(quarkmassnf mass, Ki Kiin)} returns $m_{a\,K}^{2(6)0}$\\
+\mytt{double \newfunction{mv1s3nf3p6R}(quarkmassnf mass)} returns $m_{a\,R}^{2(6)0}$\\
+
+Two valence mass, three sea mass::\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4,Bm5,Bm6\},f0,mu,5)}\\
+\mytt{double \newfunction{mv2s3nf3p4}(quarkmassnf mass, Linf Liin)} returns $m_a^{2(4)0}$\\
+\mytt{double \newfunction{mv2s3nf3p4L}(quarkmassnf mass, Linf Liin)} returns $m_{a\,L}^{2(4)0}$\\
+\mytt{double \newfunction{mv2s3nf3p4R}(quarkmassnf mass)} returns $m_{a\,R}^{2(4)0}$\\
+\mytt{double \newfunction{mv2s3nf3p6}(quarkmassnf mass, Linf Liin, Ki Kiin)} returns $m_{a}^{2(6)0}$\\
+\mytt{double \newfunction{mv2s3nf3p6L}(quarkmassnf mass, Linf Liin)} returns $m_{a\,L}^{2(6)0}$\\
+\mytt{double \newfunction{mv2s3nf3p6K}(quarkmassnf mass, Ki Kiin)} returns $m_{a\,K}^{2(6)0}$\\
+\mytt{double \newfunction{mv2s3nf3p6R}(quarkmassnf mass)} returns $m_{a\,R}^{2(6)0}$\\
+
+Defined in \newfunction{massdecayvevPQ.h}, implemented in \newfunction{massdecayvevPQ.cc} and examples of use in \newfunction{testmassdecayvevPQ.cc}.
+
+\subsection{Decay constants}
+
+The expansion are defined similar to (\ref{defdecaylo}) via
+\begin{equation}
+\label{decayPQnf3}
+F_{a\,\mathrm{phys}} = F_0\left(1+F_a^{(4)0}+F_a^{(6)0}\right)\,.
+\end{equation}
+The decay constants are for the off-diagonal or charged meson with
+two different valence quarks but the masses can be
+equal or different. The normalization corresponds to the
+pion decay constant $F_\pi\approx92$~MeV.
+
+\begin{equation}
+\label{defdecayPQlo}
+F_a^{(4)0}=F_{a\,L}^{(4)0}+F_{a\,R}^{(4)0}\,,
+\qquad
+F_a^{(6)0}=F_{a\,L}^{(6)0}+F_{a\,K}^{(6)0}+F_{a\,R}^{(6)0}\,.
+\end{equation}
+
+
+One valence mass, one sea mass::\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm4\},f0,mu,2)}\\
+\mytt{double \newfunction{fv1s1nf3p4}(quarkmassnf mass, Linf Liin)} returns $F_a^{(4)0}$\\
+\mytt{double \newfunction{fv1s1nf3p4L}(quarkmassnf mass, Linf Liin)} returns $F_{a\,L}^{(4)0}$\\
+\mytt{double \newfunction{fv1s1nf3p4R}(quarkmassnf mass)} returns $F_{a\,R}^{(4)0}$\\
+\mytt{double \newfunction{fv1s1nf3p6}(quarkmassnf mass, Linf Liin, Ki Kiin)} returns $F_{a}^{(6)0}$\\
+\mytt{double \newfunction{fv1s1nf3p6L}(quarkmassnf mass, Linf Liin)} returns $F_{a\,L}^{(6)0}$\\
+\mytt{double \newfunction{fv1s1nf3p6K}(quarkmassnf mass, Ki Kiin)} returns $F_{a\,K}^{(6)0}$\\
+\mytt{double \newfunction{fv1s1nf3p6R}(quarkmassnf mass)} returns $F_{a\,R}^{(6)0}$\\
+
+
+Two valence mass, one sea mass::\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4\},f0,mu,3)}\\
+\mytt{double \newfunction{fv2s1nf3p4}(quarkmassnf mass, Linf Liin)} returns $F_a^{(4)0}$\\
+\mytt{double \newfunction{fv2s1nf3p4L}(quarkmassnf mass, Linf Liin)} returns $F_{a\,L}^{(4)0}$\\
+\mytt{double \newfunction{fv2s1nf3p4R}(quarkmassnf mass)} returns $F_{a\,R}^{(4)0}$\\
+\mytt{double \newfunction{fv2s1nf3p6}(quarkmassnf mass, Linf Liin, Ki Kiin)} returns $F_{a}^{(6)0}$\\
+\mytt{double \newfunction{fv2s1nf3p6L}(quarkmassnf mass, Linf Liin)} returns $F_{a\,L}^{(6)0}$\\
+\mytt{double \newfunction{fv2s1nf3p6K}(quarkmassnf mass, Ki Kiin)} returns $F_{a\,K}^{(6)0}$\\
+\mytt{double \newfunction{fv2s1nf3p6R}(quarkmassnf mass)} returns $F_{a\,R}^{(6)0}$\\
+
+One valence mass, two sea mass::\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm4,Bm6\},f0,mu,3)}\\
+\mytt{double \newfunction{fv1s1nf3p4}(quarkmassnf mass, Linf Liin)} returns $F_a^{(4)0}$\\
+\mytt{double \newfunction{fv1s1nf3p4L}(quarkmassnf mass, Linf Liin)} returns $F_{a\,L}^{(4)0}$\\
+\mytt{double \newfunction{fv1s1nf3p4R}(quarkmassnf mass)} returns $F_{a\,R}^{(4)0}$\\
+\mytt{double \newfunction{fv1s1nf3p6}(quarkmassnf mass, Linf Liin, Ki Kiin)} returns $F_{a}^{(6)0}$\\
+\mytt{double \newfunction{fv1s1nf3p6L}(quarkmassnf mass, Linf Liin)} returns $F_{a\,L}^{(6)0}$\\
+\mytt{double \newfunction{fv1s1nf3p6K}(quarkmassnf mass, Ki Kiin)} returns $F_{a\,K}^{(6)0}$\\
+\mytt{double \newfunction{fv1s1nf3p6R}(quarkmassnf mass)} returns $F_{a\,R}^{(6)0}$\\
+
+Two valence mass, two sea mass::\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4,Bm6\},f0,mu,4)}\\
+\mytt{double \newfunction{fv2s2nf3p4}(quarkmassnf mass, Linf Liin)} returns $F_a^{(4)0}$\\
+\mytt{double \newfunction{fv2s2nf3p4L}(quarkmassnf mass, Linf Liin)} returns $F_{a\,L}^{(4)0}$\\
+\mytt{double \newfunction{fv2s2nf3p4R}(quarkmassnf mass)} returns $F_{a\,R}^{(4)0}$\\
+\mytt{double \newfunction{fv2s2nf3p6}(quarkmassnf mass, Linf Liin, Ki Kiin)} returns $F_{a}^{(6)0}$\\
+\mytt{double \newfunction{fv2s2nf3p6L}(quarkmassnf mass, Linf Liin)} returns $F_{a\,L}^{(6)0}$\\
+\mytt{double \newfunction{fv2s2nf3p6K}(quarkmassnf mass, Ki Kiin)} returns $F_{a\,K}^{(6)0}$\\
+\mytt{double \newfunction{fv2s2nf3p6R}(quarkmassnf mass)} returns $F_{a\,R}^{(6)0}$\\
+
+One valence mass, three sea mass::\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm4,Bm5,Bm6\},f0,mu,4)}\\
+\mytt{double \newfunction{fv1s3nf3p4}(quarkmassnf mass, Linf Liin)} returns $F_a^{(4)0}$\\
+\mytt{double \newfunction{fv1s3nf3p4L}(quarkmassnf mass, Linf Liin)} returns $F_{a\,L}^{(4)0}$\\
+\mytt{double \newfunction{fv1s3nf3p4R}(quarkmassnf mass)} returns $F_{a\,R}^{(4)0}$\\
+\mytt{double \newfunction{fv1s3nf3p6}(quarkmassnf mass, Linf Liin, Ki Kiin)} returns $F_{a}^{(6)0}$\\
+\mytt{double \newfunction{fv1s3nf3p6L}(quarkmassnf mass, Linf Liin)} returns $F_{a\,L}^{(6)0}$\\
+\mytt{double \newfunction{fv1s3nf3p6K}(quarkmassnf mass, Ki Kiin)} returns $F_{a\,K}^{(6)0}$\\
+\mytt{double \newfunction{fv1s3nf3p6R}(quarkmassnf mass)} returns $F_{a\,R}^{(6)0}$\\
+
+Two valence mass, three sea mass::\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4,Bm5,Bm6\},f0,mu,5)}\\
+\mytt{double \newfunction{fv2s3nf3p4}(quarkmassnf mass, Linf Liin)} returns $F_a^{(4)0}$\\
+\mytt{double \newfunction{fv2s3nf3p4L}(quarkmassnf mass, Linf Liin)} returns $F_{a\,L}^{(4)0}$\\
+\mytt{double \newfunction{fv2s3nf3p4R}(quarkmassnf mass)} returns $F_{a\,R}^{(4)0}$\\
+\mytt{double \newfunction{fv2s3nf3p6}(quarkmassnf mass, Linf Liin, Ki Kiin)} returns $F_{a}^{(6)0}$\\
+\mytt{double \newfunction{fv2s3nf3p6L}(quarkmassnf mass, Linf Liin)} returns $F_{a\,L}^{(6)0}$\\
+\mytt{double \newfunction{fv2s3nf3p6K}(quarkmassnf mass, Ki Kiin)} returns $F_{a\,K}^{(6)0}$\\
+\mytt{double \newfunction{fv2s3nf3p6R}(quarkmassnf mass)} returns $F_{a\,R}^{(6)0}$\\
+
+Defined in \newfunction{massdecayvevPQ.h}, implemented in \newfunction{massdecayvevPQ.cc} and examples of use in \newfunction{testmassdecayvevPQ.cc}.
+
 
 \section*{Acknowledgements}
 
@@ -3448,14 +3852,15 @@ For the avoidance of doubt, this Section 6(b) does not affect any right the Lice
 \end{description}
 
 \begin{thebibliography}{99}
+\phantomsection
 \addcontentsline{toc}{section}{References}
 
 \bibitem{Bijnens:2014gsa}
-  J.~Bijnens,
+ J.~Bijnens,
   %``CHIRON: a package for ChPT numerical results at two loops,''
-  arXiv:1412.0887 [hep-ph].
+  Eur.\ Phys.\ J.\ C {\bf 75} (2015) 1,  27
+  [arXiv:1412.0887 [hep-ph]].
   %%CITATION = ARXIV:1412.0887;%%
-  XXX add published XXX
 
 \bibitem{CClicense} \url{http://creativecommons.org/licenses/by/4.0/}.
 
@@ -3611,9 +4016,10 @@ J. Comput. Appl. Math. 2 (1976) 207-217.
 
 %\cite{Bijnens:2014dea}
 \bibitem{Bijnens:2014dea}
-  J.~Bijnens and T.~R\"ossler,
+  J.~Bijnens and T.~Rössler,
   %``Finite Volume at Two-loops in Chiral Perturbation Theory,''
-  arXiv:1411.6384 [hep-lat].  XXX add published XXX
+  JHEP {\bf 1501} (2015) 034
+  [arXiv:1411.6384 [hep-lat]].
   %%CITATION = ARXIV:1411.6384;%%
 
 %\cite{Bijnens:2006ve}
@@ -3644,5 +4050,6 @@ J. Comput. Appl. Math. 2 (1976) 207-217.
 \end{thebibliography}
 
 \newpage
+\phantomsection
 \addcontentsline{toc}{section}{Index}\printindex
 \end{document}

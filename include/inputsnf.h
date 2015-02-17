@@ -29,7 +29,7 @@ class quarkmassnf{
   void setmu(const double muin=0.77);
   void setB0mq(const vector<double> B0mqin);
   void setB0mq(const double B0mqin, const int i);
-  void setB0mq(const int i, const double B0mqin);
+  void setB0mq(const int i, const double B0mqin=0.);
   void out(vector<double> &B0mq) const;
   void out(vector<double> &B0mq, double &f0out, double &muout) const;
   void out(vector<double> &B0mq, double &f0out, double &muout, int &nq) const;
