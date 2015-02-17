@@ -33,6 +33,7 @@ quenchedsunsetintegrals.h
 massdecayvev.h
 massdecayvevlo.h
 massdecayvevV.h
+massdecayvevPQ.h
 getfpimeta.h
 finitevolumeoneloopintegrals.h
 finitevolumesunsetintegrals.h
@@ -75,6 +76,7 @@ sunsetintegrals.cc
 quenchedsunsetintegrals.cc
 massdecayvev.cc
 massdecayvevlo.cc
+massdecayvevPQ.cc
 getfpimeta.cc
 finitevolumeoneloopintegrals.cc
 besselonesum.cc
@@ -99,6 +101,7 @@ comparequenchedsunsetfortran.dat    earlier FORTRAN results, used by previous
 LiCiBE14.dat                 LiCi from the main fit in arXiv:1405.6488
 testmassdecayvev.cc
 testmassdecayvevlo.cc
+testmassdecayvevPQ.cc
 testgetfpimeta.cc
 testfinitevolumeoneloopintegrals.cc
 testfinitevolumesunsetintegrals.cc
@@ -117,6 +120,9 @@ testoneloopintegrals.dat
 testsunsetintegrals.dat
 testedquenchedsunsetintegrals.dat
 testmassdecayvev.dat
+testmassdecayvevlo.dat
+testmassdecayvevPQ.dat
 testgetfpimeta.dat
 testfinitevolumeoneloopintegrals.dat
 testfinitevolumesunsetintegrals.dat
+testmassdecayvevV.dat
