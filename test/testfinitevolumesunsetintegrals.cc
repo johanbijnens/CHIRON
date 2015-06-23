@@ -73,7 +73,7 @@ int main(void){
 	 <<setw(13)<<hhdVb(m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
 	 <<'\n';
   }
-  cout <<"eps_Theta sumBessel  hh1dVt    hh1dVb       hh21dVt       hh212Vb\n";
+  cout <<"eps_Theta sumBessel  hh1dVt    hh1dVb       hh21dVt       hh21dVb\n";
   for(int i=0; i<6; i++){
     setprecisionfinitevolumesunsett(epst[i],epst[i],false);
     setprecisionfinitevolumesunsetb(nb[i],nb2[i],epst[i],epst[i],false);
@@ -96,7 +96,7 @@ int main(void){
 	 <<'\n';
   }
   cout << "############################################################\n";
-  cout << "cases with different propagagotors\n";
+  cout << "cases with different propagators\n";
 
   for(int nprop=1;nprop<9;nprop++){
     cout << "case propagator = "<<nprop<<'\n';
@@ -134,7 +134,7 @@ int main(void){
 	 <<setw(13)<<hhdVb(nprop,m1sq,m2sq,m3sq,m1sq,xl,mu2)<<' '
 	 <<'\n';
   }
-  cout <<"eps_Theta sumBessel  hh1dVt    hh1dVb       hh21dVt       hh212Vb\n";
+  cout <<"eps_Theta sumBessel  hh1dVt    hh1dVb       hh21dVt       hh21dVb\n";
   for(int i=0; i<6; i++){
     setprecisionfinitevolumesunsett(epst[i],epst[i],false);
     setprecisionfinitevolumesunsetb(nb[i],nb2[i],epst[i],epst[i],false);

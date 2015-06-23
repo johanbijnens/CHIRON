@@ -4098,7 +4098,7 @@ double hhvrHbdinternal(double xx[2]){
 	kk0  = -dzrs*2.*pow(yrs/zrs,0.5)*jbdbesk1(2.*sqrt(yrs*zrs));
 	kkm1 = -dzrs*2.*jbdbesk0(2.*sqrt(yrs*zrs));
 	akk1 = 2.*pow(yrs/zrs,0.5)*jbdbesk1(2.*sqrt(yrs*zrs));
-	result += x*x*x*z*z*z/(3.*sig2)*((dA*akk1+At*kk0)+4.*del*kk0
+	result += x*x*x*z*z*z/(3.*sig2)*((dA*akk1+At*kk1)+4.*del*kk0
 		       -double(i)*C*kkm1)*double(mm[i]);
 	break;
       case 3:

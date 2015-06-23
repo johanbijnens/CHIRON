@@ -175,7 +175,8 @@ Ci operator*(const double & aa,const Ci & bb){
 }
 // changing scale
 void Ci::changescale(const double newmu) const{
-    std::cout << "WARNING:makes no sense to change scale in Ci without Li specified"
+  std::cout << "WARNING: attempt to change scale to : " << newmu<<'\n';
+  std::cout << "WARNING:makes no sense to change scale in Ci without Li specified"
 	 <<'\n';
 }
 

@@ -120,7 +120,7 @@ double mpi6LV(const physmass mass, const Li Liin, const double xl){
   double mp2 = pow(mass.getmpi(),2);
   double mk2 = pow(mass.getmk(),2);
   double me2 = pow(mass.getmeta(),2);
-  double mu2 = pow(mass.getmu(),2);
+  //double mu2 = pow(mass.getmu(),2);
   double L1r,L2r,L3r,L4r,L5r,L6r,L7r,L8r,L9r,L10r,H1r,H2r,mu;
   Liin.out(L1r,L2r,L3r,L4r,L5r,L6r,L7r,L8r,L9r,L10r,H1r,H2r,mu);
   if (mass.getmu() != mu){
@@ -159,7 +159,6 @@ double mpi6RV(const physmass mass, const double xl){
   double mu2 = pow(mass.getmu(),2);
 
   double massp6RV =
-  massp6RV =
        + pow(AbV(mp2,xl),2) * (  - 3./8.*mp2 );
 
       massp6RV +=  + AbV(mp2,xl)*AbV(mk2,xl) * (  - 1./2.*mp2 );
@@ -246,7 +245,7 @@ double mk6LV(const physmass mass, const Li Liin, const double xl){
   double mp2 = pow(mass.getmpi(),2);
   double mk2 = pow(mass.getmk(),2);
   double me2 = pow(mass.getmeta(),2);
-  double mu2 = pow(mass.getmu(),2);
+  //double mu2 = pow(mass.getmu(),2);
   double L1r,L2r,L3r,L4r,L5r,L6r,L7r,L8r,L9r,L10r,H1r,H2r,mu;
   Liin.out(L1r,L2r,L3r,L4r,L5r,L6r,L7r,L8r,L9r,L10r,H1r,H2r,mu);
   if (mass.getmu() != mu){
@@ -384,7 +383,7 @@ double meta6LV(const physmass mass, const Li Liin, const double xl){
   double mp2 = pow(mass.getmpi(),2);
   double mk2 = pow(mass.getmk(),2);
   double me2 = pow(mass.getmeta(),2);
-  double mu2 = pow(mass.getmu(),2);
+  //double mu2 = pow(mass.getmu(),2);
   double L1r,L2r,L3r,L4r,L5r,L6r,L7r,L8r,L9r,L10r,H1r,H2r,mu;
   Liin.out(L1r,L2r,L3r,L4r,L5r,L6r,L7r,L8r,L9r,L10r,H1r,H2r,mu);
   if (mass.getmu() != mu){
@@ -436,7 +435,6 @@ double meta6RV(const physmass mass, const double xl){
   double mu2 = pow(mass.getmu(),2);
 
   double massp6RV =
-  massp6RV =
        + pow(AbV(mp2,xl),2) * (  - 1./8.*mp2 );
 
       massp6RV +=  + AbV(mp2,xl)*AbV(mk2,xl) * (  - 3./2.*mp2 );
@@ -529,7 +527,7 @@ double fpi6LV(const physmass mass, const Li Liin, const double xl){
   double mp2 = pow(mass.getmpi(),2);
   double mk2 = pow(mass.getmk(),2);
   double me2 = pow(mass.getmeta(),2);
-  double mu2 = pow(mass.getmu(),2);
+  //double mu2 = pow(mass.getmu(),2);
   double L1r,L2r,L3r,L4r,L5r,L6r,L7r,L8r,L9r,L10r,H1r,H2r,mu;
   Liin.out(L1r,L2r,L3r,L4r,L5r,L6r,L7r,L8r,L9r,L10r,H1r,H2r,mu);
   if (mass.getmu() != mu){
@@ -653,7 +651,7 @@ double fk6LV(const physmass mass, const Li Liin, const double xl){
   double mp2 = pow(mass.getmpi(),2);
   double mk2 = pow(mass.getmk(),2);
   double me2 = pow(mass.getmeta(),2);
-  double mu2 = pow(mass.getmu(),2);
+  //double mu2 = pow(mass.getmu(),2);
   double L1r,L2r,L3r,L4r,L5r,L6r,L7r,L8r,L9r,L10r,H1r,H2r,mu;
   Liin.out(L1r,L2r,L3r,L4r,L5r,L6r,L7r,L8r,L9r,L10r,H1r,H2r,mu);
   if (mass.getmu() != mu){
@@ -808,7 +806,7 @@ double feta6LV(const physmass mass, const Li Liin, const double xl){
   double mp2 = pow(mass.getmpi(),2);
   double mk2 = pow(mass.getmk(),2);
   double me2 = pow(mass.getmeta(),2);
-  double mu2 = pow(mass.getmu(),2);
+  //double mu2 = pow(mass.getmu(),2);
   double L1r,L2r,L3r,L4r,L5r,L6r,L7r,L8r,L9r,L10r,H1r,H2r,mu;
   Liin.out(L1r,L2r,L3r,L4r,L5r,L6r,L7r,L8r,L9r,L10r,H1r,H2r,mu);
   if (mass.getmu() != mu){

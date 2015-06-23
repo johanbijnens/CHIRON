@@ -190,8 +190,9 @@ Ki operator*(const double & aa,const Ki & bb){
 
 // changing scale
 void Ki::changescale(const double newmu) const{
-    std::cout << "WARNING:makes no sense to change scale in Ki without Linf specified"
-	 <<'\n';
+  std::cout << "WARNING, attempt to change scale to :"<<newmu<<'\n';
+  std::cout << "WARNING:makes no sense to change scale in Ki without Linf specified"
+	    <<'\n';
 }
 
 void Ki::changescale(Linf & linf,const double newmu){
@@ -234,7 +235,7 @@ void Ki::changescale(const double newmu,Linf & linf){
   const double g8 = (nq*nq-4.)/(16.*nq);
   const double g9 = nq/12.;
   const double g10= -nq/12.;
-  const double g11=  0.;
+  //const double g11=  0.;
 
 // do this BEFORE resetting the lir
   double L0t =  pi16*((-2.)*logm*L0r -pi16*g0*logm*logm);
@@ -248,7 +249,7 @@ void Ki::changescale(const double newmu,Linf & linf){
   double L8t =  pi16*((-2.)*logm*L8r -pi16*g8*logm*logm);
   double L9t =  pi16*((-2.)*logm*L9r -pi16*g9*logm*logm);
   double L10t=  pi16*((-2.)*logm*L10r-pi16*g10*logm*logm);
-  double L11t=  pi16*((-2.)*logm*L11r-pi16*g11*logm*logm);
+  //double L11t=  pi16*((-2.)*logm*L11r-pi16*g11*logm*logm);
   linf.changescale(newmu);
 
   double La1 = pi16*pi16*logmm;

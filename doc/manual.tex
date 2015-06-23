@@ -33,8 +33,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % change these when updating
 % remember to run makeindex manual and run latex a few times afterwards
-\newcommand{\chironversion}{v0.52alpha}
-\newcommand{\versiondate}{February 2015}
+\newcommand{\chironversion}{v0.53}
+\newcommand{\versiondate}{June 2015}
 
 \begin{document}
 \begin{titlepage}
@@ -354,7 +354,7 @@ Implementation as for \mytt{jbdtheta30} but without the 1.
 Especially for small $q$ often needed to keep accuracy in the finite volume
 applications in ChPT.
 
-Defined in \mytt{jbnumlib.h}, implemented in \mytt{jbdtheta30.cc}.
+Defined in \mytt{jbnumlib.h}, implemented in \mytt{jbdtheta30m1.cc}.
 
 \paragraph{\newfunction{jbdtheta32}}
 
@@ -379,7 +379,7 @@ Defined in \mytt{jbnumlib.h}, implemented in \mytt{jbdtheta32.cc}.
 Returns the value of the function
 \begin{equation}
 \label{deftheta34}
-\theta_{34}(q) = 2\sum_{n=1,\infty}n^4 q^{(n^2)}
+\theta_{34}(q) = \sum_{n=1,\infty}n^4 q^{(n^2)}
 = \sum_{n=-\infty,\infty} n^4 q^{(n^2)}= \left(q\frac{d}{dq}\right)^2\theta_{30}(q)\,.
 \end{equation}
 For small $q$ the summation in (\ref{deftheta34}) is used directly.
@@ -387,6 +387,60 @@ For larger $q$ the appropriate derivative of the right-hand-side of the
 identity (\ref{theta30relation}) is used.
 
 Defined in \mytt{jbnumlib.h}, implemented in \mytt{jbdtheta34.cc}.
+
+\paragraph{\newfunction{jbdtheta3}}
+
+\mytt{double jbdtheta3(const double u, const double q)}
+
+Returns the value of the function
+\begin{equation}
+\label{deftheta3}
+\theta_{3}(u,q) = 1+2\sum_{n=1,\infty} q^{(n^2)} \cos(2\pi n u)
+= \sum_{n=-\infty,\infty}  q^{(n^2)} e^{i2\pi n u}\,.
+\end{equation}
+For small $q$ the summation in (\ref{deftheta3}) is used directly.
+For larger $q$ the expansion after using the relation
+\begin{equation}
+\label{theta3relation}
+  \theta_3(u,q) = \sqrt{\pi/|\log(q)|}\exp(-\pi^2 u^2/|\log(q)|)
+	\theta_3(-iu \pi/|\log(q)|,\exp(-\pi^2/|\log(q)|))
+\end{equation}
+is used.
+
+Defined in \mytt{jbnumlib.h}, implemented in \mytt{jbdtheta3.cc}.
+
+\paragraph{\newfunction{jbderivutheta3}}
+
+\mytt{double jbderivutheta3(const double u, const double q)}
+
+Returns the value of the function
+\begin{equation}
+\label{deftheta3u}
+\frac{\partial}{\partial u}\theta_{3}(u,q) = -4\pi\sum_{n=1,\infty} q^{(n^2)} \sin(2\pi n u)
+= i2\pi\sum_{n=-\infty,\infty}  q^{(n^2)} e^{i2\pi n u}\,.
+\end{equation}
+For small $q$ the summation in (\ref{deftheta3u}) is used directly.
+For larger $q$ the appropriate derivative of the relation
+(\ref{theta3relation}) is used.
+
+Defined in \mytt{jbnumlib.h}, implemented in \mytt{jbderivutheta3.cc}.
+
+\paragraph{\newfunction{jbderiv2utheta3}}
+
+\mytt{double jbderiv2utheta3(const double u, const double q)}
+
+Returns the value of the function
+\begin{equation}
+\label{deftheta3u2}
+\frac{\partial^2}{\partial u^2}\theta_{3}(u,q) = -8\pi^2\sum_{n=1,\infty} q^{(n^2)} \cos(2\pi n u)
+= -4\pi^2\sum_{n=-\infty,\infty}  q^{(n^2)} e^{i2\pi n u}\,.
+\end{equation}
+For small $q$ the summation in (\ref{deftheta3u2}) is used directly.
+For larger $q$ the appropriate derivative of the relation
+(\ref{theta3relation}) is used.
+
+Defined in \mytt{jbnumlib.h}, implemented in \mytt{jbderiv2utheta3.cc}.
+
 
 \paragraph{\newfunction{jbdtheta2d0}}
 
@@ -408,7 +462,7 @@ Defined in \mytt{jbnumlib.h} and implemented in \mytt{jbdtheta2d0.cc}.
 
 \paragraph{\newfunction{jbdtheta2d0m1}}
 
-\mytt{double jbdtheta2d0(const double a, const double b, const double c)}
+\mytt{double jbdtheta2d0m1(const double a, const double b, const double c)}
 
 Returns the value of the function
 \begin{equation}
@@ -422,7 +476,7 @@ e^{-an_1^2-bn_2^2-c(n_1-n_2)^2}-1\,.
 Method as in \mytt{jbdtheta2d0} but the 1 removed, more accurate for small
 $a,b,c$ as often needed in finite volume ChPT.
 
-Defined in \mytt{jbnumlib.h} and implemented in \mytt{jbdtheta2d0m.cc}. 
+Defined in \mytt{jbnumlib.h} and implemented in \mytt{jbdtheta2d0m1.cc}. 
 
 \paragraph{\newfunction{jbdtheta2d02}}
 
@@ -1164,8 +1218,8 @@ examples of use in \mytt{testCi.cc}.
 
 \subsubsection{Class: \newfunction{quarkmassnf}}
 
-\mytt{quarkmassnf(f0in=0.090, muin=0.77, nqin=3)}
-\mytt{quarkmassnf(f0in=0.090, muin=0.77, nqin=3)}
+\mytt{quarkmassnf(f0in=0.090, muin=0.77, nqin=3)}\\
+\mytt{quarkmassnf(const vector<double> B0mqin,f0in=0.090, muin=0.77)}
 
 
 \mytt{const double: f0in,muin}\\
@@ -1183,7 +1237,8 @@ These are independent of the QCD scale. The lowest order charged kaon mass
 is given by $m_{K\,\text{LO}}=\sqrt{B_0 (m_u+m_s)}$
 
 Relevant physical case: $n_F$ flavour ChPT, possibly partially quenched
-where we need $n_q$ different quark masses.
+where we need $n_q$ different quark masses. The masses are referred to
+as 1,\ldots,nq (i.e. the counting does not start with 0).
 
 \mytt{void \newfunction{setB0mq}(const double B0miin,const int i)}\\
 \mytt{void \newfunction{setB0mq}(const int i, const double B0miin=0.)}\\
@@ -1364,7 +1419,7 @@ examples of use in \mytt{testKi.cc}.
 \section{Loop integrals}
 \index{Loop integrals}
 
-Loop integrals are done with dimensional regulariztion and we use
+Loop integrals are done with dimensional regularization and we use
 the standard ChPT variant of $\overline{MS}$.
 At one-loop order it was defined in \cite{Gasser:1983yg,Gasser:1984gg}.
 The definition at two-loop order can be found in \cite{Bijnens:1999hw}.
@@ -1454,6 +1509,7 @@ Defined in \newfunction{oneloopintegrals.h}, implemented in \newfunction{oneloop
 examples of use in \newfunction{testoneloopintegrals.cc}.
 
 \subsection{Bubbles or two-propagator integrals}
+\label{bubbles}
 \index{Bubbles}
 
 \subsubsection{Definitions}
@@ -1557,7 +1613,7 @@ examples of use in \newfunction{testoneloopintegrals.cc}.
 
 \subsubsection{Numerical implementation}
 
-The functions in this section are all imlemented using a numerical
+The functions in this section are all implemented using a numerical
 complex integration over $x$. The integration routine used
 can be specified using the macro \newfunction{WINTEGRAL} which defaults
 to \mytt{jbwgauss}. Any of the complex integration routines
@@ -1842,7 +1898,7 @@ precision. The default is \mytt{1e-10}.\\
 Defined in \newfunction{quenchedsunsetintegrals.h}, implemented in \newfunction{quenchedsunsetintegrals.cc},
 examples of use in \newfunction{testquenchedsunsetintegrals.cc}:
 
-\subsection{Finite volume tadpole interals}
+\subsection{Finite volume tadpole integrals}
 
 \subsubsection{Definitions}
 
@@ -1862,7 +1918,9 @@ The tadpole integrals $A$ and $A_{\mu\nu}$ are defined as
  = \frac{\mu^{4-d}}{i}\int_V\frac{d^d r}{(2\pi)^d}
 \frac{\left\{1,r_\mu r_\nu\right\}}{(r^2-m^2)}\,.
 \end{equation}
-The $B$ tadpole integrals are the same but with a doubled propagator.
+The $B$ tadpole integrals are the same but with a doubled propagator,
+$C$ tadpoles are with a tripled propagator and $D$ tadpoles with a quadrupled
+propagator.
 The subscript $V$ on the integral indicates that the integral is a discrete
 sum over the three spatial components and an integral over the remainder. 
 The size of the spatial directions is $L$.
@@ -1874,12 +1932,22 @@ The functions for $\tilde A^V_{\mu\nu}$ are
 \begin{equation}
 \tilde A^V_{\mu\nu}(m^2,L,\mu^2) = g_{\mu\nu}\tilde A^V_{22}(m^2,L,\mu^2)+t_{\mu\nu}\tilde A^V_{23}(m^2,L,\mu^2)\,.
 \end{equation}
+Similar definitions are relevant for the $B,C,D$ tadpoles.
 In infinite volume $A_{22}$ is related to $A$ and $A_{23}$ vanishes.
-The relation in finite volume is given by
+The relations in finite volume is given by
 \begin{equation}
 d\tilde A^V_{22}(m^2,L,\mu^2)+3\tilde A^V_{23}(m^2,L,\mu^2) =
  m^2\tilde A^V(m^2,L,\mu^2)\,.
 \end{equation}
+The relations for the other cases are:
+\begin{align}
+d\tilde B^V_{22}(m^2,L,\mu^2)+3\tilde B^V_{23}(m^2,L,\mu^2)& =
+ m^2\tilde B^V(m^2,L,\mu^2)+\tilde A^V(m^2,L,\mu^2)\,,\nonumber\\
+d\tilde C^V_{22}(m^2,L,\mu^2)+3\tilde C^V_{23}(m^2,L,\mu^2)& =
+ m^2\tilde C^V(m^2,L,\mu^2)+\tilde B^V(m^2,L,\mu^2)\,,\nonumber\\
+d\tilde D^V_{22}(m^2,L,\mu^2)+3\tilde D^V_{23}(m^2,L,\mu^2)& =
+ m^2\tilde D^V(m^2,L,\mu^2)+\tilde C^V(m^2,L,\mu^2)\,.
+\end{align}
 
 The full integrals are now split in the infinite volume part
 which was defined earlier in Sect.~\ref{tadpoles} and the finite volume
@@ -1899,17 +1967,60 @@ remainder as
      \right)
   +\mathcal{O}(\epsilon^2)\,,
 \nonumber\\
+\tilde C^V(m^2,L,\mu^2)\!
+=&\overline C(m^2,\mu^2)+\overline C^V(m^2,L)
+  +\epsilon\left(C^\epsilon(m^2,\mu^2)+C^{V\epsilon}(m^2,L,\mu^2)
+     \right)
+  +\mathcal{O}(\epsilon^2)\,,
+\nonumber\\
+\tilde D^V(m^2,L,\mu^2)\!
+=&\overline D(m^2,\mu^2)+\overline D^V(m^2,L)
+  +\epsilon\left(D^\epsilon(m^2,\mu^2)+D^{V\epsilon}(m^2,L,\mu^2)
+     \right)
+  +\mathcal{O}(\epsilon^2)\,,
+\nonumber\\
 \tilde A^V_{22}(m^2,L,\mu^2)\!
 =&\frac{\lambda_0 m^4}{4(16\pi^2)}
   +\overline A_{22}(m^2,\mu^2)+\overline A^V_{22}(m^2,L)
   +\epsilon\left(A^\epsilon_{22}(m^2,\mu^2)+A^{V\epsilon}_{22}(m^2,L,\mu^2)
      \right)
-\nonumber\\&\,
+\nonumber\\
+\tilde B^V_{22}(m^2,L,\mu^2)\!
+=&\frac{\lambda_0 m^2}{2(16\pi^2)}
+  +\overline B_{22}(m^2,\mu^2)+\overline B^V_{22}(m^2,L)
+  +\epsilon\left(B^\epsilon_{22}(m^2,\mu^2)+B^{V\epsilon}_{22}(m^2,L,\mu^2)
+     \right)
+\nonumber\\
+\tilde C^V_{22}(m^2,L,\mu^2)\!
+=&\frac{\lambda_0}{4(16\pi^2)}
+  +\overline C_{22}(m^2,\mu^2)+\overline C^V_{22}(m^2,L)
+  +\epsilon\left(C^\epsilon_{22}(m^2,\mu^2)+C^{V\epsilon}_{22}(m^2,L,\mu^2)
+     \right)
+\nonumber\\
+\tilde D^V_{22}(m^2,L,\mu^2)\!
+=&\overline D_{22}(m^2,\mu^2)+\overline D^V_{22}(m^2,L)
+  +\epsilon\left(D^\epsilon_{22}(m^2,\mu^2)+D^{V\epsilon}_{22}(m^2,L,\mu^2)
+     \right)
   +\mathcal{O}(\epsilon^2)\,,
 \nonumber\\
 \tilde A^V_{23}(m^2,L,\mu^2)
 =&\overline A^V_{23}(m^2,\mu^2)
   +\epsilon A^{V\epsilon}_{22}(m^2,L)
+  +\mathcal{O}(\epsilon^2)\,.
+\nonumber\\
+\tilde B^V_{23}(m^2,L,\mu^2)
+=&\overline B^V_{23}(m^2,\mu^2)
+  +\epsilon B^{V\epsilon}_{22}(m^2,L)
+  +\mathcal{O}(\epsilon^2)\,.
+\nonumber\\
+\tilde C^V_{23}(m^2,L,\mu^2)
+=&\overline C^V_{23}(m^2,\mu^2)
+  +\epsilon C^{V\epsilon}_{22}(m^2,L)
+  +\mathcal{O}(\epsilon^2)\,.
+\nonumber\\
+\tilde D^V_{23}(m^2,L,\mu^2)
+=&\overline D^V_{23}(m^2,\mu^2)
+  +\epsilon D^{V\epsilon}_{22}(m^2,L)
   +\mathcal{O}(\epsilon^2)\,.
 \end{align}
 
@@ -1930,27 +2041,125 @@ the size $L$ of the spatial dimension.\\
 
 Evaluated with theta functions:\\
 \mytt{double \newfunction{AbVt}(msq,L)}: returns $\overline A^V(m^2,L)$.\\
-\mytt{double \newfunction{BbVt}(msq,L)}: returns $\overline B^V(m^2,L)$.\\
 \mytt{double \newfunction{A22bVt}(msq,L)}:
  returns $\overline A^V_{22}(m^2,L)$.\\
 \mytt{double \newfunction{A23bVt}(msq,L)}:
  returns $\overline A^V_{23}(m^2,L)$.\\
+\mytt{double \newfunction{BbVt}(msq,L)}: returns $\overline B^V(m^2,L)$.\\
+\mytt{double \newfunction{B22bVt}(msq,L)}:
+ returns $\overline B^V_{22}(m^2,L)$.\\
+\mytt{double \newfunction{B23bVt}(msq,L)}:
+ returns $\overline B^V_{23}(m^2,L)$.\\
+\mytt{double \newfunction{CbVt}(msq,L)}: returns $\overline C^V(m^2,L)$.\\
+\mytt{double \newfunction{C22bVt}(msq,L)}:
+ returns $\overline C^V_{22}(m^2,L)$.\\
+\mytt{double \newfunction{C23bVt}(msq,L)}:
+ returns $\overline C^V_{23}(m^2,L)$.\\
+\mytt{double \newfunction{DbVt}(msq,L)}: returns $\overline D^V(m^2,L)$.\\
+\mytt{double \newfunction{D22bVt}(msq,L)}:
+ returns $\overline D^V_{22}(m^2,L)$.\\
+\mytt{double \newfunction{D23bVt}(msq,L)}:
+ returns $\overline D^V_{23}(m^2,L)$.\\
 
 Evaluated with Bessel functions:\\
 \mytt{double \newfunction{AbVb}(msq,L)}: returns $\overline A^V(m^2,L)$.\\
-\mytt{double \newfunction{BbVb}(msq,L)}: returns $\overline B^V(m^2,L)$.\\
 \mytt{double \newfunction{A22bVb}(msq,L)}:
  returns $\overline A^V_{22}(m^2,L)$.\\
 \mytt{double \newfunction{A23bVb}(msq,L)}:
  returns $\overline A^V_{23}(m^2,L)$.\\
+\mytt{double \newfunction{BbVb}(msq,L)}: returns $\overline B^V(m^2,L)$.\\
+\mytt{double \newfunction{B22bVb}(msq,L)}:
+ returns $\overline B^V_{22}(m^2,L)$.\\
+\mytt{double \newfunction{B23bVb}(msq,L)}:
+ returns $\overline B^V_{23}(m^2,L)$.\\
+\mytt{double \newfunction{CbVb}(msq,L)}: returns $\overline C^V(m^2,L)$.\\
+\mytt{double \newfunction{C22bVb}(msq,L)}:
+ returns $\overline C^V_{22}(m^2,L)$.\\
+\mytt{double \newfunction{C23bVb}(msq,L)}:
+ returns $\overline C^V_{23}(m^2,L)$.\\
+\mytt{double \newfunction{DbVb}(msq,L)}: returns $\overline D^V(m^2,L)$.\\
+\mytt{double \newfunction{D22bVb}(msq,L)}:
+ returns $\overline D^V_{22}(m^2,L)$.\\
+\mytt{double \newfunction{D23bVb}(msq,L)}:
+ returns $\overline D^V_{23}(m^2,L)$.\\
 
 
 The last letter
 indicates whether they are computed with the theta function or Bessel
 function method.
 The results were checked by comparing against each other and
-by comparing with the independent Bessel function implementation done in
-\cite{Bijnens:2006ve}.\\
+by comparing when possible with the independent Bessel function
+implementation done in \cite{Bijnens:2006ve}.\\
+
+\mytt{void \newfunction{setprecisionfinitevolumeoneloopt}(const double Abacc=1e-10,}
+\\\hspace*{5mm}\mytt{const double Bbacc=1e-9,const bool printout=true)}
+sets the precision for the finite volume integrals evaluated with
+theta function to \mytt{Abacc} for the tadpole integrals, \mytt{Bbacc}
+for the bubble integrals. The last variable printout is a logical variable
+which can be se tto true or false, default is false.
+Default values are those indicated.\\
+
+\mytt{void \newfunction{setprecisionfinitevolumeoneloopb}(const int maxsum=100,}
+\\\hspace*{5mm}\mytt{const double Bbacc=1e-5,const bool printout=true)}
+sets the precision for the finite volume integrals evaluated with Bessel
+functions. The first argument
+indicates how far the sum over Bessel functions is taken.
+Maximum at present is 1000.
+The second argument gives the
+precision of the numerical integration for the
+bubble integrals.
+
+Defined in \newfunction{finitevolumeoneloopintegrals.h},
+implemented in \newfunction{finitevolumeoneloop\-integrals.cc},
+examples of use in \newfunction{testfinitevolumeoneloopintegrals.cc}.
+
+\subsection{Finite volume bubble integrals}
+
+\subsubsection{Definitions}
+\label{defFVbubble}
+
+The methods used for these are derived in detail in \cite{Bijnens:2013doa},
+references to earlier literature can be found there.
+The integrals used here are given in the Minkowski conventions as
+defined in \cite{Bijnens:2014dea}.
+All of the integrals are available with two different methods, one using
+a summation over Bessel function and the other an integral over a
+Jacobi theta function. The versions included at present are using
+periodic boundary conditions, all three spatial sizes of the same length $L$
+and the time direction of infinite extent.
+
+The bubble integrals $B$, $B_\mu$ and $B_{\mu\nu}$ are defined as
+\begin{equation}
+\left\{\tilde B^V,\tilde B^V_\mu,\tilde B^V_{\mu\nu}\right\}(m_1^2,m_2^2,p,L,\mu^2)
+ = \frac{\mu^{4-d}}{i}\int_V\frac{d^d r}{(2\pi)^d}
+\frac{\left\{1,r_\mu,r_\mu r_\nu\right\}}{(r^2-m_1^2)^{n_1}((p-r)^2-m_1^2)^{n_2}}\,.
+\end{equation}
+The subscript $V$ on the integral indicates that the integral is a discrete
+sum over the three spatial components and an integral over the remainder. 
+The size of the spatial directions is $L$.
+
+At finite volume, there are more Lorentz-structures possible. 
+The tensor $t_{\mu\nu}$, the spatial part of the Minkowski metric
+$g_{\mu\nu}$, is needed for these. In addition, the functions can in principle
+depend on the components of the vector $p$ as well, not only via $p^2$.
+
+The functions themselves are split in the infinite volume part discussed
+in Sect.~\ref{bubbles}
+and a finite volume part via
+\begin{align}
+\tilde B^V\!
+=&\frac{\lambda_0}{16\pi^2}
+  +\overline B(m^2,\mu^2)+\overline B^V(m^2,L)
+  +\epsilon\left(B^\epsilon+B^{V\epsilon}     \right)
+  +\mathcal{O}(\epsilon^2)\,,
+\nonumber\\
+\end{align}
+where all functions have as argument $(m_1^2,m_2^2,p,L,\mu^2)$.
+
+\subsubsection{Functions}
+\label{defFVbubbles}
+The integration routines needed can be set using the macro \newfunction{DINTEGRAL}
+for the real integration, default is \mytt{jbdgauss}.\\
 
 \mytt{void \newfunction{setprecisionfinitevolumeoneloopt}(const double Abacc=1e-10,}
 \\\hspace*{5mm}\mytt{const double Bbacc=1e-9,const bool printout=true)}
@@ -1968,12 +2177,29 @@ indicates how far the sum over Bessel functions is taken.
 Maximum at present is 1000.
 The second argument gives the
 precision of the numerical integration for the
-bubble integrals.
+bubble integrals.\\
 
 Defined in \newfunction{finitevolumeoneloopintegrals.h},
 implemented in \newfunction{finitevolumeoneloop\-integrals.cc},
 examples of use in \newfunction{testfinitevolumeoneloopintegrals.cc}.
 
+\paragraph{$p=0$ and periodic boundary conditions}
+
+\mytt{const double: m1sq,m2sq,L,mu2.}
+These correspond to $msq,m_1^2,m_2^2,L,\mu^2$. $L$ is the size of the finite
+dimensions.
+
+Evaluated with theta functions:\\
+\mytt{double \newfunction{BbVt}(m1sq,m2sq,L):}
+returns $\overline{B}^V(m_1^2,m_2^2,p=0,L,\mu^2)$\\
+\mytt{double \newfunction{BbVt}(msq,L):}
+returns $\overline{B}^V(m^2,m^2,p=0,L)$\\
+
+Evaluated with Bessel functions:\\
+\mytt{double \newfunction{BbVb}(m1sq,m2sq,L):}
+return $\overline{B}^V(m_1^2,m_2^2,p=0,L,\mu^2)$\\
+\mytt{double \newfunction{BbVb}(msq,L):}
+returns $\overline{B}^V(m^2,m^2,p=0,L,\mu^2)$\\
 
 \subsection{Finite volume sunsetintegrals}
 
@@ -1995,7 +2221,8 @@ Integrals with the other momentum $s$ in the numerator are related
 using the relations shown in \cite{Amoros:1999dp} which remain
 valid at finite volume in the cms frame \cite{Bijnens:2013doa}.
 
-In the cms frame we define the functions\footnote{In the cms frame
+In the cms frame we define the functions\footnote{In the cms frame,
+after the reduction to four dimensions,
 $t_{\mu\nu}= g_{\mu\nu}-p_\mu p_\nu/p^2$ but the separation
 appears naturally in the calculation \cite{Bijnens:2013doa}. In addition, it
 avoids singularities in the limit $p\to0$.}
@@ -2891,7 +3118,7 @@ implemented in \newfunction{massesdecayvevlo.cc} and examples of use
 are in \newfunction{testmassesdecayvevlo.cc}
 
 
-\subsection{Masses and decay constants at finite volume}
+\subsection{Masses and decay constants at finite volume: in physical}
 \label{massdecayvevV}
 
 The expressions treated in this section have been
@@ -2917,7 +3144,7 @@ The results presented in this section are with periodic boundary conditions
 and an infinite extension in the time direction. They are also restricted
 to the case where the particle is at rest, i.e. $\vec p=0$.
 
-\subsubsection{Masses at finite volume}
+\subsubsection{Masses at finite volume: in physical}
 
 The finite volume corrections to the masses squared\footnote{Note that
 in other papers the corrections to the mass itself are sometimes
@@ -2995,7 +3222,7 @@ All these are defined in \newfunction{massdecayvevV.h}
 and implemented in \newfunction{massdecayvevV.h}.
 Examples of use are in \newfunction{testmassdecayvevV.cc}.
 
-\subsubsection{Decay constants at finite volume}
+\subsubsection{Decay constants at finite volume: in physical}
 
 The finite volume corrections to the decay constants
 are defined as the difference of the decay constant in finite volume
@@ -3076,6 +3303,196 @@ returns $F_{\eta\,R}^{V(6)}$.\\
 All these are defined in \newfunction{massdecayvevV.h}
 and implemented in \newfunction{massdecayvevV.h}.
 Examples of use are in \newfunction{testmassdecayvevV.cc}.
+
+\subsection{Masses and decay constants at finite volume: in lowest order}
+\label{massdecayvevloV}
+
+The expressions treated in this section have been
+derived in \cite{Bijnens:2014dea}. A general remark is that care should be
+taken to set the precision in the loop integrals sufficiently high.
+For the one-loop integrals setting it very high is usually no problem.
+For the sunset integrals the evaluation can become very slow. It is
+strongly recommended to play around with the settings and compare the outputs
+for the two ways to evaluate the integral. 
+The theta and Bessel function evaluation approach the correct answer
+differently.
+For most cases
+it is possible to have \mytt{rsacc} set smaller than \mytt{racc}.
+
+For many applications it is useful to calculate the
+very time consuming parts, those labeled \mytt{6RV}, once and store them.
+They only depend nontrivially on the masses and size of the finite volume.
+The decay constant dependence is very simple, an overall factor at each order,
+and there is dependence
+on the NLO LECs $L_i^r$.
+
+The results presented in this section are with periodic boundary conditions
+and an infinite extension in the time direction. They are also restricted
+to the case where the particle is at rest, i.e. $\vec p=0$.
+
+\subsubsection{Masses at finite volume: in lowest order}
+
+The finite volume corrections to the masses squared\footnote{Note that
+in other papers the corrections to the mass itself are sometimes
+quoted.} are defined as the difference of the mass squared in finite volume
+and in infinite volume:
+\begin{eqnarray}
+\Delta^V m^2_a &=& m^{2V}_a-m^{2\,V=\infty}_a
+= m_a^{2V(4)0}+ m_a^{2V(6)0}\,.
+\nonumber\\
+m_a^{2V(6)0} &=& m_{a\,L}^{2V(6)0}+m_{a\,R}^{2V(6)0}\,.
+\end{eqnarray}
+These definitions are for $a=\pi,K,\eta$.\\
+
+Pion mass (theta function method):\\
+\mytt{double \newfunction{mpi4loVt}(const lomass massin,const double L)}
+returns $m_\pi^{2V(4)0}$.\\
+\mytt{double \newfunction{mpi6loVt}(const lomass massin,const Li Liin,const double L)}
+returns $m_\pi^{2V(6)0}$.\\
+\mytt{double \newfunction{mpi6LloVt}(const lomass massin,const Li Liin,const double L)}
+returns $m_{\pi\,L}^{2V(6)0}$.\\
+\mytt{double \newfunction{mpi6RloVt}(const lomass massin,const double L)}
+returns $m_{\pi\,R}^{2V(6)0}$.\\
+
+Pion mass (Bessel function method):\\
+\mytt{double \newfunction{mpi4loVb}(const lomass massin,const double L)}
+returns $m_\pi^{2V(4)0}$.\\
+\mytt{double \newfunction{mpi6loVb}(const lomass massin,const Li Liin,const double L)}
+returns $m_\pi^{2V(6)0}$.\\
+\mytt{double \newfunction{mpi6LloVb}(const lomass massin,const Li Liin,const double L)}
+returns $m_{\pi\,L}^{2V(6)0}$.\\
+\mytt{double \newfunction{mpi6RloVb}(const lomass massin,const double L)}
+returns $m_{\pi\,R}^{2V(6)0}$.\\
+
+Kaon mass (theta function method):\\
+\mytt{double \newfunction{mk4loVt}(const lomass massin,const double L)}
+returns $m_K^{2V(4)0}$.\\
+\mytt{double \newfunction{mk6loVt}(const lomass massin,const Li Liin,const double L)}
+returns $m_K^{2V(6)0}$.\\
+\mytt{double \newfunction{mk6LloVt}(const lomass massin,const Li Liin,const double L)}
+returns $m_{K\,L}^{2V(6)0}$.\\
+\mytt{double \newfunction{mk6RloVt}(const lomass massin,const double L)}
+returns $m_{K\,R}^{2V(6)0}$.\\
+
+Kaon mass (Bessel function method):\\
+\mytt{double \newfunction{mk4loVb}(const lomass massin,const double L)}
+returns $m_K^{2V(4)0}$.\\
+\mytt{double \newfunction{mk6loVb}(const lomass massin,const Li Liin,const double L)}
+returns $m_K^{2V(6)0}$.\\
+\mytt{double \newfunction{mk6LloVb}(const lomass massin,const Li Liin,const double L)}
+returns $m_{K\,L}^{2V(6)0}$.\\
+\mytt{double \newfunction{mk6RloVb}(const lomass massin,const double L)}
+returns $m_{K\,R}^{2V(6)}$.\\
+
+Eta mass (theta function method):\\
+\mytt{double \newfunction{meta4loVt}(const lomass massin,const double L)}
+returns $m_\eta^{2V(4)0}$.\\
+\mytt{double \newfunction{meta6loVt}(const lomass massin,const Li Liin,const double L)}
+returns $m_\eta^{2V(6)0}$.\\
+\mytt{double \newfunction{meta6LloVt}(const lomass massin,const Li Liin,const double L)}
+returns $m_{\eta\,L}^{2V(6)0}$.\\
+\mytt{double \newfunction{meta6RloVt}(const lomass massin,const double L)}
+returns $m_{\eta\,R}^{2V(6)0}$.\\
+
+Eta mass (Bessel function method):\\
+\mytt{double \newfunction{meta4loVb}(const lomass massin,const double L)}
+returns $m_\eta^{2V(4)0}$.\\
+\mytt{double \newfunction{meta6loVb}(const lomass massin,const Li Liin,const double L)}
+returns $m_\eta^{2V(6)0}$.\\
+\mytt{double \newfunction{meta6LloVb}(const lomass massin,const Li Liin,const double L)}
+returns $m_{\eta\,L}^{2V(6)0}$.\\
+\mytt{double \newfunction{meta6RloVb}(const lomass massin,const double L)}
+returns $m_{\eta\,R}^{2V(6)0}$.\\
+
+All these are defined in \newfunction{massdecayvevloV.h}
+and implemented in \newfunction{massdecayvevloV.h}.
+Examples of use are in \newfunction{testmassdecayvevloV.cc}.
+
+\subsubsection{Decay constants at finite volume: in lowest order}
+
+The finite volume corrections to the decay constants
+are defined as the difference of the decay constant in finite volume
+and in infinite volume:
+\begin{eqnarray}
+\label{defdecayloV}
+\Delta^V F_a &=& F^{V}_a-F^{\,V=\infty}_a
+= F_0\left(F_a^{V(4)0}+ F_a^{V(6)0}\right)\,.
+\nonumber\\
+F_a^{V(6)0} &=& F_{a\,L}^{V(6)0}+F_{a\,R}^{V(6)0}\,.
+\end{eqnarray}
+Note that this is a different normalization compared to the expressions
+in terms of physical masses and the physical $F_\pi$.
+This was done to have the same normalization as the partially quenched
+results.
+These definitions are for $a=\pi,K,\eta$.
+The correction is defined to the value of the
+decay constant divided by the the lowest order decay constant as
+in (\ref{defdecayfirst}).
+The eta decay constant is defined with the octet axial current.\\
+
+Pion decay constant (theta function method):\\
+\mytt{double \newfunction{fpi4loVt}(const lomass massin,const double L)}
+returns $F_\pi^{V(4)0}$.\\
+\mytt{double \newfunction{fpi6loVt}(const lomass massin,const Li Liin,const double L)}
+returns $F_\pi^{V(6)0}$.\\
+\mytt{double \newfunction{fpi6LloVt}(const lomass massin,const Li Liin,const double L)}
+returns $F_{\pi\,L}^{V(6)0}$.\\
+\mytt{double \newfunction{fpi6RloVt}(const lomass massin,const double L)}
+returns $F_{\pi\,R}^{V(6)0}$.\\
+
+Pion decay constant (Bessel function method):\\
+\mytt{double \newfunction{fpi4loVb}(const lomass massin,const double L)}
+returns $F_\pi^{V(4)0}$.\\
+\mytt{double \newfunction{fpi6loVb}(const lomass massin,const Li Liin,const double L)}
+returns $F_\pi^{V(6)0}$.\\
+\mytt{double \newfunction{fpi6LloVb}(const lomass massin,const Li Liin,const double L)}
+returns $F_{\pi\,L}^{V(6)0}$.\\
+\mytt{double \newfunction{fpi6RloVb}(const lomass massin,const double L)}
+returns $F_{\pi\,R}^{V(6)0}$.\\
+
+Kaon decay constant (theta function method):\\
+\mytt{double \newfunction{fk4loVt}(const lomass massin,const double L)}
+returns $F_K^{V(4)0}$.\\
+\mytt{double \newfunction{fk6loVt}(const lomass massin,const Li Liin,const double L)}
+returns $F_K^{V(6)0}$.\\
+\mytt{double \newfunction{fk6LloVt}(const lomass massin,const Li Liin,const double L)}
+returns $F_{K\,L}^{V(6)0}$.\\
+\mytt{double \newfunction{fk6RloVt}(const lomass massin,const double L)}
+returns $F_{K\,R}^{V(6)0}$.\\
+
+Kaon decay constant (Bessel function method):\\
+\mytt{double \newfunction{fk4loVb}(const lomass massin,const double L)}
+returns $F_K^{V(4)0}$.\\
+\mytt{double \newfunction{fk6loVb}(const lomass massin,const Li Liin,const double L)}
+returns $F_K^{V(6)0}$.\\
+\mytt{double \newfunction{fk6LloVb}(const lomass massin,const Li Liin,const double L)}
+returns $F_{K\,L}^{V(6)0}$.\\
+\mytt{double \newfunction{fk6RloVb}(const lomass massin,const double L)}
+returns $F_{K\,R}^{V(6)0}$.\\
+
+Eta decay constant (theta function method):\\
+\mytt{double \newfunction{feta4loVt}(const lomass massin,const double L)}
+returns $F_\eta^{V(4)0}$.\\
+\mytt{double \newfunction{feta6loVt}(const lomass massin,const Li Liin,const double L)}
+returns $F_\eta^{V(6)0}$.\\
+\mytt{double \newfunction{feta6LloVt}(const lomass massin,const Li Liin,const double L)}
+returns $F_{\eta\,L}^{V(6)0}$.\\
+\mytt{double \newfunction{feta6RloVt}(const lomass massin,const double L)}
+returns $F_{\eta\,R}^{V(6)0}$.\\
+
+Eta decay constant (Bessel function method):\\
+\mytt{double \newfunction{feta4loVb}(const lomass massin,const double L)}
+returns $F_\eta^{V(4)0}$.\\
+\mytt{double \newfunction{feta6loVb}(const lomass massin,const Li Liin,const double L)}
+returns $F_\eta^{V(6)0}$.\\
+\mytt{double \newfunction{feta6LloVb}(const lomass massin,const Li Liin,const double L)}
+returns $F_{\eta\,L}^{V(6)0}$.\\
+\mytt{double \newfunction{feta6RloVb}(const lomass massin,const double L)}
+returns $F_{\eta\,R}^{V(6)0}$.\\
+
+All these are defined in \newfunction{massdecayvevloV.h}
+and implemented in \newfunction{massdecayvevloV.h}.
+Examples of use are in \newfunction{testmassdecayvevloV.cc}.
 
 \section{Three flavour partially quenched results}
 
@@ -3869,7 +4286,7 @@ For the avoidance of doubt, this Section 6(b) does not affect any right the Lice
 
 \bibitem{GPLv2} \url{http://www.gnu.org/licenses/gpl-2.0.html}{\tt http://www.gnu.org/licenses/gpl-2.0.html}
 
-\bibitem{chironsite} \href{http://www.thep.lu.se/~bijnens/chiron/}{\tt http://www.thep.lu.se/$\sim$bijnens/chiron/}
+\bibitem{chironsite} \href{http://www.thep.lu.se/\%7Ebijnens/chiron/}{\tt http://www.thep.lu.se/\textasciitilde{}bijnens/chiron/}
 
 %\cite{'tHooft:1978xw}
 \bibitem{'tHooft:1978xw}

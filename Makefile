@@ -11,9 +11,9 @@
 # in both testing and library
 CC = g++ -O3  -I./include
 # added for the compilation of the libraries
-CFLAGS =
+CFLAGS = -Wall -Wextra -Wconversion
 #added for the testing files
-CFLAGSTEST = -std=c++0x
+CFLAGSTEST = -std=c++0x -Wall -Wextra -Wconversion
 
 OBJECTSJBNUMLIB = jbdgauss.o jbdcauch.o jbwgauss.o \
   jbdgauss2.o jbdquad15.o jbdquad21.o \
@@ -21,7 +21,8 @@ OBJECTSJBNUMLIB = jbdgauss.o jbdcauch.o jbwgauss.o \
   jbwgauss2.o jbwquad15.o jbwquad21.o \
   jbdadmul.o \
   jbdli2.o jbdbesik.o jbdtheta30.o jbdtheta30m1.o jbdtheta32.o jbdtheta34.o \
-  jbdtheta2d0.o jbdtheta2d0m1.o jbdtheta2d02.o
+  jbdtheta2d0.o jbdtheta2d0m1.o jbdtheta2d02.o \
+  jbdtheta3.o jbderivutheta3.o jbderiv2utheta3.o
 
 OBJECTSCHIRON = inputs.o Li.o Ci.o inputsnf.o Linf.o Ki.o \
        massdecayvev.o getfpimeta.o \
@@ -29,7 +30,9 @@ OBJECTSCHIRON = inputs.o Li.o Ci.o inputsnf.o Linf.o Ki.o \
        oneloopintegrals.o sunsetintegrals.o finitevolumeoneloopintegrals.o \
        finitevolumesunsetintegrals.o quenchedsunsetintegrals.o
 
-OBJECTSCHIRON2 = massdecayvevVt.o massdecayvevVb.o
+OBJECTSCHIRONTHETA =  massdecayvevVt.o massdecayvevloVt.o massdecayvevPQVt.o
+OBJECTSCHIRONBESSEL =  massdecayvevVb.o massdecayvevloVb.o massdecayvevPQVb.o
+OBJECTSCHIRON2 = $(OBJECTSCHIRONTHETA) $(OBJECTSCHIRONBESSEL)
 
 INCLUDECHIRON =  include/inputs.h include/Li.h include/Ci.h\
        include/inputsnf.h include/Linf.h include/Ki.h \
@@ -37,7 +40,8 @@ INCLUDECHIRON =  include/inputs.h include/Li.h include/Ci.h\
        include/oneloopintegrals.h include/sunsetintegrals.h\
        include/finitevolumeoneloopintegrals.h\
        include/finitevolumesunsetintegrals.h\
-       include/massdecayvevV.h \
+       include/massdecayvevV.h include/massdecayvevloV.h \
+       include/massdecayvevPQV.h\
        include/quenchedsunsetintegrals.h 
 
 TESTCHIRON = testintegralsreal testintegralsrealsingular \
@@ -46,7 +50,8 @@ TESTCHIRON = testintegralsreal testintegralsrealsingular \
        testgetfpimeta testoneloopintegrals testsunsetintegrals \
        testfinitevolumeoneloopintegrals testfinitevolumesunsetintegrals \
        testmassdecayvevV testquenchedsunsetintegrals testLinf testKi \
-       testmassdecayvevlo testmassdecayvevPQ
+       testmassdecayvevlo testmassdecayvevPQ testmassdecayvevPQV \
+       testmassdecayvevloV
 
 all: libchiron.a libjbnumlib.a
 
@@ -59,9 +64,19 @@ libjbnumlib.a: $(OBJECTSJBNUMLIB) include/jbnumlib.h
 
 massdecayvevVt.o: src/massdecayvevV.cc include/massdecayvevV.h
 	$(CC) -c $(CFLAGS) -D CHIRONTHETA -o massdecayvevVt.o src/massdecayvevV.cc
+massdecayvevloVt.o: src/massdecayvevloV.cc include/massdecayvevloV.h
+	$(CC) -c $(CFLAGS) -D CHIRONTHETA -o massdecayvevloVt.o src/massdecayvevloV.cc
+massdecayvevPQVt.o: src/massdecayvevPQV.cc include/massdecayvevPQV.h
+	$(CC) -c $(CFLAGS) -D CHIRONTHETA -o massdecayvevPQVt.o src/massdecayvevPQV.cc
 
 massdecayvevVb.o: src/massdecayvevV.cc include/massdecayvevV.h
 	$(CC) -c $(CFLAGS) -D CHIRONBESSEL -o massdecayvevVb.o src/massdecayvevV.cc
+
+massdecayvevloVb.o: src/massdecayvevloV.cc include/massdecayvevloV.h
+	$(CC) -c $(CFLAGS) -D CHIRONBESSEL -o massdecayvevloVb.o src/massdecayvevloV.cc
+
+massdecayvevPQVb.o: src/massdecayvevPQV.cc include/massdecayvevPQV.h
+	$(CC) -c $(CFLAGS) -D CHIRONBESSEL -o massdecayvevPQVb.o src/massdecayvevPQV.cc
 
 $(OBJECTSJBNUMLIB): %.o: src/%.cc
 	$(CC) -c $(CFLAGS) $< -o $@

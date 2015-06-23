@@ -26,10 +26,9 @@
 //  Phys.\ Rev.\ D {\bf 70} (2004) 111503
 //  [hep-lat/0406017].
 
-#ifdef QUENCHEDSUNSETINTEGRALS_H
-
-#else
+#ifndef QUENCHEDSUNSETINTEGRALS_H
 #define QUENCHEDSUNSETINTEGRALS_H
+
 
 void setprecisionquenchedsunsetintegrals(const double eps);
 double getprecisionquenchedsunsetintegrals(void);

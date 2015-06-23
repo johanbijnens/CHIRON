@@ -151,5 +151,28 @@ int main(void){
   cout << "fv2s3nf3p6K    : " << fv2s3nf3p6K(B0mq23,kirandom) << '\n';
   cout << "fv2s3nf3p6R    : " << fv2s3nf3p6R(B0mq23) << '\n';
 
+
+  // checking scalechanges
+  cout << "same but now with the scale set to 0.95 and the LECs"
+       << "changed accordingly\n";
+  kirandom.changescale(0.95,lirandom);
+  B0mq11.setmu(0.95);
+  B0mq23.setmu(0.95);
+  cout << B0mq11;
+  cout << "mv1s1nf3p4     : " << mv1s1nf3p4(B0mq11,lirandom) << '\n';
+  cout << "mv1s1nf3p6     : " << mv1s1nf3p6(B0mq11,lirandom,kirandom) << '\n';
+  cout << "mv1s1nf3p4L    : " << mv1s1nf3p4L(B0mq11,lirandom) << '\n';
+  cout << "mv1s1nf3p4R    : " << mv1s1nf3p4R(B0mq11) << '\n';
+  cout << "mv1s1nf3p6L    : " << mv1s1nf3p6L(B0mq11,lirandom) << '\n';
+  cout << "mv1s1nf3p6K    : " << mv1s1nf3p6K(B0mq11,kirandom) << '\n';
+  cout << "mv1s1nf3p6R    : " << mv1s1nf3p6R(B0mq11) << '\n';
+  cout << B0mq23;
+  cout << "fv2s3nf3p4     : " << fv2s3nf3p4(B0mq23,lirandom) << '\n';
+  cout << "fv2s3nf3p6     : " << fv2s3nf3p6(B0mq23,lirandom,kirandom) << '\n';
+  cout << "fv2s3nf3p4L    : " << fv2s3nf3p4L(B0mq23,lirandom) << '\n';
+  cout << "fv2s3nf3p4R    : " << fv2s3nf3p4R(B0mq23) << '\n';
+  cout << "fv2s3nf3p6L    : " << fv2s3nf3p6L(B0mq23,lirandom) << '\n';
+  cout << "fv2s3nf3p6K    : " << fv2s3nf3p6K(B0mq23,kirandom) << '\n';
+  cout << "fv2s3nf3p6R    : " << fv2s3nf3p6R(B0mq23) << '\n';
   return 0;
 }

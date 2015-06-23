@@ -55,7 +55,7 @@ std::ostream & operator<<(std::ostream & os, const Linf & bb){
        << "#L0r  L1r  L2r :" <<bb.L0r <<' '<<bb.L1r<<' '<<bb.L2r<<"\n"
        << "#L3r  L4r  L5r :" <<bb.L3r <<' '<<bb.L4r<<' '<<bb.L5r<<"\n"
        << "#L6r  L7r  L8r :" <<bb.L6r <<' '<<bb.L7r<<' '<<bb.L8r<<"\n"
-       << "#L9r  L10r L12r:" <<bb.L9r<<' '<<bb.L10r<<' '<<bb.L11r<<"\n"
+       << "#L9r  L10r L11r:" <<bb.L9r<<' '<<bb.L10r<<' '<<bb.L11r<<"\n"
        << "#H1r  H2r      :" <<bb.H1r<<' '<<bb.H2r<<"\n";
   os.unsetf(std::ios_base::floatfield);
   os << std::setprecision(6);

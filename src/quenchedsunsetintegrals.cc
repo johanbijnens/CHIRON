@@ -1,6 +1,6 @@
 // quenchedsunsetintegrals.cc is part of the CHIRON ChPT
 // at two loops program collection
-// Copyright (C) 2014-2015 Johan Bijnens, v1.0
+// Copyright (C) 2014-2015 Johan Bijnens, v1.01
 // CHIRON is licenced under the GNU GPL version 2 or later,
 // see COPYING for details.
 // Please respect the Guidelines, see GUIDELINES for details.
@@ -105,94 +105,94 @@ double dlamq(const double x,const double y,const double z){
 }
 
 // xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-hbarquenchedcom hbardat;
+hbarquenchedcom hbardatq;
 
 
 double hbarquenched2(const double x){
   const double stretch1 = 1.;  //  x near zero
   const double stretch2 = 1.;  // sigma near infinity
   double xx = pow(x,stretch1);
-  double yy = pow(hbardat.sigm1,stretch2);
-  double hbar2t = (pow(hbardat.sigm1,(stretch2-1.))*stretch2)
+  double yy = pow(hbardatq.sigm1,stretch2);
+  double hbar2t = (pow(hbardatq.sigm1,(stretch2-1.))*stretch2)
     *(pow(x,(stretch1-1.))*stretch1);
-  double xm2 = sqrt(hbardat.xm22h);
-  double xm3 = sqrt(hbardat.xm32h);
+  double xm2 = sqrt(hbardatq.xm22h);
+  double xm3 = sqrt(hbardatq.xm32h);
   double siglow = pow(xm2+xm3,2);
   double sigmat = 1./yy;
   double sigma = siglow*sigmat;
   hbar2t = hbar2t*sigmat*sigmat;
   double z1,z2,xk2,xlam,dlamm2,dlamm3,dk2dsig,dk2dm1,dk2dm1sig,dlam23,dk2dsig2;
-  switch(hbardat.iprop){
+  switch(hbardatq.iprop){
   case 1:
-    hbar2t = hbar2t*sqrt(dlamq(siglow,hbardat.xm22h*yy,hbardat.xm32h*yy));
-    z1 = hbardat.xm12h*(1.-xx)+sigma*xx;
-    z2 = xx*(1.-xx)*hbardat.psqh;
-    xk2 = pow(xx,hbardat.ih) * pi162*(log(1.-z2/z1)+z2/z1);
+    hbar2t = hbar2t*sqrt(dlamq(siglow,hbardatq.xm22h*yy,hbardatq.xm32h*yy));
+    z1 = hbardatq.xm12h*(1.-xx)+sigma*xx;
+    z2 = xx*(1.-xx)*hbardatq.psqh;
+    xk2 = pow(xx,hbardatq.ih) * pi162*(log(1.-z2/z1)+z2/z1);
     return hbar2t*xk2;
   case 2:
-    hbar2t = hbar2t*sqrt(dlamq(siglow,hbardat.xm22h*yy,hbardat.xm32h*yy));
-    z1 = hbardat.xm12h*(1.-xx)+sigma*xx;
-    z2 = xx*(1.-xx)*hbardat.psqh;
-    xk2 = pow(xx,hbardat.ih) * pi162*(1.-xx)*z2*z2/(z1*z1*(z1-z2));
+    hbar2t = hbar2t*sqrt(dlamq(siglow,hbardatq.xm22h*yy,hbardatq.xm32h*yy));
+    z1 = hbardatq.xm12h*(1.-xx)+sigma*xx;
+    z2 = xx*(1.-xx)*hbardatq.psqh;
+    xk2 = pow(xx,hbardatq.ih) * pi162*(1.-xx)*z2*z2/(z1*z1*(z1-z2));
     return hbar2t*xk2;
   case 3:
-    xlam = dlamq(siglow,hbardat.xm22h*yy,hbardat.xm32h*yy);
-    dlamm2 = 2.*(siglow-hbardat.xm22h*yy-hbardat.xm32h*yy)*
-	(1.-1.*yy+xm3/xm2) -4*hbardat.xm32h*yy*yy;
-    z1 =  hbardat.xm12h*(1.-xx)+sigma*xx;
-    z2 = xx*(1.-xx)*hbardat.psqh;
+    xlam = dlamq(siglow,hbardatq.xm22h*yy,hbardatq.xm32h*yy);
+    dlamm2 = 2.*(siglow-hbardatq.xm22h*yy-hbardatq.xm32h*yy)*
+	(1.-1.*yy+xm3/xm2) -4*hbardatq.xm32h*yy*yy;
+    z1 =  hbardatq.xm12h*(1.-xx)+sigma*xx;
+    z2 = xx*(1.-xx)*hbardatq.psqh;
     xk2 = log(1.-z2/z1)+z2/z1;
     dk2dsig = xx*z2*z2/(z1*z1*(z1-z2));
-    hbar2t = hbar2t*pow(xx,hbardat.ih)*pi162*(xk2*dlamm2/(2.*sqrt(xlam))
+    hbar2t = hbar2t*pow(xx,hbardatq.ih)*pi162*(xk2*dlamm2/(2.*sqrt(xlam))
 	      +sqrt(xlam)*(1.+xm3/xm2)*sigmat*dk2dsig );
     return hbar2t;
   case 4:
-    xlam = dlamq(siglow,hbardat.xm22h*yy,hbardat.xm32h*yy);
-    dlamm3 = 2.*(siglow-hbardat.xm22h*yy-hbardat.xm32h*yy)*
-      (1.-yy+xm2/xm3) -4*hbardat.xm22h*yy*yy;
-    z1 =  hbardat.xm12h*(1.-xx)+sigma*xx;
-    z2 = xx*(1.-xx)*hbardat.psqh;
+    xlam = dlamq(siglow,hbardatq.xm22h*yy,hbardatq.xm32h*yy);
+    dlamm3 = 2.*(siglow-hbardatq.xm22h*yy-hbardatq.xm32h*yy)*
+      (1.-yy+xm2/xm3) -4*hbardatq.xm22h*yy*yy;
+    z1 =  hbardatq.xm12h*(1.-xx)+sigma*xx;
+    z2 = xx*(1.-xx)*hbardatq.psqh;
     xk2 = log(1.-z2/z1)+z2/z1;
     dk2dsig = xx*z2*z2/(z1*z1*(z1-z2));
-    hbar2t = hbar2t*pow(xx,hbardat.ih)*pi162*(xk2*dlamm3/(2.*sqrt(xlam))
+    hbar2t = hbar2t*pow(xx,hbardatq.ih)*pi162*(xk2*dlamm3/(2.*sqrt(xlam))
 	      +sqrt(xlam)*(1.+xm2/xm3)*sigmat*dk2dsig );
     return hbar2t;
   case 5:
-    xlam = dlamq(siglow,hbardat.xm22h*yy,hbardat.xm32h*yy);
-    dlamm2 = 2.*(siglow-hbardat.xm22h*yy-hbardat.xm32h*yy)*
-      (1.-yy+xm3/xm2) -4*hbardat.xm32h*yy*yy;
-    z1 =  hbardat.xm12h*(1.-xx)+sigma*xx;
-    z2 = xx*(1.-xx)*hbardat.psqh;
+    xlam = dlamq(siglow,hbardatq.xm22h*yy,hbardatq.xm32h*yy);
+    dlamm2 = 2.*(siglow-hbardatq.xm22h*yy-hbardatq.xm32h*yy)*
+      (1.-yy+xm3/xm2) -4*hbardatq.xm32h*yy*yy;
+    z1 =  hbardatq.xm12h*(1.-xx)+sigma*xx;
+    z2 = xx*(1.-xx)*hbardatq.psqh;
     dk2dm1 =(1.-xx)*z2*z2/(z1*z1*(z1-z2));
     dk2dm1sig = xx*(1.-xx)*((-3.*z1+2.*z2)*z2*z2/(pow(z1,3)*pow(z1-z2,2)));
-    hbar2t = hbar2t*pow(xx,hbardat.ih)*pi162*(dk2dm1*dlamm2/(2.*sqrt(xlam))
+    hbar2t = hbar2t*pow(xx,hbardatq.ih)*pi162*(dk2dm1*dlamm2/(2.*sqrt(xlam))
 	  +sqrt(xlam)*(1.+xm3/xm2)*sigmat*dk2dm1sig );
     return hbar2t;
   case 6:
-    xlam = dlamq(siglow,hbardat.xm22h*yy,hbardat.xm32h*yy);
-    dlamm3 = 2.*(siglow-hbardat.xm22h*yy-hbardat.xm32h*yy)*
-      (1.-yy+xm2/xm3) -4*hbardat.xm22h*yy*yy;
-    z1 =  hbardat.xm12h*(1.-xx)+sigma*xx;
-    z2 = xx*(1.-xx)*hbardat.psqh;
+    xlam = dlamq(siglow,hbardatq.xm22h*yy,hbardatq.xm32h*yy);
+    dlamm3 = 2.*(siglow-hbardatq.xm22h*yy-hbardatq.xm32h*yy)*
+      (1.-yy+xm2/xm3) -4*hbardatq.xm22h*yy*yy;
+    z1 =  hbardatq.xm12h*(1.-xx)+sigma*xx;
+    z2 = xx*(1.-xx)*hbardatq.psqh;
     dk2dm1 =(1.-xx)*z2*z2/(z1*z1*(z1-z2));
     dk2dm1sig = xx*(1.-xx)*((-3.*z1+2.*z2)*z2*z2/(pow(z1,3)*pow(z1-z2,2)));
-    hbar2t = hbar2t*pow(xx,hbardat.ih)*pi162*(dk2dm1*dlamm3/(2.*sqrt(xlam))
+    hbar2t = hbar2t*pow(xx,hbardatq.ih)*pi162*(dk2dm1*dlamm3/(2.*sqrt(xlam))
 	 +sqrt(xlam)*(1.+xm2/xm3)*sigmat*dk2dm1sig );
     return hbar2t;
   case 7:
-    xlam = dlamq(siglow,hbardat.xm22h*yy,hbardat.xm32h*yy);
-    dlamm2 = 2.*(siglow-hbardat.xm22h*yy-hbardat.xm32h*yy)*
-           (1.-yy+xm3/xm2) -4*hbardat.xm32h*yy*yy;
-    dlamm3 = 2.*(siglow-hbardat.xm22h*yy-hbardat.xm32h*yy)*
-      (1.-yy+xm2/xm3) -4*hbardat.xm22h*yy*yy;
-    dlam23 = (siglow-hbardat.xm22h*yy-hbardat.xm32h*yy)/(xm2*xm3)
+    xlam = dlamq(siglow,hbardatq.xm22h*yy,hbardatq.xm32h*yy);
+    dlamm2 = 2.*(siglow-hbardatq.xm22h*yy-hbardatq.xm32h*yy)*
+           (1.-yy+xm3/xm2) -4*hbardatq.xm32h*yy*yy;
+    dlamm3 = 2.*(siglow-hbardatq.xm22h*yy-hbardatq.xm32h*yy)*
+      (1.-yy+xm2/xm3) -4*hbardatq.xm22h*yy*yy;
+    dlam23 = (siglow-hbardatq.xm22h*yy-hbardatq.xm32h*yy)/(xm2*xm3)
       +2.*(1.-yy+xm3/xm2)*(1.-yy+xm2/xm3)-4.*yy*yy;
-    z1 =  hbardat.xm12h*(1.-xx)+sigma*xx;
-    z2 = xx*(1.-xx)*hbardat.psqh;
+    z1 =  hbardatq.xm12h*(1.-xx)+sigma*xx;
+    z2 = xx*(1.-xx)*hbardatq.psqh;
     xk2 = log(1.-z2/z1)+z2/z1;
     dk2dsig = xx*z2*z2/(z1*z1*(z1-z2));
     dk2dsig2= xx*xx*(-3.*z1+2.*z2)*z2*z2/(pow(z1,3)*pow(z1-z2,2));
-    hbar2t = hbar2t*pow(xx,hbardat.ih)*pi162*(
+    hbar2t = hbar2t*pow(xx,hbardatq.ih)*pi162*(
        -xk2*dlamm2*dlamm3/(4.*xlam*sqrt(xlam))
        +xk2*dlam23/(2.*sqrt(xlam))
        +dlamm3*(1.+xm3/xm2)*sigmat*dk2dsig/(2.*sqrt(xlam))
@@ -202,21 +202,21 @@ double hbarquenched2(const double x){
 					      );
     return hbar2t;
   case 8:
-    xlam = dlamq(siglow,hbardat.xm22h*yy,hbardat.xm32h*yy);
-    dlamm2 = 2.*(siglow-hbardat.xm22h*yy-hbardat.xm32h*yy)*
-           (1.-yy+xm3/xm2) -4*hbardat.xm32h*yy*yy;
-    dlamm3 = 2.*(siglow-hbardat.xm22h*yy-hbardat.xm32h*yy)*
-      (1.-yy+xm2/xm3) -4*hbardat.xm22h*yy*yy;
-    dlam23 = (siglow-hbardat.xm22h*yy-hbardat.xm32h*yy)/(xm2*xm3)
+    xlam = dlamq(siglow,hbardatq.xm22h*yy,hbardatq.xm32h*yy);
+    dlamm2 = 2.*(siglow-hbardatq.xm22h*yy-hbardatq.xm32h*yy)*
+           (1.-yy+xm3/xm2) -4*hbardatq.xm32h*yy*yy;
+    dlamm3 = 2.*(siglow-hbardatq.xm22h*yy-hbardatq.xm32h*yy)*
+      (1.-yy+xm2/xm3) -4*hbardatq.xm22h*yy*yy;
+    dlam23 = (siglow-hbardatq.xm22h*yy-hbardatq.xm32h*yy)/(xm2*xm3)
       +2.*(1.-1.*yy+xm3/xm2)*(1.-1.*yy+xm2/xm3)
       -4.*yy*yy;
-    z1 =  hbardat.xm12h*(1.-xx)+sigma*xx;
-    z2 = xx*(1.-xx)*hbardat.psqh;
+    z1 =  hbardatq.xm12h*(1.-xx)+sigma*xx;
+    z2 = xx*(1.-xx)*hbardatq.psqh;
     xk2 = (1.-xx)*z2*z2/(z1*z1*(z1-z2));
     dk2dsig = xx*(1.-xx)*(-3.*z1+2.*z2)*z2*z2/(pow(z1,3)*pow(z1-z2,2));
     dk2dsig2=xx*xx*(1.-xx)*(12.*z1*z1-16.*z1*z2+6.*z2*z2)*z2*z2
         /(pow(z1,4)*pow(z1-z2,3));
-    hbar2t = hbar2t*pow(xx,hbardat.ih)*pi162*(
+    hbar2t = hbar2t*pow(xx,hbardatq.ih)*pi162*(
        -xk2*dlamm2*dlamm3/(4.*xlam*sqrt(xlam))
        +xk2*dlam23/(2.*sqrt(xlam))
        +dlamm3*(1.+xm3/xm2)*sigmat*dk2dsig/(2.*sqrt(xlam))
@@ -226,128 +226,128 @@ double hbarquenched2(const double x){
 						);
     return hbar2t;
   default:
-    std::cout << "wrong iprop = "<<hbardat.iprop<<" in hbarquenched2\n";
+    std::cout << "wrong iprop = "<<hbardatq.iprop<<" in hbarquenched2\n";
     return 0.;
   }
   return 0.;
 }
 
 double hbarquenched1(const double y){
-  hbardat.sigm1 = y;
+  hbardatq.sigm1 = y;
   return DINTEGRAL(hbarquenched2,0.,1.,precisionquenchedsunsetintegrals/5.);
 }
 
 double hbar(const int iprop, const double xm12,const double xm22,
 	    const double xm32, const double psq,const int i){
-  hbardat.ih = i;
-  hbardat.iprop = iprop;
-  hbardat.psqh = psq;
-  hbardat.xm12h = xm12;
-  hbardat.xm22h = xm22;
-  hbardat.xm32h = xm32;
+  hbardatq.ih = i;
+  hbardatq.iprop = iprop;
+  hbardatq.psqh = psq;
+  hbardatq.xm12h = xm12;
+  hbardatq.xm22h = xm22;
+  hbardatq.xm32h = xm32;
   return DINTEGRAL(hbarquenched1,0.,1.,precisionquenchedsunsetintegrals);
 }
 
 
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-hbarquenchedcom hbarddat;
+hbarquenchedcom hbarddatq;
 
-double hbard2(const double x){
+double hbard2q(const double x){
   const double stretch1 = 2.;  //  x near zero
   const double stretch2 = 1.;  // sigma near infinity
   double xx = pow(x,stretch1);
-  double yy = pow(hbarddat.sigm1,stretch2);
-  double hbard2 = (pow(hbarddat.sigm1,(stretch2-1.))*stretch2)
+  double yy = pow(hbarddatq.sigm1,stretch2);
+  double hbard2q = (pow(hbarddatq.sigm1,(stretch2-1.))*stretch2)
     *(pow(x,(stretch1-1.))*stretch1);
-  double xm2 = sqrt(hbarddat.xm22h);
-  double xm3 = sqrt(hbarddat.xm32h);
+  double xm2 = sqrt(hbarddatq.xm22h);
+  double xm3 = sqrt(hbarddatq.xm32h);
   double siglow = pow(xm2+xm3,2);
   double sigma = siglow/yy;
-  hbard2 = hbard2/pow(yy,2);
+  hbard2q = hbard2q/pow(yy,2);
   double z1,z2,xk2,xlam,dlamm2,dlamm3,dk2dsig,dk2dm1,dk2dm1sig,dlam23,dk2dsig2;
-  switch(hbarddat.iprop){
+  switch(hbarddatq.iprop){
   case 1:
-    hbard2 = hbard2*sqrt(dlamq(siglow,hbarddat.xm22h*yy,hbarddat.xm32h*yy));
-    z1 = hbarddat.xm12h*(1.-xx)+sigma*xx;
-    z2 = xx*(1.-xx)*hbarddat.psqh;
-    xk2 = pow(xx,hbarddat.ih) *xx*(1.-xx)* pi162*(-z2)/(z1*(z1-z2));
-    return hbard2*xk2;
+    hbard2q = hbard2q*sqrt(dlamq(siglow,hbarddatq.xm22h*yy,hbarddatq.xm32h*yy));
+    z1 = hbarddatq.xm12h*(1.-xx)+sigma*xx;
+    z2 = xx*(1.-xx)*hbarddatq.psqh;
+    xk2 = pow(xx,hbarddatq.ih) *xx*(1.-xx)* pi162*(-z2)/(z1*(z1-z2));
+    return hbard2q*xk2;
   case 2:
-    hbard2 = hbard2*sqrt(dlamq(siglow,hbarddat.xm22h*yy,hbarddat.xm32h*yy));
-    z1 = hbarddat.xm12h*(1.-xx)+sigma*xx;
-    z2 = xx*(1.-xx)*hbarddat.psqh;
-    xk2 = pow(xx,hbarddat.ih) * pi162*xx*pow(1.-xx,2)
+    hbard2q = hbard2q*sqrt(dlamq(siglow,hbarddatq.xm22h*yy,hbarddatq.xm32h*yy));
+    z1 = hbarddatq.xm12h*(1.-xx)+sigma*xx;
+    z2 = xx*(1.-xx)*hbarddatq.psqh;
+    xk2 = pow(xx,hbarddatq.ih) * pi162*xx*pow(1.-xx,2)
       *(2.*z1-z2)*z2/(z1*z1*pow(z1-z2,2)); 
-    return hbard2*xk2;
+    return hbard2q*xk2;
   case 3:
-    xlam = dlamq(siglow,hbarddat.xm22h*yy,hbarddat.xm32h*yy);
-    dlamm2 = 2.*(siglow-hbarddat.xm22h*yy-hbarddat.xm32h*yy)*
-      (1.-yy+xm3/xm2) -4*hbarddat.xm32h*yy*yy;
-    z1 =  hbarddat.xm12h*(1.-xx)+sigma*xx;
-    z2 = xx*(1.-xx)*hbarddat.psqh;
+    xlam = dlamq(siglow,hbarddatq.xm22h*yy,hbarddatq.xm32h*yy);
+    dlamm2 = 2.*(siglow-hbarddatq.xm22h*yy-hbarddatq.xm32h*yy)*
+      (1.-yy+xm3/xm2) -4*hbarddatq.xm32h*yy*yy;
+    z1 =  hbarddatq.xm12h*(1.-xx)+sigma*xx;
+    z2 = xx*(1.-xx)*hbarddatq.psqh;
     xk2 = -z2/(z1*(z1-z2));
     dk2dsig = xx*(2.*z1-z2)*z2/(z1*z1*pow(z1-z2,2));
-    hbard2 = hbard2*pow(xx,hbarddat.ih)*pi162*xx*(1.-xx)*
+    hbard2q = hbard2q*pow(xx,hbarddatq.ih)*pi162*xx*(1.-xx)*
         (xk2*dlamm2/(2.*sqrt(xlam))
          +sqrt(xlam)*(1.+xm3/xm2)/yy*dk2dsig );
-    return hbard2;
+    return hbard2q;
   case 4:
-    xlam = dlamq(siglow,hbarddat.xm22h*yy,hbarddat.xm32h*yy);
-      dlamm3 = 2.*(siglow-hbarddat.xm22h*yy-hbarddat.xm32h*yy)*
-	(1.-yy+xm2/xm3) -4*hbarddat.xm22h*yy*yy;
-      z1 =  hbarddat.xm12h*(1.-xx)+sigma*xx;
-      z2 = xx*(1.-xx)*hbarddat.psqh;
+    xlam = dlamq(siglow,hbarddatq.xm22h*yy,hbarddatq.xm32h*yy);
+      dlamm3 = 2.*(siglow-hbarddatq.xm22h*yy-hbarddatq.xm32h*yy)*
+	(1.-yy+xm2/xm3) -4*hbarddatq.xm22h*yy*yy;
+      z1 =  hbarddatq.xm12h*(1.-xx)+sigma*xx;
+      z2 = xx*(1.-xx)*hbarddatq.psqh;
       xk2 = -z2/(z1*(z1-z2));
       dk2dsig = xx*(2.*z1-z2)*z2/(z1*z1*pow(z1-z2,2));
-      hbard2 =hbard2*pow(xx,hbarddat.ih)*pi162*xx*(1.-xx)*
+      hbard2q =hbard2q*pow(xx,hbarddatq.ih)*pi162*xx*(1.-xx)*
        (xk2*dlamm3/(2.*sqrt(xlam))
 	+sqrt(xlam)*(1.+xm2/xm3)/yy*dk2dsig );
-    return hbard2;
+    return hbard2q;
   case 5:
-    xlam = dlamq(siglow,hbarddat.xm22h*yy,hbarddat.xm32h*yy);
-    dlamm2 = 2.*(siglow-hbarddat.xm22h*yy-hbarddat.xm32h*yy)*
-      (1.-yy+xm3/xm2) -4*hbarddat.xm32h*yy*yy;
-    z1 =  hbarddat.xm12h*(1.-xx)+sigma*xx;
-    z2 = xx*(1.-xx)*hbarddat.psqh;
+    xlam = dlamq(siglow,hbarddatq.xm22h*yy,hbarddatq.xm32h*yy);
+    dlamm2 = 2.*(siglow-hbarddatq.xm22h*yy-hbarddatq.xm32h*yy)*
+      (1.-yy+xm3/xm2) -4*hbarddatq.xm32h*yy*yy;
+    z1 =  hbarddatq.xm12h*(1.-xx)+sigma*xx;
+    z2 = xx*(1.-xx)*hbarddatq.psqh;
     dk2dm1 =(1.-xx)*(2.*z1-z2)*z2/(z1*z1*pow(z1-z2,2));
     dk2dm1sig = xx*(1.-xx)*(
            (-6.*z1+6.*z2)*z2/(pow(z1,3)*pow(z1-z2,2))
 	   +2.*(-3.*z1+2.*z2)*z2*z2/(pow(z1,3)*pow(z1-z2,3)) );
-    hbard2 = hbard2*pow(xx,hbarddat.ih)*pi162*xx*(1.-xx)*
+    hbard2q = hbard2q*pow(xx,hbarddatq.ih)*pi162*xx*(1.-xx)*
       (dk2dm1*dlamm2/(2.*sqrt(xlam))
        +sqrt(xlam)*(1.+xm3/xm2)/yy*dk2dm1sig );
-    return hbard2;
+    return hbard2q;
   case 6:
-    xlam = dlamq(siglow,hbarddat.xm22h*yy,hbarddat.xm32h*yy);
-    dlamm3 = 2.*(siglow-hbarddat.xm22h*yy-hbarddat.xm32h*yy)*
-      (1.-yy+xm2/xm3) -4*hbarddat.xm22h*yy*yy;
-    z1 =  hbarddat.xm12h*(1.-xx)+sigma*xx;
-    z2 = xx*(1.-xx)*hbarddat.psqh;
+    xlam = dlamq(siglow,hbarddatq.xm22h*yy,hbarddatq.xm32h*yy);
+    dlamm3 = 2.*(siglow-hbarddatq.xm22h*yy-hbarddatq.xm32h*yy)*
+      (1.-yy+xm2/xm3) -4*hbarddatq.xm22h*yy*yy;
+    z1 =  hbarddatq.xm12h*(1.-xx)+sigma*xx;
+    z2 = xx*(1.-xx)*hbarddatq.psqh;
     dk2dm1 = (1.-xx)*(2.*z1-z2)*z2/(z1*z1*pow(z1-z2,2));
     dk2dm1sig =  xx*(1.-xx)*(
 	     (-6.*z1+6.*z2)*z2/(pow(z1,3)*pow(z1-z2,2))
 	     +2.*(-3.*z1+2.*z2)*z2*z2/(pow(z1,3)*pow(z1-z2,3)) );
-    hbard2 = hbard2*pow(xx,hbarddat.ih)*pi162*xx*(1.-xx)*
+    hbard2q = hbard2q*pow(xx,hbarddatq.ih)*pi162*xx*(1.-xx)*
       (dk2dm1*dlamm3/(2.*sqrt(xlam))
        +sqrt(xlam)*(1.+xm2/xm3)/yy*dk2dm1sig );
-    return hbard2;
+    return hbard2q;
   case 7:
-    xlam = dlamq(siglow,hbarddat.xm22h*yy,hbarddat.xm32h*yy);
-    dlamm2 = 2.*(siglow-hbarddat.xm22h*yy-hbarddat.xm32h*yy)*
-      (1.-yy+xm3/xm2) -4*hbarddat.xm32h*yy*yy;
-    dlamm3 = 2.*(siglow-hbarddat.xm22h*yy-hbarddat.xm32h*yy)*
-      (1.-yy+xm2/xm3) -4*hbarddat.xm22h*yy*yy;
-    dlam23 = (siglow-hbarddat.xm22h*yy-hbarddat.xm32h*yy)/(xm2*xm3)
+    xlam = dlamq(siglow,hbarddatq.xm22h*yy,hbarddatq.xm32h*yy);
+    dlamm2 = 2.*(siglow-hbarddatq.xm22h*yy-hbarddatq.xm32h*yy)*
+      (1.-yy+xm3/xm2) -4*hbarddatq.xm32h*yy*yy;
+    dlamm3 = 2.*(siglow-hbarddatq.xm22h*yy-hbarddatq.xm32h*yy)*
+      (1.-yy+xm2/xm3) -4*hbarddatq.xm22h*yy*yy;
+    dlam23 = (siglow-hbarddatq.xm22h*yy-hbarddatq.xm32h*yy)/(xm2*xm3)
       +2.*(1.-yy+xm3/xm2)*(1.-yy+xm2/xm3)
       -4.*yy*yy;
-    z1 =  hbarddat.xm12h*(1.-xx)+sigma*xx;
-    z2 = xx*(1.-xx)*hbarddat.psqh;
+    z1 =  hbarddatq.xm12h*(1.-xx)+sigma*xx;
+    z2 = xx*(1.-xx)*hbarddatq.psqh;
     xk2 = -z2/(z1*(z1-z2));
     dk2dsig = xx*(2.*z1-z2)*z2/(z1*z1*pow(z1-z2,2));
     dk2dsig2= xx*xx*(
       (-6.*z1+6.*z2)*z2/(pow(z1,3)*pow(z1-z2,2))
       +2.*(-3.*z1+2.*z2)*z2*z2/(pow(z1,3)*pow(z1-z2,3)) );
-    hbard2 = hbard2*pow(xx,hbarddat.ih)*pi162*xx*(1.-xx)*(
+    hbard2q = hbard2q*pow(xx,hbarddatq.ih)*pi162*xx*(1.-xx)*(
        -xk2*dlamm2*dlamm3/(4.*xlam*sqrt(xlam))
        +xk2*dlam23/(2.*sqrt(xlam))
        +dlamm3*(1.+xm3/xm2)/yy*dk2dsig/(2.*sqrt(xlam))
@@ -355,18 +355,18 @@ double hbard2(const double x){
        +sqrt(xlam)/yy/(2.*xm2*xm3)*dk2dsig
        +sqrt(xlam)*siglow/(xm2*xm3)/(yy*yy)*dk2dsig2
 						   );
-    return hbard2;
+    return hbard2q;
   case 8:
-    xlam = dlamq(siglow,hbarddat.xm22h*yy,hbarddat.xm32h*yy);
-    dlamm2 = 2.*(siglow-hbarddat.xm22h*yy-hbarddat.xm32h*yy)*
-      (1.-yy+xm3/xm2) -4*hbarddat.xm32h*yy*yy;
-    dlamm3 = 2.*(siglow-hbarddat.xm22h*yy-hbarddat.xm32h*yy)*
-      (1.-yy+xm2/xm3) -4*hbarddat.xm22h*yy*yy;
-    dlam23 = (siglow-hbarddat.xm22h*yy-hbarddat.xm32h*yy)/(xm2*xm3)
+    xlam = dlamq(siglow,hbarddatq.xm22h*yy,hbarddatq.xm32h*yy);
+    dlamm2 = 2.*(siglow-hbarddatq.xm22h*yy-hbarddatq.xm32h*yy)*
+      (1.-yy+xm3/xm2) -4*hbarddatq.xm32h*yy*yy;
+    dlamm3 = 2.*(siglow-hbarddatq.xm22h*yy-hbarddatq.xm32h*yy)*
+      (1.-yy+xm2/xm3) -4*hbarddatq.xm22h*yy*yy;
+    dlam23 = (siglow-hbarddatq.xm22h*yy-hbarddatq.xm32h*yy)/(xm2*xm3)
       +2.*(1.-yy+xm3/xm2)*(1.-yy+xm2/xm3)
       -4.*yy*yy;
-    z1 =  hbarddat.xm12h*(1.-xx)+sigma*xx;
-    z2 = xx*(1.-xx)*hbarddat.psqh;
+    z1 =  hbarddatq.xm12h*(1.-xx)+sigma*xx;
+    z2 = xx*(1.-xx)*hbarddatq.psqh;
     xk2 =  (1.-xx)*(2.*z1-z2)*z2/(z1*z1*pow(z1-z2,2));
     dk2dsig = xx*(1.-xx)*(
 	  (-6.*z1+6.*z2)*z2/(pow(z1,3)*pow(z1-z2,2))
@@ -375,7 +375,7 @@ double hbard2(const double x){
     (24.*z1*z1-48.*z1*z2+24.*z2*z2)*z2/(pow(z1,4)*pow(z1-z2,3))
     +3.*(12.*z1*z1-16.*z1*z2+6.*z2*z2)*z2*z2/(pow(z1*(z1-z2),4))
 			    );
-    hbard2 = hbard2*pow(xx,hbarddat.ih)*pi162*xx*(1.-xx)*(
+    hbard2q = hbard2q*pow(xx,hbarddatq.ih)*pi162*xx*(1.-xx)*(
        -xk2*dlamm2*dlamm3/(4.*xlam*sqrt(xlam))
        +xk2*dlam23/(2.*sqrt(xlam))
        +dlamm3*(1.+xm3/xm2)/yy*dk2dsig/(2.*sqrt(xlam))
@@ -383,28 +383,28 @@ double hbard2(const double x){
        +sqrt(xlam)/yy/(2.*xm2*xm3)*dk2dsig
        +sqrt(xlam)*siglow/(xm2*xm3)/(yy*yy)*dk2dsig2
 						 );
-    return hbard2;
+    return hbard2q;
   default:
-    std::cout << "wrong iprop = "<<hbardat.iprop<<" in hbarquenched2\n";
+    std::cout << "wrong iprop = "<<hbardatq.iprop<<" in hbarquenched2\n";
     return 0.;
   }
   return 0.;
 }
 
-double hbard1(const double y){
-  hbarddat.sigm1 = y;
-  return DINTEGRAL(hbard2,0.,1.,precisionquenchedsunsetintegrals/5.);
+double hbard1q(const double y){
+  hbarddatq.sigm1 = y;
+  return DINTEGRAL(hbard2q,0.,1.,precisionquenchedsunsetintegrals/5.);
 }
 
 double hbard(const int iprop, const double xm12,const double xm22,
 	     const double xm32, const double psq,const int i){
-  hbarddat.ih = i;
-  hbarddat.iprop = iprop;
-  hbarddat.psqh = psq;
-  hbarddat.xm12h = xm12;
-  hbarddat.xm22h = xm22;
-  hbarddat.xm32h = xm32;
-  return DINTEGRAL(hbard1,0.,1.,precisionquenchedsunsetintegrals);
+  hbarddatq.ih = i;
+  hbarddatq.iprop = iprop;
+  hbarddatq.psqh = psq;
+  hbarddatq.xm12h = xm12;
+  hbarddatq.xm22h = xm22;
+  hbarddatq.xm32h = xm32;
+  return DINTEGRAL(hbard1q,0.,1.,precisionquenchedsunsetintegrals);
 }
 //xxxxxxxxxxxxx lm=0 cases xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 // these functions ASSUME lm = 0

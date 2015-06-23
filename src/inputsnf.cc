@@ -29,13 +29,13 @@ quarkmassnf::quarkmassnf(const double f0in, const double muin, const int nqin){
 }
 quarkmassnf::quarkmassnf(const vector<double> B0mqin, const double f0in,
 			 const double muin){
-  nq = B0mqin.size();
+  nq = int(B0mqin.size());
   f0 = f0in;
   mu = muin;
   B0mq = B0mqin;
 }
 void quarkmassnf::setB0mq(const vector<double> B0mqin){
-  nq = B0mqin.size();
+  nq = int(B0mqin.size());
   B0mq = B0mqin;
 }
 void quarkmassnf::setB0mq(const double B0mqin, const int i){

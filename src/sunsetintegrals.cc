@@ -615,7 +615,7 @@ double h310(const double m1sq, const double m2sq,const double m3sq,
   double ln1 = log(m1sq/xmu2);
   double ln2 = log(m2sq/xmu2);
   double ln3 = log(m3sq/xmu2);
-  double ln4 = ln1+ln2+ln3;
+  //double ln4 = ln1+ln2+ln3;
   double dm = m1sq-m2sq-m3sq;
   double lm = dm*dm-4.*m2sq*m3sq;
   double hh31 = 0.;
@@ -667,7 +667,7 @@ double h310p(const double m1sq, const double m2sq,const double m3sq,
   double ln1 = log(m1sq/xmu2);
   double ln2 = log(m2sq/xmu2);
   double ln3 = log(m3sq/xmu2);
-  double ln4 = ln1+ln2+ln3;
+  //double ln4 = ln1+ln2+ln3;
   double dm = m1sq-m2sq-m3sq;
   double lm = dm*dm-4.*m2sq*m3sq;
   double hh31 = 0.;

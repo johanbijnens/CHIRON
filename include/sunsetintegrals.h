@@ -12,6 +12,7 @@
 #ifndef SUNSETINTEGRALS_H
 #define SUNSETINTEGRALS_H
 
+#include<complex>
 
 void setprecisionsunsetintegrals(const double eps);
 double getprecisionsunsetintegrals(void);

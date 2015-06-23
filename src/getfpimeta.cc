@@ -25,7 +25,7 @@ physmass getfpimeta6(const double mpiin, const double mkin,
   double me0 = sqrt(me2lo+meta4(mass0,liin)+meta6(mass0,liin,ciin));
   double fpi0 = F0*(1.+fpi4(mass0,liin)+fpi6(mass0,liin,ciin));
   physmass mass1;
-  double me1,fpi1,fk1,feta1;
+  double me1,fpi1;
   for(int i=1;i<=1000;i++){
     mass1 = physmass(mpiin,mkin,me0,fpi0,mu);
     mp2lo = pow(mpiin,2)-mpi4(mass1,liin)-mpi6(mass1,liin,ciin);
@@ -57,7 +57,7 @@ physmass getfpimeta4(const double mpiin, const double mkin,
   double me0 = sqrt(me2lo+meta4(mass0,liin));
   double fpi0 = F0*(1.+fpi4(mass0,liin));
   physmass mass1;
-  double me1,fpi1,fk1,feta1;
+  double me1,fpi1;
   for(int i=1;i<=1000;i++){
     mass1 = physmass(mpiin,mkin,me0,fpi0,mu);
     mp2lo = pow(mpiin,2)-mpi4(mass1,liin);
