@@ -94,10 +94,10 @@ $(TESTCHIRON): %: test/%.cc  libjbnumlib.a libchiron.a
 .PHONY: clean installjbnumlib installchiron doc
 
 installchiron: libjbnumlib.a libchiron.a
-	cp libjbnumlib.a libchiron ~/lib ; cp include/jbnumlib.h ~/include
+	cp libjbnumlib.a libchiron.a ~/lib ; cp include/jbnumlib.h $(INCLUDECHIRON) ~/include
 
 installjbnumlib: libjbnumlib.a
-	cp libjbnumlib.a ~/lib ; cp include/jbnumlib.h $INCLUDECHIRON ~/include
+	cp libjbnumlib.a ~/lib ; cp include/jbnumlib.h ~/include
 
 clean:
 	rm *.o *.a a.out lib/*.a \

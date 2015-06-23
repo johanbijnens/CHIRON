@@ -40,8 +40,13 @@ extra q added at the end of the names
 150618
 finite volume lowest order to the manual
 
+150623
+PQ finite volume to the manual and some typos corrected
+finite volume lowest order testoutputs and testprogram
+testmassdecayvevloV.cc
+testmassdecayvevloV.dat
+
 To be done:
-finite volume lowest order testoutputs
 PQ finitevolume add publication
-PQ finite volume to the manual
+
 

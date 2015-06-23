@@ -163,10 +163,11 @@ main directory in the remainder.
 The main directory contains the files \mytt{COPYING}, \mytt{INSTRUCTIONS},
 \mytt{GUIDELINES} and a \mytt{Makefile}.
 
-The subdirectory contains the documentation. The latest published article
+The subdirectory \mytt{doc}
+contains the documentation. The latest published article
 about \textsc{CHIRON}, this manual (\mytt{manual.tex}), a list of files
 (\mytt{filelist.txt}) and a summary of things added since earlier versions
-(\mytt{Changelog.txt}).
+(\mytt{Changelog.vvv.to.www.txt}).
 
 The subdirectory \mytt{lib} will after compiling contain the compiled
 libraries \mytt{libjbnumlib.a} and \mytt{libchiron.a}.
@@ -3137,7 +3138,7 @@ For many applications it is useful to calculate the
 very time consuming parts, those labeled \mytt{6RV}, once and store them.
 They only depend nontrivially on the masses and size of the finite volume.
 The decay constant dependence is very simple, an overall factor at each order,
-and there is dependence
+and there is no dependence
 on the NLO LECs $L_i^r$.
 
 The results presented in this section are with periodic boundary conditions
@@ -3323,7 +3324,7 @@ For many applications it is useful to calculate the
 very time consuming parts, those labeled \mytt{6RV}, once and store them.
 They only depend nontrivially on the masses and size of the finite volume.
 The decay constant dependence is very simple, an overall factor at each order,
-and there is dependence
+and there is no dependence
 on the NLO LECs $L_i^r$.
 
 The results presented in this section are with periodic boundary conditions
@@ -3337,6 +3338,7 @@ in other papers the corrections to the mass itself are sometimes
 quoted.} are defined as the difference of the mass squared in finite volume
 and in infinite volume:
 \begin{eqnarray}
+\label{defmassloV}
 \Delta^V m^2_a &=& m^{2V}_a-m^{2\,V=\infty}_a
 = m_a^{2V(4)0}+ m_a^{2V(6)0}\,.
 \nonumber\\
@@ -3527,6 +3529,10 @@ The quark masses
 The masses are labelled starting with \mytt{m} and the decay constants starting with \mytt{f}. \mytt{f0} is $F_0$ the three flavour chiral limit decay constant
 and \mytt{mu} is the subtraction scale $\mu$.
 
+For the finite volume cases the names have an additional \mytt{V}
+and a \mytt{b} or \mytt{t} dependending on whether the Bessel
+function or the theta function method is used for the finite volume
+integrals. \mytt{L} is the spatial extent of the finite directions.
 
 \subsection{Masses}
 
@@ -3693,6 +3699,187 @@ Two valence mass, three sea mass::\\
 
 Defined in \newfunction{massdecayvevPQ.h}, implemented in \newfunction{massdecayvevPQ.cc} and examples of use in \newfunction{testmassdecayvevPQ.cc}.
 
+
+\subsection{Masses at finite volume}
+
+The expressions treated in this section have been
+derived in \cite{FVtemp}. It contains the routines for the finite volume
+corrections for the masses of the off-diagonal or charged mesons
+in partially quenched ChPT with three sea quark flavours.
+
+A general remark is that care should be
+taken to set the precision in the loop integrals sufficiently high.
+For the one-loop integrals setting it very high is usually no problem.
+For the sunset integrals the evaluation can become very slow. It is
+strongly recommended to play around with the settings and compare the outputs
+for the two ways to evaluate the integral. 
+The theta and Bessel function evaluation approach the correct answer
+differently.
+For most cases
+it is possible to have \mytt{rsacc} set smaller than \mytt{racc}.
+
+For many applications it is useful to calculate the
+very time consuming parts, those labeled \mytt{6RV}, once and store them.
+They only depend nontrivially on the masses and size of the finite volume.
+The decay constant dependence is very simple, an overall factor at each order,
+and there is no dependence
+on the NLO LECs $L_i^r$.
+
+The results presented in this section are with periodic boundary conditions
+and an infinite extension in the time direction. They are also restricted
+to the case where the particle is at rest, i.e. $\vec p=0$.
+
+The expansion are defined similar to (\ref{defmassloV}) via
+\begin{eqnarray}
+\label{massesPQVnf3}
+\Delta^V m^2_a &=& m^{2V}_a-m^{2\,V=\infty}_a
+= m_a^{2V(4)0}+ m_a^{2V(6)0}\,.
+\nonumber\\
+m_a^{2V(6)0} &=& m_{a\,L}^{2V(6)0}+m_{a\,R}^{2V(6)0}\,.
+\end{eqnarray}
+The masses are for the off-diagonal or charged meson with two different
+valence quarks but the masses can be
+equal or different.
+
+\mytt{x} should be \mytt{b} or \mytt{t} depening on whether you want to use
+the finite volume integrals using bessel functions or theta functions.
+\\
+
+One valence mass, one sea mass::\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm4\},f0,mu,2)}\\
+\mytt{double \newfunction{mv1s1nf3p4Vx}(quarkmassnf mass, double L)} returns $m_a^{2V(4)0}$\\
+\mytt{double \newfunction{mv1s1nf3p6Vx}(quarkmassnf mass, Linf Liin,double L)} returns $m_{a}^{2V(6)0}$\\
+\mytt{double \newfunction{mv1s1nf3p6LVx}(quarkmassnf mass, Linf Liin, double L)} returns $m_{a\,L}^{2V(6)0}$\\
+\mytt{double \newfunction{mv1s1nf3p6RVx}(quarkmassnf mass, double L)} returns $m_{a\,R}^{2V(6)0}$\\
+
+
+Two valence mass, one sea mass::\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4\},f0,mu,3)}\\
+\mytt{double \newfunction{mv2s1nf3p4Vx}(quarkmassnf mass, double L)} returns $m_a^{2V(4)0}$\\
+\mytt{double \newfunction{mv2s1nf3p6Vx}(quarkmassnf mass, Linf Liin, double L)} returns $m_{a}^{2V(6)0}$\\
+\mytt{double \newfunction{mv2s1nf3p6LVx}(quarkmassnf mass, Linf Liin, double L)} returns $m_{a\,L}^{2V(6)0}$\\
+\mytt{double \newfunction{mv2s1nf3p6RVx}(quarkmassnf mass, double L)} returns $m_{a\,R}^{2V(6)0}$\\
+
+One valence mass, two sea mass::\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm4,Bm6\},f0,mu,3)}\\
+\mytt{double \newfunction{mv1s1nf3p4Vx}(quarkmassnf mass, double L)} returns $m_a^{2V(4)0}$\\
+\mytt{double \newfunction{mv1s1nf3p6Vx}(quarkmassnf mass, Linf Liin, double L)} returns $m_{a}^{2V(6)0}$\\
+\mytt{double \newfunction{mv1s1nf3p6LVx}(quarkmassnf mass, Linf Liin, double L)} returns $m_{a\,L}^{2V(6)0}$\\
+\mytt{double \newfunction{mv1s1nf3p6RVx}(quarkmassnf mass, double L)} returns $m_{a\,R}^{2V(6)0}$\\
+
+Two valence mass, two sea mass::\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4,Bm6\},f0,mu,4)}\\
+\mytt{double \newfunction{mv2s2nf3p4Vx}(quarkmassnf mass, double L)} returns $m_a^{2V(4)0}$\\
+\mytt{double \newfunction{mv2s2nf3p6Vx}(quarkmassnf mass, Linf Liin, double L)} returns $m_{a}^{2V(6)0}$\\
+\mytt{double \newfunction{mv2s2nf3p6LVx}(quarkmassnf mass, Linf Liin, double L)} returns $m_{a\,L}^{2V(6)0}$\\
+\mytt{double \newfunction{mv2s2nf3p6RVx}(quarkmassnf mass, double L)} returns $m_{a\,R}^{2V(6)0}$\\
+
+One valence mass, three sea mass::\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm4,Bm5,Bm6\},f0,mu,4)}\\
+\mytt{double \newfunction{mv1s3nf3p4Vx}(quarkmassnf mass, double L)} returns $m_a^{2V(4)0}$\\
+\mytt{double \newfunction{mv1s3nf3p6Vx}(quarkmassnf mass, Linf Liin, double L)} returns $m_{a}^{2V(6)0}$\\
+\mytt{double \newfunction{mv1s3nf3p6LVx}(quarkmassnf mass, Linf Liin, double L)} returns $m_{a\,L}^{2V(6)0}$\\
+\mytt{double \newfunction{mv1s3nf3p6RVx}(quarkmassnf mass, double L)} returns $m_{a\,R}^{2V(6)0}$\\
+
+Two valence mass, three sea mass::\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4,Bm5,Bm6\},f0,mu,5)}\\
+\mytt{double \newfunction{mv2s3nf3p4Vx}(quarkmassnf mass, double L)} returns $m_a^{2V(4)0}$\\
+\mytt{double \newfunction{mv2s3nf3p6Vx}(quarkmassnf mass, Linf Liin, double L)} returns $m_{a}^{2V(6)0}$\\
+\mytt{double \newfunction{mv2s3nf3p6LVx}(quarkmassnf mass, Linf Liin, double L)} returns $m_{a\,L}^{2V(6)0}$\\
+\mytt{double \newfunction{mv2s3nf3p6RVx}(quarkmassnf mass, double L)} returns $m_{a\,R}^{2V(6)0}$\\
+
+Defined in \newfunction{massdecayvevPQV.h}, implemented in \newfunction{massdecayvevPQV.cc} and examples of use in \newfunction{testmassdecayvevPQV.cc}.
+
+\subsection{Decay constants at finite volume}
+
+The expressions treated in this section have been
+derived in \cite{FVtemp}. It contains the routines for the finite volume
+corrections for the decay constants of the off-diagonal or charged mesons
+in partially quenched ChPT with three sea quark flavours.
+
+A general remark is that care should be
+taken to set the precision in the loop integrals sufficiently high.
+For the one-loop integrals setting it very high is usually no problem.
+For the sunset integrals the evaluation can become very slow. It is
+strongly recommended to play around with the settings and compare the outputs
+for the two ways to evaluate the integral. 
+The theta and Bessel function evaluation approach the correct answer
+differently.
+For most cases
+it is possible to have \mytt{rsacc} set smaller than \mytt{racc}.
+
+For many applications it is useful to calculate the
+very time consuming parts, those labeled \mytt{6RV}, once and store them.
+They only depend nontrivially on the masses and size of the finite volume.
+The decay constant dependence is very simple, an overall factor at each order,
+and there is no dependence
+on the NLO LECs $L_i^r$.
+
+The results presented in this section are with periodic boundary conditions
+and an infinite extension in the time direction. They are also restricted
+to the case where the particle is at rest, i.e. $\vec p=0$.
+
+The expansion are defined similar to (\ref{defdecayloV}) via
+\begin{eqnarray}
+\label{decayPQVnf3}
+\Delta^V F_a &=& F^{V}_a-F^{\,V=\infty}_a
+= F_0\left(F_a^{V(4)0}+ F_a^{V(6)0}\right)\,.
+\nonumber\\
+F_a^{V(6)0} &=& F_{a\,L}^{V(6)0}+F_{a\,R}^{V(6)0}\,.
+\end{eqnarray}
+\\
+The decay constants are for the off-diagonal or charged meson with two different
+valence quarks but the masses can be
+equal or different.
+
+\mytt{x} should be \mytt{b} or \mytt{t} depening on whether you want to use
+the finite volume integrals using bessel functions or theta functions.
+\\
+
+One valence mass, one sea mass::\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm4\},f0,mu,2)}\\
+\mytt{double \newfunction{fv1s1nf3p4}(quarkmassnf mass, double L)} returns $F_a^{V(4)0}$\\
+\mytt{double \newfunction{fv1s1nf3p6}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a}^{V(6)0}$\\
+\mytt{double \newfunction{fv1s1nf3p6L}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a\,L}^{V(6)0}$\\
+\mytt{double \newfunction{fv1s1nf3p6R}(quarkmassnf mass, double L)} returns $F_{a\,R}^{V(6)0}$\\
+
+
+Two valence mass, one sea mass::\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4\},f0,mu,3)}\\
+\mytt{double \newfunction{fv2s1nf3p4}(quarkmassnf mass, double L)} returns $F_a^{V(4)0}$\\
+\mytt{double \newfunction{fv2s1nf3p6}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a}^{V(6)0}$\\
+\mytt{double \newfunction{fv2s1nf3p6L}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a\,L}^{V(6)0}$\\
+\mytt{double \newfunction{fv2s1nf3p6R}(quarkmassnf mass, double L)} returns $F_{a\,R}^{V(6)0}$\\
+
+One valence mass, two sea mass::\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm4,Bm6\},f0,mu,3)}\\
+\mytt{double \newfunction{fv1s1nf3p4}(quarkmassnf mass, double L)} returns $F_a^{V(4)0}$\\
+\mytt{double \newfunction{fv1s1nf3p6}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a}^{V(6)0}$\\
+\mytt{double \newfunction{fv1s1nf3p6L}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a\,L}^{V(6)0}$\\
+\mytt{double \newfunction{fv1s1nf3p6R}(quarkmassnf mass, double L)} returns $F_{a\,R}^{V(6)0}$\\
+
+Two valence mass, two sea mass::\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4,Bm6\},f0,mu,4)}\\
+\mytt{double \newfunction{fv2s2nf3p4}(quarkmassnf mass, double L)} returns $F_a^{V(4)0}$\\
+\mytt{double \newfunction{fv2s2nf3p6}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a}^{V(6)0}$\\
+\mytt{double \newfunction{fv2s2nf3p6L}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a\,L}^{V(6)0}$\\
+\mytt{double \newfunction{fv2s2nf3p6R}(quarkmassnf mass, double L)} returns $F_{a\,R}^{V(6)0}$\\
+
+One valence mass, three sea mass::\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm4,Bm5,Bm6\},f0,mu,4)}\\
+\mytt{double \newfunction{fv1s3nf3p4}(quarkmassnf mass, double L)} returns $F_a^{V(4)0}$\\
+\mytt{double \newfunction{fv1s3nf3p6}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a}^{V(6)0}$\\
+\mytt{double \newfunction{fv1s3nf3p6L}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a\,L}^{V(6)0}$\\
+\mytt{double \newfunction{fv1s3nf3p6R}(quarkmassnf mass, double L)} returns $F_{a\,R}^{V(6)0}$\\
+
+Two valence mass, three sea mass::\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4,Bm5,Bm6\},f0,mu,5)}\\
+\mytt{double \newfunction{fv2s3nf3p4}(quarkmassnf mass, double L)} returns $F_a^{V(4)0}$\\
+\mytt{double \newfunction{fv2s3nf3p6}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a}^{V(6)0}$\\
+\mytt{double \newfunction{fv2s3nf3p6L}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a\,L}^{V(6)0}$\\
+\mytt{double \newfunction{fv2s3nf3p6R}(quarkmassnf mass, double L)} returns $F_{a\,R}^{V(6)0}$\\
+
+Defined in \newfunction{massdecayvevPQV.h}, implemented in \newfunction{massdecayvevPQV.cc} and examples of use in \newfunction{testmassdecayvevPQV.cc}.
 
 \section*{Acknowledgements}
 
@@ -4463,6 +4650,9 @@ J. Comput. Appl. Math. 2 (1976) 207-217.
    [Erratum-ibid.\ B {\bf 598} (2001) 665]
   [hep-ph/0003258].
   %%CITATION = HEP-PH/0003258;%%
+
+\bibitem{FVtemp}
+  J.~Bijnens and T.~Rössler, to be published
 
 \end{thebibliography}
 
