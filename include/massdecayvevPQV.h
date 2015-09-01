@@ -7,7 +7,11 @@
 // results for the finite volume correction
 // to the partially quenched masses and decay constants
 // derived in
-// J.~Bijnens and T.~Rössler, to be published
+// J.~Bijnens and T.~Rössler,
+//  %``Finite Volume for Three-Flavour Partially Quenched Chiral Perturbation Theory through NNLO in the Meson Sector,''
+//  arXiv:1508.07238 [hep-lat].
+//  %%CITATION = ARXIV:1508.07238;%%
+
 //
 // contains the finite volume corrections from the
 // partially quenched  expressions for masses and decay

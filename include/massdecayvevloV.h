@@ -1,6 +1,6 @@
 // massdecayvevloV.h is part of the 
 // CHIRON ChPT at two loops program collection
-// Copyright (C) 2014 Johan Bijnens, v1.0
+// Copyright (C) 2014-2015 Johan Bijnens, v1.1
 // CHIRON is licenced under the GNU GPL version 2 or later,
 // see COPYING for details.
 // Please respect the Guidelines, see GUIDELINES for details.
@@ -36,6 +36,14 @@ double feta4loVt(const lomass mass, const double L);
 double feta6LloVt(const lomass mass, const Li li,const double L);
 double feta6RloVt(const lomass mass, const double L);
 double feta6loVt(const lomass mass, const Li li,const double L);
+double qqup4loVt(const lomass mass, const double L);
+double qqup6loVt(const lomass mass, const Li liin, const double L);
+double qqup6LloVt(const lomass mass, const Li Liin, const double L);
+double qqup6RloVt(const lomass mass, const double L);
+double qqstrange4loVt(const lomass mass, const double L);
+double qqstrange6loVt(const lomass mass, const Li liin, const double L);
+double qqstrange6LloVt(const lomass mass, const Li Liin, const double L);
+double qqstrange6RloVt(const lomass mass, const double L);
 
 // Bessel functions
 double mpi4loVb(const lomass mass, const double L);
@@ -62,6 +70,14 @@ double feta4loVb(const lomass mass, const double L);
 double feta6LloVb(const lomass mass, const Li li,const double L);
 double feta6RloVb(const lomass mass, const double L);
 double feta6loVb(const lomass mass, const Li li,const double L);
+double qqup4loVb(const lomass mass, const double L);
+double qqup6loVb(const lomass mass, const Li liin, const double L);
+double qqup6LloVb(const lomass mass, const Li Liin, const double L);
+double qqup6RloVb(const lomass mass, const double L);
+double qqstrange4loVb(const lomass mass, const double L);
+double qqstrange6loVb(const lomass mass, const Li liin, const double L);
+double qqstrange6LloVb(const lomass mass, const Li Liin, const double L);
+double qqstrange6RloVb(const lomass mass, const double L);
 
 
 #endif //  MASSDECAYVEVLOV_H

@@ -1,0 +1,21 @@
+# the files git status will not list:
+#from compiling:
+*.o
+
+#from LaTeX
+*.log
+*.dvi
+*.aux
+*.ilg
+*.idx
+*.ind
+*.out
+*.toc
+
+#emacs
+*~
+
+doc/reftest.tex
+makenewversion.csh
+libchiron.a
+libjbnumlib.a

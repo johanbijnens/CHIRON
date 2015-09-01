@@ -27,20 +27,29 @@ OBJECTSJBNUMLIB = jbdgauss.o jbdcauch.o jbwgauss.o \
 OBJECTSCHIRON = inputs.o Li.o Ci.o inputsnf.o Linf.o Ki.o \
        massdecayvev.o getfpimeta.o \
        massdecayvevlo.o massdecayvevPQ.o \
+       massdecayvevnf.o massdecayvevnfPQ.o \
        oneloopintegrals.o sunsetintegrals.o finitevolumeoneloopintegrals.o \
        finitevolumesunsetintegrals.o quenchedsunsetintegrals.o
 
-OBJECTSCHIRONTHETA =  massdecayvevVt.o massdecayvevloVt.o massdecayvevPQVt.o
-OBJECTSCHIRONBESSEL =  massdecayvevVb.o massdecayvevloVb.o massdecayvevPQVb.o
+OBJECTSCHIRONTHETA =  massdecayvevVt.o massdecayvevloVt.o massdecayvevPQVt.o \
+       massdecayvevnfVt.o massdecayvevnfPQVt.o
+OBJECTSCHIRONBESSEL =  massdecayvevVb.o massdecayvevloVb.o massdecayvevPQVb.o \
+       massdecayvevnfVb.o massdecayvevnfPQVb.o
 OBJECTSCHIRON2 = $(OBJECTSCHIRONTHETA) $(OBJECTSCHIRONBESSEL)
 
 INCLUDECHIRON =  include/inputs.h include/Li.h include/Ci.h\
        include/inputsnf.h include/Linf.h include/Ki.h \
-       include/massdecayvev.h include/massdecayvevPQ.h\
-       include/oneloopintegrals.h include/sunsetintegrals.h\
+       include/massdecayvev.h \
+       include/massdecayvevlo.h \
+       include/massdecayvevPQ.h\
+       include/massdecayvevnf.h \
+       include/massdecayvevnfPQ.h \
+       include/oneloopintegrals.h \
+       include/sunsetintegrals.h\
        include/finitevolumeoneloopintegrals.h\
        include/finitevolumesunsetintegrals.h\
-       include/massdecayvevV.h include/massdecayvevloV.h \
+       include/massdecayvevV.h \
+       include/massdecayvevloV.h \
        include/massdecayvevPQV.h\
        include/quenchedsunsetintegrals.h 
 
@@ -51,7 +60,7 @@ TESTCHIRON = testintegralsreal testintegralsrealsingular \
        testfinitevolumeoneloopintegrals testfinitevolumesunsetintegrals \
        testmassdecayvevV testquenchedsunsetintegrals testLinf testKi \
        testmassdecayvevlo testmassdecayvevPQ testmassdecayvevPQV \
-       testmassdecayvevloV
+       testmassdecayvevloV testmassdecayvevnf 
 
 all: libchiron.a libjbnumlib.a
 
@@ -69,6 +78,12 @@ massdecayvevloVt.o: src/massdecayvevloV.cc include/massdecayvevloV.h
 massdecayvevPQVt.o: src/massdecayvevPQV.cc include/massdecayvevPQV.h
 	$(CC) -c $(CFLAGS) -D CHIRONTHETA -o massdecayvevPQVt.o src/massdecayvevPQV.cc
 
+massdecayvevnfVt.o: src/massdecayvevnfV.cc include/massdecayvevnfV.h
+	$(CC) -c $(CFLAGS) -D CHIRONTHETA -o massdecayvevnfVt.o src/massdecayvevnfV.cc
+
+massdecayvevnfPQVt.o: src/massdecayvevnfPQV.cc include/massdecayvevnfPQV.h
+	$(CC) -c $(CFLAGS) -D CHIRONTHETA -o massdecayvevnfPQVt.o src/massdecayvevnfPQV.cc
+
 massdecayvevVb.o: src/massdecayvevV.cc include/massdecayvevV.h
 	$(CC) -c $(CFLAGS) -D CHIRONBESSEL -o massdecayvevVb.o src/massdecayvevV.cc
 
@@ -77,6 +92,12 @@ massdecayvevloVb.o: src/massdecayvevloV.cc include/massdecayvevloV.h
 
 massdecayvevPQVb.o: src/massdecayvevPQV.cc include/massdecayvevPQV.h
 	$(CC) -c $(CFLAGS) -D CHIRONBESSEL -o massdecayvevPQVb.o src/massdecayvevPQV.cc
+
+massdecayvevnfVb.o: src/massdecayvevnfV.cc include/massdecayvevnfV.h
+	$(CC) -c $(CFLAGS) -D CHIRONBESSEL -o massdecayvevnfVb.o src/massdecayvevnfV.cc
+
+massdecayvevnfPQVb.o: src/massdecayvevnfPQV.cc include/massdecayvevnfPQV.h
+	$(CC) -c $(CFLAGS) -D CHIRONBESSEL -o massdecayvevnfPQVb.o src/massdecayvevnfPQV.cc
 
 $(OBJECTSJBNUMLIB): %.o: src/%.cc
 	$(CC) -c $(CFLAGS) $< -o $@

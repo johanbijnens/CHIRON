@@ -33,8 +33,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % change these when updating
 % remember to run makeindex manual and run latex a few times afterwards
-\newcommand{\chironversion}{v0.53}
-\newcommand{\versiondate}{June 2015}
+\newcommand{\chironversion}{v0.54}
+\newcommand{\versiondate}{September 2015}
 
 \begin{document}
 \begin{titlepage}
@@ -90,7 +90,7 @@ version 2 or later, which is reproduced in App.~\ref{appGPL}.
 Kheiron, $X\varepsilon\iota\rho\omega\nu$, or Chiron, was the wisest
 and eldest of the Centaurs, half-horse men of Greek mythology.
 His name comes from the Greek word for hand (Kheir)
-which is also the origin of the word chiral which is his name was deemed
+which is also the origin of the word chiral which is why his name was deemed
 appropriate for this package \cite{chiron}.
 
 \section{Guidelines}
@@ -138,7 +138,7 @@ This might lead to degrading of precision in unexpected places. Use common
 
 Finally, there are a number of internal functions and extensions
 already present in the source code but not yet documented in this manual.
-These might change and have not been tested as well as the doumented ones.
+These might change and have not been tested as well as the documented ones.
 In particular interfaces etc. might change.
 
 \section{Files, installation and testroutines}
@@ -200,7 +200,7 @@ for the testing programs.
 
 ``make clean'' can be used to remove many of the files created during compiling.
 
-The actual instalation is by putting the contents of the \mytt{include}
+The actual installation is by putting the contents of the \mytt{include}
 directory somewhere in the include path of your compiler and the two
 files \mytt{libjbnumlib.a} and \mytt{libchiron.a} somewhere in the library
 path. For many \cpp\ compilers the paths are given in the environment
@@ -1220,18 +1220,20 @@ examples of use in \mytt{testCi.cc}.
 \subsubsection{Class: \newfunction{quarkmassnf}}
 
 \mytt{quarkmassnf(f0in=0.090, muin=0.77, nqin=3)}\\
-\mytt{quarkmassnf(const vector<double> B0mqin,f0in=0.090, muin=0.77)}
+\mytt{quarkmassnf(const vector<double> B0mqin,f0in=0.090, muin=0.77)}\\
+\mytt{quarkmassnf(const lomassnf mass)}
 
 
 \mytt{const double: f0in,muin}\\
 \mytt{const int: nfin}\\
 \mytt{const vector<double> B0mqin}\\
+\mytt{const lomassnf mass}\\
 Private data: \mytt{vector<double> B0mq},\mytt{double f0,mu},
 \mytt{int nq}.
 
 Physical quantities: $B_0 m_i$ quark masses multiplied by $B_0$,
 lowest order (pion-)decay constant and subtraction scale $\mu$.
-The quantities $B_0 mi$ are the $n_q=\mytt{nq}$
+The quantities $B_0 m_i$ are the $n_q=\mytt{nq}$
 quark masses multiplied by the LEC $B_0$ \cite{Gasser:1984gg},
 $B_0$ for the relevant number of quarks $n_F$.
 These are independent of the QCD scale. The lowest order charged kaon mass
@@ -1254,11 +1256,11 @@ return one value as the function value.\\
 \mytt{void \newfunction{out}(vector<double> \&B0mq) const;}\\
 \mytt{void \newfunction{out}(vector<double> \&B0mq, double \&f0out, double \&muout) const;}\\
 \mytt{void \newfunction{out}(vector<double> \&B0mq, double \&f0out, double \&muout, int \&nq) const;}\\
-\mytt{int \newfunction{getnq}(void) const;}
-\mytt{vector<double> \newfunction{getB0mq}(void) const;}
-\mytt{double \newfunction{getB0mq}(const int i) const;}
-\mytt{double \newfunction{getf0}(void) const;}
-\mytt{double \newfunction{getmu}(void) const;}
+\mytt{int \newfunction{getnq}(void) const;}\\
+\mytt{vector<double> \newfunction{getB0mq}(void) const;}\\
+\mytt{double \newfunction{getB0mq}(const int i) const;}\\
+\mytt{double \newfunction{getf0}(void) const;}\\
+\mytt{double \newfunction{getmu}(void) const;}\\
 
 Operators defined: \newfunction{<<}, \newfunction{>>} and \newfunction{==}.
 
@@ -1272,21 +1274,78 @@ An error will occur if any of the data members is zero.\\
 Defined in \mytt{inputsnf.h}, implemented in \mytt{inputsnf.cc},
 examples of use in \mytt{testinputsnf.cc}.
 
+\subsubsection{Class: \newfunction{lomassnf}}
+
+\mytt{lomassnf(f0in=0.090, muin=0.77, nmassin=3)}\\
+\mytt{lomassnf(const vector<double> massin,f0in=0.090, muin=0.77)}\\
+\mytt{lomassnf(const quarkmassnf mass)}
+
+\mytt{const double: f0in,muin}\\
+\mytt{const int: nfin}\\
+\mytt{const vector<double> massin}\\
+Private data: \mytt{vector<double> mass},\mytt{double f0,mu},
+\mytt{int nmass}.
+
+Physical quantities: $m_{ii}$ the lowest order meson
+masses,
+lowest order (pion-)decay constant and subtraction scale $\mu$.
+The quantities $m_{ii}$ are the $\mytt{nmass}$
+lowest order meson masses. They correspond to $m_{ii}=sqrt{B_0 m_i}$ with
+the $\mytt{nmass}$
+quark masses multiplied by the LEC $B_0$ \cite{Gasser:1984gg},
+$B_0$ for the relevant number of quarks $n_F$.
+
+Relevant physical case: $n_F$ flavour ChPT, possibly partially quenched
+where we need $n_q$ different quark masses. The masses are referred to
+as 1,\ldots,nq (i.e. the counting does not start with 0).
+
+\mytt{void \newfunction{setmass}(const double massin,const int i)}\\
+\mytt{void \newfunction{setmass}(const int i, const double massin=0.)}\\
+\mytt{void \newfunction{setmass}(const vector<double> B0mqin)}\\
+\mytt{void \newfunction{setf0}(const double f0in=0.09)}\\
+\mytt{void \newfunction{setmu}(const double muin=0.77)}\\
+
+
+Output member functions exist in two varieties. Those that return
+all or a subset of values using references or those that
+return one value as the function value.\\
+\mytt{void \newfunction{out}(vector<double> \&massout) const;}\\
+\mytt{void \newfunction{out}(vector<double> \&massout, double \&f0out, double \&muout) const;}\\
+\mytt{void \newfunction{out}(vector<double> \&massout, double \&f0out, double \&muout, int \&nmass) const;}\\
+\mytt{int \newfunction{getnmass}(void) const;}\\
+\mytt{vector<double> \newfunction{getmass}(void) const;}\\
+\mytt{double \newfunction{getmass}(const int i) const;}\\
+\mytt{double \newfunction{getf0}(void) const;}\\
+\mytt{double \newfunction{getmu}(void) const;}\\
+
+Operators defined: \newfunction{<<}, \newfunction{>>} and \newfunction{==}.
+
+\mytt{<<} and \mytt{>>} are  defined such that output and input
+streams work as expected. The input stream should be exactly in the format
+provided by the output stream.
+
+\mytt{==} checks for equality within relative precision of $10^{-7}$.
+An error will occur if any of the data members is zero.\\
+
+Defined in \mytt{inputsnf.h}, implemented in \mytt{inputsnf.cc},
+examples of use in \mytt{testinputsnf.cc}.
+
+
 \subsubsection{NLO LECs: Class \newfunction{Linf}}
 
-\mytt{Linf(l1r=0.,l2r=0.,l3r=0.,l4r=0.,l5r=0.,l6r=0.,l7r=0.,l8r=0.,l9r=0.,l10r=0.,\\\hspace*{0.7cm}l11r=0.,h1r=0.,h2r=0.,mu=0.77,Name="nameless Linf",const int nfin=3)}
+\mytt{Linf(l0r=0.,l1r=0.,l2r=0.,l3r=0.,l4r=0.,l5r=0.,l6r=0.,l7r=0.,l8r=0.,l9r=0.,\\\hspace*{0.7cm}l10r=0.,l11r=0.,h1r=0.,h2r=0.,mu=0.77,Name="nameless Linf",const int nfin=3)}
 
-\mytt{const double: l1r,\ldots,l11r,h1r,h2r,mu}
+\mytt{const double: l0r,\ldots,l11r,h1r,h2r,mu}
 
 \mytt{const string: Name}
 
 \mytt{const int: nfin}
 
 
-Private data: \mytt{double L1r,L2r,L3r,L4r,L5r,L6r,L7r,L8r,L9r,L10r,L11r,H1r,H2r,mu}, \mytt{int nf}
+Private data: \mytt{double L0r,L1r,L2r,L3r,L4r,L5r,L6r,L7r,L8r,L9r,L10r,L11r,H1r,H2r,mu}, \mytt{int nf}
 and \mytt{string name}
 
-Physical quantities the 12 LECs, $L_{i=1,10}^r,H_i^r$
+Physical quantities the 13 LECs, $L_{i=0,10}^r,H_i^r$
 (of which two are so-called contact terms) and the extra equation
 of motion term LEC $L_{11}^r$
 of $n_F$-flavour ChPT as introduced in \cite{Bijnens:1999hw}
@@ -1300,7 +1359,7 @@ Input member functions:\\
 \mytt{void \newfunction{setnf}(const int nfin)}\\
 \mytt{void \newfunction{setli}(const int n, const double lin)}\\
 \mytt{void setli(const double lin, const int n)}\\
-Set the value of the LECs with index $n$. $n=12,13$ correspond to
+Sets the value of the LECs with index $n$. $n=12,13$ correspond to
 $H_1^r,H_2r$.\\
 \mytt{\newfunction{setmu}(const double muin)}\\
 Sets the scale $\mu$ to the value \mytt{muin}. This does \emph{not}
@@ -1317,6 +1376,7 @@ and an integer returning all LECs and $n_F$,
 12 double and an integer references returning $L_1^r,\ldots,L_{11}^r$ and the subtraction scale and the number of flavours,
 11 double and an integer references returning $L_1^r,\ldots,L_{11}^r$  and the number of flavours,
 and 11 double references returning $L_1^r,\ldots,L_{11}^r$.\\
+\mytt{int \newfunction{getnf}(void)} returns \mytt{nf}\\
 
 \mytt{void \newfunction{changescale}(const double newmu)}\\
 This changes the subtraction scale to the new value given by \mytt{muin} and
@@ -1386,6 +1446,7 @@ a double reference and a string
 returning all private data,  a \mytt{double Kit[116]},
 a double reference returning all LECS and the subtraction scale,
 and  a \mytt{double Kit[116]} returning the LECs only.\\
+\mytt{int \newfunction{getnf}(void)} returns \mytt{nf}\\
 
 \mytt{void \newfunction{changescale}(const double newmu, Linf \& Liin)}\\
 \mytt{void changescale(Linf \& Liin, const double newmu)}\\
@@ -2373,7 +2434,7 @@ printed. \\
 
 \mytt{void \newfunction{setprecisionfinitevolumesunsetb}(const int maxsum1=100,}
 \\\hspace*{5mm}\mytt{
-const int maxsum2=40,racc=1e-5,rsacc=1e-4,printout)}\\
+const int maxsum2=40,racc=1e-5,rsacc=1e-4,printout=true)}\\
 The integers \mytt{maxsum1} and \mytt{maxsum2} give how far the sum over
 Bessel functions
 is used for the case with one or two loop momenta
@@ -2516,7 +2577,7 @@ printed. \\
 
 \mytt{void \newfunction{setprecisionfinitevolumesunsetb}(const int maxsum1=100,}
 \\\hspace*{5mm}\mytt{
-const int maxsum2=40,racc=1e-5,rsacc=1e-4,printout)}\\
+const int maxsum2=40,racc=1e-5,rsacc=1e-4,printout=true)}\\
 The integers \mytt{maxsum1} and \mytt{maxsum2} give how far the sum over
 Bessel functions
 is used for the case with one or two loop momenta
@@ -3305,7 +3366,8 @@ All these are defined in \newfunction{massdecayvevV.h}
 and implemented in \newfunction{massdecayvevV.h}.
 Examples of use are in \newfunction{testmassdecayvevV.cc}.
 
-\subsection{Masses and decay constants at finite volume: in lowest order}
+\subsection{Masses, decay constants and vacuum expectation
+values at finite volume: in lowest order}
 \label{massdecayvevloV}
 
 The expressions treated in this section have been
@@ -3496,6 +3558,88 @@ All these are defined in \newfunction{massdecayvevloV.h}
 and implemented in \newfunction{massdecayvevloV.h}.
 Examples of use are in \newfunction{testmassdecayvevloV.cc}.
 
+\subsubsection{Vacuum-expectation-values at finite volume: in lowest order}
+\label{vevsloV}
+
+The finite volume corrections to the vacuum expectation values (vevs)
+$\langle0\vert \overline q q \vert 0\rangle$
+for up, down and strange quarks in the isospin limit
+were  calculated at two-loops in three flavour ChPT
+in \cite{Bijnens:2006ve}.
+The expression for the up and down quark vev are identical since we
+are in the isospin limit.
+The finite volume correction is defined as the difference between
+the infinite and finite volume value.
+
+We write the expressions in a form analoguous to the decay constant
+treatment:
+\begin{equation}
+\Delta^V\langle0\vert \overline q q \vert 0\rangle
+\equiv
+\langle0\vert \overline q q \vert 0\rangle_{a\,\mathrm{phys}}^V
+-\langle0\vert \overline q q \vert 0\rangle_{a\,\mathrm{phys}}^{V=\infty}
+ =
+- F_0^2 B_0\left(\langle0\vert \overline q q \vert 0\rangle_a^{V(4)0}+
+\langle0\vert \overline q q \vert 0\rangle_a^{V(6)0}\right)\,.
+\end{equation}
+The superscripts indicate the order of the diagrams in $p$ that each
+contribution comes from. The extra $0$ indicates that the expansion
+is defined in terms of lowest-order quantities.
+The lowest order values are $-F_0^2 B_0$.
+
+Note that the vevs are not directly measurable quantities. They depend
+on exactly the way the scalar densities are defined in QCD. ChPT can be
+used for them when a massindependent, chiral symmetry respecting subtraction
+scheme is used. $\overline{MS}$ in QCD satisfies this, but there are other
+possibilities. Even within a scheme, $B_0$ and the quark masses depend
+on the QCD subtraction scale $\mu_\textrm{QCD}$ in such a way that
+$B_0 m_q$ is independent of it. 
+When the scalar density is fully defined, measuring these quantities in
+e.g. lattice QCD and comparing with the ChPT expressions is a well defined
+procedure.
+
+The contributions at the different orders themselves are split in the parts
+depending on the NLO LECs $L_i^r$ and the
+remainder as
+\begin{eqnarray}
+\label{defvevloV}
+\langle0\vert \overline q q \vert 0\rangle_a^{(6)0}&=&
+\langle0\vert \overline q q \vert 0\rangle_{a\,L}^{(6)0}
++\langle0\vert \overline q q \vert 0\rangle_{a\,R}^{(6)0}\,.
+\end{eqnarray}
+These are defined for $q=u,s$.\\
+
+The last letter \mytt{x} is \mytt{b} when the finite voilume integrals
+are calculated using the Bessel finction method is \mytt{t} when the
+theta function method is used. Do not forget to set the precision wanted for
+the finite volume integrals.
+\mytt{L} is the length of the three spatial directions.
+
+$\Delta^V\langle0\vert \overline q q \vert 0\rangle_{u\,\mathrm{phys}}$:\\
+\mytt{double \newfunction{qqup4loVx}(lomass,L)} returns
+  $\langle0\vert \overline q q \vert 0\rangle_{u}^{V(4)0}$\\
+\mytt{double \newfunction{qqup6loVx}(lomass,Li,L)} returns
+  $\langle0\vert \overline q q \vert 0\rangle_{u}^{V(6)0}$\\
+\mytt{double \newfunction{qqup6LloVx}(lomass,Li,L)} returns
+  $\langle0\vert \overline q q \vert 0\rangle_{u\,L}^{V(6)0}$\\
+\mytt{double \newfunction{qqup6RloVx}(lomass,L)} returns
+  $\langle0\vert \overline q q \vert 0\rangle_{u\,R}^{V(6)0}$\\
+
+$\Delta^V\langle0\vert \overline q q \vert 0\rangle_{s\,\mathrm{phys}}$:\\
+\mytt{double \newfunction{qqstrange4loVx}(lomass,L)} returns
+  $\langle0\vert \overline q q \vert 0\rangle_{s}^{V(4)0}$\\
+\mytt{double \newfunction{qqstrange6loVx}(lomass,Li,L)} returns
+  $\langle0\vert \overline q q \vert 0\rangle_{s}^{V(6)0}$\\
+\mytt{double \newfunction{qqstrange6LloVx}(lomass,Li,L)} returns
+  $\langle0\vert \overline q q \vert 0\rangle_{s\,L}^{V(6)0}$\\
+\mytt{double \newfunction{qqstrange6RloVx}(lomass,L)} returns
+  $\langle0\vert \overline q q \vert 0\rangle_{s\,R}^{V(6)0}$\\
+
+
+The functions are defined in \newfunction{massesdecayvevloV.h},
+implemented in \newfunction{massesdecayvevloV.cc} and examples of use
+are in \newfunction{testmassesdecayvevloV.cc}
+
 \section{Three flavour partially quenched results}
 
 This section contains the routines used for the partially quenched
@@ -3503,9 +3647,11 @@ results with three sea quark flavours
 of \cite{Bijnens:2006jv,Bijnens:2005ae,Bijnens:2004hk}.
 The formulas used are analytically equivalent to those in the published
 papers, but are longer and avoid some of the $0/0$ problems that can appear.
+The finite volume expressions were derived in \cite{Bijnens:2015dra}.
 
 Do not forget to set the precision for the needed sunset integrals
-with\\ \mytt{setprecisionquenchedsunsetintegral}.
+with\\ \mytt{setprecisionquenchedsunsetintegral} and the finite volume
+equivalents.
 
 The interface is always defined with the $n_F$ flavour NLO and NNLO LECs
 \newfunction{Linf} and \newfunction{Ki} with $n_F=3$. The routines also
@@ -3553,7 +3699,7 @@ m_a^{2(6)0}=m_{a\,L}^{2(6)0}+m_{a\,K}^{2(6)0}+m_{a\,R}^{2(6)0}\,.
 \end{equation}
 \\
 
-One valence mass, one sea mass::\\
+One valence mass, one sea mass:\\
 \mytt{mass=quarkmassnf(\{Bm1,Bm4\},f0,mu,2)}\\
 \mytt{double \newfunction{mv1s1nf3p4}(quarkmassnf mass, Linf Liin)} returns $m_a^{2(4)0}$\\
 \mytt{double \newfunction{mv1s1nf3p4L}(quarkmassnf mass, Linf Liin)} returns $m_{a\,L}^{2(4)0}$\\
@@ -3564,7 +3710,7 @@ One valence mass, one sea mass::\\
 \mytt{double \newfunction{mv1s1nf3p6R}(quarkmassnf mass)} returns $m_{a\,R}^{2(6)0}$\\
 
 
-Two valence mass, one sea mass::\\
+Two valence mass, one sea mass:\\
 \mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4\},f0,mu,3)}\\
 \mytt{double \newfunction{mv2s1nf3p4}(quarkmassnf mass, Linf Liin)} returns $m_a^{2(4)0}$\\
 \mytt{double \newfunction{mv2s1nf3p4L}(quarkmassnf mass, Linf Liin)} returns $m_{a\,L}^{2(4)0}$\\
@@ -3574,7 +3720,7 @@ Two valence mass, one sea mass::\\
 \mytt{double \newfunction{mv2s1nf3p6K}(quarkmassnf mass, Ki Kiin)} returns $m_{a\,K}^{2(6)0}$\\
 \mytt{double \newfunction{mv2s1nf3p6R}(quarkmassnf mass)} returns $m_{a\,R}^{2(6)0}$\\
 
-One valence mass, two sea mass::\\
+One valence mass, two sea mass:\\
 \mytt{mass=quarkmassnf(\{Bm1,Bm4,Bm6\},f0,mu,3)}\\
 \mytt{double \newfunction{mv1s1nf3p4}(quarkmassnf mass, Linf Liin)} returns $m_a^{2(4)0}$\\
 \mytt{double \newfunction{mv1s1nf3p4L}(quarkmassnf mass, Linf Liin)} returns $m_{a\,L}^{2(4)0}$\\
@@ -3584,7 +3730,7 @@ One valence mass, two sea mass::\\
 \mytt{double \newfunction{mv1s1nf3p6K}(quarkmassnf mass, Ki Kiin)} returns $m_{a\,K}^{2(6)0}$\\
 \mytt{double \newfunction{mv1s1nf3p6R}(quarkmassnf mass)} returns $m_{a\,R}^{2(6)0}$\\
 
-Two valence mass, two sea mass::\\
+Two valence mass, two sea mass:\\
 \mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4,Bm6\},f0,mu,4)}\\
 \mytt{double \newfunction{mv2s2nf3p4}(quarkmassnf mass, Linf Liin)} returns $m_a^{2(4)0}$\\
 \mytt{double \newfunction{mv2s2nf3p4L}(quarkmassnf mass, Linf Liin)} returns $m_{a\,L}^{2(4)0}$\\
@@ -3594,7 +3740,7 @@ Two valence mass, two sea mass::\\
 \mytt{double \newfunction{mv2s2nf3p6K}(quarkmassnf mass, Ki Kiin)} returns $m_{a\,K}^{2(6)0}$\\
 \mytt{double \newfunction{mv2s2nf3p6R}(quarkmassnf mass)} returns $m_{a\,R}^{2(6)0}$\\
 
-One valence mass, three sea mass::\\
+One valence mass, three sea mass:\\
 \mytt{mass=quarkmassnf(\{Bm1,Bm4,Bm5,Bm6\},f0,mu,4)}\\
 \mytt{double \newfunction{mv1s3nf3p4}(quarkmassnf mass, Linf Liin)} returns $m_a^{2(4)0}$\\
 \mytt{double \newfunction{mv1s3nf3p4L}(quarkmassnf mass, Linf Liin)} returns $m_{a\,L}^{2(4)0}$\\
@@ -3604,7 +3750,7 @@ One valence mass, three sea mass::\\
 \mytt{double \newfunction{mv1s3nf3p6K}(quarkmassnf mass, Ki Kiin)} returns $m_{a\,K}^{2(6)0}$\\
 \mytt{double \newfunction{mv1s3nf3p6R}(quarkmassnf mass)} returns $m_{a\,R}^{2(6)0}$\\
 
-Two valence mass, three sea mass::\\
+Two valence mass, three sea mass:\\
 \mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4,Bm5,Bm6\},f0,mu,5)}\\
 \mytt{double \newfunction{mv2s3nf3p4}(quarkmassnf mass, Linf Liin)} returns $m_a^{2(4)0}$\\
 \mytt{double \newfunction{mv2s3nf3p4L}(quarkmassnf mass, Linf Liin)} returns $m_{a\,L}^{2(4)0}$\\
@@ -3636,7 +3782,7 @@ F_a^{(6)0}=F_{a\,L}^{(6)0}+F_{a\,K}^{(6)0}+F_{a\,R}^{(6)0}\,.
 \end{equation}
 
 
-One valence mass, one sea mass::\\
+One valence mass, one sea mass:\\
 \mytt{mass=quarkmassnf(\{Bm1,Bm4\},f0,mu,2)}\\
 \mytt{double \newfunction{fv1s1nf3p4}(quarkmassnf mass, Linf Liin)} returns $F_a^{(4)0}$\\
 \mytt{double \newfunction{fv1s1nf3p4L}(quarkmassnf mass, Linf Liin)} returns $F_{a\,L}^{(4)0}$\\
@@ -3647,7 +3793,7 @@ One valence mass, one sea mass::\\
 \mytt{double \newfunction{fv1s1nf3p6R}(quarkmassnf mass)} returns $F_{a\,R}^{(6)0}$\\
 
 
-Two valence mass, one sea mass::\\
+Two valence mass, one sea mass:\\
 \mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4\},f0,mu,3)}\\
 \mytt{double \newfunction{fv2s1nf3p4}(quarkmassnf mass, Linf Liin)} returns $F_a^{(4)0}$\\
 \mytt{double \newfunction{fv2s1nf3p4L}(quarkmassnf mass, Linf Liin)} returns $F_{a\,L}^{(4)0}$\\
@@ -3657,7 +3803,7 @@ Two valence mass, one sea mass::\\
 \mytt{double \newfunction{fv2s1nf3p6K}(quarkmassnf mass, Ki Kiin)} returns $F_{a\,K}^{(6)0}$\\
 \mytt{double \newfunction{fv2s1nf3p6R}(quarkmassnf mass)} returns $F_{a\,R}^{(6)0}$\\
 
-One valence mass, two sea mass::\\
+One valence mass, two sea mass:\\
 \mytt{mass=quarkmassnf(\{Bm1,Bm4,Bm6\},f0,mu,3)}\\
 \mytt{double \newfunction{fv1s1nf3p4}(quarkmassnf mass, Linf Liin)} returns $F_a^{(4)0}$\\
 \mytt{double \newfunction{fv1s1nf3p4L}(quarkmassnf mass, Linf Liin)} returns $F_{a\,L}^{(4)0}$\\
@@ -3667,7 +3813,7 @@ One valence mass, two sea mass::\\
 \mytt{double \newfunction{fv1s1nf3p6K}(quarkmassnf mass, Ki Kiin)} returns $F_{a\,K}^{(6)0}$\\
 \mytt{double \newfunction{fv1s1nf3p6R}(quarkmassnf mass)} returns $F_{a\,R}^{(6)0}$\\
 
-Two valence mass, two sea mass::\\
+Two valence mass, two sea mass:\\
 \mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4,Bm6\},f0,mu,4)}\\
 \mytt{double \newfunction{fv2s2nf3p4}(quarkmassnf mass, Linf Liin)} returns $F_a^{(4)0}$\\
 \mytt{double \newfunction{fv2s2nf3p4L}(quarkmassnf mass, Linf Liin)} returns $F_{a\,L}^{(4)0}$\\
@@ -3677,7 +3823,7 @@ Two valence mass, two sea mass::\\
 \mytt{double \newfunction{fv2s2nf3p6K}(quarkmassnf mass, Ki Kiin)} returns $F_{a\,K}^{(6)0}$\\
 \mytt{double \newfunction{fv2s2nf3p6R}(quarkmassnf mass)} returns $F_{a\,R}^{(6)0}$\\
 
-One valence mass, three sea mass::\\
+One valence mass, three sea mass:\\
 \mytt{mass=quarkmassnf(\{Bm1,Bm4,Bm5,Bm6\},f0,mu,4)}\\
 \mytt{double \newfunction{fv1s3nf3p4}(quarkmassnf mass, Linf Liin)} returns $F_a^{(4)0}$\\
 \mytt{double \newfunction{fv1s3nf3p4L}(quarkmassnf mass, Linf Liin)} returns $F_{a\,L}^{(4)0}$\\
@@ -3687,7 +3833,7 @@ One valence mass, three sea mass::\\
 \mytt{double \newfunction{fv1s3nf3p6K}(quarkmassnf mass, Ki Kiin)} returns $F_{a\,K}^{(6)0}$\\
 \mytt{double \newfunction{fv1s3nf3p6R}(quarkmassnf mass)} returns $F_{a\,R}^{(6)0}$\\
 
-Two valence mass, three sea mass::\\
+Two valence mass, three sea mass:\\
 \mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4,Bm5,Bm6\},f0,mu,5)}\\
 \mytt{double \newfunction{fv2s3nf3p4}(quarkmassnf mass, Linf Liin)} returns $F_a^{(4)0}$\\
 \mytt{double \newfunction{fv2s3nf3p4L}(quarkmassnf mass, Linf Liin)} returns $F_{a\,L}^{(4)0}$\\
@@ -3703,7 +3849,7 @@ Defined in \newfunction{massdecayvevPQ.h}, implemented in \newfunction{massdecay
 \subsection{Masses at finite volume}
 
 The expressions treated in this section have been
-derived in \cite{FVtemp}. It contains the routines for the finite volume
+derived in \cite{Bijnens:2015dra}. It contains the routines for the finite volume
 corrections for the masses of the off-diagonal or charged mesons
 in partially quenched ChPT with three sea quark flavours.
 
@@ -3745,7 +3891,7 @@ equal or different.
 the finite volume integrals using bessel functions or theta functions.
 \\
 
-One valence mass, one sea mass::\\
+One valence mass, one sea mass:\\
 \mytt{mass=quarkmassnf(\{Bm1,Bm4\},f0,mu,2)}\\
 \mytt{double \newfunction{mv1s1nf3p4Vx}(quarkmassnf mass, double L)} returns $m_a^{2V(4)0}$\\
 \mytt{double \newfunction{mv1s1nf3p6Vx}(quarkmassnf mass, Linf Liin,double L)} returns $m_{a}^{2V(6)0}$\\
@@ -3753,35 +3899,35 @@ One valence mass, one sea mass::\\
 \mytt{double \newfunction{mv1s1nf3p6RVx}(quarkmassnf mass, double L)} returns $m_{a\,R}^{2V(6)0}$\\
 
 
-Two valence mass, one sea mass::\\
+Two valence mass, one sea mass:\\
 \mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4\},f0,mu,3)}\\
 \mytt{double \newfunction{mv2s1nf3p4Vx}(quarkmassnf mass, double L)} returns $m_a^{2V(4)0}$\\
 \mytt{double \newfunction{mv2s1nf3p6Vx}(quarkmassnf mass, Linf Liin, double L)} returns $m_{a}^{2V(6)0}$\\
 \mytt{double \newfunction{mv2s1nf3p6LVx}(quarkmassnf mass, Linf Liin, double L)} returns $m_{a\,L}^{2V(6)0}$\\
 \mytt{double \newfunction{mv2s1nf3p6RVx}(quarkmassnf mass, double L)} returns $m_{a\,R}^{2V(6)0}$\\
 
-One valence mass, two sea mass::\\
+One valence mass, two sea mass:\\
 \mytt{mass=quarkmassnf(\{Bm1,Bm4,Bm6\},f0,mu,3)}\\
 \mytt{double \newfunction{mv1s1nf3p4Vx}(quarkmassnf mass, double L)} returns $m_a^{2V(4)0}$\\
 \mytt{double \newfunction{mv1s1nf3p6Vx}(quarkmassnf mass, Linf Liin, double L)} returns $m_{a}^{2V(6)0}$\\
 \mytt{double \newfunction{mv1s1nf3p6LVx}(quarkmassnf mass, Linf Liin, double L)} returns $m_{a\,L}^{2V(6)0}$\\
 \mytt{double \newfunction{mv1s1nf3p6RVx}(quarkmassnf mass, double L)} returns $m_{a\,R}^{2V(6)0}$\\
 
-Two valence mass, two sea mass::\\
+Two valence mass, two sea mass:\\
 \mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4,Bm6\},f0,mu,4)}\\
 \mytt{double \newfunction{mv2s2nf3p4Vx}(quarkmassnf mass, double L)} returns $m_a^{2V(4)0}$\\
 \mytt{double \newfunction{mv2s2nf3p6Vx}(quarkmassnf mass, Linf Liin, double L)} returns $m_{a}^{2V(6)0}$\\
 \mytt{double \newfunction{mv2s2nf3p6LVx}(quarkmassnf mass, Linf Liin, double L)} returns $m_{a\,L}^{2V(6)0}$\\
 \mytt{double \newfunction{mv2s2nf3p6RVx}(quarkmassnf mass, double L)} returns $m_{a\,R}^{2V(6)0}$\\
 
-One valence mass, three sea mass::\\
+One valence mass, three sea mass:\\
 \mytt{mass=quarkmassnf(\{Bm1,Bm4,Bm5,Bm6\},f0,mu,4)}\\
 \mytt{double \newfunction{mv1s3nf3p4Vx}(quarkmassnf mass, double L)} returns $m_a^{2V(4)0}$\\
 \mytt{double \newfunction{mv1s3nf3p6Vx}(quarkmassnf mass, Linf Liin, double L)} returns $m_{a}^{2V(6)0}$\\
 \mytt{double \newfunction{mv1s3nf3p6LVx}(quarkmassnf mass, Linf Liin, double L)} returns $m_{a\,L}^{2V(6)0}$\\
 \mytt{double \newfunction{mv1s3nf3p6RVx}(quarkmassnf mass, double L)} returns $m_{a\,R}^{2V(6)0}$\\
 
-Two valence mass, three sea mass::\\
+Two valence mass, three sea mass:\\
 \mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4,Bm5,Bm6\},f0,mu,5)}\\
 \mytt{double \newfunction{mv2s3nf3p4Vx}(quarkmassnf mass, double L)} returns $m_a^{2V(4)0}$\\
 \mytt{double \newfunction{mv2s3nf3p6Vx}(quarkmassnf mass, Linf Liin, double L)} returns $m_{a}^{2V(6)0}$\\
@@ -3793,7 +3939,7 @@ Defined in \newfunction{massdecayvevPQV.h}, implemented in \newfunction{massdeca
 \subsection{Decay constants at finite volume}
 
 The expressions treated in this section have been
-derived in \cite{FVtemp}. It contains the routines for the finite volume
+derived in \cite{Bijnens:2015dra}. It contains the routines for the finite volume
 corrections for the decay constants of the off-diagonal or charged mesons
 in partially quenched ChPT with three sea quark flavours.
 
@@ -3836,50 +3982,523 @@ equal or different.
 the finite volume integrals using bessel functions or theta functions.
 \\
 
-One valence mass, one sea mass::\\
+One valence mass, one sea mass:\\
 \mytt{mass=quarkmassnf(\{Bm1,Bm4\},f0,mu,2)}\\
-\mytt{double \newfunction{fv1s1nf3p4}(quarkmassnf mass, double L)} returns $F_a^{V(4)0}$\\
-\mytt{double \newfunction{fv1s1nf3p6}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a}^{V(6)0}$\\
-\mytt{double \newfunction{fv1s1nf3p6L}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a\,L}^{V(6)0}$\\
-\mytt{double \newfunction{fv1s1nf3p6R}(quarkmassnf mass, double L)} returns $F_{a\,R}^{V(6)0}$\\
+\mytt{double \newfunction{fv1s1nf3p4Vx}(quarkmassnf mass, double L)} returns $F_a^{V(4)0}$\\
+\mytt{double \newfunction{fv1s1nf3p6Vx}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a}^{V(6)0}$\\
+\mytt{double \newfunction{fv1s1nf3p6LVx}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a\,L}^{V(6)0}$\\
+\mytt{double \newfunction{fv1s1nf3p6RVx}(quarkmassnf mass, double L)} returns $F_{a\,R}^{V(6)0}$\\
 
 
-Two valence mass, one sea mass::\\
+Two valence mass, one sea mass:\\
 \mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4\},f0,mu,3)}\\
-\mytt{double \newfunction{fv2s1nf3p4}(quarkmassnf mass, double L)} returns $F_a^{V(4)0}$\\
-\mytt{double \newfunction{fv2s1nf3p6}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a}^{V(6)0}$\\
-\mytt{double \newfunction{fv2s1nf3p6L}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a\,L}^{V(6)0}$\\
-\mytt{double \newfunction{fv2s1nf3p6R}(quarkmassnf mass, double L)} returns $F_{a\,R}^{V(6)0}$\\
+\mytt{double \newfunction{fv2s1nf3p4Vx}(quarkmassnf mass, double L)} returns $F_a^{V(4)0}$\\
+\mytt{double \newfunction{fv2s1nf3p6Vx}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a}^{V(6)0}$\\
+\mytt{double \newfunction{fv2s1nf3p6LVx}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a\,L}^{V(6)0}$\\
+\mytt{double \newfunction{fv2s1nf3p6RVx}(quarkmassnf mass, double L)} returns $F_{a\,R}^{V(6)0}$\\
 
-One valence mass, two sea mass::\\
+One valence mass, two sea mass:\\
 \mytt{mass=quarkmassnf(\{Bm1,Bm4,Bm6\},f0,mu,3)}\\
-\mytt{double \newfunction{fv1s1nf3p4}(quarkmassnf mass, double L)} returns $F_a^{V(4)0}$\\
-\mytt{double \newfunction{fv1s1nf3p6}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a}^{V(6)0}$\\
-\mytt{double \newfunction{fv1s1nf3p6L}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a\,L}^{V(6)0}$\\
-\mytt{double \newfunction{fv1s1nf3p6R}(quarkmassnf mass, double L)} returns $F_{a\,R}^{V(6)0}$\\
+\mytt{double \newfunction{fv1s1nf3p4Vx}(quarkmassnf mass, double L)} returns $F_a^{V(4)0}$\\
+\mytt{double \newfunction{fv1s1nf3p6Vx}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a}^{V(6)0}$\\
+\mytt{double \newfunction{fv1s1nf3p6LVx}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a\,L}^{V(6)0}$\\
+\mytt{double \newfunction{fv1s1nf3p6RVx}(quarkmassnf mass, double L)} returns $F_{a\,R}^{V(6)0}$\\
 
-Two valence mass, two sea mass::\\
+Two valence mass, two sea mass:\\
 \mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4,Bm6\},f0,mu,4)}\\
 \mytt{double \newfunction{fv2s2nf3p4}(quarkmassnf mass, double L)} returns $F_a^{V(4)0}$\\
 \mytt{double \newfunction{fv2s2nf3p6}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a}^{V(6)0}$\\
 \mytt{double \newfunction{fv2s2nf3p6L}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a\,L}^{V(6)0}$\\
 \mytt{double \newfunction{fv2s2nf3p6R}(quarkmassnf mass, double L)} returns $F_{a\,R}^{V(6)0}$\\
 
-One valence mass, three sea mass::\\
+One valence mass, three sea mass:\\
 \mytt{mass=quarkmassnf(\{Bm1,Bm4,Bm5,Bm6\},f0,mu,4)}\\
-\mytt{double \newfunction{fv1s3nf3p4}(quarkmassnf mass, double L)} returns $F_a^{V(4)0}$\\
-\mytt{double \newfunction{fv1s3nf3p6}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a}^{V(6)0}$\\
-\mytt{double \newfunction{fv1s3nf3p6L}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a\,L}^{V(6)0}$\\
-\mytt{double \newfunction{fv1s3nf3p6R}(quarkmassnf mass, double L)} returns $F_{a\,R}^{V(6)0}$\\
+\mytt{double \newfunction{fv1s3nf3p4Vx}(quarkmassnf mass, double L)} returns $F_a^{V(4)0}$\\
+\mytt{double \newfunction{fv1s3nf3p6Vx}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a}^{V(6)0}$\\
+\mytt{double \newfunction{fv1s3nf3p6LVx}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a\,L}^{V(6)0}$\\
+\mytt{double \newfunction{fv1s3nf3p6RVx}(quarkmassnf mass, double L)} returns $F_{a\,R}^{V(6)0}$\\
 
-Two valence mass, three sea mass::\\
+Two valence mass, three sea mass:\\
 \mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4,Bm5,Bm6\},f0,mu,5)}\\
-\mytt{double \newfunction{fv2s3nf3p4}(quarkmassnf mass, double L)} returns $F_a^{V(4)0}$\\
-\mytt{double \newfunction{fv2s3nf3p6}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a}^{V(6)0}$\\
-\mytt{double \newfunction{fv2s3nf3p6L}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a\,L}^{V(6)0}$\\
-\mytt{double \newfunction{fv2s3nf3p6R}(quarkmassnf mass, double L)} returns $F_{a\,R}^{V(6)0}$\\
+\mytt{double \newfunction{fv2s3nf3p4Vx}(quarkmassnf mass, double L)} returns $F_a^{V(4)0}$\\
+\mytt{double \newfunction{fv2s3nf3p6Vx}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a}^{V(6)0}$\\
+\mytt{double \newfunction{fv2s3nf3p6LVx}(quarkmassnf mass, Linf Liin, double L)} returns $F_{a\,L}^{V(6)0}$\\
+\mytt{double \newfunction{fv2s3nf3p6RVx}(quarkmassnf mass, double L)} returns $F_{a\,R}^{V(6)0}$\\
 
 Defined in \newfunction{massdecayvevPQV.h}, implemented in \newfunction{massdecayvevPQV.cc} and examples of use in \newfunction{testmassdecayvevPQV.cc}.
+
+\section{QCD like theories for $N_F$ flavours}
+
+There are other symmetry breaking patterns possible then the one
+used in two and three-flavour ChPT. With $N_F$ Dirac fermions in a complex,
+real or pseudoreal representation the global symmetries are
+$SU(N_F)\times SU(N_F)$, $SU(2N_F)$ and $SU(2N_F)$. This is
+described in \cite{Bijnens:2009qm} and references therein. The symmetry
+breaking pattern in these case is down to the subgroups
+the diagonal $SU(N_F)$, $SO(2N_F)$ and $Sp(2N_F)$ respectyively.
+An additional case is $n_F$ Majorana fermions in a real representation. 
+In this case the global symmetry group is $SU(n_F)$ which is expected to be
+spontaneously broken to $SO(n_F)$, see \cite{QCDliketemp} and references
+therein. The formulas for the two cases with real fermions
+are identical with $n_F=2N_F$, the reason is that the two cases are
+related by a $U(2N_F)$ rotation as explained in \cite{QCDliketemp}.
+
+The number of flavours $N_F$ in this section refers to the symmetry breaking
+patterns $SU(N_F)\times SU(N_F)\to SU(N_F)$, $SU(N_F)\to SO(N_F)$
+and $SU(2N_F)\to Sp(2N_F)$. The number of flavours for the real representation
+case thus counts the number of Majorana fermions and is in the case twice
+the $N_F$ used in \cite{Bijnens:2009qm}. The extension to finite volume
+and partially quenched was done in \cite{QCDliketemp}.
+
+For all cases we only treat the simplest mass case.
+It means that for the unquenched case we have a single mass given by
+$B_0 m_1$ or the lowest order meson mass is $m_{LO}^2= 2 B_0 m_1$.
+For the partially quenched case the sea quark mass is given by
+$B_0 m_4$ or the lowest order mass for sea quark mesons
+is $m_{LO}^2=2 B_0 m_4$. 
+
+The standard \textsc{C++} conversions allow the
+routines to be called using a \mytt{lomassnf} instead of a \mytt{quarkmassnf}.
+
+
+\subsection{Mass, decay constant and vacuum-expectation-value: in lowest order}
+
+The functions in this section return the corrections
+to the mass-squared in terms of the quarkmassnf structure. It is assumed that
+all the quarks have the same mass.
+The label \mytt{XXX=SUN,SON,SPN} refers to the three possible patterns
+of symmetry breaking, $SU(N_F)\times SU(N_F)\to SU(N_F)$, $SU(N_F)\to SO(N_F)$
+and $SU(2N_F)\to Sp(2N_F)$ and \mytt{nf}=$N_F$ as defined in this way.
+
+The mass is defined as in \cite{Bijnens:2009qm} as
+\begin{align}
+M^2_\mathrm{phys} =& M^2+M^{(4)2}+M^{(6)2}\,,
+\nonumber\\
+M^{(4)2} =& M^{(4)2}_L+M^{(4)2}_R\,,
+\nonumber\\
+M^{(6)2} =& M^{(6)2}_K+ M^{(6)2}_L+M^{(6)2}_R\,,
+\end{align}
+The expressions are defined in terms of lowest order masses and decay
+constant.
+
+\mytt{mass=quarkmassnf(\{Bm1\},f0,mu,1)}\\
+\mytt{double \newfunction{mnfXXXp4}(int nf, quarkmassnf mass, Liinf Liin)}
+ returns $M^{(4)2}$\\
+\mytt{double \newfunction{mnfXXXp4L}(int nf, quarkmassnf mass, Liinf Liin)}
+ returns $M^{(4)2}_L$\\
+\mytt{double \newfunction{mnfXXXp4R}(int nf, quarkmassnf mass)}
+ returns $M^{(4)2}_R$\\
+\mytt{double \newfunction{mnfXXX6}(int nf, quarkmassnf mass, Liinf Liin, Ki Kiin)}
+ returns $M^{(6)2}$\\
+\mytt{double \newfunction{mnfXXXp6K}(int nf, quarkmassnf mass, Ki Kiin)}
+ returns $M^{(6)2}_K$\\
+\mytt{double \newfunction{mnfXXXp6L}(int nf, quarkmassnf mass, Liinf Liin)}
+ returns $M^{(6)2}_L$\\
+\mytt{double \newfunction{mnfXXXp6R}(int nf, quarkmassnf mass)}
+ returns $M^{(6)2}_R$\\
+
+The functions \mytt{mnfXXXp6K} for \mytt{XXX=SON,SPN} simply return 0.
+The Lagrangians for these cases have not been classified at NNLO or order $p^6$.
+The interface used here is also with the $n_F$-flavour ChPT data structures.
+This is correct for \mytt{XXX=SUN} and the results are
+independent of the subtraction scale as is needed. However, the extra
+constant $L_{11}^r$ is always included even if it plays no role.
+In addition the running of the LECs is not correct for \mytt{XXX=SON,SPN}.\\
+
+The decay constant is defined as in \cite{Bijnens:2009qm} as
+\begin{align}
+F_\mathrm{phys} =& F_0\left(1+F^{(4)2}+F^{(6)2}\right)\,,
+\nonumber\\
+F^{(4)} =& F^{(4)}_L+F^{(4)}_R\,,
+\nonumber\\
+F^{(6)} =& F^{(6)}_K+ F^{(6)}_L+M^{(6)}_R\,.
+\end{align}
+The expressions are defined in terms of lowest order masses and decay
+constant.
+
+\mytt{mass=quarkmassnf(\{Bm1\},f0,mu,1)}\\
+\mytt{double \newfunction{fnfXXXp4}(int nf, quarkmassnf mass, Liinf Liin)}
+ returns $F^{(4)}$\\
+\mytt{double \newfunction{fnfXXXp4L}(int nf, quarkmassnf mass, Liinf Liin)}
+ returns $F^{(4)}_L$\\
+\mytt{double \newfunction{fnfXXXp4R}(int nf, quarkmassnf mass)}
+ returns $F^{(4)}_R$\\
+\mytt{double \newfunction{fnfXXX6}(int nf, quarkmassnf mass, Liinf Liin, Ki Kiin)}
+ returns $F^{(6)}$\\
+\mytt{double \newfunction{fnfXXXp6K}(int nf, quarkmassnf mass, Ki Kiin)}
+ returns $F^{(6)}_K$\\
+\mytt{double \newfunction{fnfXXXp6L}(int nf, quarkmassnf mass, Liinf Liin)}
+ returns $F^{(6)}_L$\\
+\mytt{double \newfunction{fnfXXXp6R}(int nf, quarkmassnf mass)}
+ returns $F^{(6)}_R$\\
+
+The functions \mytt{fnfXXXp6K} for \mytt{XXX=SON,SPN} simply return 0.
+The Lagrangians for these cases have not been classified at NNLO or order $p^6$.
+The interface used here is also with the $n_F$-flavour ChPT data structures.
+This is correct for \mytt{XXX=SUN} and the results are
+independent of the subtraction scale as is needed. However, the extra
+constant $L_{11}^r$ is always included even if it plays no role.
+In addition the running of the LECs is not correct for \mytt{XXX=SON,SPN}.\\
+
+The vacuum expectation value is defined for a single quark
+similar to \cite{Bijnens:2009qm} as
+\begin{align}
+\langle \bar q q\rangle_\mathrm{phys} =& 
+-B_0F_0^2\left(1+\langle \bar q q\rangle^{(4)}+\langle \bar q q\rangle^{(6)}\right)\,,
+\nonumber\\
+\langle \bar q q\rangle^{(4)} =& \langle \bar q q\rangle^{(4)}_L+\langle \bar q q\rangle^{(4)}_R\,,
+\nonumber\\
+\langle \bar q q\rangle^{(6)} =& \langle \bar q q\rangle^{(6)}_K+
+ \langle \bar q q\rangle^{(6)}_L+\langle \bar q q\rangle^{(6)}_R\,.
+\end{align}
+The expressions are defined in terms of lowest order masses and decay
+constant.
+
+\mytt{mass=quarkmassnf(\{Bm1\},f0,mu,1)}\\
+\mytt{double \newfunction{qnfXXXp4}(int nf, quarkmassnf mass, Liinf Liin)}
+ returns $\langle \bar q q\rangle^{(4)}$\\
+\mytt{double \newfunction{qnfXXXp4L}(int nf, quarkmassnf mass, Liinf Liin)}
+ returns $\langle \bar q q\rangle^{(4)}_L$\\
+\mytt{double \newfunction{qnfXXXp4R}(int nf, quarkmassnf mass)}
+ returns $\langle \bar q q\rangle^{(4)}_R$\\
+\mytt{double \newfunction{qnfXXX6}(int nf, quarkmassnf mass, Liinf Liin, Ki Kiin)}
+ returns $\langle \bar q q\rangle^{(6)}$\\
+\mytt{double \newfunction{qnfXXXp6K}(int nf, quarkmassnf mass, Ki Kiin)}
+ returns $\langle \bar q q\rangle^{(6)}_K$\\
+\mytt{double \newfunction{qnfXXXp6L}(int nf, quarkmassnf mass, Liinf Liin)}
+ returns $\langle \bar q q\rangle^{(6)}_L$\\
+\mytt{double \newfunction{qnfXXXp6R}(int nf, quarkmassnf mass)}
+ returns $\langle \bar q q\rangle^{(6)}_R$\\
+
+The functions \mytt{qnfXXXp6K} for \mytt{XXX=SON,SPN} simply return 0.
+The Lagrangians for these cases have not been classified at NNLO or order $p^6$.
+The interface used here is also with the $n_F$-flavour ChPT data structures.
+This is correct for \mytt{XXX=SUN} and the results are
+independent of the subtraction scale as is needed. However, the extra
+constant $L_{11}^r$ is always included even if it plays no role.
+In addition the running of the LECs is not correct for \mytt{XXX=SON,SPN}.\\
+
+
+Defined in \newfunction{massdecayvevnf.h}, implemented in \newfunction{massdecayvevnf.cc} and examples of use in \newfunction{testmassdecayvevnf.cc}.
+
+\subsection{Mass, decay constant and vacuum-expectation-value at finite volume: in lowest order}
+
+The functions in this section return the finite volume corrections
+to the mass-squared in terms of the quarkmassnf structure. It is assumed that
+all the quarks have the same mass.
+The label \mytt{XXX=SUN,SON,SPN} refers to the three possible patterns
+of symmetry breaking, $SU(N_F)\times SU(N_F)\to SU(N_F)$, $SU(N_F)\to SO(N_F)$
+and $SU(2N_F)\to Sp(2N_F)$ and \mytt{nf}=$N_F$ as defined in this way.
+
+The last letter \mytt{x} is \mytt{b} for the finite volume integrals
+evaluated using the Bessel function method or \mytt{t} when they are evaluated
+using the theta function method.\\
+
+The finite volume correction to the mass is defined as in \cite{QCDliketemp} as
+\begin{align}
+\Delta^V M^2_\mathrm{phys} \equiv&M^{2\,V}_\mathrm{phys} -M_\mathrm{phys}^{2\,V=\infty} = M^{V(4)2}+M^{V(6)2}\,,
+\nonumber\\
+M^{V(6)2} =& M^{V(6)2}_L+M^{V(6)2}_R\,,
+\end{align}
+The expressions are defined in terms of lowest order masses and decay
+constant. \mytt{L} is the size of the spatial directions.
+
+\mytt{mass=quarkmassnf(\{Bm1\},f0,mu,1)}\\
+\mytt{double \newfunction{mnfXXXp4Vx}(int nf, quarkmassnf mass, double L)}
+ returns $M^{V(4)2}$\\
+\mytt{double \newfunction{mnfXXX6Vx}(int nf, quarkmassnf mass, Liinf Liin, double L)}
+ returns $M^{V(6)2}$\\
+\mytt{double \newfunction{mnfXXXp6LVx}(int nf, quarkmassnf mass, Liinf Liin, double L)}
+ returns $M^{V(6)2}_L$\\
+\mytt{double \newfunction{mnfXXXp6RVx}(int nf, quarkmassnf mass, double L)}
+ returns $M^{V(6)2}_R$\\
+
+The interface used here is with the $n_F$-flavour ChPT data structures.
+This is correct for \mytt{XXX=SUN} and the results are
+independent of the subtraction scale as is needed. However, the extra
+constant $L_{11}^r$ is always included even if it plays no role.
+In addition the running of the LECs is not correct for \mytt{XXX=SON,SPN}.\\
+
+The finite volume correction to the decay constant is defined as in
+\cite{QCDliketemp} as
+\begin{align}
+\Delta^V F_\mathrm{phys} \equiv&
+F_\mathrm{phys}^V -F_\mathrm{phys}^{V=\infty}= F_0\left(F^{V(4)2}+F^{V(6)2}\right)\,,
+\nonumber\\
+F^{V(6)} =& F^{V(6)}_L+M^{V(6)}_R\,.
+\end{align}
+The expressions are defined in terms of lowest order masses and decay
+constant.
+
+\mytt{mass=quarkmassnf(\{Bm1\},f0,mu,1)}\\
+\mytt{double \newfunction{fnfXXXp4Vx}(int nf, quarkmassnf mass, double L)}
+ returns $F^{V(4)}$\\
+\mytt{double \newfunction{fnfXXX6Vx}(int nf, quarkmassnf mass, Liinf Liin, double L)}
+ returns $F^{V(6)}$\\
+\mytt{double \newfunction{fnfXXXp6LVx}(int nf, quarkmassnf mass, Liinf Liin, double L)}
+ returns $F^{V(6)}_L$\\
+\mytt{double \newfunction{fnfXXXp6RVx}(int nf, quarkmassnf mass, double L)}
+ returns $F^{V(6)}_R$\\
+
+The interface used here is with the $n_F$-flavour ChPT data structures.
+This is correct for \mytt{XXX=SUN} and the results are
+independent of the subtraction scale as is needed. However, the extra
+constant $L_{11}^r$ is always included even if it plays no role.
+In addition the running of the LECs is not correct for \mytt{XXX=SON,SPN}.\\
+
+The vacuum expectation value is defined for a single quark
+similar to \cite{QCDliketemp} as
+\begin{align}
+\Delta^V\langle \bar q q\rangle_\mathrm{phys}\equiv&
+\langle \bar q q\rangle_\mathrm{phys}^V -
+\langle \bar q q\rangle_\mathrm{phys}^{V=\infty} =
+-B_0F_0^2\left(\langle \bar q q\rangle^{V(4)}+\langle \bar q q\rangle^{V(6)}\right)\,,
+\nonumber\\
+\langle \bar q q\rangle^{(6)} =& 
+ \langle \bar q q\rangle^{(6)}_L+\langle \bar q q\rangle^{(6)}_R\,.
+\end{align}
+The expressions are defined in terms of lowest order masses and decay
+constant.
+
+\mytt{mass=quarkmassnf(\{Bm1\},f0,mu,1)}\\
+\mytt{double \newfunction{qnfXXXp4Vx}(int nf, quarkmassnf mass, double L)}
+ returns $\langle \bar q q\rangle^{V(4)}$\\
+\mytt{double \newfunction{qnfXXX6Vx}(int nf, quarkmassnf mass, Liinf Liin, Ki Kiin)}
+ returns $\langle \bar q q\rangle^{V(6)}$\\
+\mytt{double \newfunction{qnfXXXp6LVx}(int nf, quarkmassnf mass, Liinf Liin)}
+ returns $\langle \bar q q\rangle^{V(6)}_L$\\
+\mytt{double \newfunction{qnfXXXp6RVx}(int nf, quarkmassnf mass)}
+ returns $\langle \bar q q\rangle^{V(6)}_R$\\
+
+The interface used here is with the $n_F$-flavour ChPT data structures.
+This is correct for \mytt{XXX=SUN} and the results are
+independent of the subtraction scale as is needed. However, the extra
+constant $L_{11}^r$ is always included even if it plays no role.
+In addition the running of the LECs is not correct for \mytt{XXX=SON,SPN}.\\
+
+Defined in \newfunction{massdecayvevnfV.h}, implemented in \newfunction{massdecayvevnfV.cc} and examples of use in \newfunction{testmassdecayvevnf.cc}.
+
+
+\subsection{Partially quenched mass, decay constant and vacuum-expectation-value: in lowest order}
+
+The functions in this section return the corrections
+to the mass-squared in terms of the quarkmassnf structure. It is assumed that
+all the valence quarks have the same mass and all the sea quarks have the same
+mass but different from the valence quarks.
+
+The label \mytt{XXX=SUN,SON,SPN} refers to the three possible patterns
+of symmetry breaking, $SU(N_F)\times SU(N_F)\to SU(N_F)$, $SU(N_F)\to SO(N_F)$
+and $SU(2N_F)\to Sp(2N_F)$ and \mytt{nf}=$N_F$ as defined in this way.
+
+The mass is defined as in \cite{QCDliketemp} as
+\begin{align}
+M^2_\mathrm{phys} =& M^2+M^{(4)2}+M^{(6)2}\,,
+\nonumber\\
+M^{(4)2} =& M^{(4)2}_L+M^{(4)2}_R\,,
+\nonumber\\
+M^{(6)2} =& M^{(6)2}_K+ M^{(6)2}_L+M^{(6)2}_R\,,
+\end{align}
+The expressions are defined in terms of lowest order masses and decay
+constant.
+
+\mytt{mass=quarkmassnf(\{Bm1,Bm4\},f0,mu,2)}\\
+\mytt{double \newfunction{mnfXXXp4PQ}(int nf, quarkmassnf mass, Liinf Liin)}
+ returns $M^{(4)2}$\\
+\mytt{double \newfunction{mnfXXXp4LPQ}(int nf, quarkmassnf mass, Liinf Liin)}
+ returns $M^{(4)2}_L$\\
+\mytt{double \newfunction{mnfXXXp4RPQ}(int nf, quarkmassnf mass)}
+ returns $M^{(4)2}_R$\\
+\mytt{double \newfunction{mnfXXX6PQ}(int nf, quarkmassnf mass, Liinf Liin, Ki Kiin)}
+ returns $M^{(6)2}$\\
+\mytt{double \newfunction{mnfXXXp6KPQ}(int nf, quarkmassnf mass, Ki Kiin)}
+ returns $M^{(6)2}_K$\\
+\mytt{double \newfunction{mnfXXXp6LPQ}(int nf, quarkmassnf mass, Liinf Liin)}
+ returns $M^{(6)2}_L$\\
+\mytt{double \newfunction{mnfXXXp6RPQ}(int nf, quarkmassnf mass)}
+ returns $M^{(6)2}_R$\\
+
+The functions \mytt{mnfXXXp6KPQ} for \mytt{XXX=SON,SPN} simply return 0.
+The Lagrangians for these cases have not been classified at NNLO or order $p^6$.
+The interface used here is also with the $n_F$-flavour ChPT data structures.
+This is correct for \mytt{XXX=SUN} and the results are
+independent of the subtraction scale as is needed. However, the extra
+constant $L_{11}^r$ is always included even if it plays no role.
+In addition the running of the LECs is not correct for \mytt{XXX=SON,SPN}.\\
+
+The decay constant is defined as in \cite{QCDliketemp} as
+\begin{align}
+F_\mathrm{phys} =& F_0\left(1+F^{(4)2}+F^{(6)2}\right)\,,
+\nonumber\\
+F^{(4)} =& F^{(4)}_L+F^{(4)}_R\,,
+\nonumber\\
+F^{(6)} =& F^{(6)}_K+ F^{(6)}_L+M^{(6)}_R\,.
+\end{align}
+The expressions are defined in terms of lowest order masses and decay
+constant.
+
+\mytt{mass=quarkmassnf(\{Bm1,Bm4\},f0,mu,2)}\\
+\mytt{double \newfunction{fnfXXXp4PQ}(int nf, quarkmassnf mass, Liinf Liin)}
+ returns $F^{(4)}$\\
+\mytt{double \newfunction{fnfXXXp4LPQ}(int nf, quarkmassnf mass, Liinf Liin)}
+ returns $F^{(4)}_L$\\
+\mytt{double \newfunction{fnfXXXp4RPQ}(int nf, quarkmassnf mass)}
+ returns $F^{(4)}_R$\\
+\mytt{double \newfunction{fnfXXX6PQ}(int nf, quarkmassnf mass, Liinf Liin, Ki Kiin)}
+ returns $F^{(6)}$\\
+\mytt{double \newfunction{fnfXXXp6KPQ}(int nf, quarkmassnf mass, Ki Kiin)}
+ returns $F^{(6)}_K$\\
+\mytt{double \newfunction{fnfXXXp6LPQ}(int nf, quarkmassnf mass, Liinf Liin)}
+ returns $F^{(6)}_L$\\
+\mytt{double \newfunction{fnfXXXp6RPQ}(int nf, quarkmassnf mass)}
+ returns $F^{(6)}_R$\\
+
+The functions \mytt{fnfXXXp6KPQ} for \mytt{XXX=SON,SPN} simply return 0.
+The Lagrangians for these cases have not been classified at NNLO or order $p^6$.
+The interface used here is also with the $n_F$-flavour ChPT data structures.
+This is correct for \mytt{XXX=SUN} and the results are
+independent of the subtraction scale as is needed. However, the extra
+constant $L_{11}^r$ is always included even if it plays no role.
+In addition the running of the LECs is not correct for \mytt{XXX=SON,SPN}.\\
+
+The vacuum expectation value is defined for a single quark
+similar to \cite{QCDliketemp} as
+\begin{align}
+\langle \bar q q\rangle_\mathrm{phys} =& 
+-B_0F_0^2\left(1+\langle \bar q q\rangle^{(4)}+\langle \bar q q\rangle^{(6)}\right)\,,
+\nonumber\\
+\langle \bar q q\rangle^{(4)} =& \langle \bar q q\rangle^{(4)}_L+\langle \bar q q\rangle^{(4)}_R\,,
+\nonumber\\
+\langle \bar q q\rangle^{(6)} =& \langle \bar q q\rangle^{(6)}_K+
+ \langle \bar q q\rangle^{(6)}_L+\langle \bar q q\rangle^{(6)}_R\,.
+\end{align}
+The expressions are defined in terms of lowest order masses and decay
+constant.
+
+\mytt{mass=quarkmassnf(\{Bm1,Bm4\},f0,mu,2)}\\
+\mytt{double \newfunction{qnfXXXp4PQ}(int nf, quarkmassnf mass, Liinf Liin)}
+ returns $\langle \bar q q\rangle^{(4)}$\\
+\mytt{double \newfunction{qnfXXXp4LPQ}(int nf, quarkmassnf mass, Liinf Liin)}
+ returns $\langle \bar q q\rangle^{(4)}_L$\\
+\mytt{double \newfunction{qnfXXXp4RPQ}(int nf, quarkmassnf mass)}
+ returns $\langle \bar q q\rangle^{(4)}_R$\\
+\mytt{double \newfunction{qnfXXX6PQ}(int nf, quarkmassnf mass, Liinf Liin, Ki Kiin)}
+ returns $\langle \bar q q\rangle^{(6)}$\\
+\mytt{double \newfunction{qnfXXXp6KPQ}(int nf, quarkmassnf mass, Ki Kiin)}
+ returns $\langle \bar q q\rangle^{(6)}_K$\\
+\mytt{double \newfunction{qnfXXXp6LPQ}(int nf, quarkmassnf mass, Liinf Liin)}
+ returns $\langle \bar q q\rangle^{(6)}_L$\\
+\mytt{double \newfunction{qnfXXXp6RPQ}(int nf, quarkmassnf mass)}
+ returns $\langle \bar q q\rangle^{(6)}_R$\\
+
+The functions \mytt{qnfXXXp6KPQ} for \mytt{XXX=SON,SPN} simply return 0.
+The Lagrangians for these cases have not been classified at NNLO or order $p^6$.
+The interface used here is also with the $n_F$-flavour ChPT data structures.
+This is correct for \mytt{XXX=SUN} and the results are
+independent of the subtraction scale as is needed. However, the extra
+constant $L_{11}^r$ is always included even if it plays no role.
+In addition the running of the LECs is not correct for \mytt{XXX=SON,SPN}.\\
+
+
+Defined in \newfunction{massdecayvevnfPQ.h}, implemented in \newfunction{massdecayvevnfPQ.cc} and examples of use in \newfunction{testmassdecayvevnf.cc}.
+
+\subsection{Partially quenched mass, decay constant and vacuum-expectation-value at finite volume: in lowest order}
+
+The functions in this section return the finite volume corrections
+to the mass-squared in terms of the quarkmassnf structure for the partially
+quenched case. It is assumed that
+all the quarks have the same mass.
+The label \mytt{XXX=SUN,SON,SPN} refers to the three possible patterns
+of symmetry breaking, $SU(N_F)\times SU(N_F)\to SU(N_F)$, $SU(N_F)\to SO(N_F)$
+and $SU(2N_F)\to Sp(2N_F)$ and \mytt{nf}=$N_F$ as defined in this way.
+
+The last letter \mytt{x} is \mytt{b} for the finite volume integrals
+evaluated using the Bessel function method or \mytt{t} when they are evaluated
+using the theta function method.\\
+
+The finite volume correction to the mass is defined as in \cite{QCDliketemp} as
+\begin{align}
+\Delta^V M^2_\mathrm{phys} \equiv&M^{2\,V}_\mathrm{phys} -M_\mathrm{phys}^{2\,V=\infty} = M^{V(4)2}+M^{V(6)2}\,,
+\nonumber\\
+M^{V(6)2} =& M^{V(6)2}_L+M^{V(6)2}_R\,,
+\end{align}
+The expressions are defined in terms of lowest order masses and decay
+constant. \mytt{L} is the size of the spatial directions.
+
+\mytt{mass=quarkmassnf(\{Bm1,Bm4\},f0,mu,2)}\\
+\mytt{double \newfunction{mnfXXXp4PQVx}(int nf, quarkmassnf mass, double L)}
+ returns $M^{V(4)2}$\\
+\mytt{double \newfunction{mnfXXX6PQVx}(int nf, quarkmassnf mass, Liinf Liin, double L)}
+ returns $M^{V(6)2}$\\
+\mytt{double \newfunction{mnfXXXp6LPQVx}(int nf, quarkmassnf mass, Liinf Liin, double L)}
+ returns $M^{V(6)2}_L$\\
+\mytt{double \newfunction{mnfXXXp6RPQVx}(int nf, quarkmassnf mass, double L)}
+ returns $M^{V(6)2}_R$\\
+
+The interface used here is with the $n_F$-flavour ChPT data structures.
+This is correct for \mytt{XXX=SUN} and the results are
+independent of the subtraction scale as is needed. However, the extra
+constant $L_{11}^r$ is always included even if it plays no role.
+In addition the running of the LECs is not correct for \mytt{XXX=SON,SPN}.\\
+
+The finite volume correction to the decay constant is defined as in
+\cite{QCDliketemp} as
+\begin{align}
+\Delta^V F_\mathrm{phys} \equiv&
+F_\mathrm{phys}^V -F_\mathrm{phys}^{V=\infty}= F_0\left(F^{V(4)2}+F^{V(6)2}\right)\,,
+\nonumber\\
+F^{V(6)} =& F^{V(6)}_L+M^{V(6)}_R\,.
+\end{align}
+The expressions are defined in terms of lowest order masses and decay
+constant.
+
+\mytt{mass=quarkmassnf(\{Bm1,Bm4\},f0,mu,2)}\\
+\mytt{double \newfunction{fnfXXXp4PQVx}(int nf, quarkmassnf mass, double L)}
+ returns $F^{V(4)}$\\
+\mytt{double \newfunction{fnfXXX6PQVx}(int nf, quarkmassnf mass, Liinf Liin, double L)}
+ returns $F^{V(6)}$\\
+\mytt{double \newfunction{fnfXXXp6LPQVx}(int nf, quarkmassnf mass, Liinf Liin, double L)}
+ returns $F^{V(6)}_L$\\
+\mytt{double \newfunction{fnfXXXp6RPQVx}(int nf, quarkmassnf mass, double L)}
+ returns $F^{V(6)}_R$\\
+
+The interface used here is with the $n_F$-flavour ChPT data structures.
+This is correct for \mytt{XXX=SUN} and the results are
+independent of the subtraction scale as is needed. However, the extra
+constant $L_{11}^r$ is always included even if it plays no role.
+In addition the running of the LECs is not correct for \mytt{XXX=SON,SPN}.\\
+
+The vacuum expectation value is defined for a single quark
+similar to \cite{QCDliketemp} as
+\begin{align}
+\Delta^V\langle \bar q q\rangle_\mathrm{phys}\equiv&
+\langle \bar q q\rangle_\mathrm{phys}^V -
+\langle \bar q q\rangle_\mathrm{phys}^{V=\infty} =
+-B_0F_0^2\left(\langle \bar q q\rangle^{V(4)}+\langle \bar q q\rangle^{V(6)}\right)\,,
+\nonumber\\
+\langle \bar q q\rangle^{(6)} =& 
+ \langle \bar q q\rangle^{(6)}_L+\langle \bar q q\rangle^{(6)}_R\,.
+\end{align}
+The expressions are defined in terms of lowest order masses and decay
+constant.
+
+\mytt{mass=quarkmassnf(\{Bm1,Bm4\},f0,mu,2)}\\
+\mytt{double \newfunction{qnfXXXp4PQVx}(int nf, quarkmassnf mass, double L)}
+ returns $\langle \bar q q\rangle^{V(4)}$\\
+\mytt{double \newfunction{qnfXXX6PQVx}(int nf, quarkmassnf mass, Liinf Liin, Ki Kiin)}
+ returns $\langle \bar q q\rangle^{V(6)}$\\
+\mytt{double \newfunction{qnfXXXp6LPQVx}(int nf, quarkmassnf mass, Liinf Liin)}
+ returns $\langle \bar q q\rangle^{V(6)}_L$\\
+\mytt{double \newfunction{qnfXXXp6RPQVx}(int nf, quarkmassnf mass)}
+ returns $\langle \bar q q\rangle^{V(6)}_R$\\
+
+The interface used here is with the $n_F$-flavour ChPT data structures.
+This is correct for \mytt{XXX=SUN} and the results are
+independent of the subtraction scale as is needed. However, the extra
+constant $L_{11}^r$ is always included even if it plays no role.
+In addition the running of the LECs is not correct for \mytt{XXX=SON,SPN}.\\
+
+Defined in \newfunction{massdecayvevnfPQV.h}, implemented in \newfunction{massdecayvevnfPQV.cc} and examples of use in \newfunction{testmassdecayvevnf.cc}.
+
 
 \section*{Acknowledgements}
 
@@ -4651,7 +5270,21 @@ J. Comput. Appl. Math. 2 (1976) 207-217.
   [hep-ph/0003258].
   %%CITATION = HEP-PH/0003258;%%
 
-\bibitem{FVtemp}
+  %\cite{Bijnens:2015dra}
+\bibitem{Bijnens:2015dra}
+  J.~Bijnens and T.~Rössler,
+  %``Finite Volume for Three-Flavour Partially Quenched Chiral Perturbation Theory through NNLO in the Meson Sector,''
+  arXiv:1508.07238 [hep-lat].
+  %%CITATION = ARXIV:1508.07238;%%
+
+\bibitem{Bijnens:2009qm}
+  J.~Bijnens and J.~Lu,
+  %``Technicolor and other QCD-like theories at next-to-next-to-leading order,''
+  JHEP {\bf 0911} (2009) 116
+  [arXiv:0910.5424 [hep-ph]].
+  %%CITATION = ARXIV:0910.5424;%%
+
+\bibitem{QCDliketemp}
   J.~Bijnens and T.~Rössler, to be published
 
 \end{thebibliography}

@@ -36,6 +36,10 @@ massdecayvevV.h
 massdecayvevloV.h
 massdecayvevPQ.h
 massdecayvevPQV.h
+massdecayvevnf.h
+massdecayvevnfPQ.h
+massdecayvevnfV.h
+massdecayvevnfPQV.h
 getfpimeta.h
 finitevolumeoneloopintegrals.h
 finitevolumesunsetintegrals.h
@@ -90,6 +94,10 @@ finitevolumesunsetintegrals.cc
 massdecayvevV.cc
 massdecayvevloV.cc
 massdecayvevPQV.cc
+massdecayvevnf.cc
+massdecayvevnfPQ.cc
+massdecayvevnfV.cc
+massdecayvevnfPQV.cc
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 examples and testing files in test:
@@ -115,6 +123,7 @@ testfinitevolumesunsetintegrals.cc
 testmassdecayvevV.cc
 testmassdecayvevloV.cc
 testmassdecayvevPQV.cc
+testmassdecayvevnf.cc
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ouputs of the example and testing files in testoutputs:
@@ -137,3 +146,4 @@ testfinitevolumesunsetintegrals.dat
 testmassdecayvevV.dat
 testmassdecayvevloV.dat
 testmassdecayvevPQV.dat
+testmassdecayvevnf.dat

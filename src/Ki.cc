@@ -763,6 +763,9 @@ double Ki::out(const int n) const{
   return Kr[n];
 }
 
+int Ki::getnf(void) const{
+  return nf;
+}
 
 Ki Kirandom(void){
  double KK[116];

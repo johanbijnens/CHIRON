@@ -71,6 +71,7 @@ public:
 	   double & L7t,double & L8t,double & L9t,
 	   double & L10t,double & L11t) const;
   double out(const int n) const;
+  int getnf(void) const;
 };
 Linf Linfrandom(void);// all +-pi16
 #endif // LINF_H

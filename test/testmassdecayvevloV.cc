@@ -149,6 +149,38 @@ int main(void){
 	  <<' '<<setw(13)<<feta6RloVb(stdmass,xl) << flush
 	  <<'\n';
     }
+    cout << " eps maxonesum maxtwosum qqup4loVt   qqup4loVb   qqup6LloVt "
+	 << "    qqup6LloVb     qqup6RloVt     qqup6RloVb\n";
+    for(int i=0;i<maxprint;i++){
+      setprecisionfinitevolumeoneloopt(epst[i],1e-5,false);
+      setprecisionfinitevolumeoneloopb(nb[i],1e-5,false);
+      setprecisionfinitevolumesunsett(epst[i],epst2[i],false);
+      setprecisionfinitevolumesunsetb(nb[i],nb2[i],epst[i],epst2[i],false);
+      cout<<setw(8)<< epst[i]<<' '<<setw(4)<<nb[i]<<' '<<setw(4)<<nb2[i]
+	  <<' '<<setw(13)<<qqup4loVt(stdmass,xl) << flush
+	  <<' '<<setw(13)<<qqup4loVb(stdmass,xl) << flush
+	  <<' '<<setw(13)<<qqup6LloVt(stdmass,liBE14,xl) << flush
+	  <<' '<<setw(13)<<qqup6LloVb(stdmass,liBE14,xl) << flush
+	  <<' '<<setw(13)<<qqup6RloVt(stdmass,xl) << flush
+	  <<' '<<setw(13)<<qqup6RloVb(stdmass,xl) << flush
+	  <<'\n';
+    }
+    cout << " eps maxonesum maxtwosum qqstrange4loVt qqstrange4loVb qqstrange6LloVt"
+	 << " qqstrange6LloVb qqstrange6RloVt qqstrange6RloVb\n";
+    for(int i=0;i<maxprint;i++){
+      setprecisionfinitevolumeoneloopt(epst[i],1e-5,false);
+      setprecisionfinitevolumeoneloopb(nb[i],1e-5,false);
+      setprecisionfinitevolumesunsett(epst[i],epst2[i],false);
+      setprecisionfinitevolumesunsetb(nb[i],nb2[i],epst[i],epst2[i],false);
+      cout<<setw(8)<< epst[i]<<' '<<setw(4)<<nb[i]<<' '<<setw(4)<<nb2[i]
+	  <<' '<<setw(13)<<qqstrange4loVt(stdmass,xl) << flush
+	  <<' '<<setw(13)<<qqstrange4loVb(stdmass,xl) << flush
+	  <<' '<<setw(13)<<qqstrange6LloVt(stdmass,liBE14,xl) << flush
+	  <<' '<<setw(13)<<qqstrange6LloVb(stdmass,liBE14,xl) << flush
+	  <<' '<<setw(13)<<qqstrange6RloVt(stdmass,xl) << flush
+	  <<' '<<setw(13)<<qqstrange6RloVb(stdmass,xl) << flush
+	  <<'\n';
+    }
   }
 
   return 0;

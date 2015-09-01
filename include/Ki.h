@@ -45,6 +45,7 @@ class Ki{
   void out(double Kit[116],double & mut) const;
   void out(double Kit[116]) const;
   double out(const int n) const;
+  int getnf(void) const;
   Ki(const double fpi, const double mu
      ,const double MV, const double fV, const double gV
      ,const double fChi, const double aV

@@ -1,6 +1,6 @@
 // massdecayvevloV.cc is part of the 
 // CHIRON ChPT at two loops program collection
-// Copyright (C) 2015 Johan Bijnens, v1.0
+// Copyright (C) 2015 Johan Bijnens, v1.1
 // CHIRON is licenced under the GNU GPL version 2 or later,
 // see COPYING for details.
 // Please respect the Guidelines, see GUIDELINES for details.
@@ -64,6 +64,14 @@ const double pi16 = 1./(16.*M_PI*M_PI);
 #define feta6LloV feta6LloVt
 #define feta6RloV feta6RloVt
 #define feta6loV feta6loVt
+#define qqup4loV   qqup4loVt 
+#define qqup6loV   qqup6loVt 
+#define qqup6LloV  qqup6LloVt
+#define qqup6RloV  qqup6RloVt
+#define qqstrange4loV   qqstrange4loVt 
+#define qqstrange6loV   qqstrange6loVt 
+#define qqstrange6LloV  qqstrange6LloVt
+#define qqstrange6RloV  qqstrange6RloVt
 #else
 //++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 #ifdef CHIRONBESSEL
@@ -102,6 +110,14 @@ const double pi16 = 1./(16.*M_PI*M_PI);
 #define feta6LloV feta6LloVb
 #define feta6RloV feta6RloVb
 #define feta6loV feta6loVb
+#define qqup4loV   qqup4loVb 
+#define qqup6loV   qqup6loVb 
+#define qqup6LloV  qqup6LloVb
+#define qqup6RloV  qqup6RloVb
+#define qqstrange4loV   qqstrange4loVb 
+#define qqstrange6loV   qqstrange6loVb 
+#define qqstrange6LloV  qqstrange6LloVb
+#define qqstrange6RloV  qqstrange6RloVb
 #else
 // just some garbage to produce an error
 x = 1./0.0.;
@@ -1004,5 +1020,256 @@ double feta6RloV(const lomass mass, const double xl){
           + 9./16.*mp2 );
 
       return decayp6RV/pow(mass.getf0(),4);
+}
+
+//++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+double qqup4loV(const lomass mass, const double xl){
+  double mp2 = pow(mass.getmp0(),2);
+  double mk2 = pow(mass.getmk0(),2);
+  double me2 = (4.*mk2-mp2)/3.;
+  double abvmp2 = AbV(mp2,xl);
+  double abvmk2 = AbV(mk2,xl);
+  double abvme2 = AbV(me2,xl);
+  double   P4Vx1 =
+       + abvme2 * ( 1./6. );
+
+      P4Vx1 +=  + abvmk2 * ( 1 );
+
+      P4Vx1 +=  + abvmp2 * ( 3./2. );
+  return P4Vx1/pow(mass.getf0(),2);
+}
+
+
+double qqup6loV(const lomass mass, const Li Liin, const double xl){
+  return qqup6LloV(mass,Liin,xl)+qqup6RloV(mass,xl);
+}
+
+double qqup6LloV(const lomass mass, const Li Liin, const double xl){
+  double mp2 = pow(mass.getmp0(),2);
+  double mk2 = pow(mass.getmk0(),2);
+  double me2 = 4./3.*mk2-1./3.*mp2;
+  //double mu2 = pow(mass.getmu(),2);
+  double L1r,L2r,L3r,L4r,L5r,L6r,L7r,L8r,L9r,L10r,H1r,H2r,mu;
+  Liin.out(L1r,L2r,L3r,L4r,L5r,L6r,L7r,L8r,L9r,L10r,H1r,H2r,mu);
+  if (mass.getmu() != mu){
+    cout << "ERROR: differing mu's in qqup6LloV\n";}
+  double abvmp2 = AbV(mp2,xl);
+  double abvmk2 = AbV(mk2,xl);
+  double abvme2 = AbV(me2,xl);
+  double bbvmp2 = BbV(mp2,xl);
+  double bbvmk2 = BbV(mk2,xl);
+  double bbvme2 = BbV(me2,xl);
+
+  double   P6LVx1 =
+       + bbvme2 * ( 64./9.*pow(mk2,2)*L8r + 64./9.*pow(mk2,2)*L7r + 64./
+         9.*pow(mk2,2)*L6r - 64./27.*pow(mk2,2)*L5r - 32./9.*pow(mk2,2)
+         *L4r - 64./9.*mp2*mk2*L8r - 128./9.*mp2*mk2*L7r + 16./9.*mp2*
+         mk2*L6r + 32./27.*mp2*mk2*L5r - 8./9.*mp2*mk2*L4r + 8./3.*pow(
+         mp2,2)*L8r + 64./9.*pow(mp2,2)*L7r - 8./9.*pow(mp2,2)*L6r - 4./
+         27.*pow(mp2,2)*L5r + 4./9.*pow(mp2,2)*L4r );
+
+      P6LVx1 +=  + bbvmk2 * ( 16*pow(mk2,2)*L8r + 32*pow(mk2,2)*L6r - 8
+         *pow(mk2,2)*L5r - 16*pow(mk2,2)*L4r + 16*mp2*mk2*L6r - 8*mp2*
+         mk2*L4r );
+
+      P6LVx1 +=  + bbvmp2 * ( 48*mp2*mk2*L6r - 24*mp2*mk2*L4r + 24*pow(
+         mp2,2)*L8r + 24*pow(mp2,2)*L6r - 12*pow(mp2,2)*L5r - 12*pow(
+         mp2,2)*L4r );
+
+      P6LVx1 +=  + abvme2 * (  - 64./3.*mk2*L7r + 80./3.*mk2*L6r - 32./
+         9.*mk2*L5r - 40./3.*mk2*L4r + 16./3.*mp2*L8r + 64./3.*mp2*L7r
+          - 8./3.*mp2*L6r + 8./9.*mp2*L5r + 4./3.*mp2*L4r );
+
+      P6LVx1 +=  + abvmk2 * ( 32*mk2*L8r + 96*mk2*L6r - 16*mk2*L5r - 48
+         *mk2*L4r + 16*mp2*L6r - 8*mp2*L4r );
+
+      P6LVx1 +=  + abvmp2 * ( 48*mk2*L6r - 24*mk2*L4r + 48*mp2*L8r + 72
+         *mp2*L6r - 24*mp2*L5r - 36*mp2*L4r );
+
+      return P6LVx1/pow(mass.getf0(),4);
+}
+
+double qqup6RloV(const lomass mass, const double xl){
+  double mp2 = pow(mass.getmp0(),2);
+  double mk2 = pow(mass.getmk0(),2);
+  double me2 = 4./3.*mk2-1./3.*mp2;
+  double mu2 = pow(mass.getmu(),2);
+  double abvmp2 = AbV(mp2,xl);
+  double abvmk2 = AbV(mk2,xl);
+  double abvme2 = AbV(me2,xl);
+  double bbvmp2 = BbV(mp2,xl);
+  double bbvmk2 = BbV(mk2,xl);
+  double bbvme2 = BbV(me2,xl);
+
+  double   P6RVx1 =
+       + abvme2*bbvme2 * ( 4./27.*mk2 - 7./108.*mp2 );
+
+      P6RVx1 +=  + abvme2*bbvmk2 * (  - 1./3.*mk2 );
+
+      P6RVx1 +=  + abvme2*bbvmp2 * ( 1./4.*mp2 );
+
+      P6RVx1 +=  + pow(abvme2,2) * ( 1./72. );
+
+      P6RVx1 +=  + abvmk2*bbvme2 * (  - 2./9.*mk2 );
+
+      P6RVx1 +=  + abvmk2*abvme2 * (  - 1./3. );
+
+      P6RVx1 +=  + abvmp2*bbvme2 * ( 1./12.*mp2 );
+
+      P6RVx1 +=  + abvmp2*bbvmp2 * (  - 3./4.*mp2 );
+
+      P6RVx1 +=  + abvmp2*abvme2 * ( 1./4. );
+
+      P6RVx1 +=  + pow(abvmp2,2) * (  - 3./8. );
+
+      P6RVx1 +=  + Ab(mp2,mu2)*bbvme2 * ( 1./12.*mp2 );
+
+      P6RVx1 +=  + Ab(mp2,mu2)*bbvmp2 * (  - 3./4.*mp2 );
+
+      P6RVx1 +=  + Ab(mp2,mu2)*abvme2 * ( 1./4. );
+
+      P6RVx1 +=  + Ab(mp2,mu2)*abvmp2 * (  - 3./4. );
+
+      P6RVx1 +=  + Ab(mk2,mu2)*bbvme2 * (  - 2./9.*mk2 );
+
+      P6RVx1 +=  + Ab(mk2,mu2)*abvme2 * (  - 1./3. );
+
+      P6RVx1 +=  + Ab(me2,mu2)*bbvme2 * ( 4./27.*mk2 - 7./108.*mp2 );
+
+      P6RVx1 +=  + Ab(me2,mu2)*bbvmk2 * (  - 1./3.*mk2 );
+
+      P6RVx1 +=  + Ab(me2,mu2)*bbvmp2 * ( 1./4.*mp2 );
+
+      P6RVx1 +=  + Ab(me2,mu2)*abvme2 * ( 1./36. );
+
+      P6RVx1 +=  + Ab(me2,mu2)*abvmk2 * (  - 1./3. );
+
+      P6RVx1 +=  + Ab(me2,mu2)*abvmp2 * ( 1./4. );
+
+      P6RVx1 +=  + Bb(mp2,mu2)*abvme2 * ( 1./4.*mp2 );
+
+      P6RVx1 +=  + Bb(mp2,mu2)*abvmp2 * (  - 3./4.*mp2 );
+
+      P6RVx1 +=  + Bb(mk2,mu2)*abvme2 * (  - 1./3.*mk2 );
+
+      P6RVx1 +=  + Bb(me2,mu2)*abvme2 * ( 4./27.*mk2 - 7./108.*mp2 );
+
+      P6RVx1 +=  + Bb(me2,mu2)*abvmk2 * (  - 2./9.*mk2 );
+
+      P6RVx1 +=  + Bb(me2,mu2)*abvmp2 * ( 1./12.*mp2 );
+
+      return P6RVx1/pow(mass.getf0(),4);
+}
+
+double qqstrange4loV(const lomass mass, const double xl){
+  double mp2 = pow(mass.getmp0(),2);
+  double mk2 = pow(mass.getmk0(),2);
+  double me2 = (4.*mk2-mp2)/3.;
+  //double abvmp2 = AbV(mp2,xl);
+  double abvmk2 = AbV(mk2,xl);
+  double abvme2 = AbV(me2,xl);
+  double  P4Vx3 =
+       + abvme2 * ( 2./3. );
+
+      P4Vx3 +=  + abvmk2 * ( 2 );
+  return P4Vx3/pow(mass.getf0(),2);
+}
+
+
+double qqstrange6loV(const lomass mass, const Li Liin, const double xl){
+  return qqstrange6LloV(mass,Liin,xl)+qqstrange6RloV(mass,xl);
+}
+
+double qqstrange6LloV(const lomass mass, const Li Liin, const double xl){
+  double mp2 = pow(mass.getmp0(),2);
+  double mk2 = pow(mass.getmk0(),2);
+  double me2 = 4./3.*mk2-1./3.*mp2;
+  //double mu2 = pow(mass.getmu(),2);
+  double L1r,L2r,L3r,L4r,L5r,L6r,L7r,L8r,L9r,L10r,H1r,H2r,mu;
+  Liin.out(L1r,L2r,L3r,L4r,L5r,L6r,L7r,L8r,L9r,L10r,H1r,H2r,mu);
+  if (mass.getmu() != mu){
+    cout << "ERROR: differing mu's in qqstrange6LloV\n";}
+  double abvmp2 = AbV(mp2,xl);
+  double abvmk2 = AbV(mk2,xl);
+  double abvme2 = AbV(me2,xl);
+  //double bbvmp2 = BbV(mp2,xl);
+  double bbvmk2 = BbV(mk2,xl);
+  double bbvme2 = BbV(me2,xl);
+
+  double  P6LVx3 =
+       + bbvme2 * ( 256./9.*pow(mk2,2)*L8r + 256./9.*pow(mk2,2)*L7r + 
+         256./9.*pow(mk2,2)*L6r - 256./27.*pow(mk2,2)*L5r - 128./9.*
+         pow(mk2,2)*L4r - 256./9.*mp2*mk2*L8r - 512./9.*mp2*mk2*L7r + 
+         64./9.*mp2*mk2*L6r + 128./27.*mp2*mk2*L5r - 32./9.*mp2*mk2*L4r
+          + 32./3.*pow(mp2,2)*L8r + 256./9.*pow(mp2,2)*L7r - 32./9.*
+         pow(mp2,2)*L6r - 16./27.*pow(mp2,2)*L5r + 16./9.*pow(mp2,2)*
+         L4r );
+
+      P6LVx3 +=  + bbvmk2 * ( 32*pow(mk2,2)*L8r + 64*pow(mk2,2)*L6r - 
+         16*pow(mk2,2)*L5r - 32*pow(mk2,2)*L4r + 32*mp2*mk2*L6r - 16*
+         mp2*mk2*L4r );
+
+      P6LVx3 +=  + abvme2 * ( 128./3.*mk2*L8r + 128./3.*mk2*L7r + 128./
+         3.*mk2*L6r - 128./9.*mk2*L5r - 64./3.*mk2*L4r - 64./3.*mp2*L8r
+          - 128./3.*mp2*L7r + 16./3.*mp2*L6r + 32./9.*mp2*L5r - 8./3.*
+         mp2*L4r );
+
+      P6LVx3 +=  + abvmk2 * ( 64*mk2*L8r + 128*mk2*L6r - 32*mk2*L5r - 
+         64*mk2*L4r + 32*mp2*L6r - 16*mp2*L4r );
+
+      P6LVx3 +=  + abvmp2 * ( 48*mp2*L6r - 24*mp2*L4r );
+
+      return P6LVx3/pow(mass.getf0(),4);
+}
+
+double qqstrange6RloV(const lomass mass, const double xl){
+  double mp2 = pow(mass.getmp0(),2);
+  double mk2 = pow(mass.getmk0(),2);
+  double me2 = 4./3.*mk2-1./3.*mp2;
+  double mu2 = pow(mass.getmu(),2);
+  double abvmp2 = AbV(mp2,xl);
+  double abvmk2 = AbV(mk2,xl);
+  double abvme2 = AbV(me2,xl);
+  //double bbvmp2 = BbV(mp2,xl);
+  double bbvmk2 = BbV(mk2,xl);
+  double bbvme2 = BbV(me2,xl);
+
+  double   P6RVx3 =
+       + abvme2*bbvme2 * ( 16./27.*mk2 - 7./27.*mp2 );
+
+      P6RVx3 +=  + abvme2*bbvmk2 * (  - 2./3.*mk2 );
+
+      P6RVx3 +=  + pow(abvme2,2) * ( 2./9. );
+
+      P6RVx3 +=  + abvmk2*bbvme2 * (  - 8./9.*mk2 );
+
+      P6RVx3 +=  + abvmk2*abvme2 * (  - 2./3. );
+
+      P6RVx3 +=  + abvmp2*bbvme2 * ( 1./3.*mp2 );
+
+      P6RVx3 +=  + Ab(mp2,mu2)*bbvme2 * ( 1./3.*mp2 );
+
+      P6RVx3 +=  + Ab(mk2,mu2)*bbvme2 * (  - 8./9.*mk2 );
+
+      P6RVx3 +=  + Ab(mk2,mu2)*abvme2 * (  - 2./3. );
+
+      P6RVx3 +=  + Ab(me2,mu2)*bbvme2 * ( 16./27.*mk2 - 7./27.*mp2 );
+
+      P6RVx3 +=  + Ab(me2,mu2)*bbvmk2 * (  - 2./3.*mk2 );
+
+      P6RVx3 +=  + Ab(me2,mu2)*abvme2 * ( 4./9. );
+
+      P6RVx3 +=  + Ab(me2,mu2)*abvmk2 * (  - 2./3. );
+
+      P6RVx3 +=  + Bb(mk2,mu2)*abvme2 * (  - 2./3.*mk2 );
+
+      P6RVx3 +=  + Bb(me2,mu2)*abvme2 * ( 16./27.*mk2 - 7./27.*mp2 );
+
+      P6RVx3 +=  + Bb(me2,mu2)*abvmk2 * (  - 8./9.*mk2 );
+
+      P6RVx3 +=  + Bb(me2,mu2)*abvmp2 * ( 1./3.*mp2 );
+
+      return P6RVx3/pow(mass.getf0(),4);
 }
 

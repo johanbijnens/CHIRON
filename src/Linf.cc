@@ -371,6 +371,10 @@ double Linf::out(const int n) const{
   return 0.;
 }
 
+int Linf::getnf(void) const{
+  return nf;
+}
+
 Linf Linfrandom(void){
   double Linfr[14];
   for(int i=0;i<=13;i++){
