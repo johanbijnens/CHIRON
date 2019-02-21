@@ -335,7 +335,7 @@ label160:
     isbrgn=isbrgs;
     goto label20;
   }
-  relerr=abserr/(1e-315+fabs(result));//1e-315 added for problem if function=0
+  relerr=abserr/(1.+fabs(result));//1e-315 added for problem if function=0
   if((isbrgs+irgnst) > iwk) ifail=2;
   if( (ifncls+2*irlcls) > maxpts) ifail=1;
   if((relerr <= eps) && (ifncls >= minpts) ) ifail=0;

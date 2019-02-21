@@ -65,15 +65,22 @@ int main(void){
        << B22b(mpi2,-me2,mu2) <<' '<<B22bnum(mpi2,mpi2,-me2,mu2)
        << B22b(mpi2,me2,mu2) <<' '<<B22bnum(mpi2,mpi2,me2,mu2)
        <<'\n';
-  cout << "\nBubble integrals B21b, B32b only done via integration over x\n"
-       << "This tests the consistency relation with B1\n"
-       << -me2*B31bnum(mpi2,mk2,-me2,mu2)+6.*B32bnum(mpi2,mk2,-me2,mu2) <<' '
-       << mpi2*B1b(mpi2,mk2,-me2,mu2)+Ab(mk2,mu2)+pi16*(mpi2/6.+mk2/3.+me2/12.)
-       << '\n'
-       <<1.5*me2*B31bnum(mpi2,mk2,1.5*me2,mu2)+6.*B32bnum(mpi2,mk2,1.5*me2,mu2)
-       <<' '
-       << mpi2*B1b(mpi2,mk2,1.5*me2,mu2)+Ab(mk2,mu2)
-            +pi16*(mpi2/6.+mk2/3.-1.5*+me2/12.)
-       << '\n';
+  cout << "\nBubble integrals B31b\n"
+       << B31b(mpi2,mk2,-me2,mu2) <<' '<<B31bnum(mpi2,mk2,-me2,mu2)<<'\n'
+       << B31b(mpi2,mk2,1.5*me2,mu2) <<' '<<B31bnum(mpi2,mk2,1.5*me2,mu2)<<'\n';
+  cout << "\nBubble integrals B32b\n"
+       << B32b(mpi2,mk2,-me2,mu2) <<' '<<B32bnum(mpi2,mk2,-me2,mu2)<<'\n'
+       << B32b(mpi2,mk2,1.5*me2,mu2) <<' '<<B32bnum(mpi2,mk2,1.5*me2,mu2)<<'\n'
+       <<'\n';
+//  cout << "\nBubble integrals B31b, B32b only done via integration over x\n"
+//       << "This tests the consistency relation with B1\n"
+//       << -me2*B31bnum(mpi2,mk2,-me2,mu2)+6.*B32bnum(mpi2,mk2,-me2,mu2) <<' '
+//       << mpi2*B1b(mpi2,mk2,-me2,mu2)+Ab(mk2,mu2)+pi16*(mpi2/6.+mk2/3.+me2/12.)
+//       << '\n'
+//       <<1.5*me2*B31bnum(mpi2,mk2,1.5*me2,mu2)+6.*B32bnum(mpi2,mk2,1.5*me2,mu2)
+//       <<' '
+//       << mpi2*B1b(mpi2,mk2,1.5*me2,mu2)+Ab(mk2,mu2)
+//            +pi16*(mpi2/6.+mk2/3.-1.5*+me2/12.)
+//       << '\n';
   return 0;
 }

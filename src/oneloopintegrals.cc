@@ -1,6 +1,6 @@
 // oneloopintegrals.cc is part of the CHIRON ChPT at two loops program
 // collection
-// Copyright (C) 2014-2015 Johan Bijnens, v1.01
+// Copyright (C) 2014-2016 Johan Bijnens, v1.02
 // CHIRON is licenced under the GNU GPL version 2 or later,
 // see COPYING for details.
 // Please respect the Guidelines, see GUIDELINES for details.
@@ -215,9 +215,21 @@ dcomplex B1bnum(const double m1sq,const double m2sq,const double qsq,
 
 dcomplex B21b(const double m1sq,const double m2sq,const double qsq,
 	      const double mu2){
+  if(qsq != 0.){
   return (1./qsq*(Ab(m2sq,mu2)+m1sq*Bb(m1sq,m2sq,qsq,mu2)
 		  -4.*B22b(m1sq,m2sq,qsq,mu2)
 		  +2.*pi16*(m1sq/4.+m2sq/4.-qsq/12.)));
+  }
+  else{
+    if (m1sq == m2sq) return pi16*(-1.-log(m1sq/mu2))/3.;
+    double l1 = log(m1sq/mu2);
+    double l2 = log(m2sq/mu2);
+    double b21b0 = (pow(m2sq,3)*l2-pow(m1sq,3)*l1)/3.
+      -(pow(m2sq,3)-pow(m1sq,3))/9.
+      -2*m1sq*((m2sq*m2sq*l2-m1sq*m1sq*l1)/2.-(m2sq*m2sq-m1sq*m1sq)/4.)
+      +m1sq*m1sq*((m2sq*l2-m1sq*l1)-(m2sq-m1sq));
+    return pi16*(-1./3.-b21b0/pow(m2sq-m1sq,3));
+  }
 }
 
 
@@ -302,6 +314,26 @@ dcomplex B22bnum(const double m1sq,const double m2sq,const double qsq,
 }
 
 // B31bar integral xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+dcomplex B31b(const double m1sq,const double m2sq,const double qsq,
+	       const double mu2){
+  if (qsq == 0.){
+    if (m1sq == m2sq) return pi16*(-1.-log(m1sq/mu2))/4.;
+    return pi16*(-1./4.-1./pow(m2sq-m1sq,4)*
+		 (log(m2sq/mu2)*(pow(m2sq,4)/4.-m1sq*pow(m2sq,3)
+                                 +3./2.*pow(m1sq*m2sq,2)-pow(m1sq,3)*m2sq)
+		  +log(m1sq/mu2)*pow(m1sq,4)*(-1./4.+1.-3./2.+1.)
+                  -(pow(m2sq,4)-pow(m1sq,4))/16.
+                  +m1sq*(pow(m2sq,3)-pow(m1sq,3))/3.
+                  -m1sq*m1sq*(m2sq*m2sq-m1sq*m1sq)*3./4.
+                  +pow(m1sq,3)*(m2sq-m1sq)
+		  )
+		 );
+  }
+  return 1./qsq*(Ab(m2sq,mu2)/4.-m1sq/2.*B1b(m1sq,m2sq,qsq,mu2)
+    -3./4.*(m2sq-m1sq-qsq)*B21b(m1sq,m2sq,qsq,mu2)
+		 +pi16*(-m1sq/12.-m2sq/6.+qsq/24.));
+}
+
 static bintdata b31intdat;
 
 dcomplex B31bnumint(const dcomplex xx){
@@ -326,6 +358,23 @@ dcomplex B31bnum(const double m1sq,const double m2sq,const double qsq,
 }
 
 // B32bar integral xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+dcomplex B32b(const double m1sq,const double m2sq,const double qsq,
+	       const double mu2){
+  if (qsq == 0.){
+    if(m1sq == m2sq) return pi16*(-1./4.)*m1sq*log(m1sq/mu2);
+    double l1 = log(m1sq/mu2);
+    double l2 = log(m2sq/mu2);
+    double b21b0 = (pow(m2sq,3)*l2-pow(m1sq,3)*l1)/3.
+      -(pow(m2sq,3)-pow(m1sq,3))/9.
+      -2*m1sq*((m2sq*m2sq*l2-m1sq*m1sq*l1)/2.-(m2sq*m2sq-m1sq*m1sq)/4.)
+      +m1sq*m1sq*((m2sq*l2-m1sq*l1)-(m2sq-m1sq));
+    return pi16*(-1./4.*m2sq*l2-(m2sq-m1sq)/4.*(-1./3.-b21b0/pow(m2sq-m1sq,3)));
+  }
+  return Ab(m2sq,mu2)/8.+m1sq/4.*B1b(m1sq,m2sq,qsq,mu2)
+    +(m2sq-m1sq-qsq)/8.*B21b(m1sq,m2sq,qsq,mu2)
+    +pi16*(m1sq/24.+m2sq/12.-qsq/48.);
+}
+
 static bintdata b32intdat;
 
 dcomplex B32bnumint(const dcomplex xx){

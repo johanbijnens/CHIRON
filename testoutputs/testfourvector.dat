@@ -1,0 +1,18 @@
+outputting two fourvectors
+p1 : 1 0 0 0
+p2 : 2 0.5 0.1 0.2
+This should give a warning
+WARNING attempt to set fourvector with wrong number of elements
+The sum p1+p2        : 3 0.5 0.1 0.2
+The difference p1-p2 : -1 -0.5 -0.1 -0.2
+ -p2                 : -2 -0.5 -0.1 -0.2
+ p2*0.1              : 0.2 0.05 0.01 0.02
+ 0.1*p2              : 0.2 0.05 0.01 0.02
+Written to file and read back in : 2 0.5 0.1 0.2
+As a vector of doubles and looking at one component
+0.5 0.5
+p5 and p5/5
+0.1 0.2 0.3 0.4
+0.02 0.04 0.06 0.08
+scalar product: p5.p5 and p1.p2
+-0.28 2

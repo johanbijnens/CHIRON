@@ -1,6 +1,6 @@
 // filelist.txt is part of the 
 // CHIRON ChPT at two loops program collection
-// Copyright (C) 2014-2015 Johan Bijnens, v1.01
+// Copyright (C) 2014-2019 Johan Bijnens, v1.02
 // CHIRON is licenced under the GNU GPL version 2 or later,
 // see COPYING for details.
 // Please respect the Guidelines, see GUIDELINES for details.
@@ -23,10 +23,12 @@ include files in include:
 jbnumlib.h
 
 inputs.h
+inputsnf2.h
 inputsnf.h
 Li.h
 Linf.h
 Ci.h
+Ki.h
 oneloopintegrals.h
 sunsetintegrals.h
 quenchedsunsetintegrals.h
@@ -43,6 +45,12 @@ massdecayvevnfPQV.h
 getfpimeta.h
 finitevolumeoneloopintegrals.h
 finitevolumesunsetintegrals.h
+fourvector.h
+finitevolumeonelooptwist.h
+quenchedoneloopintegrals.h
+vectorformlo.h
+vectorformPQ.h
+vectorformPQS.h
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 source files in src:
@@ -57,6 +65,7 @@ jbdtheta34.cc
 jbdtheta3.cc        theta functions with u
 jbderivutheta3.cc
 jbderiv2utheta3.cc
+jbderiv3utheta3.cc
 jbdtheta2d0.cc      two-dimensional theta function
 jbdtheta2d0m1.cc
 jbdtheta2d02.cc
@@ -73,13 +82,16 @@ jbwgauss2.cc
 jbwquad15
 jbwquad21
 jbdadmul.cc         higher dimensional real integration routine
+jbdrteq3.cc
 
 Chiron:
 inputs.cc
 inputsnf.cc
+inputsnf2.cc
 Li.cc
 Linf.cc
 Ci.cc
+Ki.cc
 oneloopintegrals.cc
 sunsetintegrals.cc 
 quenchedsunsetintegrals.cc
@@ -98,6 +110,12 @@ massdecayvevnf.cc
 massdecayvevnfPQ.cc
 massdecayvevnfV.cc
 massdecayvevnfPQV.cc
+fourvector.cc
+finitevolumeonelooptwist.cc
+quenchedoneloopintegrals.cc
+vectorformlo.cc
+vectorformPQ.cc
+vectorformPQS.cc
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 examples and testing files in test:
@@ -106,9 +124,11 @@ testintegralsrealsingular.cc
 testintegralscomplex.cc
 testinputs.cc
 testinputsnf.cc
+testinputsnf2.cc
 testLi.cc
 testLinf.cc
 testCi.cc
+testKi.cc
 testoneloopintegrals.cc
 testsunsetintegrals.cc
 testquenchedsunsetintegrals.cc
@@ -124,16 +144,26 @@ testmassdecayvevV.cc
 testmassdecayvevloV.cc
 testmassdecayvevPQV.cc
 testmassdecayvevnf.cc
-
+testfourvector.cc
+testfinitevolumeonelooptwist.cc
+testjbdrteq3.cc
+testquenchedoneloopintegrals.cc
+testvectorformlo.cc
+testvectorformPQ.cc
+testvectorformPQS.cc
+ 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ouputs of the example and testing files in testoutputs:
 testintegralsreal.dat
 testintegralsrealsingular.dat
 testintegralscomplex.dat
 testinputs.dat
+testinputsnf.dat
+testinputsnf2.dat
 testLi.dat
 testLinf.dat
 testCi.dat
+testKi.dat
 testoneloopintegrals.dat
 testsunsetintegrals.dat
 testedquenchedsunsetintegrals.dat
@@ -147,3 +177,11 @@ testmassdecayvevV.dat
 testmassdecayvevloV.dat
 testmassdecayvevPQV.dat
 testmassdecayvevnf.dat
+testfourvector.dat
+testfinitevolumeonelooptwist.dat
+testjbdrteq3.dat
+testquenchedoneloopintegrals.dat
+testvectorformlo.dat
+testvectorformPQ.dat
+testvectorformPQS.dat
+

@@ -1,0 +1,10 @@
+roots: 1,-2,3 and the discriminant(<0)
+3 -2 1 -8.33333
+roots: 1,-2+i,-2-i and the discriminant(>0)
+3 -2 1 25.037
+Triple root: -3 and the discriminant (=0)
+-3 -3 -3 0
+Triple root: -3 and the discriminant (=0)
+-3 -3 -3 0
+Double+single root: 1,-2,-2 and the discriminant (=0)
+1 -2 -2 0

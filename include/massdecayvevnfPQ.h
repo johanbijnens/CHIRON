@@ -7,11 +7,8 @@
 // results for QCD like theories for masses, decay constants and
 // the qbarq vacuume expectation value
 // derived in
-// J.~Bijnens and J.~Lu,
-// Technicolor and other QCD-like theories at next-to-next-to-leading order,''
-// JHEP {\bf 0911} (2009) 116
-// [arXiv:0910.5424 [hep-ph]].
-// %%CITATION = ARXIV:0910.5424;%%
+// Partially quenched done in:
+// J.~Bijnens and T.~Rössler, JHEP 1511 (2015) 017 [arXiv:1509.04082].
 
 // in terms of the lowest order mass and the chiral limit
 // decay constant

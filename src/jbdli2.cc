@@ -1,6 +1,6 @@
 // jbdli2.cc is part of the numerical library jbnumlib
 // included with the CHIRON ChPT at two loops program collection
-// Copyright (C) 2014 Johan Bijnens, v1.0
+// Copyright (C) 2014-2017 Johan Bijnens, v1.1
 // CHIRON is licenced under the GNU GPL version 2 or later,
 // see COPYING for details.
 // Please respect the Guidelines, see GUIDELINES for details.
@@ -15,7 +15,7 @@
 
 typedef std::complex<double> dcomplex;
 
-dcomplex jbdli2(const dcomplex xxx){
+dcomplex jbdli2p(const dcomplex xxx){
   dcomplex z,z2,terms[15],dli2te,dli2t;
   const dcomplex one = dcomplex(1.); 
   static double bern[15]; // takes bernouilly number b(2)->b(28):B_n/(n+1)!

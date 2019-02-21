@@ -54,8 +54,12 @@ dcomplex B22b(const double msq, const double qsq, const double xmu2);
 dcomplex B22bnum(const double sq1,const double sq2,const double qsq,
 	      const double xmu2);
 
+dcomplex B31b(const double m1sq, const double m2sq, const double qsq,
+	     const double xmu2);
 dcomplex B31bnum(const double sq1,const double sq2,const double qsq,
 	    const double xmu2);
+dcomplex B32b(const double m1sq, const double m2sq, const double qsq,
+	     const double xmu2);
 dcomplex B32bnum(const double sq1,const double sq2,const double qsq,
 	    const double xmu2);
 //

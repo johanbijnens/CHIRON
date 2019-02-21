@@ -8,28 +8,36 @@
 # see COPYING for details.
 # Please respect the Guidelines, see GUIDELINES for details.
 
+# -std=c++0x or -std=c++11 might be needed
+# OPTIONS:
 # in both testing and library
-CC = g++ -O3  -I./include
+CC = g++ -O3  -I./include -std=c++11
 # added for the compilation of the libraries
 CFLAGS = -Wall -Wextra -Wconversion
 #added for the testing files
-CFLAGSTEST = -std=c++0x -Wall -Wextra -Wconversion
+CFLAGSTEST =  -Wall -Wextra -Wconversion
 
 OBJECTSJBNUMLIB = jbdgauss.o jbdcauch.o jbwgauss.o \
   jbdgauss2.o jbdquad15.o jbdquad21.o \
   jbdcauch2.o jbdsing15.o jbdsing21.o \
   jbwgauss2.o jbwquad15.o jbwquad21.o \
-  jbdadmul.o \
-  jbdli2.o jbdbesik.o jbdtheta30.o jbdtheta30m1.o jbdtheta32.o jbdtheta34.o \
+  jbdadmul.o jbdadmul2.o \
+  jbdli2.o jbdlin.o \
+  jbdbesik.o jbdtheta30.o jbdtheta30m1.o jbdtheta32.o jbdtheta34.o \
   jbdtheta2d0.o jbdtheta2d0m1.o jbdtheta2d02.o \
-  jbdtheta3.o jbderivutheta3.o jbderiv2utheta3.o
+  jbdtheta3.o jbderivutheta3.o jbderiv2utheta3.o jbderiv3utheta3.o \
+  jbdrteq3.o
 
-OBJECTSCHIRON = inputs.o Li.o Ci.o inputsnf.o Linf.o Ki.o \
+OBJECTSCHIRON = inputs.o Li.o Ci.o inputsnf.o Linf.o Ki.o inputsnf2.o \
+       li.o \
        massdecayvev.o getfpimeta.o \
        massdecayvevlo.o massdecayvevPQ.o \
        massdecayvevnf.o massdecayvevnfPQ.o \
        oneloopintegrals.o sunsetintegrals.o finitevolumeoneloopintegrals.o \
-       finitevolumesunsetintegrals.o quenchedsunsetintegrals.o
+       finitevolumesunsetintegrals.o quenchedsunsetintegrals.o \
+       fourvector.o finitevolumeonelooptwist.o \
+       vectorformlo.o quenchedoneloopintegrals.o vectorformPQ.o vectorformPQS.o\
+       massdecayvevTV.o
 
 OBJECTSCHIRONTHETA =  massdecayvevVt.o massdecayvevloVt.o massdecayvevPQVt.o \
        massdecayvevnfVt.o massdecayvevnfPQVt.o
@@ -39,6 +47,7 @@ OBJECTSCHIRON2 = $(OBJECTSCHIRONTHETA) $(OBJECTSCHIRONBESSEL)
 
 INCLUDECHIRON =  include/inputs.h include/Li.h include/Ci.h\
        include/inputsnf.h include/Linf.h include/Ki.h \
+       include/inputsnf2.h include/li.h \
        include/massdecayvev.h \
        include/massdecayvevlo.h \
        include/massdecayvevPQ.h\
@@ -50,18 +59,28 @@ INCLUDECHIRON =  include/inputs.h include/Li.h include/Ci.h\
        include/finitevolumesunsetintegrals.h\
        include/massdecayvevV.h \
        include/massdecayvevloV.h \
-       include/massdecayvevPQV.h\
-       include/quenchedsunsetintegrals.h 
+       include/massdecayvevPQV.h \
+       include/quenchedsunsetintegrals.h \
+       include/fourvector.h \
+       include/finitevolumeonelooptwist.h \
+       include/vectorformlo.h \
+       include/quenchedoneloopintegrals.h \
+       include/vectorformPQ.h \
+       include/vectorformPQS.h \
+       include/massdecayvevTV.h
 
 TESTCHIRON = testintegralsreal testintegralsrealsingular \
        testintegralscomplex \
        testinputs testinputsnf testLi testCi testmassdecayvev \
+       testinputsnf2 testli \
        testgetfpimeta testoneloopintegrals testsunsetintegrals \
        testfinitevolumeoneloopintegrals testfinitevolumesunsetintegrals \
        testmassdecayvevV testquenchedsunsetintegrals testLinf testKi \
        testmassdecayvevlo testmassdecayvevPQ testmassdecayvevPQV \
-       testmassdecayvevloV testmassdecayvevnf 
-
+       testmassdecayvevloV testmassdecayvevnf testfourvector \
+       testfinitevolumeonelooptwist testjbdrteq3 testvectorformlo \
+       testquenchedoneloopintegrals testvectorformPQ testvectorformPQS \
+       testmassdecayvevTV
 all: libchiron.a libjbnumlib.a
 
 libchiron.a: $(OBJECTSCHIRON) $(OBJECTSCHIRON2)

@@ -7,7 +7,7 @@
 // finite volume results results for QCD like theories for masses,
 // decay constants and // the qbarq vacuume expectation value
 // derived in
-// J.~Bijnens and T.~Rössler
+// J.~Bijnens and T.~Rössler, JHEP 1511 (2015) 017 [arXiv:1509.04082].
 
 // in terms of the lowest order mass and the chiral limit
 // decay constant

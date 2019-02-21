@@ -6,6 +6,9 @@
 // see COPYING for details.
 // Please respect the Guidelines, see GUIDELINES for details.
 
+// J.~Bijnens and J.~Lu, JHEP 0911 (2009) 116 [arXiv:0910.5424 [hep-ph]].
+// J.~Bijnens and T.~Rössler, JHEP 1511 (2015) 017 [arXiv:1509.04082].
+
 
 
 #include <fstream>

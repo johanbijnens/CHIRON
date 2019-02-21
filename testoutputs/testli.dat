@@ -1,0 +1,61 @@
+A zero set
+# li set : Nameless li
+#mu : 0.77
+#l1r  l2r  l3r :0 0 0
+#l4r  l5r  l6r :0 0 0
+#l7r  l8r  l9r :0 0 0
+#h3r           :0
+one with everything nonzero
+# li set : Set 2
+#mu : 0.78
+#l1r  l2r  l3r :0.001 0.002 0.003
+#l4r  l5r  l6r :0.004 0.005 0.006
+#l7r  l8r  l9r :0.007 0.008 0.009
+#h3r           :0.01
+First set fully redefined
+# li set : Nameless li
+#mu : 0.77
+#l1r  l2r  l3r :0.001 0.002 0.003
+#l4r  l5r  l6r :0.004 0.005 0.006
+#l7r  l8r  l9r :0.007 0.008 0.009
+#h3r           :0.01
+WARNING: summing li "Nameless li" and "Set 1 redefined" with different mu 
+# li set : Nameless li
+#mu : 0.77
+#l1r  l2r  l3r :0.002 0.004 0.006
+#l4r  l5r  l6r :0.008 0.01 0.012
+#l7r  l8r  l9r :0.014 0.016 0.018
+#h3r           :0.02
+WARNING: summing li "Nameless li" and "Set 1 redefined" with different mu 
+# li set : Nameless li
+#mu : 0.77
+#l1r  l2r  l3r :0.002 0.004 0.006
+#l4r  l5r  l6r :0.008 0.01 0.012
+#l7r  l8r  l9r :0.014 0.016 0.018
+#h3r           :0.02
+multiplying with a number front and back
+# li set : Multiplied from front
+#mu : 0.77
+#l1r  l2r  l3r :0.002 0.004 0.006
+#l4r  l5r  l6r :0.008 0.01 0.012
+#l7r  l8r  l9r :0.014 0.016 0.018
+#h3r           :0.02
+# li set : Multiplied from back
+#mu : 0.77
+#l1r  l2r  l3r :0.003 0.006 0.009
+#l4r  l5r  l6r :0.012 0.015 0.018
+#l7r  l8r  l9r :0.021 0.024 0.027
+#h3r           :0.03
+Written to and read back from file:
+# li set :  Set 1 redefined
+#mu : 0.9
+#l1r  l2r  l3r :0.001 0.002 0.003
+#l4r  l5r  l6r :0.004 0.005 0.006
+#l7r  l8r  l9r :0.007 0.008 0.009
+#h3r           :0.01
+# li set : Scale changed
+#mu : 0.5
+#l1r  l2r  l3r :0.00224073417952218 0.00448146835904437 0.00113889873071672
+#l4r  l5r  l6r :0.0114444050771331 0.00437963291023891 0.00475926582047782
+#l7r  l8r  l9r :0.007 0.0154444050771331 0.00931018354488054
+#h3r           :0.01

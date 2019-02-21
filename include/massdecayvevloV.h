@@ -10,7 +10,7 @@
 
 
 #include "inputs.h"
-
+#include "Li.h"
 // theta functions
 double mpi4loVt(const lomass mass, const double L);
 double mpi6LloVt(const lomass mass, const Li li,const double L);

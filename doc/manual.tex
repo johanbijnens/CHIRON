@@ -33,8 +33,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % change these when updating
 % remember to run makeindex manual and run latex a few times afterwards
-\newcommand{\chironversion}{v0.54}
-\newcommand{\versiondate}{September 2015}
+\newcommand{\chironversion}{v0.55alpha}
+%\newcommand{\versiondate}{September 2015}
+\newcommand{\versiondate}{\today}
 
 \begin{document}
 \begin{titlepage}
@@ -63,10 +64,11 @@ routine library \mytt{chiron}.
 under their own license.
 \end{titlepage}
 
-\phantomsection % to make the loink go correctly
+\phantomsection % to make the link go correctly
 \addcontentsline{toc}{section}{Contents}
 \tableofcontents
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
 \label{introduction}
 \index{Introduction}
@@ -93,6 +95,7 @@ His name comes from the Greek word for hand (Kheir)
 which is also the origin of the word chiral which is why his name was deemed
 appropriate for this package \cite{chiron}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Guidelines}
 \label{guidelines}
 \index{Guidelines}
@@ -141,6 +144,7 @@ already present in the source code but not yet documented in this manual.
 These might change and have not been tested as well as the documented ones.
 In particular interfaces etc. might change.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Files, installation and testroutines}
 
 The package can be downloaded from \cite{chironsite}.
@@ -217,6 +221,7 @@ Executing the resulting file \mytt{a.out} should then produce output
 identical (up to the precision specified and possible randomly generated
 cases) to the file \mytt{testxxx.dat} in the subdirectory \mytt{testoutputs}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\newfunction{jbnumlib}}
 \label{sec:jbnumlib}
 
@@ -229,11 +234,14 @@ provided as\\
 All variables declared complex will be of the this type and referred
 to as \newfunction{dcomplex} in the remainder.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Special functions}
 
-\subsubsection{\newfunction{jbdli2}}
+\subsubsection{Polylogarithms}
 
-\mytt{dcomplex jbdli2(const dcomplex x)}
+\paragraph{\newfunction{jbdli2p}}
+
+\mytt{dcomplex jbdli2p(const dcomplex x)}
 
 Returns the complex dilogarithm or Spence function defined by
 \begin{equation}
@@ -244,7 +252,57 @@ positive real axis from 1 to $\infty$.
 Uses the properties of the dilogarithm to transform the argument
 and then the Bernouilly series as described in \cite{'tHooft:1978xw}.
 
-Defined in \mytt{jbnumlib.h} and implemented in \mytt{jbdli2.cc}.
+Defined in \mytt{jbnumlib.h} and implemented in \mytt{jbdli2.cc}. This was
+\mytt{jbdli2} in versions of \mytt{jbnumlib} up to 0.54.
+
+\paragraph{\newfunction{jbdli2}}
+
+\mytt{dcomplex jbdli2(const dcomplex x)}
+
+Returns the complex dilogarithm or Spence function defined by
+\begin{equation}
+\mathrm{Li_2}(x) = -\int_0^1 dt \frac{\log(1-xt)}{t}\,,
+\end{equation}
+where it converges and analytic continuation. Cut defined on the
+positive real axis from 1 to $\infty$.
+Uses the properties of the dilogarithm to transform the argument
+and then the Bernouilly series around zero or 1 as described in
+\cite{Frellesvig:2016ske}. Somewhat faster than \mytt{jbdli2p} in
+some cases.
+
+Defined in \mytt{jbnumlib.h} and implemented in \mytt{jbdlin.cc}.
+
+\paragraph{\newfunction{jbdli3}}
+
+\mytt{dcomplex jbdli3(const dcomplex x)}
+
+Returns the complex trilogarithm function defined by
+\begin{equation}
+\mathrm{Li_3}(x) = \int_0^1 dt \frac{\mathrm{Li}_2(xt)}{t}\,,
+\end{equation}
+where it converges and analytic continuation. Cut defined on the
+positive real axis from 1 to $\infty$.
+Uses the properties of the trilogarithm to transform the argument
+and then the Bernouilly series around zero or 1 as described in
+\cite{Frellesvig:2016ske}.
+
+Defined in \mytt{jbnumlib.h} and implemented in \mytt{jbdlin.cc}.
+
+\paragraph{\newfunction{jbdli4}}
+
+\mytt{dcomplex jbdli4(const dcomplex x)}
+
+Returns the complex polylogarithm function defined by
+\begin{equation}
+\mathrm{Li_4}(x) = \int_0^1 dt \frac{\mathrm{Li}_3(xt)}{t}\,,
+\end{equation}
+where it converges and analytic continuation. Cut defined on the
+positive real axis from 1 to $\infty$.
+Uses the properties of the trilogarithm to transform the argument
+and then the Bernouilly series around zero or 1 as described in
+\cite{Frellesvig:2016ske}.
+
+Defined in \mytt{jbnumlib.h} and implemented in \mytt{jbdlin.cc}.
 
 \subsubsection{Bessel functions}
 
@@ -418,7 +476,7 @@ Returns the value of the function
 \begin{equation}
 \label{deftheta3u}
 \frac{\partial}{\partial u}\theta_{3}(u,q) = -4\pi\sum_{n=1,\infty} q^{(n^2)} \sin(2\pi n u)
-= i2\pi\sum_{n=-\infty,\infty}  q^{(n^2)} e^{i2\pi n u}\,.
+= i2\pi\sum_{n=-\infty,\infty} n q^{(n^2)} e^{i2\pi n u}\,.
 \end{equation}
 For small $q$ the summation in (\ref{deftheta3u}) is used directly.
 For larger $q$ the appropriate derivative of the relation
@@ -434,9 +492,25 @@ Returns the value of the function
 \begin{equation}
 \label{deftheta3u2}
 \frac{\partial^2}{\partial u^2}\theta_{3}(u,q) = -8\pi^2\sum_{n=1,\infty} q^{(n^2)} \cos(2\pi n u)
-= -4\pi^2\sum_{n=-\infty,\infty}  q^{(n^2)} e^{i2\pi n u}\,.
+= -4\pi^2\sum_{n=-\infty,\infty} n^2 q^{(n^2)} e^{i2\pi n u}\,.
 \end{equation}
 For small $q$ the summation in (\ref{deftheta3u2}) is used directly.
+For larger $q$ the appropriate derivative of the relation
+(\ref{theta3relation}) is used.
+
+Defined in \mytt{jbnumlib.h}, implemented in \mytt{jbderiv2utheta3.cc}.
+
+\paragraph{\newfunction{jbderiv3utheta3}}
+
+\mytt{double jbderiv3utheta3(const double u, const double q)}
+
+Returns the value of the function
+\begin{equation}
+\label{deftheta3u3}
+\frac{\partial^3}{\partial u^3}\theta_{3}(u,q) = 16\pi^2\sum_{n=1,\infty} q^{(n^2)} \sin(2\pi n u)
+= -8i\pi^3\sum_{n=-\infty,\infty}n^3  q^{(n^2)} e^{i2\pi n u}\,.
+\end{equation}
+For small $q$ the summation in (\ref{deftheta3u3}) is used directly.
 For larger $q$ the appropriate derivative of the relation
 (\ref{theta3relation}) is used.
 
@@ -495,13 +569,39 @@ symmetric in $b,c$. Method similar to \mytt{jbdtheta2d0}.
 
 Defined in \mytt{jbnumlib.h} and implemented in \mytt{jbdtheta2d02.cc}. 
 
+\subsection{Root finders}
+
+\subsubsection{Roots of a cubic equation}
+
+\paragraph{\newfunction{jbdrteq3}}
+
+\mytt{double jbdrteq3(const double r,const double s,const double t,\\
+\hspace*{2cm} double x[3],
+double \& d)}
+
+Finds the roots of the equation with real coefficients
+\begin{equation}
+x^3+r x^2+sx+t=0\,.
+\end{equation}
+If $d\le0$ the three real roots are in $x[0],x[1],x[2]$.
+For degenerate roots $d=0$. For $d>0$ the real root is in $x[0]$
+and the two complex conjugate roots are $x[1]\pm i x[2]$.
+
+The routine uses the classical method of Tartaglia-Vieta.
+Sometimes, the solutions are improved by Newton iteration. 
+A simple port to \cpp\ of \cernlib\ routine DRTEQ3. 
+
+Defined in \mytt{jbnumlib.h}, implemented in \mytt{jbdrteq3.cc}.
+A short example program is\\\mytt{testjbdrteq3.cc}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Integration routines}
 
 \subsubsection{One dimension, real}
 
 The interface of these routines is identical so they can be simply
 interchanged.
-For most problems the speed decrases as \mytt{jbdquad15}, \mytt{jbdquad21},
+For most problems the speed decreases as \mytt{jbdquad15}, \mytt{jbdquad21},
 \mytt{jbdgauss2}, \mytt{jbdgauss} but this is somewhat dependent on the function
 integrated and the precision requested.
 
@@ -559,10 +659,15 @@ Defined in \mytt{jbnumlib.h}, implemented in \mytt{jbdgauss2.cc}.
 
 \paragraph{\newfunction{jbdquad15}}
 
-\mytt{double jbdquad15(f,a,b,eps)}
+\mytt{double jbdquad15(f,a,b,eps)}\\
+\mytt{double jbdquad15(fp,a,b,eps,ap)}
 
+Two versions exist:\\
 \mytt{f}: \mytt{double (*f)(const double x)} The double precision
-function to be integrated over.
+function to be integrated over.\\
+\mytt{fp}: \mytt{double (*fp)(const double x, void*)} The double precision
+function to be integrated over, the pointer allows for extra parameters
+to be transferred through the integration routine.
 
 \mytt{a,b,eps}: \mytt{const double}
 
@@ -572,6 +677,8 @@ function to be integrated over.
 
 \mytt{eps}: Precision attempted to be reached: relative precision if absolute
 value of the integral is above 1, otherwise absolute precision.
+
+\mytt{ap}: \mytt{void*}
 
 Uses 15 point Gauss-Kronrod rule for the estimate
 and the difference with the embedded 7 point Gauss rule for
@@ -582,10 +689,15 @@ Defined in \mytt{jbnumlib.h}, implemented in \mytt{jbdquad15.cc}.
 
 \paragraph{\newfunction{jbdquad21}}
 
-\mytt{double jbdquad21(f,a,b,eps)}
+\mytt{double jbdquad21(f,a,b,eps)}\\
+\mytt{double jbdquad21(fp,a,b,eps,ap)}
 
+Two versions exist:\\
 \mytt{f}: \mytt{double (*f)(const double x)} The double precision
-function to be integrated over.
+function to be integrated over.\\
+\mytt{fp}: \mytt{double (*fp)(const double x, void*)} The double precision
+function to be integrated over, the pointer allows for extra parameters
+to be transferred through the integration routine.
 
 \mytt{a,b,eps}: \mytt{const double}
 
@@ -595,6 +707,8 @@ function to be integrated over.
 
 \mytt{eps}: Precision attempted to be reached: relative precision if absolute
 value of the integral is above 1, otherwise absolute precision.
+
+\mytt{ap}: \mytt{void*}
 
 Uses 21 point Gauss-Kronrod rule for the estimate
 and the difference with the embedded 10 point Gauss rule for
@@ -793,10 +907,14 @@ Defined in \mytt{jbnumlib.h}, implemented in \mytt{jbwgauss2.cc}.
 
 \paragraph{\newfunction{jbwquad15}}
 
-\mytt{dcomplex jbwquad15(f,a,b,eps)}
+\mytt{dcomplex jbwquad15(f,a,b,eps)}\\
+\mytt{dcomplex jbwquad15(fp,a,b,eps,ap)}
 
 \mytt{f}: \mytt{dcomplex (*f)(const dcomplex x)} The complex double precision
 function to be integrated over.
+
+\mytt{fp}: \mytt{dcomplex (*fp)(const dcomplex x, void*)} The complex double precision
+function to be integrated over. The void* allows for extra parameters to be passed to the function.
 
 \mytt{a,b}: \mytt{const dcomplex}
 
@@ -808,7 +926,9 @@ function to be integrated over.
 relative precision if absolute
 value of the integral is above 1, otherwise absolute precision.
 
-Subroutinre similar to \mytt{jbwgauss2} but uses a 15 point Gauss-Kronrod rule
+\mytt{ap}: \mytt{void*}
+
+Subroutine similar to \mytt{jbwgauss2} but uses a 15 point Gauss-Kronrod rule
 for the estimate
 and the difference with the embedded 7 point Gauss rule for the error estimate.
 Adaptive with a subdivision strategy
@@ -820,10 +940,14 @@ Defined in \mytt{jbnumlib.h}, implemented in \mytt{jbwquad15.cc}.
 
 \paragraph{\newfunction{jbwquad21}}
 
-\mytt{dcomplex jbwquad21(f,a,b,eps)}
+\mytt{dcomplex jbwquad21(f,a,b,eps)}\\
+\mytt{dcomplex jbwquad21(fp,a,b,eps,ap)}
 
 \mytt{f}: \mytt{dcomplex (*f)(const dcomplex x)} The complex double precision
 function to be integrated over.
+
+\mytt{fp}: \mytt{dcomplex (*fp)(const dcomplex x, void*)} The complex double precision
+function to be integrated over. The void* allows for extra parameters to be passed to the function.
 
 \mytt{a,b}: \mytt{const dcomplex}
 
@@ -835,7 +959,9 @@ function to be integrated over.
 relative precision if absolute
 value of the integral is above 1, otherwise absolute precision.
 
-Subroutinre similar to \mytt{jbwgauss2} but uses a 21 point Gauss-Kronrod rule
+\mytt{ap}: \mytt{void*}
+
+Subroutine similar to \mytt{jbwgauss2} but uses a 21 point Gauss-Kronrod rule
 for the estimate
 and the difference with the embedded 10 point Gauss rule for the error estimate.
 Adaptive with a subdivision strategy
@@ -849,18 +975,20 @@ Defined in \mytt{jbnumlib.h}, implemented in \mytt{jbwquad21.cc}.
 
 \paragraph{\newfunction{jbdad2}}
 
-\mytt{double jbdad2(f,a,b,releps, relerr, ifail)}
+\mytt{double jbdad2(f,a,b,eps, relerr, ifail)}\\
+\mytt{double jbdad2(f,ap,a,b,eps, relerr, ifail)}
 
-\mytt{f}: \mytt{double (*f)(double x[])} The double precision
-function to be integrated over, \mytt{x[0]} and \mytt{x[1]} contain
-the values of the two variables to be integrated over.
+\mytt{f}: \mytt{double (*f)(double x[])} or \mytt{double (*f)(double x[],void*)}
+The double precision function to be integrated over, \mytt{x[0]} and \mytt{x[1]} contain the values of the two variables to be integrated over.
+The \mytt{void* ap} allows extra parameters to be transferred. 
 
 
 \mytt{a}: \mytt{double a[]}  \mytt{a[0]} and \mytt{a[1]} are the lower limits of integration.
 
 \mytt{b}: \mytt{double b[]}  \mytt{b[0]} and \mytt{b[1]} are the upper limits of integration.
 
-\mytt{releps}: \mytt{const double} requested relative precision of the integral.
+\mytt{eps}: \mytt{const double} Precision attempted to be reached: relative precision if absolute
+value of the integral is above 1, otherwise absolute precision.
 
 \mytt{relerr}: \mytt{double \&} returns the obtained relative precision
 via a reference.
@@ -873,22 +1001,28 @@ The underlying routine is \mytt{jbdadmul} which is
 a simple port to \cpp\ of the \cernlib\ routine
  \mytt{DADMUL}. This in turn was based on \cite{radmulpaper}.
 
-Defined in \mytt{jbnumlib.h}, implemented in \mytt{jbdadmul.cc}.
+Defined in \mytt{jbnumlib.h}, implemented in \mytt{jbdadmul.cc} and
+\mytt{jbdadmul2.cc}.
 
 \subsubsection{Three dimensions, real}
 \paragraph{\newfunction{jbdad3}}
 
-\mytt{double jbdad3(f,a,b,releps, relerr, ifail)}
+\mytt{double jbdad3(f,a,b,eps, relerr, ifail)}\\
+\mytt{double jbdad3(f,ap,a,b,eps, relerr, ifail)}
 
-\mytt{f}: \mytt{double (*f)(double x[])} The double precision
+\mytt{f}: \mytt{double (*f)(double x[])}  or \mytt{double (*f)(double x[],void*)}
+The double precision
 function to be integrated over, \mytt{x[0]}, \mytt{x[1]} and  \mytt{x[2]}
 contain the values of the three variables to be integrated over.
+The \mytt{void* ap} allows extra parameters to be transferred. 
 
 \mytt{a}: \mytt{double a[]}  \mytt{a[0]}, \mytt{a[1]} and \mytt{a[2]} are the lower limits of integration.
 
 \mytt{b}: \mytt{double b[]}  \mytt{b[0]}, \mytt{b[1]} and \mytt{b[2]} are the upper limits of integration.
 
-\mytt{releps}: \mytt{const double} requested relative precision of the integral.
+\mytt{eps}: \mytt{const double} Precision attempted to be reached:
+relative precision if absolute
+value of the integral is above 1, otherwise absolute precision.
 
 \mytt{relerr}: \mytt{double \&} returns the obtained relative precision
 via a reference.
@@ -901,17 +1035,19 @@ The underlying routine is \mytt{jbdadmul} which is
 a simple port to \cpp\ of the \cernlib\ routine
  \mytt{DADMUL}. This in turn was based on \cite{radmulpaper}.
 
-Defined in \mytt{jbnumlib.h}, implemented in \mytt{jbdadmul.cc}.
+Defined in \mytt{jbnumlib.h}, implemented in \mytt{jbdadmul.cc} and
+\mytt{jbdadmul2.cc}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Chiral Perturbation Theory}
 
 The classic papers introducing ChPT are
 \cite{Weinberg:1978kz,Gasser:1983yg,Gasser:1984gg}.
 References to lectures and introductions can be found in \cite{webpage}.
-Areview at two-loop order is \cite{Bijnens:2006zp}.
+A review at two-loop order is \cite{Bijnens:2006zp}.
 The notation used here correspond to the notation introduced by Gasser
-and Leutwyler, $B,F,l_i^r,B_0$ \cite{Gasser:1983yg} and
-$F_0L_i^r$ \cite{Gasser:1984gg} for the two and three flavour case.
+and Leutwyler, $B,F,l_i^r$ \cite{Gasser:1983yg} and
+$B_0,F_0,L_i^r$ \cite{Gasser:1984gg} for the two and three flavour case.
 In general the decay constants are defined with a normalization of
 $F_\pi\approx 92~$MeV. The coupling constants in the higher order Lagrangians
 are usually referred to as low-energy constants (LECs). Power counting
@@ -919,13 +1055,256 @@ is the usual dimensional counting with orders referred to as $p^n$
 with alternatively $p^2$ or lowest-order (LO), $p^4$ or next-to-leading-order
 (NLO) and $p^6$ or next-to-next-to-leading order (NNLO).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Data structures}
 
 This section describes a number of classes to deal with input parameters
 and LECs. The default value mechanism of \cpp\ is used to give them
 initial values if not specified. These are visible below as ``\mytt=value''
 in the definitions.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Two flavour ChPT}
 
+\subsubsection{Class: \newfunction{physmassnf2}}
+
+\mytt{physmassnf2(mpiin=0.135,fpiin=0.0922,muin=0.77)}
+
+\mytt{mpiin,fpiin,muin: const double}
+
+Private data: \mytt{double mpi,fpi,mu}
+
+Physical quantities: pion, pion-decay constant and
+subtraction scale $\mu$.
+
+Relevant physical case: two flavour ChPT, isospin limit.\\
+
+Input member functions:\\
+\mytt{void \newfunction{setmpi}(const double mpiin=0.135)}\\
+\mytt{void \newfunction{setfpi}(const double fpiin=0.0922)}\\
+\mytt{void \newfunction{setmu}(const double muiin=0.77)}\\
+
+Output member functions exist in two varieties. Those that return
+all or a subset of values using references or those that
+return one value as the function value.\\
+\mytt{void \newfunction{out}(double \&mpiout, double \&fpiout,\\\hspace*{1cm} double \&muout)}\\
+\mytt{double \newfunction{getmpi}(void)}\\
+\mytt{double \newfunction{getfpi}(void)}\\
+\mytt{double \newfunction{getmu}(void)}\\
+
+
+Operators defined: \newfunction{<<}, \newfunction{>>} and \newfunction{==}.
+
+\mytt{<<} and \mytt{>>} are  defined such that output and input
+streams work as expected. The input stream should be exactly in the format
+provided by the output stream.
+
+\mytt{==} checks for equality within relative precision of $10^{-7}$.
+An error will occur if any of the data members is zero.\\
+
+Defined in \mytt{inputsnf2.h}, implemented in \mytt{inputsnf2.cc},
+examples of use in \mytt{testinputsnf2.cc}.
+
+\subsubsection{Class: \newfunction{lomassnf2}}
+
+\mytt{lomassnf2(mp0in=0.135, muin=0.77)}
+
+\mytt{mp0in,muin: const double}
+
+\mytt{lomassnf2(const quarkmassnf2 mass)}
+
+
+
+Private data: \mytt{double mp,f,mu}
+
+Physical quantities: lowest order pion mass, lowest
+order pion-decay constant and subtraction scale $\mu$.
+
+Relevant physical case: two flavour ChPT, isospin limit.\\
+
+The constructor from a \mytt{quarkmassnf2} is provided such that conversions can be used.\\
+Input member functions:\\
+\mytt{void \newfunction{setmp}(const double mp0in=0.135)}
+\mytt{void \newfunction{setf}(const double f0in=0.09)}
+\mytt{void \newfunction{setmu}(const double muin=0.77)}\\
+
+Output member functions exist in two varieties. Those that return
+all or a subset of values using references or those that
+return one value as the function value.\\
+\mytt{void \newfunction{out}(double \&mp0out, double \&f0out, double \&muout)}\\
+\mytt{double \newfunction{getmp}(void)}\\
+\mytt{double \newfunction{getf}(void)}\\
+\mytt{double \newfunction{getmu}(void)}\\
+
+Operators defined: \newfunction{<<}, \newfunction{>>} and \newfunction{==}.
+
+\mytt{<<} and \mytt{>>} are  defined such that output and input
+streams work as expected. The input stream should be exactly in the format
+provided by the output stream.
+
+\mytt{==} checks for equality within relative precision of $10^{-7}$.
+An error will occur if any of the data members is zero.\\
+
+Defined in \mytt{inputsnf2.h}, implemented in \mytt{inputsnf2.cc},
+examples of use in \mytt{testinputsnf2.cc}.
+
+
+\subsubsection{Class: \newfunction{quarkmassnf2}}
+
+\mytt{quarkmassnf2(B0mhatin=0.01, f0in=0.090, muin=0.77)}
+
+\mytt{B0mhatin,f0in,muin: const double}
+
+\mytt{quarkmassnf2(const lomassnf2 mass)}
+
+Private data: \mytt{double Bmhat,f,mu}
+
+Physical quantities: $B\hat m$, lowest
+order pion-decay constant and subtraction scale $\mu$.\\
+The quantities $B \hat m$ is the LEC $B$ \cite{Gasser:1983yg} multiplied by the average up-down quark mass and strange quark mass
+respectively.
+These are independent of the QCD scale. The lowest order pion mass
+are given by $m_{\pi\,\text{LO}}=\sqrt{2B_0 \hat m}$.
+
+Relevant physical case: two flavour ChPT, isospin limit.\\
+
+The constructor from a \mytt{lomassnf2} is provided such that conversions can be used.\\
+Input member functions:\\
+\mytt{void \newfunction{setBmhat}(const double B0mhatin=0.01)}\\
+\mytt{void \newfunction{setf}(const double f0in=0.09)}\\
+\mytt{void \newfunction{setmu}(const double muin=0.77)}\\
+
+
+Output member functions exist in two varieties. Those that return
+all or a subset of values using references or those that
+return one value as the function value.\\
+\mytt{void \newfunction{out}(double \&B0mhatout, double \&f0out, double \&muout)}\\
+\mytt{double \newfunction{getBmhat}(void)}\\
+\mytt{double \newfunction{getf}(void)}\\
+\mytt{double \newfunction{getmu}(void)}\\
+
+Operators defined: \newfunction{<<}, \newfunction{>>} and \newfunction{==}.
+
+\mytt{<<} and \mytt{>>} are  defined such that output and input
+streams work as expected. The input stream should be exactly in the format
+provided by the output stream.
+
+\mytt{==} checks for equality within relative precision of $10^{-7}$.
+An error will occur if any of the data members is zero.\\
+
+Defined in \mytt{inputsnf2.h}, implemented in \mytt{inputsnf2.cc},
+examples of use in \mytt{testinputsnf2.cc}.
+
+\subsubsection{NLO LECs: Class \newfunction{li}}
+
+\mytt{li(l1r=0.,l2r=0.,l3r=0.,l4r=0.,l5r=0.,l6r=0.,l7r=0.,h1r=0.,h2r=0.,h3r=0.,
+\\\hspace*{0.7cm}mu=0.77,Name="Nameless li")}
+
+\mytt{li(liin, mu = 0.77, mpi= 0.13957061)}
+
+\mytt{const double: l1r,\ldots,l7r,h1r,h2r,h3r,mu,mpi}
+
+\mytt{const string: Name}
+
+\mytt{const libar: liin}
+
+
+Protected data: \mytt{double l1r,l2r,l3r,l4r,l5r,l6r,l7r,h1r,h2r,h3r,mu}
+and \mytt{string name}
+
+Physical quantities the 10 LECs, $l_i^r,h_i^r$
+(of which three are so-called contact terms)
+of two-flavour ChPT as introduced in \cite{Gasser:1983yg} and the subtraction
+scale $\mu$.
+
+Relevant physical case: two flavour ChPT\\
+
+Input member functions:\\
+\mytt{void \newfunction{setli}(const int n, const double lin)}\\
+\mytt{void setli(const double lin, const int n)}\\
+Set the value of the LECs with index $n$. $n=8,9,10$ correspond to
+$h_1^r,h_2^r,h_3^r$.\\
+\mytt{\newfunction{setmu}(const double muin)}\\
+Sets the scale $\mu$ to the value \mytt{muin}. This does \emph{not}
+change the LECs, for that use \mytt{changescale}.\\
+\mytt{\newfunction{setname}(const string namein)}
+Sets the name of the set of LECs.\\
+
+Output member functions:\\
+\mytt{double \newfunction{out}(const int n)} returns the value of the n'th LEC.\\
+\mytt{void out} exists in many varieties, 11 double references and a string
+returning all private data, 11 double references returning all LECS and the subtraction scale, 10 double references returning all LECs,
+8 double references returning $l_1^r,\ldots,l_{8}^r$ and the subtraction scale
+and 8 double references returning $l_1^r,\ldots,l_{10}^r$.\\
+
+\mytt{void \newfunction{changescale}(const double newmu)}\\
+This changes the subtraction scale to the new value given by \mytt{muin} and
+changes the LECs according to the running derived
+in \cite{Gasser:1983yg}.\\
+
+Operators defined: \newfunction{<<}, \newfunction{>>}, \newfunction{$+$}, \newfunction{$-$} and \newfunction{*}.
+
+\mytt{<<} and \mytt{>>} are  defined such that output and input
+streams work as expected. The input stream should be exactly in the format
+provided by the output stream.\\
+\mytt{*} allows to multiply an \mytt{li} by a \mytt{double} in either order.
+The resulting value has all LECs multiplied by the value of the \mytt{double}.\\
+\mytt{$+$} and \mytt{$-$} allow to add or subtract set of LECs.
+The resulting value of all LECs is the sum respectively the difference.
+A warning is printed of the scales are different.
+
+Defined in \mytt{li.h}, implemented in \mytt{li.cc},
+examples of use in \mytt{testli.cc}.
+
+\subsubsection{NLO LECs: Class \newfunction{libar}}
+
+
+\mytt{libar(l1bar=0.,l2bar=0.,l3bar=0.,l4bar=0.,l5bar=0.,l6bar=0.,l7r=0.,h1bar=0.,\\\hspace*{0.7cm}h2bar=0.,h3r=0.,
+mu=0.77,Name="Nameless libar")}
+
+\mytt{libar(liin, mpi= 0.13957061)}
+
+\mytt{const double: l1bar,\ldots,l6bar,l7r,h1bar,h2bar,h3r,mpi}
+
+\mytt{const string: Name}
+
+\mytt{const libar: liin}
+
+Protected data: \mytt{double l1bar,l2bar,l3bar,l4bar,l5bar,l6bar,l7r,h1bar,h2bar,h3r}
+and \mytt{string name}
+
+Physical quantities the 10 LECs, $\bar l_i,\bar h_i$ and the two which cannot be
+written in the barred form
+(three are so-called contact terms),
+of two-flavour ChPT as introduced in \cite{Gasser:1983yg}.
+
+Relevant physical case: two flavour ChPT\\
+
+Input member functions:\\
+\mytt{void \newfunction{setlibar}(const int n, const double lin)}\\
+\mytt{void setlibar(const double lin, const int n)}\\
+Set the value of the LECs with index $n$. $n=8,9,10$ correspond to
+$\bar h_1,\bar h_2,h_3^r$.\\
+
+\mytt{\newfunction{setname}(const string namein)}
+Sets the name of the set of LECs.\\
+
+Output member functions:\\
+\mytt{double \newfunction{out}(const int n)} returns the value of the n'th LEC.\\
+\mytt{void out} exists in many varieties, 11 double references and a string
+returning all private data, 11 double references returning all LECS and the subtraction scale, 10 double references returning all LECs,
+8 double references returning $l_1^r,\ldots,l_{8}^r$ and the subtraction scale
+and 8 double references returning $l_1^r,\ldots,l_{10}^r$.\\
+
+Operators defined: \newfunction{<<}, \newfunction{>>}. \newfunction{$+$}, \newfunction{$-$} and \newfunction{*} are not defined since these operations do not make sense for the barred LECs in a simple way.
+
+\mytt{<<} and \mytt{>>} are  defined such that output and input
+streams work as expected. The input stream should be exactly in the format
+provided by the output stream.
+
+Defined in \mytt{li.h}, implemented in \mytt{li.cc},
+examples of use in \mytt{testli.cc}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Three flavour ChPT}
 
 \subsubsection{Class: \newfunction{physmass}}
@@ -1029,7 +1408,8 @@ Private data: \mytt{double B0mhat,B0ms,f0,mu}
 
 Physical quantities: $B_0\hat m, B_0 m_s$, lowest
 order pion-decay constant and subtraction scale $\mu$.\\
-The quantities $B_0 m\hat m$ and $B_0 m_s$ are the LEC $B_0$ \cite{Gasser:1984gg} multiplied by the up-down quark mass and strange quark mass respectively.
+The quantities $B_0 \hat m$ and $B_0 m_s$ are the LEC $B_0$ \cite{Gasser:1984gg} multiplied by the average up-down quark mass and strange quark mass
+respectively.
 These are independent of the QCD scale. The lowest order pion and kaon masses
 are given by $m_{\pi\,\text{LO}}=\sqrt{2B_0 \hat m}$ and
 $m_{K\,\text{LO}}=\sqrt{B_0 (\hat m+m_s)}$
@@ -1290,7 +1670,7 @@ Physical quantities: $m_{ii}$ the lowest order meson
 masses,
 lowest order (pion-)decay constant and subtraction scale $\mu$.
 The quantities $m_{ii}$ are the $\mytt{nmass}$
-lowest order meson masses. They correspond to $m_{ii}=sqrt{B_0 m_i}$ with
+lowest order meson masses. They correspond to $m_{ii}=\sqrt{B_0 m_i}$ with
 the $\mytt{nmass}$
 quark masses multiplied by the LEC $B_0$ \cite{Gasser:1984gg},
 $B_0$ for the relevant number of quarks $n_F$.
@@ -1357,10 +1737,10 @@ Relevant physical case: $n_F$ flavour ChPT and partially quenched ChPT\\
 
 Input member functions:\\
 \mytt{void \newfunction{setnf}(const int nfin)}\\
-\mytt{void \newfunction{setli}(const int n, const double lin)}\\
-\mytt{void setli(const double lin, const int n)}\\
+\mytt{void \newfunction{setlinf}(const int n, const double lin)}\\
+\mytt{void setlinf(const double lin, const int n)}\\
 Sets the value of the LECs with index $n$. $n=12,13$ correspond to
-$H_1^r,H_2r$.\\
+$H_1^r,H_2^r$.\\
 \mytt{\newfunction{setmu}(const double muin)}\\
 Sets the scale $\mu$ to the value \mytt{muin}. This does \emph{not}
 change the LECs, for that use \mytt{changescale}.\\
@@ -1477,7 +1857,48 @@ system generator \mytt{rand()} so initializing using something like
 Defined in \mytt{Ki.h}, implemented in \mytt{Ki.cc},
 examples of use in \mytt{testKi.cc}.
 
+\subsection{Vectors}
+\index{Vectors}
 
+\subsubsection{Class: \newfunction{fourvector}}
+
+This defines a class that deals with a four vector or Lorentz vector. 
+The data structure is
+a vector of four \mytt{double} containing the $t,x,y,z$ components.
+
+\mytt{fourvector(a0,a1,a2,a3)}\\
+\mytt{fourvector(const vector<double> vv)}\\
+Private data: \mytt{vector<double> v=\{0.,0.,0.,0.\}} 
+
+\mytt{const double: a0,a1,a2,a3}
+
+\mytt{vv} must have four elements.\\
+
+Input member functions:\\
+\mytt{void \newfunction{set}(const int n, const double xn)}\\
+\mytt{void \newfunction{set}(cons double xn, const int n)}\\
+ set the $n$-th coordinate to \mytt{xn} with $n= (0,1,2,3)=(t,x,y,z)$.\\
+
+Output member functions:\\
+\mytt{double \newfunction{out}(const int n)} returns the $n$-th coordinate
+with $n= (0,1,2,3)=(t,x,y,z)$.\\
+The conversion to a \mytt{vector<double>} is also defined, so
+a fourvector can be used where a \mytt{vector<double>} is expected.\\
+
+Operators defined: \newfunction{>>},\newfunction{<<},\newfunction{+},
+ \newfunction{-},\newfunction{*},\newfunction{/}.\\
+\mytt{<<} and \mytt{>>} are defined with four numbers output and input as
+expected. \mytt{*} allows to multiply a vector with a number from both sides.
+\mytt{/} allows a vector to be divided by a number. $+$ returns the sum of two
+fourvectors. $-$ exists in two varieties, it can return the opposite fourvector
+as a prefix operator or the difference of two fourvectors.
+\mytt{*} also allows the product of two fourvectors, it then returns the
+Lorentz invariant scalar product.\\
+
+Defined in \mytt{fourvector.h}, implemented in \mytt{fourvector.cc},
+examples of use in \mytt{testfourvector.cc}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Loop integrals}
 \index{Loop integrals}
 
@@ -1584,6 +2005,7 @@ We first define the abbreviation
 \end{equation}
 The bubble integrals themselves are defined by, see e.g. \cite{Bijnens:2002hp},
 \begin{align}
+\label{defbubble}
 B(m_1^2,m_2^2,p^2,\mu^2) =\, &
 \langle 1 \rangle\,, &&
 \nonumber\\
@@ -1708,6 +2130,87 @@ precision. The default is \mytt{1e-10}.\\
 
 Defined in \newfunction{oneloopintegrals.h}, implemented in \newfunction{oneloopintegrals.cc},
 examples of use in \newfunction{testoneloopintegrals.cc}:
+
+\subsection{Bubbles or two-propagator integrals with different powers of propagators}
+\label{qbubbles}
+\index{Quenched bubbles}
+
+\subsubsection{Definitions}
+
+For partially quenched and quenched calculations we also need
+the bubble integrals with higher powers of the propagators.
+These can be derived by taking the derivatives w.r.t. to $m_1^2$
+or $m_2^2$ of the definitions in Sect.~\ref{bubbles}.
+The definitions we use are
+\begin{equation}
+\label{defBpq}
+\langle X \rangle_k = \frac{\mu^{4-d}}{i}\int \frac{d^d q}{(2\pi)^d}
+ \frac{X}{\left(q^2-m_1^2\right)^{n_1} \left((q-p)^2-m_2^2\right)^{n_2} }\,.
+\end{equation}
+$k$ indicates the values of $(n_1,n_2)$
+via\\ 
+\begin{center}
+\begin{tabular}{|ccc|}
+\hline
+$k$ & $n_1$ & $n_2$ \\
+\hline
+1 & 1 & 1\\
+2 & 2 & 1\\
+3 & 1 & 2\\
+4 & 2 & 2\\
+\hline
+\end{tabular}
+\end{center}
+The bubble integrals themselves are defined by
+\begin{align}
+\label{defbubblepq}
+B(k,m_1^2,m_2^2,p^2,\mu^2) =\, &
+\langle 1 \rangle_k\,, &&
+\nonumber\\
+B_\mu(k,m_1^2,m_2^2,p,\mu^2) =\, &
+\langle q_\mu \rangle_k
+& = &\,p_\mu B_1(k,m_1^2,m_2^2,p^2,\mu^2)\,,
+\nonumber\\
+B_{\mu\nu}(k,m_1^2,m_2^2,p,\mu^2) =\, &
+\langle q_\mu q_\nu\rangle_k
+&=&\, p_\mu p_\nu B_{21}(k,m_1^2,m_2^2,p^2,\mu^2)
++g_{\mu\nu} B_{22}(k,m_1^2,m_2^2,p^2,\mu^2)\,,
+%\nonumber\\
+%B_{\mu\nu\rho}(k,m_1^2,m_2^2,p,\mu^2) =\, &
+%\langle q_\mu q_\nu q_\rho\rangle_k
+%&=&\, p_\mu p_\nu p_\rho B_{31}(k,m_1^2,m_2^2,p^2,\mu^2)
+%\nonumber\\
+%& & &+\left(g_{\mu\nu}p_\rho+g_{\mu\rho}p_\nu+g_{\rho\nu}p_\mu\right) B_{32}(k,m_1^2,m_2^2,p^2,\mu^2)\,.
+\end{align}
+
+These integrals were derived during the work on \cite{Bernard:2013eya}.
+
+\subsubsection{Analytical implementation}
+
+The arguments of the functions are \mytt{nprop} which indicates
+$k$ in the definition (\ref{defBpq}).\\
+
+\mytt{const double: msq, m1sq, m2sq, psq, mu2}
+these are $m^2,m_1^2,m_2^2,p^2,\mu^2$.\\
+
+\mytt{dcomplex \newfunction{Bb}(nprop,m1sq, m2sq, psq, mu2)}:
+returns $\overline B(k,m_1^2,m_2^2,p^2,\mu^2)$\\
+%\mytt{dcomplex \newfunction{Bb}(nprop,msq, psq, mu2)}:
+%returns $\overline B(m^2,m^2,p^2,\mu^2)$ using the simpler equal mass formula.
+\mytt{dcomplex \newfunction{B1b}(nprop,m1sq, m2sq, psq, mu2)}:
+returns $\overline B_1(k,m_1^2,m_2^2,p^2,\mu^2)$\\
+\mytt{dcomplex \newfunction{B21b}(nprop,m1sq, m2sq, psq, mu2)}:
+returns $\overline B_{21}(k,m_1^2,m_2^2,p^2,\mu^2)$\\
+\mytt{dcomplex \newfunction{B22b}(nprop,m1sq, m2sq, psq, mu2)}:
+returns $\overline B_{22}(k,m_1^2,m_2^2,p^2,\mu^2)$\\
+%\mytt{dcomplex \newfunction{B22b}(nprop,msq, psq, mu2)}:
+%returns $\overline B_{22}(k,m^2,m^2,p^2,\mu^2)$ using the simpler equal mass formula.\\
+
+At present only the cases $k=1,2,3$ are implemented.
+
+Defined in \newfunction{quenchedoneloopintegrals.h}, implemented in \newfunction{quenchedoneloopintegrals.cc},
+examples of use in \newfunction{testquenchedoneloopintegrals.cc}.
+
 
 \subsection{Sunset integrals}
 \label{sunsets}
@@ -1857,6 +2360,7 @@ examples of use in \newfunction{testsunsetintegrals.cc}:
 
 \subsection{Sunsetintegrals with different powers of propagators}
 \index{Quenched sunsets}
+
 \subsubsection{Definition}
 
 We first define the abbreviation
@@ -1960,7 +2464,8 @@ precision. The default is \mytt{1e-10}.\\
 Defined in \newfunction{quenchedsunsetintegrals.h}, implemented in \newfunction{quenchedsunsetintegrals.cc},
 examples of use in \newfunction{testquenchedsunsetintegrals.cc}:
 
-\subsection{Finite volume tadpole integrals}
+\subsection{Finite volume tadpole integrals: periodic boundary conditions}
+\label{FVtadpole}
 
 \subsubsection{Definitions}
 
@@ -1976,6 +2481,7 @@ and the time direction of infinite extent.
 
 The tadpole integrals $A$ and $A_{\mu\nu}$ are defined as
 \begin{equation}
+\label{defFVtadpole}
 \left\{\tilde A^V(m^2,L,\mu^2),\tilde A^V_{\mu\nu}(m^2,L,\mu^2)\right\}
  = \frac{\mu^{4-d}}{i}\int_V\frac{d^d r}{(2\pi)^d}
 \frac{\left\{1,r_\mu r_\nu\right\}}{(r^2-m^2)}\,.
@@ -2088,7 +2594,6 @@ remainder as
 
 \subsubsection{Functions}
 
-
 The integration routines needed can be set using the macro \newfunction{DINTEGRAL}
 for the real integration, default is \mytt{jbdgauss}.
 % and
@@ -2158,7 +2663,7 @@ implementation done in \cite{Bijnens:2006ve}.\\
 sets the precision for the finite volume integrals evaluated with
 theta function to \mytt{Abacc} for the tadpole integrals, \mytt{Bbacc}
 for the bubble integrals. The last variable printout is a logical variable
-which can be se tto true or false, default is false.
+which can be se tto true or false, default is true.
 Default values are those indicated.\\
 
 \mytt{void \newfunction{setprecisionfinitevolumeoneloopb}(const int maxsum=100,}
@@ -2169,16 +2674,127 @@ indicates how far the sum over Bessel functions is taken.
 Maximum at present is 1000.
 The second argument gives the
 precision of the numerical integration for the
-bubble integrals.
+bubble integrals.\\
 
 Defined in \newfunction{finitevolumeoneloopintegrals.h},
 implemented in \newfunction{finitevolumeoneloop\-integrals.cc},
 examples of use in \newfunction{testfinitevolumeoneloopintegrals.cc}.
 
-\subsection{Finite volume bubble integrals}
+\subsection{Finite volume tadpole integrals: twisted boundary conditions}
 
 \subsubsection{Definitions}
-\label{defFVbubble}
+
+Finite volume also allows for different boundary conditions.
+The integrals for twisted boundary conditions have been derived
+in \cite{Bijnens:2014yya}.
+Twisted boundary conditions means that for a complex field $\Phi$ we
+use as boundary conditions
+\begin{equation}
+\label{deftwist}
+\Phi(x^i+L) = e^{i\theta^i}\Phi(x^i),.
+\end{equation} 
+This can be done with different angles $\theta^i$ for each direction
+and for each field. The definitions of the integrals
+is very similar to (\ref{defFVtadpole}) 
+\begin{equation}
+\label{defFVtadpoletwist}
+\left\{\tilde A^V,\tilde A^V_{\mu},\tilde A^V_{\mu\nu},\tilde A^V_{\mu\nu\rho}\right\}
+ = \frac{\mu^{4-d}}{i}\int_V\frac{d^d r}{(2\pi)^d}
+\frac{\left\{1,r_\mu,r_\mu r_\nu,r_\mu r_\nu r_\rho\right\}}{(r^2-m^2_\Phi)^n}\,.
+\end{equation}
+except that with twisted boundary conditions the integrals with an odd number
+of momenta in the numerator do not vanish.
+The direction of the momentum $r$ is in the direction of the propagation
+of the particle corresponding to $\Phi$.
+
+We consider the case with the three spatial directions at finite volume
+and with twist angles possibly different for all angles.
+For all of the functions above we remove the infinite volume parts
+defined in Sect.~\ref{tadpoles} and the finite volume part
+\begin{equation}
+\tilde A^V = 
+\lambda_0 A^\mathrm{inf} + \overline A + \overline A^V+\mathcal{O}(\epsilon)\,.
+\end{equation}
+For the cases with extra powers of momenta we define in addition
+\begin{equation}
+\label{defFVtadpoletwistcomp}
+\overline A^V_\mu = \overline A^V_{2\mu},\qquad
+\overline A^V_{\mu\nu} = g_{\mu\nu}\overline A^V_{22}+\overline A^V_{23\mu\nu}\,
+\qquad
+\overline A^V_{\mu\nu\rho} = \overline A^V_{33\mu\nu\rho}\,
+\end{equation}
+$\overline A^V_{2\mu}$ and $\overline A^V_{23\mu\nu}$ are nonzero only
+for spatial components.
+
+\subsubsection{Functions}
+
+We use one generic interface here for all functions\\
+\mytt{double \newfunction{AbVtwistt}(const int nprop,const int ntype,
+const int ncomponent,\\
+\hspace*{2cm}		 const double msq,const double xl,
+		 const fourvector theta)}
+
+\mytt{nprop} is the power $n$ of the propagator in (\ref{defFVtadpoletwist}).\\
+\mytt{ntype} labels which of the functions it returns.
+It can have the values:\\
+\begin{center}
+\begin{tabular}{|rl|}
+\hline
+\mytt{ntype} & returns \\
+\hline
+0 & $\overline A^V$ \\
+2 & component of $\overline A^V_2$ \\
+22 & $\overline A^V_{22}$ \\
+23 & component of $\overline A^V_{23}$ \\
+33 & component of $\overline A^V_{33}$ \\
+\hline
+\end{tabular}
+\end{center}
+\mytt{ncomponent} is ignored for $\mytt{ntype}=0,22$. For
+\mytt{ntype=2,23,33} it indicates which are the value of $\mu,\nu,\rho$.
+For \mytt{ntype=2} allowed values are \mytt{ncomponent=0,1,2,3}
+and for  \mytt{ntype=23} allowed values are
+\mytt{ncomponent=00,01,10,02,20,30,03,11,12,21,13,31,22,23,32,33}.
+For \mytt{ntype=33} allowed values are
+\mytt{ncomponent=(100\,i+10\,j+k)} with \mytt{ijk=}\\
+\mytt{000,001,010,002,020,030,003,011,012,021,013,031,022,023,032,033,}\\
+\mytt{100,101,110,102,120,130,103,111,112,121,113,131,122,123,132,133,}\\
+\mytt{200,201,210,202,220,230,203,211,212,221,213,231,222,223,232,233,}\\
+\mytt{300,301,310,302,320,330,303,311,312,321,313,331,322,323,332,333}.
+
+The convention is such that it returns the values for $\mu,\nu,\rho$
+as \emph{upper} indices. The interpretation as written above\footnote{This
+comment only matters in practice for three or more indices.} is needed
+since a literally specified number with leading zeroes is
+interpreted by \cpp\ compilers as octal, not however when it is read in from
+a file or a stream.\\
+
+\mytt{msq} is $m^2$ of (\ref{defFVtadpoletwist}).\\
+\mytt{fourvector theta} should contain the values
+of the twisting angle $\theta^i$ for the three spatial
+directions in its three spatial components. The time component is ignored.\\
+
+The integration routine needed can be set using the macro
+\newfunction{DINTEGRAL}
+for the real integration, default is \mytt{jbdgauss2}.
+Any of the similar routines in \mytt{jbnumlib} can
+be used instead.\\
+
+The precision of the numerical integration can be set with\\
+\mytt{void \newfunction{setprecisionAbVtwistt}(const double eps=1e-10)}.\\
+The present precision can be obtained from\\
+\mytt{double \newfunction{getprecisionAbVtwistt}(void)}.
+Default value of the precision in \mytt{1e-10}.\\
+
+Defined in \newfunction{finitevolumeonelooptwist.h},
+implemented in \newfunction{finitevolumeonelooptwist.cc},
+examples of use in \newfunction{testfinitevolumeonelooptwist.cc}.
+
+
+
+\subsection{Finite volume bubble integrals: periodic boundary conditions}
+
+\subsubsection{Definitions}
 
 The methods used for these are derived in detail in \cite{Bijnens:2013doa},
 references to earlier literature can be found there.
@@ -2192,9 +2808,10 @@ and the time direction of infinite extent.
 
 The bubble integrals $B$, $B_\mu$ and $B_{\mu\nu}$ are defined as
 \begin{equation}
+\label{defFVbubble}
 \left\{\tilde B^V,\tilde B^V_\mu,\tilde B^V_{\mu\nu}\right\}(m_1^2,m_2^2,p,L,\mu^2)
  = \frac{\mu^{4-d}}{i}\int_V\frac{d^d r}{(2\pi)^d}
-\frac{\left\{1,r_\mu,r_\mu r_\nu\right\}}{(r^2-m_1^2)^{n_1}((p-r)^2-m_1^2)^{n_2}}\,.
+\frac{\left\{1,r_\mu,r_\mu r_\nu\right\}}{(r^2-m_1^2)^{n_1}((p-r)^2-m_2^2)^{n_2}}\,.
 \end{equation}
 The subscript $V$ on the integral indicates that the integral is a discrete
 sum over the three spatial components and an integral over the remainder. 
@@ -2247,8 +2864,8 @@ examples of use in \newfunction{testfinitevolumeoneloopintegrals.cc}.
 
 \paragraph{$p=0$ and periodic boundary conditions}
 
-\mytt{const double: m1sq,m2sq,L,mu2.}
-These correspond to $msq,m_1^2,m_2^2,L,\mu^2$. $L$ is the size of the finite
+\mytt{const double: m1sq,m2sq,L.}
+These correspond to $m_1^2,m_2^2,L$. $L$ is the size of the finite
 dimensions.
 
 Evaluated with theta functions:\\
@@ -2262,6 +2879,132 @@ Evaluated with Bessel functions:\\
 return $\overline{B}^V(m_1^2,m_2^2,p=0,L,\mu^2)$\\
 \mytt{double \newfunction{BbVb}(msq,L):}
 returns $\overline{B}^V(m^2,m^2,p=0,L,\mu^2)$\\
+
+\subsection{Finite volume bubble integrals: twisted boundary conditions}
+
+\subsubsection{Definitions}
+
+Finite volume also allows for different boundary conditions.
+The integrals for twisted boundary conditions have been derived
+in \cite{Bijnens:2014yya}.
+Twisted boundary conditions means that for a complex field $\Phi_a$ we
+use as boundary conditions
+\begin{equation}
+\Phi(x^i+L) = e^{i\theta^i_\Phi}\Phi(x^i),.
+\end{equation} 
+This can be done with different angles $\theta^i_a$ for each direction
+and for each field. The definitions of the integrals
+is similar to (\ref{defFVbubble})
+\begin{equation}
+\label{defFVbubbletwist}
+\left\{\tilde B^V,\tilde B^V_{\mu},\tilde B^V_{\mu\nu}\right\}
+ = \frac{\mu^{4-d}}{i}\int_V\frac{d^d r}{(2\pi)^d}
+\frac{\left\{1,r_\mu,r_\mu r_\nu\right\}}
+{(r^2-m^2_{\Phi_1})^{n_1}((p-r)^2-m^2_{\Phi_2})^{n_2}}\,.
+\end{equation}
+The direction of the momentum $r$ is in the direction of the propagation
+of the particle corresponding to $\Phi_1$.
+The direction of the momentum $p-r$ is in the direction of the propagation
+of the particle corresponding to $\Phi_2$. This choice is made to have
+the interchange of $\Phi_1$ and $\Phi_2$ work as expected.
+As explained in \cite{Sachrajda:2004mi}, the external momenta
+$p$ must have spatial components of the form
+\begin{equation}
+\label{pitwist}
+p^i = \left(2\pi n+\theta^i_{\Phi_1}+\theta^i_{\Phi_2}\right)\,.
+\end{equation}
+This way the momentum $p-r$ satisfies the boundary conditions
+for $\Phi_2$.
+
+We consider the case with the three spatial directions at finite volume
+and with twist angles possibly different for all directions.
+For all of the functions above we remove the infinite volume parts
+defined in Sect.~\ref{bubbles} and the finite volume part
+\begin{equation}
+\tilde B^V = 
+\lambda_0 B^\mathrm{inf} + \overline B + \overline B^V+\mathcal{O}(\epsilon)\,.
+\end{equation}
+For the cases with extra powers of momenta we define in addition
+\begin{equation}
+\label{defFVbubbletwistcomp}
+\overline B_\mu = p_\mu \overline B^V_1+\overline B^V_{2\mu},\qquad
+\overline B^V_{\mu\nu} = p_\mu p_\nu \overline B^V_1
++g_{\mu\nu}\overline B^V_{22}+\overline B^V_{23\mu\nu}\,.
+\end{equation}
+$\overline B^V_{2\mu}$ and $\overline B^V_{23\mu\nu}$ are nonzero only
+for spatial components.
+
+\subsubsection{Functions}
+
+We use one generic interface here for all functions\\
+\mytt{double \newfunction{BbVtwistt}(const int nprop,const int ntype,
+const int ncomponent,\\
+\hspace*{2cm} const double m1sq, const double m2sq, const double psq,\\
+\hspace*{2cm} const double xl,
+const fourvector theta1, const fourvector p)}
+
+\mytt{nprop} indicates the powers $n_1,n_2$ of the propagators
+in (\ref{defFVbubbletwist}) via
+\begin{center}
+\begin{tabular}{|ccc|}
+\hline
+\mytt{nprop} & $n_1$ & $n_2$\\
+\hline
+ 1 & 1 & 1\\
+ 2 & 2 & 1\\
+ 3 & 1 & 2\\
+ 4 & 2 & 2\\
+\hline
+\end{tabular}
+\end{center}
+\mytt{ntype} labels which of the functions it returns.
+It can have the values:\\
+\begin{center}
+\begin{tabular}{|rl|}
+\hline
+\mytt{ntype} & returns \\
+\hline
+0 & $\overline B^V$ \\
+1 & $\overline B^V_1$ \\
+2 & component of $\overline B^V_2$ \\
+21 & $\overline B^V_{22}$ \\
+22 & $\overline B^V_{22}$ \\
+23 & component of $\overline B^V_{23}$ \\
+\hline
+\end{tabular}
+\end{center}
+\mytt{ncomponent} is ignored for $\mytt{ntype}=0,1,21,22$. For
+\mytt{ntype=2,23} it indicates which are the value of $\mu,\nu$.
+For \mytt{ntype=2} allowed values are \mytt{ncomponent=0,1,2,3}
+and for  \mytt{ntype=23} allowed values are
+\mytt{ncomponent=00,01,10,02,20,30,03,11,12,21,13,31,22,23,32,33}.\\
+\mytt{m1sq,m2sq} are the masses squared of $\Phi_1,\Phi_2$
+and \mytt{psq} is $p^2$.\\
+\mytt{fourvector theta1} should contain the values
+of the twisting angle $\theta^i_{\Phi_1}$ of the particle in the first
+propagator for the three spatial directions in its three spatial components. The time component is ignored.\\
+\mytt{fourvector p} should contain the values
+of the four momentum $p$.
+No checks are done that it satisfies the relation (\ref{pitwist})
+nor that $p$=\mytt{psq}. The value of the twist angles for $\Phi_2$
+are (implicitly) deduced from (\ref{pitwist}) in the calculation.
+
+
+The precision of the numerical integration can be set with\\
+\mytt{void \newfunction{setprecisionBbVtwistt}(const double releps=1e-10)}.\\
+The present precision can be obtained from\\
+\mytt{double \newfunction{getprecisionBbVtwistt}(void)}.
+Default value of the precision in \mytt{1e-10}.\\
+The precision of the tadpole and bubble cases can be set at the same time
+using\\
+\mytt{void \newfunction{setprecisionfinitevolumeonelooptwistt}(const double Aeps=1e-10,\\
+\hspace*{2cm}  const double Beps=1e-10, const bool printout=true)}\\
+\mytt{Aeps} for the tadpoles and \mytt{Beps} for the bubbles.\\
+
+
+Defined in \newfunction{finitevolumeonelooptwist.h},
+implemented in \newfunction{finitevolumeonelooptwist.cc},
+examples of use in \newfunction{testfinitevolumeonelooptwist.cc}.
 
 \subsection{Finite volume sunsetintegrals}
 
@@ -2597,7 +3340,7 @@ Defined in \newfunction{finitevolumesunsetintegrals.h},
 implemented in \newfunction{finitevolumesunsetintegrals.cc}
 and examples of use in \newfunction{testfinitevolumesunsetintegrals.cc}
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Three flavour isospin conserving results}
 
 \subsection{Masses, decay constants and vacuum-expectation-values: in physical}
@@ -3366,6 +4109,7 @@ All these are defined in \newfunction{massdecayvevV.h}
 and implemented in \newfunction{massdecayvevV.h}.
 Examples of use are in \newfunction{testmassdecayvevV.cc}.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Masses, decay constants and vacuum expectation
 values at finite volume: in lowest order}
 \label{massdecayvevloV}
@@ -3609,7 +4353,7 @@ remainder as
 \end{eqnarray}
 These are defined for $q=u,s$.\\
 
-The last letter \mytt{x} is \mytt{b} when the finite voilume integrals
+The last letter \mytt{x} is \mytt{b} when the finite volume integrals
 are calculated using the Bessel finction method is \mytt{t} when the
 theta function method is used. Do not forget to set the precision wanted for
 the finite volume integrals.
@@ -3640,6 +4384,216 @@ The functions are defined in \newfunction{massesdecayvevloV.h},
 implemented in \newfunction{massesdecayvevloV.cc} and examples of use
 are in \newfunction{testmassesdecayvevloV.cc}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Masses, decay constants and vacuum expectation
+values at finite volume with twisted boundary conditions: in lowest order}
+\label{massdecayvevTV}
+
+Twisted boundary conditions for a given field are defined by (\ref{deftwist})
+or 
+\begin{equation}
+\label{deftwist2}
+\Phi(x^i+L) = e^{i\theta^i}\Phi(x^i),.
+\end{equation} 
+Chiral perturbation theory with twisted boundary conditions
+was discussed in \cite{Sachrajda:2004mi}. The formulas in this section give
+the finite volume correction in terms of lowest order masses and decay
+constant for the case $m_u=m_d\ne m_s$. These formulas contain the case
+of a moving frame as the cases with twist-angles zero.\\
+
+The subroutines expect as input the lowest order mass of $\pi$ and
+$K$, $F_0$ and $\mu$ via a \mytt{lomass},
+the length of the spatial volume,
+fourvectors containing in the spatial components the twist-angles 
+for up, down and strange quark and a fourvector containing the momentum
+which should be compatible (not checked!) with the twist angles and
+length of the finite volume.\\
+As an example, the spatial momentum components of a $K^0$ consisting
+of a down and antistrange quark must be of the form
+\begin{equation}
+p^i = \frac{1}{L}\left( 2\pi n^i +\theta_d^i-\theta_s^i\right)\,,
+\end{equation}
+with $n^i$ positive or negative integers.
+
+\subsubsection{Masses}
+
+The masses were derived in \cite{Bijnens:2014yya}, see there for earlier work.
+The result gives the full
+finite volume correction to one-loop order $\Delta^Vm^2(4)0$. 
+The infinite volume correction, Sect. \ref{masseslo}, must be added
+separately. So up to one-loop order the masses are
+\begin{equation}
+\label{defmassesTV}
+m_a^2 = m_a^2(2)0+m_a^{2(4)0}+\Delta^V\! m_a^{2(4)0}\,.
+\end{equation}
+Note that the mass of the anti-particle is the same as the particle
+\emph{with the spatial momentum of the
+opposite sign}, we have not added functions for $\pi^-,K^-$ and
+$\overline{K^0}$.\\
+
+\mytt{const lomass mass(mp0, mk0, F0, mu)}: lowest order pion and kaon mass,
+pion decay constant and subtractions scale\\
+\mytt{const double L}: The length of the spatial volume, assumed to be the same
+in all three directions.\\
+\mytt{const fourvector p}: The four-momentum of the particle. Only the spatial
+components are used and must be consistent with the twist angles and the size
+of the volumes.\\
+\mytt{const fourvector thetu,thetad,thetas}: The spatial components contain
+the twist angles for the up, down and strange quark in the three spatial
+directions.\\
+
+$\pi^+, \pi^0, K^+, K^0, \eta$:\\
+\mytt{double \newfunction{mpipp4TV}(mass, L, p, thetau, thetad, thetas)}
+returns $\Delta^V\! m_{\pi^+}^{2(4)0}$\\
+\mytt{double \newfunction{mpiop4TV}(mass, L, p, thetau, thetad, thetas)}
+returns $\Delta^V\! m_{\pi^0}^{2(4)0}$\\
+\mytt{double \newfunction{mkpp4TV}(mass, L, p, thetau, thetad, thetas)}
+returns $\Delta^V\! m_{K^+}^{2(4)0}$\\
+\mytt{double \newfunction{mkop4TV}(mass, L, p, thetau, thetad, thetas)}
+returns $\Delta^V\! m_{K^0}^{2(4)0}$\\
+\mytt{double \newfunction{metap4TV}(mass, L, p, thetau, thetad, thetas)}
+returns $\Delta^V\! m_{\eta}^{2(4)0}$\\
+
+Defined in \mytt{massdecayvevTV.h}, implemented in \mytt{massdecayvevTV.cc}
+and examples of use in \mytt{testmassdecayvevTV.cc}.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Vector form-factors: in lowest order}
+\label{vectorlo}
+
+\subsubsection{Electromagnetic form-factors}
+
+The electromagnetic form-factors are defined by
+\begin{equation}
+\langle M(p^\prime) | \frac{2}{3}\overline u\gamma_\mu u(0)
+-\frac{1}{3}\overline d\gamma_\mu d(0)
+- \frac{1}{3}\overline s\gamma_\mu s(0) | M(p)\rangle
+= \left(p^\prime_\mu + p_\mu\right) F^M_V(t)\,,
+\end{equation}
+with $t = (p^\prime-p)^2$.
+The electromagnetic form-factor vanishes identically for $M=\pi^0,\eta$
+because of charge conjugation.
+
+These were first calculated at one-loop in ChPT
+\cite{Gasser:1984ux}, the two-loop expressions were obtained
+in \cite{Bijnens:2002hp}.
+
+The form-factors are (up to order $p^4$) given as
+\begin{align}
+F_V^M(t) = & F_V^{M(2)0}+ F_V^{M(4)0}(t)\,,\nonumber\\
+F_V^{M(4)0}(t) = & F_{VL}^{M(4)0}(t)+F_{VR}^{M(4)0}(t),.
+\end{align}
+The $p^4$ part is split in an $L_i^r$ dependent part and the remainder.
+The lowest order is either one or zero and
+ $F_{VL}^{M(4)0}(t)$ is similarly simple
+\begin{align}
+F_V^{\pi^+(2)0} = & F_V^{K^+(2)0} = 1\,,\qquad F_V^{K^0(2)0}=0\,.
+\nonumber\\
+F_{VL}^{\pi^+(4)0}(t) = & F_{VL}^{K^+(4)0}(t) = 2 t L_9^r\,,\qquad F_{VL}^{K^0(4)0}=0\,.
+\end{align}
+
+The form-factors for $\pi^-,K^-,\overline K^0$ are given by
+charge conjugation and are the opposite sign of those for
+ $\pi^+,K^+,K^0$. The $p^4$ then depends on whether you have pulled out that
+overall sign or not in your conventions.
+
+\paragraph{Functions}
+
+Inputs are: \mytt{const double t, const lomass mass, const Li Liin}. 
+
+$\pi^+$:\\
+\mytt{dcomplex \newfunction{fvpipp4lo}(t,mass,Liin)} returns
+  $F_V^{\pi^+(4)0}(t)$\\
+\mytt{double \newfunction{fvpipp4Llo}(t,mass,Liin)} returns
+  $F_{VL}^{\pi^+(4)0}(t)$\\
+\mytt{dcomplex \newfunction{fvpipp4Rlo}(t,mass)} returns
+  $F_{VR}^{\pi^+(4)0}(t)$\\
+
+$K^+$:\\
+\mytt{dcomplex \newfunction{fvkpp4lo}(t,mass,Liin)} returns
+  $F_V^{K^+(4)0}(t)$\\
+\mytt{double \newfunction{fvkpp4Llo}(t,mass,Liin)} returns
+  $F_{VL}^{K^+(4)0}(t)$\\
+\mytt{dcomplex \newfunction{fvkpp4Rlo}(t,mass)} returns
+  $F_{VR}^{K^+(4)0}(t)$\\
+
+$K^0$:\\
+\mytt{dcomplex \newfunction{fvkop4lo}(t,mass,Liin)} returns
+  $F_V^{K^0(4)0}(t)$\\
+\mytt{double \newfunction{fvkop4Llo}(t,mass,Liin)} returns
+  $F_{VL}^{K^0(4)0}(t)=0$\\
+\mytt{dcomplex \newfunction{fvkop4Rlo}(t,mass)} returns
+  $F_{VR}^{K^0(4)0}(t)$\\
+
+Defined in \newfunction{vectorformlo.h}, implemented in
+\newfunction{vectorformlo.cc} and examples of use in
+\newfunction{testvectorformlo.cc}
+
+\subsubsection{$K\to\pi$ and $K_{\ell3}$ form-factors}
+
+The $K\to\pi$ and $K_{\ell3}$  form-factors are defined by
+\begin{equation}
+\label{defKl3}
+\langle \pi^-(p^\prime) | \overline s\gamma_\mu u(0) 
+ | K^0(p)\rangle
+= \left(p^\prime_\mu + p_\mu\right) f^{K\pi}_+(t)
+  +\left(p^\prime_\mu - p_\mu\right) f^{K\pi}_-(t)\,,
+\end{equation}
+with $t = (p^\prime-p)^2$.
+The form-factors for the decay $K^+\to\pi^0$
+are the same up to an overall factor of $1/\sqrt{2}$.
+
+These were first calculated at one-loop in ChPT
+\cite{Gasser:1984ux}, the two-loop expressions were obtained
+in \cite{Bijnens:2003uy}.
+
+The form-factors are (up to order $p^4$) given as
+\begin{align}
+f_{\pm}^{K\pi}(t) = & f_{\pm}^{K\pi(2)0}+ f_{\pm}^{K\pi(4)0}(t)\,,\nonumber\\
+f_\pm^{K\pi(4)0}(t) = & f_{\pm L}^{K\pi(4)0}(t)+f_{\pm R}^{K\pi(4)0}(t),.
+\end{align}
+The $p^4$ part is split in an $L_i^r$ dependent part and the remainder.
+The lowest order is one for $f^{K\pi}_+$  zero for $f^{K\pi}_-$.
+Note that the definition of the scalar form-factor
+\begin{equation}
+f_0^{K\pi}(t) = f_+^{K\pi}(t)+\frac{t}{m_K^2-m_\pi^2}f_-^{K\pi}(t)
+\end{equation}
+involves the physical masses. To one-loop order this is not relevant but it is
+when working to $p^6$ or two-loops.
+
+The form-factors for $K^-,\overline K^0$ are given by
+charge conjugation and are the opposite sign of those for
+ $K^+,K^0$. The $p^4$ then depends on whether you have pulled out that
+overall sign or not in your conventions.
+
+\paragraph{Functions}
+
+Inputs are: \mytt{const double t, const lomass mass, const Li Liin}. 
+
+\mytt{dcomplex \newfunction{fvpkpip4lo}(t,mass,Liin)} returns
+  $f_+^{K\pi(4)0}(t)$\\
+\mytt{double \newfunction{fvpkpip4Llo}(t,mass,Liin)} returns
+  $f_{+ L}^{K\pi(4)0}(t)$\\
+\mytt{dcomplex \newfunction{fvpkpip4Rlo}(t,mass)} returns
+  $f_{+ R}^{K\pi(4)0}(t)$\\
+
+\mytt{dcomplex \newfunction{fvmkpip4lo}(t,mass,Liin)} returns
+  $f_-^{K\pi(4)0}(t)$\\
+\mytt{double \newfunction{fvmkpip4Llo}(t,mass,Liin)} returns
+  $f_{- L}^{K\pi(4)0}(t)$\\
+\mytt{dcomplex \newfunction{fvmkpip4Rlo}(t,mass)} returns
+  $f_{- R}^{K\pi(4)0}(t)$\\
+
+Defined in \newfunction{vectorformlo.h}, implemented in
+\newfunction{vectorformlo.cc} and examples of use in
+\newfunction{testvectorformlo.cc}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Three flavour partially quenched results}
 
 This section contains the routines used for the partially quenched
@@ -3658,12 +4612,12 @@ The interface is always defined with the $n_F$ flavour NLO and NNLO LECs
 expect a \newfunction{quarkmassnf} with precisely the number of quark masses
 needed for each case.
 
-The reason why the quarkmasses are alternatively lowest-order meson masses
+The reason why the quarkmasses or alternatively lowest-order meson masses
 are used is that in these cases there are very many physical masses
 compared to the number of quark masses. There would thus have been a very
 large ambiguity in expressing the results in physical masses.
 
-The inputs used are $Bm_1=m_{11}^2/2$, $Bm_1=m_{11}^2/2$
+The inputs used are $Bm_1=m_{11}^2/2$, $Bm_2=m_{22}^2/2$,
 $Bm_3=m_{33}^2/2$, $Bm_4=m_{44}^2/2$, $Bm_5=m_{55}^2/2$,  $Bm_6=m_{66}^2/2$.
 
 We give the cases for equal or different valence quark mass ,cases \mytt{v1}
@@ -4027,6 +4981,76 @@ Two valence mass, three sea mass:\\
 
 Defined in \newfunction{massdecayvevPQV.h}, implemented in \newfunction{massdecayvevPQV.cc} and examples of use in \newfunction{testmassdecayvevPQV.cc}.
 
+
+\subsection{Vector form-factors}
+
+\subsubsection{$K\to\pi$ or $K_{\ell3}$ form-factors}
+
+We define the form-factors connecting an off-diagonal or charged meson
+consisting of valence quark content $q_{\mathrm{val}2}\bar q_{ \mathrm{val}3}$
+to another off-diagonal or charged meson with valence quark
+content $q_{\mathrm{val}2}\bar q_{ \mathrm{val}1}$ similar to
+(\ref{defKl3}).
+\begin{equation}
+\label{defKl3PQ}
+\langle \pi_{q_{\mathrm{val}2}\bar q_{ \mathrm{val}1}}(p^\prime) |
+    \bar q_{\mathrm{val}3}\gamma_\mu q_{\mathrm{val}1}(0) 
+     |  \pi_{q_{\mathrm{val}2}\bar q_{ \mathrm{val}3}}(p)\rangle
+= \left(p^\prime_\mu + p_\mu\right) f^{PQ}_+(t)
+  +\left(p^\prime_\mu - p_\mu\right) f^{PQ}_-(t)\,,
+\end{equation}
+with $t = (p^\prime-p)^2$. With 1 the up valence, 2 the down valence
+and three the strange valence quark this corresponds to the
+form-factors for $K^0\to \pi^-$.
+Note that all three valence quarks are different but can have the same masses.
+
+The formfactor $f^{PQ}_+$ to order $p^4$ is
+\begin{align}
+f^{PQ}_+(t) =& 1+ f^{PQ(4)}_+(t)\,,\nonumber\\
+f^{PQ(4)}_+(t) =&f^{PQ(4)}_{L+}(t)+f^{PQ(4)}_{R+}(t)
+\end{align}
+The $p^4$ is split in the $L_i^r$ dependent part and the remainder.
+
+The results for the $f_+^{PQ}$ to order $p^4$ were derived
+in \cite{Bernard:2013eya}.
+
+\subsubsection{Functions}
+
+The $L_i^r$ dependent part is to order $p^4$ independent of the masses
+and is $2 L_9^r t /F_0^2$.\\
+
+The inputs are all defined as \mytt{const}.\\
+
+All mass cases:\\
+\mytt{mass=quarkmassnf(\{Bm1,\ldots,Bm6\},f0,mu,2)}\\
+\mytt{double \newfunction{fvpnf3p4LV}(double t, quarkmassnf mass, Linf Liin)} returns $f^{PQ(4)}_{L+}(t)$\\
+
+2 valence and 2 sea quark masses, note $Bm_2 = Bm_1$, $Bm_5=Bm_4$:\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4,Bm6\},f0,mu,2)}\\
+\mytt{double \newfunction{fvpv2s2nf3p4R}(double t, quarkmassnf mass)} returns $f^{PQ(4)}_{R+}(t)$\\
+
+2 valence and 3 sea quark masses, note $Bm_2 = Bm_1$:\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm3,Bm4,Bm5,Bm6\},f0,mu,2)}\\
+\mytt{double \newfunction{fvpv2s3nf3p4R}(double t, quarkmassnf mass)} returns $f^{PQ(4)}_{R+}(t)$\\
+
+3 valence and 2 sea quark masses, note $Bm_5=Bm_4$:\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm2,Bm3,Bm4,Bm6\},f0,mu,2)}\\
+\mytt{double \newfunction{fvpv3s2nf3p4R}(double t, quarkmassnf mass)} returns $f^{PQ(4)}_{R+}(t)$\\
+
+3 valence and 3 sea quark masses:\\
+\mytt{mass=quarkmassnf(\{Bm1,Bm2,Bm3,Bm4,Bm5,Bm6\},f0,mu,2)}\\
+\mytt{double \newfunction{fvpv3s3nf3p4R}(double t, quarkmassnf mass)} returns $f^{PQ(4)}_{R+}(t)$\\
+
+Note that since $f_+^{PQ(4)}$ does not depend on the mass of the spectator
+valence quark mass ($Bm_2$) the three valence mass case simply calls
+the two valence mass case with $Bm2$ removed.\\
+
+Defined in \newfunction{vectorformPQ.h}, implemented in \newfunction{testvectorformPQ.h} and examples of use in \newfunction{testvectorformPQ.cc}.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{QCD like theories for $N_F$ flavours}
 
 There are other symmetry breaking patterns possible then the one
@@ -4038,17 +5062,17 @@ breaking pattern in these case is down to the subgroups
 the diagonal $SU(N_F)$, $SO(2N_F)$ and $Sp(2N_F)$ respectyively.
 An additional case is $n_F$ Majorana fermions in a real representation. 
 In this case the global symmetry group is $SU(n_F)$ which is expected to be
-spontaneously broken to $SO(n_F)$, see \cite{QCDliketemp} and references
+spontaneously broken to $SO(n_F)$, see \cite{Bijnens:2015xba} and references
 therein. The formulas for the two cases with real fermions
 are identical with $n_F=2N_F$, the reason is that the two cases are
-related by a $U(2N_F)$ rotation as explained in \cite{QCDliketemp}.
+related by a $U(2N_F)$ rotation as explained in \cite{Bijnens:2015xba}.
 
 The number of flavours $N_F$ in this section refers to the symmetry breaking
 patterns $SU(N_F)\times SU(N_F)\to SU(N_F)$, $SU(N_F)\to SO(N_F)$
 and $SU(2N_F)\to Sp(2N_F)$. The number of flavours for the real representation
 case thus counts the number of Majorana fermions and is in the case twice
 the $N_F$ used in \cite{Bijnens:2009qm}. The extension to finite volume
-and partially quenched was done in \cite{QCDliketemp}.
+and partially quenched was done in \cite{Bijnens:2015xba}.
 
 For all cases we only treat the simplest mass case.
 It means that for the unquenched case we have a single mass given by
@@ -4194,7 +5218,7 @@ The last letter \mytt{x} is \mytt{b} for the finite volume integrals
 evaluated using the Bessel function method or \mytt{t} when they are evaluated
 using the theta function method.\\
 
-The finite volume correction to the mass is defined as in \cite{QCDliketemp} as
+The finite volume correction to the mass is defined as in \cite{Bijnens:2015xba} as
 \begin{align}
 \Delta^V M^2_\mathrm{phys} \equiv&M^{2\,V}_\mathrm{phys} -M_\mathrm{phys}^{2\,V=\infty} = M^{V(4)2}+M^{V(6)2}\,,
 \nonumber\\
@@ -4220,7 +5244,7 @@ constant $L_{11}^r$ is always included even if it plays no role.
 In addition the running of the LECs is not correct for \mytt{XXX=SON,SPN}.\\
 
 The finite volume correction to the decay constant is defined as in
-\cite{QCDliketemp} as
+\cite{Bijnens:2015xba} as
 \begin{align}
 \Delta^V F_\mathrm{phys} \equiv&
 F_\mathrm{phys}^V -F_\mathrm{phys}^{V=\infty}= F_0\left(F^{V(4)2}+F^{V(6)2}\right)\,,
@@ -4247,7 +5271,7 @@ constant $L_{11}^r$ is always included even if it plays no role.
 In addition the running of the LECs is not correct for \mytt{XXX=SON,SPN}.\\
 
 The vacuum expectation value is defined for a single quark
-similar to \cite{QCDliketemp} as
+similar to \cite{Bijnens:2015xba} as
 \begin{align}
 \Delta^V\langle \bar q q\rangle_\mathrm{phys}\equiv&
 \langle \bar q q\rangle_\mathrm{phys}^V -
@@ -4290,7 +5314,7 @@ The label \mytt{XXX=SUN,SON,SPN} refers to the three possible patterns
 of symmetry breaking, $SU(N_F)\times SU(N_F)\to SU(N_F)$, $SU(N_F)\to SO(N_F)$
 and $SU(2N_F)\to Sp(2N_F)$ and \mytt{nf}=$N_F$ as defined in this way.
 
-The mass is defined as in \cite{QCDliketemp} as
+The mass is defined as in \cite{Bijnens:2015xba} as
 \begin{align}
 M^2_\mathrm{phys} =& M^2+M^{(4)2}+M^{(6)2}\,,
 \nonumber\\
@@ -4325,7 +5349,7 @@ independent of the subtraction scale as is needed. However, the extra
 constant $L_{11}^r$ is always included even if it plays no role.
 In addition the running of the LECs is not correct for \mytt{XXX=SON,SPN}.\\
 
-The decay constant is defined as in \cite{QCDliketemp} as
+The decay constant is defined as in \cite{Bijnens:2015xba} as
 \begin{align}
 F_\mathrm{phys} =& F_0\left(1+F^{(4)2}+F^{(6)2}\right)\,,
 \nonumber\\
@@ -4361,7 +5385,7 @@ constant $L_{11}^r$ is always included even if it plays no role.
 In addition the running of the LECs is not correct for \mytt{XXX=SON,SPN}.\\
 
 The vacuum expectation value is defined for a single quark
-similar to \cite{QCDliketemp} as
+similar to \cite{Bijnens:2015xba} as
 \begin{align}
 \langle \bar q q\rangle_\mathrm{phys} =& 
 -B_0F_0^2\left(1+\langle \bar q q\rangle^{(4)}+\langle \bar q q\rangle^{(6)}\right)\,,
@@ -4415,7 +5439,7 @@ The last letter \mytt{x} is \mytt{b} for the finite volume integrals
 evaluated using the Bessel function method or \mytt{t} when they are evaluated
 using the theta function method.\\
 
-The finite volume correction to the mass is defined as in \cite{QCDliketemp} as
+The finite volume correction to the mass is defined as in \cite{Bijnens:2015xba} as
 \begin{align}
 \Delta^V M^2_\mathrm{phys} \equiv&M^{2\,V}_\mathrm{phys} -M_\mathrm{phys}^{2\,V=\infty} = M^{V(4)2}+M^{V(6)2}\,,
 \nonumber\\
@@ -4441,7 +5465,7 @@ constant $L_{11}^r$ is always included even if it plays no role.
 In addition the running of the LECs is not correct for \mytt{XXX=SON,SPN}.\\
 
 The finite volume correction to the decay constant is defined as in
-\cite{QCDliketemp} as
+\cite{Bijnens:2015xba} as
 \begin{align}
 \Delta^V F_\mathrm{phys} \equiv&
 F_\mathrm{phys}^V -F_\mathrm{phys}^{V=\infty}= F_0\left(F^{V(4)2}+F^{V(6)2}\right)\,,
@@ -4468,7 +5492,7 @@ constant $L_{11}^r$ is always included even if it plays no role.
 In addition the running of the LECs is not correct for \mytt{XXX=SON,SPN}.\\
 
 The vacuum expectation value is defined for a single quark
-similar to \cite{QCDliketemp} as
+similar to \cite{Bijnens:2015xba} as
 \begin{align}
 \Delta^V\langle \bar q q\rangle_\mathrm{phys}\equiv&
 \langle \bar q q\rangle_\mathrm{phys}^V -
@@ -4499,11 +5523,12 @@ In addition the running of the LECs is not correct for \mytt{XXX=SON,SPN}.\\
 
 Defined in \newfunction{massdecayvevnfPQV.h}, implemented in \newfunction{massdecayvevnfPQV.cc} and examples of use in \newfunction{testmassdecayvevnf.cc}.
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section*{Acknowledgements}
 
-This work is supported, in part, by
-the Swedish Research Council grants 621-2011-5080 and 621-2013-4287.
+This work is or has been supported, in part, by
+the Swedish Research Council grants 621-2011-5080, 621-2013-4287 and
+2015-04089.
 I thank all my collaborators in the various applications for which my version
 of the program made it into this collection and especially
 Ilaria Jemos who has tested many of the earlier versions
@@ -5102,6 +6127,16 @@ For the avoidance of doubt, this Section 6(b) does not affect any right the Lice
 
 \bibitem{cernlib} \href{http://cernlib.web.cern.ch}{\tt http://cernlib.web.cern.ch}
 
+%\cite{Frellesvig:2016ske}
+\bibitem{Frellesvig:2016ske}
+  H.~Frellesvig, D.~Tommasini and C.~Wever,
+  %``On the reduction of generalized polylogarithms to $\text{Li}_n$ and $\text{Li}_{2,2}$ and on the evaluation thereof,''
+  JHEP {\bf 1603} (2016) 189
+  doi:10.1007/JHEP03(2016)189
+  [arXiv:1601.02649 [hep-ph]].
+  %%CITATION = doi:10.1007/JHEP03(2016)189;%%
+
+
 %\cite{Bijnens:2013doa}
 \bibitem{Bijnens:2013doa}
   J.~Bijnens, E.~Bostr\"om and T.~A.~L\"ahde,
@@ -5284,8 +6319,52 @@ J. Comput. Appl. Math. 2 (1976) 207-217.
   [arXiv:0910.5424 [hep-ph]].
   %%CITATION = ARXIV:0910.5424;%%
 
-\bibitem{QCDliketemp}
-  J.~Bijnens and T.~Rössler, to be published
+\bibitem{Bijnens:2015xba}
+  J.~Bijnens and T.~Rössler,
+  %``Finite Volume and Partially Quenched QCD-like Effective Field Theories,''
+  JHEP {\bf 1511} (2015) 017
+  [arXiv:1509.04082 [hep-lat]].
+  %%CITATION = doi:10.1007/JHEP11(2015)017;%%
+
+\bibitem{Bijnens:2014yya}
+  J.~Bijnens and J.~Relefors,
+  %``Masses, Decay Constants and Electromagnetic Form-factors with Twisted Boundary Conditions,''
+  JHEP {\bf 1405} (2014) 015
+  %doi:10.1007/JHEP05(2014)015
+  [arXiv:1402.1385 [hep-lat]].
+  %%CITATION = doi:10.1007/JHEP05(2014)015;%%
+
+\bibitem{Sachrajda:2004mi}
+  C.~T.~Sachrajda and G.~Villadoro,
+  %``Twisted boundary conditions in lattice simulations,''
+  Phys.\ Lett.\ B {\bf 609} (2005) 73
+  %doi:10.1016/j.physletb.2005.01.033
+  [hep-lat/0411033].
+  %%CITATION = doi:10.1016/j.physletb.2005.01.033;%%
+
+\bibitem{Gasser:1984ux}
+  J.~Gasser and H.~Leutwyler,
+  %``Low-Energy Expansion of Meson Form-Factors,''
+  Nucl.\ Phys.\ B {\bf 250} (1985) 517.
+  %doi:10.1016/0550-3213(85)90493-6
+  %%CITATION = doi:10.1016/0550-3213(85)90493-6;%%
+
+\bibitem{Bijnens:2003uy}
+  J.~Bijnens and P.~Talavera,
+  %``K(l3) decays in chiral perturbation theory,''
+  Nucl.\ Phys.\ B {\bf 669} (2003) 341
+  %doi:10.1016/S0550-3213(03)00581-9
+  [hep-ph/0303103].
+  %%CITATION = doi:10.1016/S0550-3213(03)00581-9;%%
+
+\bibitem{Bernard:2013eya}
+  C.~Bernard, J.~Bijnens and E.~Gámiz,
+  %``Semileptonic Kaon Decay in Staggered Chiral Perturbation Theory,''
+  Phys.\ Rev.\ D {\bf 89} (2014) 5,  054510
+  %doi:10.1103/PhysRevD.89.054510
+  [arXiv:1311.7511 [hep-lat]].
+  %%CITATION = doi:10.1103/PhysRevD.89.054510;%%
+
 
 \end{thebibliography}
 
