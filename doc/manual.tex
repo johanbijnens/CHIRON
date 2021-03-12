@@ -195,8 +195,8 @@ inputs needed or large sets of constants.
 The main steps are to run make in the main directory.
 This should produce the files \mytt{libjbnumlib.a} and \mytt{libchiron.a}
 and also copy them to the \mytt{lib} subdirectory.
-You might have to change the variables \mytt{CC}, \mytt{CFLAGS} and
-\mytt{CFLAGTESTS}. \mytt{CC} should specify the \cpp\
+You might have to change the variables \mytt{CXX}, \mytt{CFLAGS} and
+\mytt{CFLAGTESTS}. \mytt{CXX} should specify the \cpp\
 compiler and the options to be used for everything.
 \mytt{CFLAGS} can be used to specify additional options in compiling the
 libraries and \mytt{CFLAGTESTS} to specify additional options
@@ -220,6 +220,8 @@ there is a testing/example code \mytt{testxxx.cc} in the subdirectory
 Executing the resulting file \mytt{a.out} should then produce output
 identical (up to the precision specified and possible randomly generated
 cases) to the file \mytt{testxxx.dat} in the subdirectory \mytt{testoutputs}.
+
+  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{\newfunction{jbnumlib}}
@@ -570,6 +572,28 @@ symmetric in $b,c$. Method similar to \mytt{jbdtheta2d0}.
 Defined in \mytt{jbnumlib.h} and implemented in \mytt{jbdtheta2d02.cc}. 
 
 \subsection{Root finders}
+
+\subsubsection{Zero of a real function of one variable}
+
+\paragraph{\newfunction{jbdzerox}}
+
+\mytt{double jbdzerox(double (*f)(const double),const double a0,const double b0,\\
+\hspace*{2cm} const double eps,const int maxf=10000, const int mode=1)}
+
+Returns the position of a zero of the function \mytt{f}
+in the interval [\mytt{a0},\mytt{b0}]. Requires that \mytt{f(a0)}
+and \mytt{f(b0)} have different sign.
+
+\mytt{maxf} gives the maximum number of function eveluations
+and \mytt{eps} is the precision, relative for results larger than one in
+absolute value
+else absolute precision.
+There are two methods available chosen by mode. 0 is algorithm M
+and 1 is algorithm R of \cite{BusDekker}. Method R converges faster,
+method M is a bit more robust.
+
+Defined in \mytt{jbnumlib.h}, implemented in \mytt{jbdzerox.cc}.
+A short example program is\\\mytt{testjbdzerox.cc}.
 
 \subsubsection{Roots of a cubic equation}
 
@@ -1230,6 +1254,7 @@ change the LECs, for that use \mytt{changescale}.\\
 Sets the name of the set of LECs.\\
 
 Output member functions:\\
+\mytt{double \newfunction{getmu}(void)} returns the subtraction scale $\mu$.\\
 \mytt{double \newfunction{out}(const int n)} returns the value of the n'th LEC.\\
 \mytt{void out} exists in many varieties, 11 double references and a string
 returning all private data, 11 double references returning all LECS and the subtraction scale, 10 double references returning all LECs,
@@ -1252,8 +1277,8 @@ The resulting value has all LECs multiplied by the value of the \mytt{double}.\\
 The resulting value of all LECs is the sum respectively the difference.
 A warning is printed of the scales are different.
 
-Defined in \mytt{li.h}, implemented in \mytt{li.cc},
-examples of use in \mytt{testli.cc}.
+Defined in \mytt{linf2.h}, implemented in \mytt{linf2.cc},
+examples of use in \mytt{testlinf2.cc}.
 
 \subsubsection{NLO LECs: Class \newfunction{libar}}
 
@@ -1290,10 +1315,9 @@ Sets the name of the set of LECs.\\
 
 Output member functions:\\
 \mytt{double \newfunction{out}(const int n)} returns the value of the n'th LEC.\\
-\mytt{void out} exists in many varieties, 11 double references and a string
-returning all private data, 11 double references returning all LECS and the subtraction scale, 10 double references returning all LECs,
-8 double references returning $l_1^r,\ldots,l_{8}^r$ and the subtraction scale
-and 8 double references returning $l_1^r,\ldots,l_{10}^r$.\\
+\mytt{void out} exists in many varieties, 10 double references and a string
+returning all private data, 10 double references returning all LECS,
+7 double references returning $\bar l_1,\ldots,\bar l_{6},l_7^r$.\\
 
 Operators defined: \newfunction{<<}, \newfunction{>>}. \newfunction{$+$}, \newfunction{$-$} and \newfunction{*} are not defined since these operations do not make sense for the barred LECs in a simple way.
 
@@ -1301,8 +1325,8 @@ Operators defined: \newfunction{<<}, \newfunction{>>}. \newfunction{$+$}, \newfu
 streams work as expected. The input stream should be exactly in the format
 provided by the output stream.
 
-Defined in \mytt{li.h}, implemented in \mytt{li.cc},
-examples of use in \mytt{testli.cc}.
+Defined in \mytt{linf2.h}, implemented in \mytt{linf2.cc},
+examples of use in \mytt{testlinf2.cc}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Three flavour ChPT}
@@ -3339,6 +3363,278 @@ the case with one loop momentum quantized, i.e. \mytt{racc} smaller than
 Defined in \newfunction{finitevolumesunsetintegrals.h},
 implemented in \newfunction{finitevolumesunsetintegrals.cc}
 and examples of use in \newfunction{testfinitevolumesunsetintegrals.cc}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Two flavour isospin conserving results}
+
+\subsection{Mass, decay constant and vacuum-expectation-value: in physical}
+\label{massdecayvevnf2}
+
+The exansions in this subsection are defined in terms of the physical mass,
+$m_\pi$, and the physical pion decay constant $F_\pi$.
+
+\subsubsection{Mass}
+\label{massesnf2}
+
+The pion mass at two-loops in two flavour ChPT
+was evaluated in \cite{Burgi:1996mm,Burgi:1996qi,Bijnens:1995yn,Bijnens:1997vq},
+one-loop in \cite{Gasser:1983yg}. The expressions as
+given here are in \cite{Bijnens:1998fm}.
+
+The expression for the physical mass is given by
+\begin{equation}
+m_\pi^2 = m_{\pi\,0}^2\left(1+m_\pi^{2(4)}\right)\,.
+\end{equation}
+The superscripts indicate the order of the diagrams in $p$ that each
+contribution comes from.
+ 
+The lowest order mass is
+\begin{equation}
+m_{\pi\,0}^2 = 2 B\hat m\,.
+\end{equation}
+The higher order contributions are split in the parts
+depending on the NLO LECs $l_i^r$, on the NNLO LECs $c_i^r$ and the
+remainder as
+\begin{equation}
+\label{defmassesnf2}
+m_\pi^{2(4)}=m_{\pi\,l}^{2(4)}+m_{\pi\,r}^{2(4)}\,,
+%\qquad
+%m_a^{2(6)}=m_{a\,L}^{2(6)}+m_{a\,C}^{2(6)}+m_{a\,R}^{2(6)}\,.
+\end{equation}
+Note that when combining these with results
+from other sources one should be sure to use a compatible LO and NLO.\\
+
+\mytt{double \newfunction{mpi4nf2}(physmassnf2,libar)}
+returns $m_\pi^{2(4)}$\\ 
+\mytt{double \newfunction{mpi4nf2}(physmassnf2,li)}
+returns $m_\pi^{2(4)}$\\ 
+\mytt{double \newfunction{mpi4lnf2}(physmassnf2,li)}
+returns $m_{\pi\,l}^{2(4)}$\\ 
+\mytt{double \newfunction{mpi4rnf2}(physmassnf2)}
+returns $m_{\pi\,r}^{2(4)}$\\ 
+
+The functions are defined in \newfunction{massesdecayvevnf2.h},
+implemented in \newfunction{massesdecayvevnf2.cc} and examples of use
+are in \newfunction{testmassdecayvevnf2.cc}.
+
+\subsubsection{Decay constant}
+\label{decaynf2}
+
+The pion decay constant at two-loops in two flavour ChPT
+was evaluated in \cite{Burgi:1996mm,Burgi:1996qi,Bijnens:1995yn,Bijnens:1997vq},
+one-loop in \cite{Gasser:1983yg}. The expressions
+as given here are in \cite{Bijnens:1998fm}.
+
+The expression for the physical decay constant is given by
+\begin{equation}
+F_\pi =F\left(1+F_\pi^{(4)}\right)\,.
+\end{equation}
+The superscripts indicate the order of the diagrams in $p$ that each
+contribution comes from.
+ 
+The higher order contributions are split in the parts
+depending on the NLO LECs $l_i^r$, on the NNLO LECs $c_i^r$ and the
+remainder as
+\begin{equation}
+\label{defdecaynf2}
+F_\pi^{(4)}=F_{\pi\,l}^{(4)}+F_{\pi\,r}^{(4)}\,,
+%\qquad
+%m_a^{2(6)}=m_{a\,L}^{2(6)}+m_{a\,C}^{2(6)}+m_{a\,R}^{2(6)}\,.
+\end{equation}
+Note that when combining these with results
+from other sources one should be sure to use a compatible LO and NLO.\\
+
+\mytt{double \newfunction{fpi4nf2}(physmassnf2,libar)}
+returns $F_\pi^{(4)}$\\ 
+\mytt{double \newfunction{fpi4nf2}(physmassnf2,li)}
+returns $F_\pi^{(4)}$\\ 
+\mytt{double \newfunction{fpi4lnf2}(physmassnf2,li)}
+returns $F_{\pi\,l}^{2(4)}$\\ 
+\mytt{double \newfunction{fpi4rnf2}(physmassnf2)}
+returns $F_{\pi\,r}^{(4)}$\\ 
+
+The functions are defined in \newfunction{massesdecayvevnf2.h},
+implemented in \newfunction{massesdecayvevnf2.cc} and examples of use
+are in \newfunction{testmassdecayvevnf2.cc}.
+
+\subsubsection{vacuum-expectation-value}
+\label{vevnf2}
+
+The vacuum-expectation-value
+$\langle 0|\bar u u|0\rangle\equiv\langle\bar u u\rangle$ 
+was evaluated at one-loop in \cite{Gasser:1983yg}
+in two-flavour ChPT.
+% look up the Spanish paper if adding two-loops at some point
+
+The expression for the vacuum-expectation-value is given by
+\begin{equation}
+\langle\bar u u\rangle = -BF^2\left(1+\langle\bar u u\rangle^{(4)}\right)\,.
+\end{equation}
+The superscripts indicate the order of the diagrams in $p$ that each
+contribution comes from.
+ 
+The higher order contributions are split in the parts
+depending on the NLO LECs $l_i^r$, on the NNLO LECs $c_i^r$ and the
+remainder as
+\begin{equation}
+\label{defvevnf2}
+\langle\bar u u\rangle^{(4)}=\langle\bar u u\rangle_{l}^{(4)}+\langle\bar u u\rangle_{r}^{(4)}\,,
+%\qquad
+%m_a^{2(6)}=m_{a\,L}^{2(6)}+m_{a\,C}^{2(6)}+m_{a\,R}^{2(6)}\,.
+\end{equation}
+Note that when combining these with results
+from other sources one should be sure to use a compatible LO and NLO.\\
+
+\mytt{double \newfunction{qqup4nf2}(physmassnf2,libar)}
+returns $\langle\bar u u\rangle^{(4)}$\\ 
+\mytt{double \newfunction{qqup4nf2}(physmassnf2,li)}
+returns $\langle\bar u u\rangle^{(4)}$\\ 
+\mytt{double \newfunction{qqup4lnf2}(physmassnf2,li)}
+returns $\langle\bar u u\rangle_{l}^{2(4)}$\\ 
+\mytt{double \newfunction{qqup4rnf2}(physmassnf2)}
+returns $\langle\bar u u\rangle_{r}^{(4)}$\\ 
+
+The functions are defined in \newfunction{massesdecayvevnf2.h},
+implemented in \newfunction{massesdecayvevnf2.cc} and examples of use
+are in \newfunction{testmassdecayvevnf2.cc}.
+
+
+\subsection{Mass, decay constant and vacuum-expectation-value at finite volume: in physical}
+\label{massdecayvevnf2V}
+
+The expressions treated in this section have been
+derived in \cite{Bijnens:2014dea}
+ and the one-loop results in
+\cite{Gasser:1986vb}.
+The pion mass at two-loops was done earlier in
+\cite{Colangelo:2006mp}.
+A general remark is that care should be
+taken to set the precision in the loop integrals sufficiently high.
+For the one-loop integrals setting it very high is usually no problem.
+For the sunset integrals the evaluation can become very slow. It is
+strongly recommended to play around with the settings and compare the outputs
+for the two ways to evaluate the integral. 
+The theta and Bessel function evaluation approach the correct answer
+differently.
+For most cases
+it is possible to have \mytt{rsacc} set smaller than \mytt{racc}.
+
+For many applications it is useful to calculate the
+very time consuming parts, those labeled \mytt{6rnf2V}, once and store them.
+They only depend nontrivially on the masses and size of the finite volume.
+The decay constant dependence is very simple, an overall factor at each order,
+and there is no dependence
+on the NLO LECs $l_i^r$.
+
+The results presented in this section are with periodic boundary conditions
+and an infinite extension in the time direction. They are also restricted
+to the case where the particle is at rest, i.e. $\vec p=0$.
+
+\subsubsection{Mass at finite volume: in physical}
+
+The finite volume corrections to the masses squared\footnote{Note that
+in other papers the corrections to the mass itself are sometimes
+quoted.} are defined as the difference of the mass squared in finite volume
+and in infinite volume:
+\begin{eqnarray}
+\Delta^V m^2_\pi &=& m^{2V}_\pi-m^{2\,V=\infty}_\pi
+= m_\pi^{2V(4)}+ m_\pi^{2V(6)}\,,
+\nonumber\\
+m_\pi^{2V(6)} &=& m_{\pi\,l}^{2V(6)}+m_{pi\,r}^{2V(6)}\,.
+\end{eqnarray}
+$m_{\pi\,l}^{2V(6)}$ is the part depending on the NLO LECs $l_i^r$.\\[3mm]
+
+Pion mass (theta function method):\\
+\mytt{double \newfunction{mpi4nf2Vt}(const physmassnf2 massin,const double L)}
+returns $m_\pi^{2V(4)}$.\\
+\mytt{double \newfunction{mpi6nf2Vt}(const physmassnf2 massin, const li liiin, const double L)}\\
+returns $m_\pi^{2V(6)}$.\\
+\mytt{double \newfunction{mpi6lnf2Vt}(const physmassnf2 massin, const li liiin, const double L)}\\
+returns $m_{\pi\,l}^{2V(6)}$.\\
+\mytt{double \newfunction{mpi6rnf2Vt}(const physmassnf2 massin, const double L)}
+returns $m_{\pi\,r}^{2V(6)}$.\\
+
+Pion mass (Bessel function method):\\
+\mytt{double \newfunction{mpi4nf2Vb}(const physmassnf2 massin,const double L)}
+returns $m_\pi^{2V(4)}$.\\
+\mytt{double \newfunction{mpi6nf2Vb}(const physmassnf2 massin, const li liiin, const double L)}\\
+returns $m_\pi^{2V(6)}$.\\
+\mytt{double \newfunction{mpi6lnf2Vb}(const physmassnf2 massin, const li liiin, const double L)}\\
+returns $m_{\pi\,l}^{2V(6)}$.\\
+\mytt{double \newfunction{mpi6rnf2Vb}(const physmassnf2 massin, const double L)}
+returns $m_{\pi\,r}^{2V(6)}$.\\
+
+All these are defined in \newfunction{massdecayvevnf2V.h}
+and implemented in \newfunction{massdecayvevnf2V.h}.
+Examples of use are in \newfunction{testmassdecayvevnf2V.cc}.
+
+\subsubsection{Decay constant at finite volume: in physical}
+
+The finite volume corrections to the decay constants
+are defined as the difference of the decay constant in finite volume
+and in infinite volume:
+\begin{eqnarray}
+\label{defdecaynf2V}
+\Delta^V F_\pi &=& F^{V}_\pi-F^{\,V=\infty}_\pi
+= F_\pi^{V(4)}+ F_\pi^{V(6)}\,.
+\nonumber\\
+F_\pi^{V(6)} &=& F_{\pi\,l}^{V(6)}+F_{\pi\,r}^{V(6)}\,.
+\end{eqnarray}
+Note that the correction is defined to the value of the
+decay constant, not divided by the the lowest order decay constant as
+in (\ref{defdecayfirst}).\\
+
+Pion decay constant (theta function method):\\
+\mytt{double \newfunction{fpi4nf2Vt}(const physmassnf2 massin,const double L)}
+returns $F_\pi^{V(4)}$.\\
+\mytt{double \newfunction{fpi6nf2Vt}(const physmassnf2 massin,const li liin,const double L)}\\
+returns $F_\pi^{V(6)}$.\\
+\mytt{double \newfunction{fpi6lnf2Vt}(const physmassnf2 massin,const li liin,const double L)}\\
+returns $F_{\pi\,l}^{V(6)}$.\\
+\mytt{double \newfunction{fpi6rnf2Vt}(const physmassnf2 massin,const double L)}
+returns $F_{\pi\,r}^{V(6)}$.\\
+
+Pion decay constant (Bessel function method):\\
+\mytt{double \newfunction{fpi4nf2Vb}(const physmassnf2 massin,const double L)}
+returns $F_\pi^{V(4)}$.\\
+\mytt{double \newfunction{fpi6nf2Vb}(const physmassnf2 massin,const li liin,const double L)}\\
+returns $F_\pi^{V(6)}$.\\
+\mytt{double \newfunction{fpi6lnf2Vb}(const physmassnf2 massin,const li liin,const double L)}\\
+returns $F_{\pi\,l}^{V(6)}$.\\
+\mytt{double \newfunction{fpi6rnf2Vb}(const physmassnf2 massin,const double L)}
+returns $F_{\pi\,r}^{V(6)}$.\\
+
+All these are defined in \newfunction{massdecayvevnf2V.h}
+and implemented in \newfunction{massdecayvevnf2V.h}.
+Examples of use are in \newfunction{testmassdecayvevnf2V.cc}.
+
+\subsubsection{Vacuum-expectation-value at finite volume: in physical}
+
+The finite volume corrections to the vev $\langle\bar u u\rangle$
+are defined as the difference of the decay constant in finite volume
+and in infinite volume:
+\begin{eqnarray}
+\label{defvevf2V}
+\Delta^V \langle\bar u u\rangle &=& \langle\bar u u\rangle^{V}- \langle\bar u u\rangle^{\,V=\infty}
+= \langle\bar u u\rangle^{\,V=\infty}\left(1+\langle\bar u u\rangle_\pi^{V(4)}
+\right)\,.%+ F_a^{V(6)}\,.
+%\nonumber\\
+%F_a^{V(6)} &=& F_{a\,L}^{V(6)}+F_{a\,R}^{V(6)}\,.
+\end{eqnarray}
+Note that the correction is defined relative to the value in infinite volume
+not to the lowest order value.\\
+
+$\langle\bar u u\rangle$ (theta function method):\\
+\mytt{double \newfunction{qqup4nf2Vt}(const physmassnf2 massin,const double L)}
+returns $\langle\bar u u\rangle_\pi^{V(4)}$.\\
+
+$\langle\bar u u\rangle$ (Bessel function method):\\
+\mytt{double \newfunction{qqup4nf2Vb}(const physmassnf2 massin,const double L)}
+returns $\langle\bar u u\rangle_\pi^{V(4)}$.\\
+
+All these are defined in \newfunction{massdecayvevnf2V.h}
+and implemented in \newfunction{massdecayvevnf2V.h}.
+Examples of use are in \newfunction{testmassdecayvevnf2V.cc}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Three flavour isospin conserving results}
@@ -6145,6 +6441,12 @@ For the avoidance of doubt, this Section 6(b) does not affect any right the Lice
   [arXiv:1311.3531 [hep-lat]].
   %%CITATION = ARXIV:1311.3531;%%
 
+\bibitem{BusDekker}
+J.C.P. Bus and T.J. Dekker,
+% Two Efficient Algorithms with
+% Guaranteed Convergence for Finding a Zero of a Function,
+ACM Trans. Math. Software 1 (1975) 330-345.
+
 \bibitem{radmulpaper} 
 A. van Doren and L. de Ridder, 
 %"An adaptive algorithm for numerical integration over an n-dimensional cube,"
@@ -6193,9 +6495,10 @@ J. Comput. Appl. Math. 2 (1976) 207-217.
 \bibitem{Bijnens:2014lea}
   J.~Bijnens and G.~Ecker,
   %``Mesonic low-energy constants,''
-  arXiv:1405.6488 [hep-ph].
-  %%CITATION = ARXIV:1405.6488;%%
-  XXX add published XXX
+  Ann.\ Rev.\ Nucl.\ Part.\ Sci.\  {\bf 64} (2014) 149
+  doi:10.1146/annurev-nucl-102313-025528
+  [arXiv:1405.6488 [hep-ph]].
+  %%CITATION = doi:10.1146/annurev-nucl-102313-025528;%%
 
 %\cite{Bijnens:1999sh}
 \bibitem{Bijnens:1999sh}
@@ -6365,6 +6668,68 @@ J. Comput. Appl. Math. 2 (1976) 207-217.
   [arXiv:1311.7511 [hep-lat]].
   %%CITATION = doi:10.1103/PhysRevD.89.054510;%%
 
+%\cite{Bijnens:1995yn}
+\bibitem{Bijnens:1995yn}
+  J.~Bijnens, G.~Colangelo, G.~Ecker, J.~Gasser and M.~E.~Sainio,
+  %``Elastic pi pi scattering to two loops,''
+  Phys.\ Lett.\ B {\bf 374} (1996) 210
+  doi:10.1016/0370-2693(96)00165-7
+  [hep-ph/9511397].
+  %%CITATION = doi:10.1016/0370-2693(96)00165-7;%%
+
+%\cite{Bijnens:1997vq}
+\bibitem{Bijnens:1997vq}
+  J.~Bijnens, G.~Colangelo, G.~Ecker, J.~Gasser and M.~E.~Sainio,
+  %``Pion-pion scattering at low energy,''
+  Nucl.\ Phys.\ B {\bf 508} (1997) 263
+   Erratum: [Nucl.\ Phys.\ B {\bf 517} (1998) 639]
+  doi:10.1016/S0550-3213(97)80013-2, 10.1016/S0550-3213(97)00621-4, 10.1016/S0550-3213(98)00127-8
+  [hep-ph/9707291].
+  %%CITATION = doi:10.1016/S0550-3213(97)80013-2, 10.1016/S0550-3213(97)00621-4, 10.1016/S0550-3213(98)00127-8;%%
+
+\bibitem{Burgi:1996qi}
+  U.~Burgi,
+  %``Charged pion pair production and pion polarizabilities to two loops,''
+  Nucl.\ Phys.\ B {\bf 479} (1996) 392
+  doi:10.1016/0550-3213(96)00454-3
+  [hep-ph/9602429].
+  %%CITATION = doi:10.1016/0550-3213(96)00454-3;%%
+  %130 citations counted in INSPIRE as of 22 Feb 2019
+
+%\cite{Burgi:1996mm}
+\bibitem{Burgi:1996mm}
+  U.~Burgi,
+  %``Charged pion polarizabilities to two loops,''
+  Phys.\ Lett.\ B {\bf 377} (1996) 147
+  doi:10.1016/0370-2693(96)00304-8
+  [hep-ph/9602421].
+  %%CITATION = doi:10.1016/0370-2693(96)00304-8;%%
+
+%\cite{Bijnens:1998fm}
+\bibitem{Bijnens:1998fm}
+  J.~Bijnens, G.~Colangelo and P.~Talavera,
+  %``The Vector and scalar form-factors of the pion to two loops,''
+  JHEP {\bf 9805} (1998) 014
+  doi:10.1088/1126-6708/1998/05/014
+  [hep-ph/9805389].
+  %%CITATION = doi:10.1088/1126-6708/1998/05/014;%%
+
+%\cite{Gasser:1986vb}
+\bibitem{Gasser:1986vb}
+  J.~Gasser and H.~Leutwyler,
+  %``Light Quarks at Low Temperatures,''
+  Phys.\ Lett.\ B {\bf 184} (1987) 83.
+  doi:10.1016/0370-2693(87)90492-8
+  %%CITATION = doi:10.1016/0370-2693(87)90492-8;%%
+
+%\cite{Colangelo:2006mp}
+\bibitem{Colangelo:2006mp}
+  G.~Colangelo and C.~Haefeli,
+  %``Finite volume effects for the pion mass at two loops,''
+  Nucl.\ Phys.\ B {\bf 744} (2006) 14
+  doi:10.1016/j.nuclphysb.2006.03.010
+  [hep-lat/0602017].
+  %%CITATION = doi:10.1016/j.nuclphysb.2006.03.010;%%
 
 \end{thebibliography}
 

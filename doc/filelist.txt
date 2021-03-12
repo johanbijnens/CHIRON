@@ -1,6 +1,6 @@
 // filelist.txt is part of the 
 // CHIRON ChPT at two loops program collection
-// Copyright (C) 2014-2019 Johan Bijnens, v1.02
+// Copyright (C) 2014-2019 Johan Bijnens, v1.03
 // CHIRON is licenced under the GNU GPL version 2 or later,
 // see COPYING for details.
 // Please respect the Guidelines, see GUIDELINES for details.
@@ -42,6 +42,7 @@ massdecayvevnf.h
 massdecayvevnfPQ.h
 massdecayvevnfV.h
 massdecayvevnfPQV.h
+massdecayvevnf2.h
 getfpimeta.h
 finitevolumeoneloopintegrals.h
 finitevolumesunsetintegrals.h
@@ -110,6 +111,7 @@ massdecayvevnf.cc
 massdecayvevnfPQ.cc
 massdecayvevnfV.cc
 massdecayvevnfPQV.cc
+massdecayvevnf2.cc
 fourvector.cc
 finitevolumeonelooptwist.cc
 quenchedoneloopintegrals.cc
@@ -144,6 +146,7 @@ testmassdecayvevV.cc
 testmassdecayvevloV.cc
 testmassdecayvevPQV.cc
 testmassdecayvevnf.cc
+testmassdecayvevnf2.cc
 testfourvector.cc
 testfinitevolumeonelooptwist.cc
 testjbdrteq3.cc
@@ -164,6 +167,7 @@ testLi.dat
 testLinf.dat
 testCi.dat
 testKi.dat
+testli.dat
 testoneloopintegrals.dat
 testsunsetintegrals.dat
 testedquenchedsunsetintegrals.dat
@@ -177,6 +181,7 @@ testmassdecayvevV.dat
 testmassdecayvevloV.dat
 testmassdecayvevPQV.dat
 testmassdecayvevnf.dat
+testmassdecayvevnf2.dat
 testfourvector.dat
 testfinitevolumeonelooptwist.dat
 testjbdrteq3.dat

@@ -105,11 +105,28 @@ added version with a void pointer to jbdad2,jbdad3,jbdadmul
 190220
 Small typo fixed in section ChPT
 inputsnf2 added everywhere
-li.h li.cc testli.cc testli.dat added
+li.h li.cc testli.cc testli.dat added and in manual
+
+190221
+Mass, decay and vev added in physical mass for NLO 2-flavour ChPT as files
+and in manual infinite and finite volume
+
+190408
+jbdzerox added as files and in manual
+
+190416
+Mass and decay in physical mass for NNLO 2-flavour ChPT as files
+and in manual: finite volume
+
+210211
+filenames li.cc, li.h, testli.cc, testli.dat changed everywhere to include
+nf2, many mac people had problems with the system treating li.cc and Li.cc ...
+as the same files
 
 To be done:
-add li to the manual
 f_+ for partially quenched staggered case to manual
 changes in fourvector to manual
 B31b,B32b to manual, both quenched and unquenched, and finite volume with twist
-
+rename li.h li.cc testli.cc testli.dat with nf2 in the name (some macs seem
+  not to handle files with upper and lower case in name separately
+  Walker-Loud and Hector Tiblom had that problem)

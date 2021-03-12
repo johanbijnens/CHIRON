@@ -98,9 +98,12 @@ double jbdtheta2d02(const double alpha, const double beta, const double gamma);
 
 
 //***************************************************************************
-// roots
+// roots and zeros
 void jbdrteq3(const double r, const double s,const double t,
 	      double x[3],double & d );
+
+double jbdzerox(double (*f)(const double),const double a0,const double b0,
+		const double eps,const int maxf=10000, const int mode=1);
 
 
 
