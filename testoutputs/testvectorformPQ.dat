@@ -1,0 +1,29 @@
+Kl3 F_+ formfactors
+
+L_9^r dependent parts
+standard : -0.161635
+PQ       : -0.161635
+
+Rpart 2 valence and 2 sea quark masses
+example point f_+ : (-0.0178218,0)
+example point f_+ : (-0.0178218,0) other program
+four points close to unquenched f_+ :
+(-0.0246002,0) (-0.0247218,0) (-0.0247615,0) (-0.0248829,0)
+average and comparison with unquenched :
+(-0.0247416,0) (-0.0247411,-0)
+
+Rpart 2 valence and 3 sea quark masses
+example point f_+ : (-0.0168963,0)
+example point f_+ : (-0.0168963,0) other program
+
+The spectator mass does not matter
+example point f_+ 22: (-0.0178218,0)
+example point f_+ 32: (-0.0178218,0)
+example point f_+ 23: (-0.0168963,0)
+example point f_+ 32: (-0.0168963,0)
+
+Three sea mass case reduces to two sea mass case
+Two points around 2 sea mass case
+(-0.0177833,0) (-0.0178604,0)
+average and two sea mass case
+(-0.0178219,0) (-0.0178218,0)

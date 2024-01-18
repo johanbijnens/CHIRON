@@ -1,0 +1,183 @@
+#accuracies AbVtwistt BbVtwistt : 1e-12 1e-10
+#accuracies AbV BbV : 1e-12 1e-10 
+mass m1 : 0.1395
+m1*L    : 3
+compare tadpoles for twist zero case with earlier
+AbV  -5.77695e-05 -5.77695e-05
+BbV  0.00465215 0.00465215
+CbV  -0.258395 -0.258395
+DbV  12.8391 12.8391
+A22bV  4.97222e-07 4.97222e-07
+B22bV  -2.88847e-05 -2.88847e-05
+C22bV  0.00116304 0.00116304
+D22bV  -0.0430658 -0.0430658
+A23bV  1.0377e-06 1.0377e-06
+B23bV  -4.94338e-05 -4.94338e-05
+C23bV  0.00167614 0.00167614
+D23bV  -0.0545736 -0.0545736
+
+Comparing for some different twists and zero
+Numbers are for three twist vectors :
+theta   : 0 0 0 0
+theta1  : 0 0.1 0.2 0.3
+theta2  : 0 0.785398 -1.0472 0.261799
+AbVtwistt(1,0,0,m1sq,L,theta) : -5.77695e-05 -5.57709e-05 -3.62736e-05
+AbVtwistt(2,0,0,m1sq,L,theta) : 0.00465215 0.00445801 0.00267691
+AbVtwistt(3,0,0,m1sq,L,theta) : -0.258395 -0.245188 -0.132531
+AbVtwistt(4,0,0,m1sq,L,theta) : 12.8391 12.0399 5.73545
+AbVtwistt(1,2,1,m1sq,L,theta) : 0 -4.51443e-07 -2.79508e-06
+AbVtwistt(1,2,2,m1sq,L,theta) : 0 -9.00852e-07 3.5645e-06
+AbVtwistt(1,2,3,m1sq,L,theta) : 0 -1.34619e-06 -9.77126e-07
+AbVtwistt(2,2,1,m1sq,L,theta) : 0 3.03128e-05 0.000171494
+AbVtwistt(2,2,2,m1sq,L,theta) : 0 6.05446e-05 -0.000222052
+AbVtwistt(2,2,3,m1sq,L,theta) : 0 9.06135e-05 5.89544e-05
+AbVtwistt(3,2,1,m1sq,L,theta) : 0 -0.00146207 -0.00732999
+AbVtwistt(3,2,2,m1sq,L,theta) : 0 -0.00292224 0.0096133
+AbVtwistt(3,2,3,m1sq,L,theta) : 0 -0.00437855 -0.00248496
+AbVtwistt(4,2,1,m1sq,L,theta) : 0 0.0658136 0.285858
+AbVtwistt(4,2,2,m1sq,L,theta) : 0 0.131592 -0.378097
+AbVtwistt(4,2,3,m1sq,L,theta) : 0 0.1973 0.0960423
+AbVtwistt(1,22,0,m1sq,L,theta) : 4.97222e-07 4.82426e-07 3.3141e-07
+AbVtwistt(2,22,0,m1sq,L,theta) : -2.88847e-05 -2.78854e-05 -1.81368e-05
+AbVtwistt(3,22,0,m1sq,L,theta) : 0.00116304 0.0011145 0.000669228
+AbVtwistt(4,22,0,m1sq,L,theta) : -0.0430658 -0.0408646 -0.0220886
+AbVtwistt(1,23,11,m1sq,L,theta) : 1.0377e-06 1.02238e-06 6.64994e-07
+AbVtwistt(1,23,12,m1sq,L,theta) : 0 -2.98506e-09 8.66475e-08
+AbVtwistt(1,23,13,m1sq,L,theta) : 0 -4.46579e-09 -2.31355e-08
+AbVtwistt(1,23,22,m1sq,L,theta) : 1.0377e-06 1.00815e-06 4.74305e-07
+AbVtwistt(1,23,23,m1sq,L,theta) : 0 -8.91759e-09 2.9849e-08
+AbVtwistt(1,23,33,m1sq,L,theta) : 1.0377e-06 9.84498e-07 8.92234e-07
+AbVtwistt(2,23,11,m1sq,L,theta) : -4.94338e-05 -4.83491e-05 -2.8974e-05
+AbVtwistt(2,23,12,m1sq,L,theta) : 0 2.40456e-07 -6.58821e-06
+AbVtwistt(2,23,13,m1sq,L,theta) : 0 3.60104e-07 1.7205e-06
+AbVtwistt(2,23,22,m1sq,L,theta) : -4.94338e-05 -4.76608e-05 -2.03084e-05
+AbVtwistt(2,23,23,m1sq,L,theta) : 0 7.1952e-07 -2.24384e-06
+AbVtwistt(2,23,33,m1sq,L,theta) : -4.94338e-05 -4.6515e-05 -3.90846e-05
+AbVtwistt(3,23,11,m1sq,L,theta) : 0.00167614 0.00162188 0.000845693
+AbVtwistt(3,23,12,m1sq,L,theta) : 0 -1.27792e-05 0.000320169
+AbVtwistt(3,23,13,m1sq,L,theta) : 0 -1.91528e-05 -8.21013e-05
+AbVtwistt(3,23,22,m1sq,L,theta) : 0.00167614 0.00159618 0.000559368
+AbVtwistt(3,23,23,m1sq,L,theta) : 0 -3.82868e-05 0.000108047
+AbVtwistt(3,23,33,m1sq,L,theta) : 0.00167614 0.00155335 0.00117403
+AbVtwistt(4,23,11,m1sq,L,theta) : -0.0545736 -0.0520814 -0.0220464
+AbVtwistt(4,23,12,m1sq,L,theta) : 0 0.00059967 -0.0133223
+AbVtwistt(4,23,13,m1sq,L,theta) : 0 0.000899175 0.00337384
+AbVtwistt(4,23,22,m1sq,L,theta) : -0.0545736 -0.0510794 -0.0126364
+AbVtwistt(4,23,23,m1sq,L,theta) : 0 0.00179796 -0.0044682
+AbVtwistt(4,23,33,m1sq,L,theta) : -0.0545736 -0.049409 -0.0327534
+Testing 4 A_22^V+t^ii A_23ii^V-m1sq* A^V = A^V(one propagator less)
+n= 1 : 0 -4.77854e-18 -1
+n= 2 : -3.62736e-05 -3.62736e-05 6.21725e-15
+n= 3 : 0.00267691 0.00267691 -1.11022e-16
+n= 4 : -0.132531 -0.132531 2.22045e-16
+
+Results for bubble integrals
+mass m2 : 0.495
+twist: no twist, theta1 and second zero, theta1 and theta2
+p = {0.17,0.,0.,0.} + twist part
+BbVtwistt(1,0,0,m1sq,m2sq,psq,L,theta,p) : 0.000286721 0.000277685 0.00018892
+BbVtwistt(2,0,0,m1sq,m2sq,psq,L,theta,p) : -0.0218519 -0.0209794 -0.0129573
+BbVtwistt(3,0,0,m1sq,m2sq,psq,L,theta,p) : -0.00139095 -0.00135064 -0.000951879
+BbVtwistt(4,0,0,m1sq,m2sq,psq,L,theta,p) : 0.101014 0.0971248 0.0612983
+BbVtwistt(1,1,0,m1sq,m2sq,psq,L,theta,p) : 2.33223e-05 2.27896e-05 1.72364e-05
+BbVtwistt(2,1,0,m1sq,m2sq,psq,L,theta,p) : -0.00117522 -0.00113934 -0.000787254
+BbVtwistt(3,1,0,m1sq,m2sq,psq,L,theta,p) : -0.000215727 -0.0002113 -0.000164624
+BbVtwistt(4,1,0,m1sq,m2sq,psq,L,theta,p) : 0.010297 0.00999601 0.00703508
+BbVtwistt(1,2,1,m1sq,m2sq,psq,L,theta,p) : 0 2.01162e-06 1.23827e-05
+BbVtwistt(1,2,2,m1sq,m2sq,psq,L,theta,p) : 0 4.01637e-06 -1.65043e-05
+BbVtwistt(1,2,3,m1sq,m2sq,psq,L,theta,p) : 0 6.00734e-06 3.75609e-06
+BbVtwistt(2,2,1,m1sq,m2sq,psq,L,theta,p) : 0 -0.000131668 -0.00073859
+BbVtwistt(2,2,2,m1sq,m2sq,psq,L,theta,p) : 0 -0.000263069 0.000983624
+BbVtwistt(2,2,3,m1sq,m2sq,psq,L,theta,p) : 0 -0.000393933 -0.000232838
+BbVtwistt(3,2,1,m1sq,m2sq,psq,L,theta,p) : 0 -8.73631e-06 -5.31523e-05
+BbVtwistt(3,2,2,m1sq,m2sq,psq,L,theta,p) : 0 -1.745e-05 7.42123e-05
+BbVtwistt(3,2,3,m1sq,m2sq,psq,L,theta,p) : 0 -2.61182e-05 -1.34869e-05
+BbVtwistt(4,2,1,m1sq,m2sq,psq,L,theta,p) : 0 0.000564148 0.00312884
+BbVtwistt(4,2,2,m1sq,m2sq,psq,L,theta,p) : 0 0.00112743 -0.00428207
+BbVtwistt(4,2,3,m1sq,m2sq,psq,L,theta,p) : 0 0.00168899 0.000899248
+BbVtwistt(1,21,0,m1sq,m2sq,psq,L,theta,p) : 4.71283e-06 4.63773e-06 3.8081e-06
+BbVtwistt(2,21,0,m1sq,m2sq,psq,L,theta,p) : -0.000154885 -0.000151318 -0.000114315
+BbVtwistt(3,21,0,m1sq,m2sq,psq,L,theta,p) : -6.08427e-05 -5.99823e-05 -5.03094e-05
+BbVtwistt(4,21,0,m1sq,m2sq,psq,L,theta,p) : 0.0018971 0.00185547 0.00142171
+BbVtwistt(1,22,0,m1sq,m2sq,psq,L,theta,p) : -2.44633e-06 -2.38302e-06 -1.73024e-06
+BbVtwistt(2,22,0,m1sq,m2sq,psq,L,theta,p) : 0.000131699 0.000127448 8.58416e-05
+BbVtwistt(3,22,0,m1sq,m2sq,psq,L,theta,p) : 1.16611e-05 1.13948e-05 8.61819e-06
+BbVtwistt(4,22,0,m1sq,m2sq,psq,L,theta,p) : -0.000587609 -0.00056967 -0.000393627
+BbVtwistt(1,23,11,m1sq,m2sq,psq,L,theta,p) : -5.06506e-06 -4.99476e-06 -3.47161e-06
+BbVtwistt(1,23,12,m1sq,m2sq,psq,L,theta,p) : 0 1.58858e-08 -4.84344e-07
+BbVtwistt(1,23,13,m1sq,m2sq,psq,L,theta,p) : 0 2.37819e-08 1.27827e-07
+BbVtwistt(1,23,22,m1sq,m2sq,psq,L,theta,p) : -5.06506e-06 -4.93618e-06 -2.60024e-06
+BbVtwistt(1,23,23,m1sq,m2sq,psq,L,theta,p) : 0 4.75082e-08 -1.68222e-07
+BbVtwistt(1,23,33,m1sq,m2sq,psq,L,theta,p) : -5.06506e-06 -4.83875e-06 -4.39766e-06
+BbVtwistt(2,23,11,m1sq,m2sq,psq,L,theta,p) : 0.000220281 0.000215481 0.000133367
+BbVtwistt(2,23,12,m1sq,m2sq,psq,L,theta,p) : 0 -1.15288e-06 3.24413e-05
+BbVtwistt(2,23,13,m1sq,m2sq,psq,L,theta,p) : 0 -1.72719e-06 -8.41127e-06
+BbVtwistt(2,23,22,m1sq,m2sq,psq,L,theta,p) : 0.000220281 0.000212644 9.60336e-05
+BbVtwistt(2,23,23,m1sq,m2sq,psq,L,theta,p) : 0 -3.45185e-06 1.10542e-05
+BbVtwistt(2,23,33,m1sq,m2sq,psq,L,theta,p) : 0.000220281 0.000207919 0.000174344
+BbVtwistt(3,23,11,m1sq,m2sq,psq,L,theta,p) : 2.37508e-05 2.34378e-05 1.70703e-05
+BbVtwistt(3,23,12,m1sq,m2sq,psq,L,theta,p) : 0 -7.85014e-08 2.47413e-06
+BbVtwistt(3,23,13,m1sq,m2sq,psq,L,theta,p) : 0 -1.17579e-07 -6.08674e-07
+BbVtwistt(3,23,22,m1sq,m2sq,psq,L,theta,p) : 2.37508e-05 2.3201e-05 1.32222e-05
+BbVtwistt(3,23,23,m1sq,m2sq,psq,L,theta,p) : 0 -2.34951e-07 8.37282e-07
+BbVtwistt(3,23,33,m1sq,m2sq,psq,L,theta,p) : 2.37508e-05 2.2807e-05 2.07626e-05
+BbVtwistt(4,23,11,m1sq,m2sq,psq,L,theta,p) : -0.000956804 -0.000935911 -0.000590927
+BbVtwistt(4,23,12,m1sq,m2sq,psq,L,theta,p) : 0 5.33051e-06 -0.000152651
+BbVtwistt(4,23,13,m1sq,m2sq,psq,L,theta,p) : 0 7.9883e-06 3.84696e-05
+BbVtwistt(4,23,22,m1sq,m2sq,psq,L,theta,p) : -0.000956804 -0.000924268 -0.000432817
+BbVtwistt(4,23,23,m1sq,m2sq,psq,L,theta,p) : 0 1.59677e-05 -5.13757e-05
+BbVtwistt(4,23,33,m1sq,m2sq,psq,L,theta,p) : -0.000956804 -0.000904872 -0.000756265
+shift relations (k -> qext-k)
+0.000271637 0.000271637 0
+0.000271637 0.000271637 -1.75415e-14
+3.19521e-07 3.19521e-07 -4.10783e-15
+6.11276e-06 6.11276e-06 2.22045e-16
+5.36474e-06 5.36474e-06 2.22045e-16
+relation B1, B2, B case propagators 1 
+5.41453e-07 8.75085e-08 -2.72444e-05 2.78733e-05 6.28962e-07 6.28962e-07 4.02567e-13
+relation B1, B2, B case propagators 2 
+-2.7352e-05 -1.49232e-06 0.00206434 -0.00209319 -2.88444e-05 -2.88444e-05 -1.39588e-12
+relation B1, B2, B case propagators 3 
+-4.89529e-06 -1.14537e-06 0.000129525 -0.000135566 -6.04067e-06 -6.04067e-06 2.02993e-12
+relation B1, B2, B case propagators 4 
+0.00023533 3.43666e-05 -0.00937573 0.00964543 0.000269696 0.000269696 1.44573e-12
+relation B21, B22, B23, B, propagators 1 
+-9.19759e-06 1.44595e-05 5.28612e-06 -2.42189e-08 5.2619e-06 5.2619e-06 3.97549e-12
+relation B21, B22, B23, B, propagators 2 
+0.000496353 -0.000625252 -0.000400536 0.000271637 -0.000128899 -0.000128899 6.56142e-13
+relation B21, B22, B23, B, propagators 3 
+4.20249e-05 -6.66509e-05 -2.51312e-05 5.05183e-07 -2.46261e-05 -2.46261e-05 5.99061e-11
+relation B21, B22, B23, B, propagators 4 
+-0.00214802 0.00267575 0.00181914 -0.00129141 0.000527722 0.000527722 6.99441e-14
+relation B21, B22, B23, B1, B2 mu = 0 propagators 1 
+-3.77321e-07 5.54524e-09 -3.69717e-07 -2.05861e-09 -3.71776e-07 -3.71776e-07 -2.29428e-12
+relation B21, B22, B23, B1, B2 mu = 0 propagators 2 
+2.0642e-05 -1.22275e-07 1.86766e-05 1.84311e-06 2.05197e-05 2.05197e-05 -1.4988e-14
+relation B21, B22, B23, B1, B2 mu = 0 propagators 3 
+1.61489e-06 -7.24388e-08 3.34263e-06 -1.80017e-06 1.54245e-06 1.54245e-06 3.61711e-13
+relation B21, B22, B23, B1, B2 mu = 0 propagators 4 
+-8.58446e-05 1.59876e-06 -0.000160689 7.64429e-05 -8.42458e-05 -8.42458e-05 1.06359e-13
+relation B21, B22, B23, B1, B2 mu = 1 propagators 1 
+-9.13806e-08 1.97258e-07 -1.21586e-07 2.27464e-07 1.05878e-07 1.05878e-07 -3.45501e-13
+relation B21, B22, B23, B1, B2 mu = 1 propagators 2 
+4.99913e-06 -8.69913e-06 1.08503e-05 -1.45503e-05 -3.69999e-06 -3.69999e-06 8.2534e-13
+relation B21, B22, B23, B1, B2 mu = 1 propagators 3 
+3.91099e-07 -8.51081e-07 1.7859e-07 -6.38572e-07 -4.59982e-07 -4.59982e-07 -3.02092e-13
+relation B21, B22, B23, B1, B2 mu = 1 propagators 4 
+-2.079e-05 3.61371e-05 -3.78534e-05 5.32005e-05 1.53471e-05 1.53471e-05 -1.94733e-13
+relation B21, B22, B23, B1, B2 mu = 2 propagators 1 
+8.7438e-08 -1.66701e-07 -5.27416e-07 4.48153e-07 -7.92629e-08 -7.92629e-08 2.4416e-12
+relation B21, B22, B23, B1, B2 mu = 2 propagators 2 
+-4.78345e-06 7.54686e-06 3.04065e-05 -2.76431e-05 2.76341e-06 2.76341e-06 4.53415e-13
+relation B21, B22, B23, B1, B2 mu = 2 propagators 3 
+-3.74225e-07 6.27594e-07 2.83996e-06 -2.58659e-06 2.53369e-07 2.53369e-07 2.28348e-10
+relation B21, B22, B23, B1, B2 mu = 2 propagators 4 
+1.98931e-05 -2.81598e-05 -0.000145691 0.000137424 -8.26672e-06 -8.26672e-06 -1.68321e-12
+relation B21, B22, B23, B1, B2 mu = 3 propagators 1 
+-5.79825e-08 1.36696e-07 -5.94881e-07 6.73595e-07 7.87134e-08 7.87134e-08 1.67977e-12
+relation B21, B22, B23, B1, B2 mu = 3 propagators 2 
+3.17203e-06 -5.96442e-06 3.95488e-05 -4.23412e-05 -2.79239e-06 -2.79239e-06 1.0234e-12
+relation B21, B22, B23, B1, B2 mu = 3 propagators 3 
+2.48158e-07 -6.61448e-07 2.56133e-06 -2.97462e-06 -4.1329e-07 -4.1329e-07 -9.34808e-14
+relation B21, B22, B23, B1, B2 mu = 3 propagators 4 
+-1.31916e-05 2.73012e-05 -0.00017028 0.000184389 1.41096e-05 1.41096e-05 -1.31029e-12

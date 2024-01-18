@@ -1,0 +1,42 @@
+Kl3 F_+ formfactors: partially quenched staggered
+DS DV DA DT dV dA : 0.01 0.015 0.03 0.08 0.045 0.06
+
+Rpart only here
+2 valence 2 sea masses:
+# nq     :  4
+# B0mq : 1 0.009112500000000
+# B0mq : 2 0.235912500000000
+# B0mq : 3 0.010023750000000
+# B0mq : 4 0.283095000000000
+# f0     :  0.092300000000000
+# mu     :  0.770000000000000
+PQ staggered : (0.00589627423279363,0)
+DS,dV,... = 0 reduces to PQ:
+PQ v2s2      : (-0.0215958783921238,0)
+PQ staggered : (-0.0215958783921238,0)
+
+2 valence 3 sea masses:
+# nq     :  5
+# B0mq : 1 0.009112500000000
+# B0mq : 2 0.235912500000000
+# B0mq : 3 0.010023750000000
+# B0mq : 4 0.010114875000000
+# B0mq : 5 0.283095000000000
+# f0     :  0.092300000000000
+# mu     :  0.770000000000000
+PQ staggered : (0.00592001207939905,0)
+DS,dV,... = 0 reduces to PQ:
+PQ v2s3      : (-0.0215602069911226,0)
+PQ staggered : (-0.0215602069911226,0)
+
+3 sea reduces to 2 sea
+two points close to 2 sea mass case:
+(0.00592238364844425,0) (0.00587011592589164,0)
+average and comparison with 2 sea :
+(0.00589624978716795,0) (0.00589627423279363,0)
+
+No dependence on the spectator mass
+PQ v2s2 : (0.00589627423279363,0)
+PQ v3s2 : (0.00589627423279363,0)
+PQ v2s3 : (0.00592001207939905,0)
+PQ v3s3 : (0.00592001207939905,0)
