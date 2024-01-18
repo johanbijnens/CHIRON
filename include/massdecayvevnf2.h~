@@ -1,0 +1,45 @@
+// massdecayvevnf2.h is part of the CHIRON ChPT at two loops program collection
+// Copyright (C) 2019 Johan Bijnens, v1.0
+// CHIRON is licenced under the GNU GPL version 2 or later,
+// see COPYING for details.
+// Please respect the Guidelines, see GUIDELINES for details.
+
+// results from:
+// p^4:
+//  J.~Gasser and H.~Leutwyler,
+//  Chiral perturbation theory to one loop Annals
+//  Phys.158 (1984) 142
+
+// p^6: formulas in terms of physical masses as given in
+// J.~Bijnens, G.~Colangelo and P.~Talavera,
+// The Vector and Scalar Form Factors of the Pion to Two Loops
+// JHEP 05 (1998) 014 [hep-ph/9805389]
+
+
+#ifndef MASSDECAYVEVNF2_H
+#define MASSDECAYVEVNF2_H
+
+#include <complex>
+typedef std::complex<double> dcomplex;
+
+#include "inputsnf2.h"
+#include "li.h"
+//#include "ci.h"
+
+double mpi4nf2(const physmassnf2 mass, const libar liin);
+double mpi4nf2(const physmassnf2 mass, const li liin);
+double mpi4lnf2(const physmassnf2 mass, const li liin);
+double mpi4rnf2(const physmassnf2 mass);
+
+double fpi4nf2(const physmassnf2 mass, const libar liin);
+double fpi4nf2(const physmassnf2 mass, const li liin);
+double fpi4lnf2(const physmassnf2 mass, const li liin);
+double fpi4rnf2(const physmassnf2 mass);
+
+double qqup4nf2(const physmassnf2 mass, const libar liin);
+double qqup4nf2(const physmassnf2 mass, const li liin);
+double qqup4lnf2(const physmassnf2 mass, const li liin);
+double qqup4rnf2(const physmassnf2 mass);
+
+#endif // MASSDECAYVEVNF2_H
+

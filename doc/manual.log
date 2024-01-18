@@ -1,0 +1,2829 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/TeX Live for SUSE Linux) (preloaded format=pdflatex 2020.12.11)  12 MAR 2021 11:53
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**\input manual.tex
+(./manual.tex (/usr/share/texmf/tex/latex/base/article.cls
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/share/texmf/tex/latex/base/size12.clo
+File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texmf/tex/latex/base/inputenc.sty
+Package: inputenc 2015/03/17 v1.2c Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+(/usr/share/texmf/tex/latex/base/utf8.def
+File: utf8.def 2017/01/28 v1.1t UTF-8 support for inputenc
+Now handling font encoding OML ...
+... no UTF-8 mapping file for font encoding OML
+Now handling font encoding T1 ...
+... processing UTF-8 mapping file for font encoding T1
+
+(/usr/share/texmf/tex/latex/base/t1enc.dfu
+File: t1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
+   defining Unicode char U+00A0 (decimal 160)
+   defining Unicode char U+00A1 (decimal 161)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00AB (decimal 171)
+   defining Unicode char U+00AD (decimal 173)
+   defining Unicode char U+00BB (decimal 187)
+   defining Unicode char U+00BF (decimal 191)
+   defining Unicode char U+00C0 (decimal 192)
+   defining Unicode char U+00C1 (decimal 193)
+   defining Unicode char U+00C2 (decimal 194)
+   defining Unicode char U+00C3 (decimal 195)
+   defining Unicode char U+00C4 (decimal 196)
+   defining Unicode char U+00C5 (decimal 197)
+   defining Unicode char U+00C6 (decimal 198)
+   defining Unicode char U+00C7 (decimal 199)
+   defining Unicode char U+00C8 (decimal 200)
+   defining Unicode char U+00C9 (decimal 201)
+   defining Unicode char U+00CA (decimal 202)
+   defining Unicode char U+00CB (decimal 203)
+   defining Unicode char U+00CC (decimal 204)
+   defining Unicode char U+00CD (decimal 205)
+   defining Unicode char U+00CE (decimal 206)
+   defining Unicode char U+00CF (decimal 207)
+   defining Unicode char U+00D0 (decimal 208)
+   defining Unicode char U+00D1 (decimal 209)
+   defining Unicode char U+00D2 (decimal 210)
+   defining Unicode char U+00D3 (decimal 211)
+   defining Unicode char U+00D4 (decimal 212)
+   defining Unicode char U+00D5 (decimal 213)
+   defining Unicode char U+00D6 (decimal 214)
+   defining Unicode char U+00D8 (decimal 216)
+   defining Unicode char U+00D9 (decimal 217)
+   defining Unicode char U+00DA (decimal 218)
+   defining Unicode char U+00DB (decimal 219)
+   defining Unicode char U+00DC (decimal 220)
+   defining Unicode char U+00DD (decimal 221)
+   defining Unicode char U+00DE (decimal 222)
+   defining Unicode char U+00DF (decimal 223)
+   defining Unicode char U+00E0 (decimal 224)
+   defining Unicode char U+00E1 (decimal 225)
+   defining Unicode char U+00E2 (decimal 226)
+   defining Unicode char U+00E3 (decimal 227)
+   defining Unicode char U+00E4 (decimal 228)
+   defining Unicode char U+00E5 (decimal 229)
+   defining Unicode char U+00E6 (decimal 230)
+   defining Unicode char U+00E7 (decimal 231)
+   defining Unicode char U+00E8 (decimal 232)
+   defining Unicode char U+00E9 (decimal 233)
+   defining Unicode char U+00EA (decimal 234)
+   defining Unicode char U+00EB (decimal 235)
+   defining Unicode char U+00EC (decimal 236)
+   defining Unicode char U+00ED (decimal 237)
+   defining Unicode char U+00EE (decimal 238)
+   defining Unicode char U+00EF (decimal 239)
+   defining Unicode char U+00F0 (decimal 240)
+   defining Unicode char U+00F1 (decimal 241)
+   defining Unicode char U+00F2 (decimal 242)
+   defining Unicode char U+00F3 (decimal 243)
+   defining Unicode char U+00F4 (decimal 244)
+   defining Unicode char U+00F5 (decimal 245)
+   defining Unicode char U+00F6 (decimal 246)
+   defining Unicode char U+00F8 (decimal 248)
+   defining Unicode char U+00F9 (decimal 249)
+   defining Unicode char U+00FA (decimal 250)
+   defining Unicode char U+00FB (decimal 251)
+   defining Unicode char U+00FC (decimal 252)
+   defining Unicode char U+00FD (decimal 253)
+   defining Unicode char U+00FE (decimal 254)
+   defining Unicode char U+00FF (decimal 255)
+   defining Unicode char U+0100 (decimal 256)
+   defining Unicode char U+0101 (decimal 257)
+   defining Unicode char U+0102 (decimal 258)
+   defining Unicode char U+0103 (decimal 259)
+   defining Unicode char U+0104 (decimal 260)
+   defining Unicode char U+0105 (decimal 261)
+   defining Unicode char U+0106 (decimal 262)
+   defining Unicode char U+0107 (decimal 263)
+   defining Unicode char U+0108 (decimal 264)
+   defining Unicode char U+0109 (decimal 265)
+   defining Unicode char U+010A (decimal 266)
+   defining Unicode char U+010B (decimal 267)
+   defining Unicode char U+010C (decimal 268)
+   defining Unicode char U+010D (decimal 269)
+   defining Unicode char U+010E (decimal 270)
+   defining Unicode char U+010F (decimal 271)
+   defining Unicode char U+0110 (decimal 272)
+   defining Unicode char U+0111 (decimal 273)
+   defining Unicode char U+0112 (decimal 274)
+   defining Unicode char U+0113 (decimal 275)
+   defining Unicode char U+0114 (decimal 276)
+   defining Unicode char U+0115 (decimal 277)
+   defining Unicode char U+0116 (decimal 278)
+   defining Unicode char U+0117 (decimal 279)
+   defining Unicode char U+0118 (decimal 280)
+   defining Unicode char U+0119 (decimal 281)
+   defining Unicode char U+011A (decimal 282)
+   defining Unicode char U+011B (decimal 283)
+   defining Unicode char U+011C (decimal 284)
+   defining Unicode char U+011D (decimal 285)
+   defining Unicode char U+011E (decimal 286)
+   defining Unicode char U+011F (decimal 287)
+   defining Unicode char U+0120 (decimal 288)
+   defining Unicode char U+0121 (decimal 289)
+   defining Unicode char U+0122 (decimal 290)
+   defining Unicode char U+0123 (decimal 291)
+   defining Unicode char U+0124 (decimal 292)
+   defining Unicode char U+0125 (decimal 293)
+   defining Unicode char U+0128 (decimal 296)
+   defining Unicode char U+0129 (decimal 297)
+   defining Unicode char U+012A (decimal 298)
+   defining Unicode char U+012B (decimal 299)
+   defining Unicode char U+012C (decimal 300)
+   defining Unicode char U+012D (decimal 301)
+   defining Unicode char U+012E (decimal 302)
+   defining Unicode char U+012F (decimal 303)
+   defining Unicode char U+0130 (decimal 304)
+   defining Unicode char U+0131 (decimal 305)
+   defining Unicode char U+0132 (decimal 306)
+   defining Unicode char U+0133 (decimal 307)
+   defining Unicode char U+0134 (decimal 308)
+   defining Unicode char U+0135 (decimal 309)
+   defining Unicode char U+0136 (decimal 310)
+   defining Unicode char U+0137 (decimal 311)
+   defining Unicode char U+0139 (decimal 313)
+   defining Unicode char U+013A (decimal 314)
+   defining Unicode char U+013B (decimal 315)
+   defining Unicode char U+013C (decimal 316)
+   defining Unicode char U+013D (decimal 317)
+   defining Unicode char U+013E (decimal 318)
+   defining Unicode char U+0141 (decimal 321)
+   defining Unicode char U+0142 (decimal 322)
+   defining Unicode char U+0143 (decimal 323)
+   defining Unicode char U+0144 (decimal 324)
+   defining Unicode char U+0145 (decimal 325)
+   defining Unicode char U+0146 (decimal 326)
+   defining Unicode char U+0147 (decimal 327)
+   defining Unicode char U+0148 (decimal 328)
+   defining Unicode char U+014A (decimal 330)
+   defining Unicode char U+014B (decimal 331)
+   defining Unicode char U+014C (decimal 332)
+   defining Unicode char U+014D (decimal 333)
+   defining Unicode char U+014E (decimal 334)
+   defining Unicode char U+014F (decimal 335)
+   defining Unicode char U+0150 (decimal 336)
+   defining Unicode char U+0151 (decimal 337)
+   defining Unicode char U+0152 (decimal 338)
+   defining Unicode char U+0153 (decimal 339)
+   defining Unicode char U+0154 (decimal 340)
+   defining Unicode char U+0155 (decimal 341)
+   defining Unicode char U+0156 (decimal 342)
+   defining Unicode char U+0157 (decimal 343)
+   defining Unicode char U+0158 (decimal 344)
+   defining Unicode char U+0159 (decimal 345)
+   defining Unicode char U+015A (decimal 346)
+   defining Unicode char U+015B (decimal 347)
+   defining Unicode char U+015C (decimal 348)
+   defining Unicode char U+015D (decimal 349)
+   defining Unicode char U+015E (decimal 350)
+   defining Unicode char U+015F (decimal 351)
+   defining Unicode char U+0160 (decimal 352)
+   defining Unicode char U+0161 (decimal 353)
+   defining Unicode char U+0162 (decimal 354)
+   defining Unicode char U+0163 (decimal 355)
+   defining Unicode char U+0164 (decimal 356)
+   defining Unicode char U+0165 (decimal 357)
+   defining Unicode char U+0168 (decimal 360)
+   defining Unicode char U+0169 (decimal 361)
+   defining Unicode char U+016A (decimal 362)
+   defining Unicode char U+016B (decimal 363)
+   defining Unicode char U+016C (decimal 364)
+   defining Unicode char U+016D (decimal 365)
+   defining Unicode char U+016E (decimal 366)
+   defining Unicode char U+016F (decimal 367)
+   defining Unicode char U+0170 (decimal 368)
+   defining Unicode char U+0171 (decimal 369)
+   defining Unicode char U+0172 (decimal 370)
+   defining Unicode char U+0173 (decimal 371)
+   defining Unicode char U+0174 (decimal 372)
+   defining Unicode char U+0175 (decimal 373)
+   defining Unicode char U+0176 (decimal 374)
+   defining Unicode char U+0177 (decimal 375)
+   defining Unicode char U+0178 (decimal 376)
+   defining Unicode char U+0179 (decimal 377)
+   defining Unicode char U+017A (decimal 378)
+   defining Unicode char U+017B (decimal 379)
+   defining Unicode char U+017C (decimal 380)
+   defining Unicode char U+017D (decimal 381)
+   defining Unicode char U+017E (decimal 382)
+   defining Unicode char U+01CD (decimal 461)
+   defining Unicode char U+01CE (decimal 462)
+   defining Unicode char U+01CF (decimal 463)
+   defining Unicode char U+01D0 (decimal 464)
+   defining Unicode char U+01D1 (decimal 465)
+   defining Unicode char U+01D2 (decimal 466)
+   defining Unicode char U+01D3 (decimal 467)
+   defining Unicode char U+01D4 (decimal 468)
+   defining Unicode char U+01E2 (decimal 482)
+   defining Unicode char U+01E3 (decimal 483)
+   defining Unicode char U+01E6 (decimal 486)
+   defining Unicode char U+01E7 (decimal 487)
+   defining Unicode char U+01E8 (decimal 488)
+   defining Unicode char U+01E9 (decimal 489)
+   defining Unicode char U+01EA (decimal 490)
+   defining Unicode char U+01EB (decimal 491)
+   defining Unicode char U+01F0 (decimal 496)
+   defining Unicode char U+01F4 (decimal 500)
+   defining Unicode char U+01F5 (decimal 501)
+   defining Unicode char U+0218 (decimal 536)
+   defining Unicode char U+0219 (decimal 537)
+   defining Unicode char U+021A (decimal 538)
+   defining Unicode char U+021B (decimal 539)
+   defining Unicode char U+0232 (decimal 562)
+   defining Unicode char U+0233 (decimal 563)
+   defining Unicode char U+1E02 (decimal 7682)
+   defining Unicode char U+1E03 (decimal 7683)
+   defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2010 (decimal 8208)
+   defining Unicode char U+2011 (decimal 8209)
+   defining Unicode char U+2012 (decimal 8210)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2015 (decimal 8213)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201A (decimal 8218)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
+   defining Unicode char U+201E (decimal 8222)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+2039 (decimal 8249)
+   defining Unicode char U+203A (decimal 8250)
+   defining Unicode char U+2423 (decimal 9251)
+   defining Unicode char U+1E20 (decimal 7712)
+   defining Unicode char U+1E21 (decimal 7713)
+)
+Now handling font encoding OT1 ...
+... processing UTF-8 mapping file for font encoding OT1
+
+(/usr/share/texmf/tex/latex/base/ot1enc.dfu
+File: ot1enc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
+   defining Unicode char U+00A0 (decimal 160)
+   defining Unicode char U+00A1 (decimal 161)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00AD (decimal 173)
+   defining Unicode char U+00B8 (decimal 184)
+   defining Unicode char U+00BF (decimal 191)
+   defining Unicode char U+00C5 (decimal 197)
+   defining Unicode char U+00C6 (decimal 198)
+   defining Unicode char U+00D8 (decimal 216)
+   defining Unicode char U+00DF (decimal 223)
+   defining Unicode char U+00E6 (decimal 230)
+   defining Unicode char U+00EC (decimal 236)
+   defining Unicode char U+00ED (decimal 237)
+   defining Unicode char U+00EE (decimal 238)
+   defining Unicode char U+00EF (decimal 239)
+   defining Unicode char U+00F8 (decimal 248)
+   defining Unicode char U+0131 (decimal 305)
+   defining Unicode char U+0141 (decimal 321)
+   defining Unicode char U+0142 (decimal 322)
+   defining Unicode char U+0152 (decimal 338)
+   defining Unicode char U+0153 (decimal 339)
+   defining Unicode char U+0174 (decimal 372)
+   defining Unicode char U+0175 (decimal 373)
+   defining Unicode char U+0176 (decimal 374)
+   defining Unicode char U+0177 (decimal 375)
+   defining Unicode char U+0218 (decimal 536)
+   defining Unicode char U+0219 (decimal 537)
+   defining Unicode char U+021A (decimal 538)
+   defining Unicode char U+021B (decimal 539)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
+)
+Now handling font encoding OMS ...
+... processing UTF-8 mapping file for font encoding OMS
+
+(/usr/share/texmf/tex/latex/base/omsenc.dfu
+File: omsenc.dfu 2017/01/28 v1.1t UTF-8 support for inputenc
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00B6 (decimal 182)
+   defining Unicode char U+00B7 (decimal 183)
+   defining Unicode char U+2020 (decimal 8224)
+   defining Unicode char U+2021 (decimal 8225)
+   defining Unicode char U+2022 (decimal 8226)
+)
+Now handling font encoding OMX ...
+... no UTF-8 mapping file for font encoding OMX
+Now handling font encoding U ...
+... no UTF-8 mapping file for font encoding U
+   defining Unicode char U+00A9 (decimal 169)
+   defining Unicode char U+00AA (decimal 170)
+   defining Unicode char U+00AE (decimal 174)
+   defining Unicode char U+00BA (decimal 186)
+   defining Unicode char U+02C6 (decimal 710)
+   defining Unicode char U+02DC (decimal 732)
+   defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2026 (decimal 8230)
+   defining Unicode char U+2122 (decimal 8482)
+   defining Unicode char U+2423 (decimal 9251)
+))
+(/usr/share/texmf/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2017/03/14 v6.85a Hypertext links for LaTeX
+
+(/usr/share/texmf/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+
+(/usr/share/texmf/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package: pdftexcmds 2017/03/19 v0.25 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texmf/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+(/usr/share/texmf/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(/usr/share/texmf/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+)
+(/usr/share/texmf/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+)
+\@linkdim=\dimen103
+\Hy@linkcounter=\count87
+\Hy@pagecounter=\count88
+
+(/usr/share/texmf/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2017/03/14 v6.85a Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+\Hy@SavedSpaceFactor=\count89
+
+(/usr/share/texmf/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4498.
+Package hyperref Info: Link nesting OFF on input line 4503.
+Package hyperref Info: Hyper index ON on input line 4506.
+Package hyperref Info: Plain pages OFF on input line 4513.
+Package hyperref Info: Backreferencing OFF on input line 4518.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4751.
+\c@Hy@tempcnt=\count90
+
+(/usr/share/texmf/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5104.
+\XeTeXLinkMargin=\dimen104
+\Fld@menulength=\count91
+\Field@Width=\dimen105
+\Fld@charsize=\dimen106
+Package hyperref Info: Hyper figures OFF on input line 6358.
+Package hyperref Info: Link nesting OFF on input line 6363.
+Package hyperref Info: Hyper index ON on input line 6366.
+Package hyperref Info: backreferencing OFF on input line 6373.
+Package hyperref Info: Link coloring OFF on input line 6378.
+Package hyperref Info: Link coloring with OCG OFF on input line 6383.
+Package hyperref Info: PDF/A mode OFF on input line 6388.
+LaTeX Info: Redefining \ref on input line 6428.
+LaTeX Info: Redefining \pageref on input line 6432.
+\Hy@abspage=\count92
+\c@Item=\count93
+\c@Hfootnote=\count94
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texmf/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2017/03/14 v6.85a Hyperref driver for pdfTeX
+\Fld@listcount=\count95
+\c@bookmark@seq@number=\count96
+
+(/usr/share/texmf/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip43
+)
+(/usr/share/texmf/tex/latex/base/makeidx.sty
+Package: makeidx 2014/09/29 v1.0m Standard LaTeX package
+)
+(/usr/share/texmf/tex/latex/a4wide/a4wide.sty
+Package: a4wide 1994/08/30
+
+(/usr/share/texmf/tex/latex/ntgclass/a4.sty
+Package: a4 2004/04/15 v1.2g A4 based page layout
+))
+(/usr/share/texmf/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2016/03/21 v2.10.2 Sectioning titles
+\ttl@box=\box26
+\beforetitleunit=\skip44
+\aftertitleunit=\skip45
+\ttl@plus=\dimen107
+\ttl@minus=\dimen108
+\ttl@toksa=\toks17
+\titlewidth=\dimen109
+\titlewidthlast=\dimen110
+\titlewidthfirst=\dimen111
+)
+(/usr/share/texmf/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+(/usr/share/texmf/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks18
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+(/usr/share/texmf/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2016/11/05 v2.16a AMS math features
+\@mathmargin=\skip46
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/share/texmf/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks19
+\ex@=\dimen112
+))
+(/usr/share/texmf/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen113
+)
+(/usr/share/texmf/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count97
+LaTeX Info: Redefining \frac on input line 213.
+\uproot@=\count98
+\leftroot@=\count99
+LaTeX Info: Redefining \overline on input line 375.
+\classnum@=\count100
+\DOTSCASE@=\count101
+LaTeX Info: Redefining \ldots on input line 472.
+LaTeX Info: Redefining \dots on input line 475.
+LaTeX Info: Redefining \cdots on input line 596.
+\Mathstrutbox@=\box27
+\strutbox@=\box28
+\big@size=\dimen114
+LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
+\macc@depth=\count102
+\c@MaxMatrixCols=\count103
+\dotsspace@=\muskip11
+\c@parentequation=\count104
+\dspbrk@lvl=\count105
+\tag@help=\toks20
+\row@=\count106
+\column@=\count107
+\maxfields@=\count108
+\andhelp@=\toks21
+\eqnshift@=\dimen115
+\alignsep@=\dimen116
+\tagshift@=\dimen117
+\tagwidth@=\dimen118
+\totwidth@=\dimen119
+\lineht@=\dimen120
+\@envbody=\toks22
+\multlinegap=\skip47
+\multlinetaggap=\skip48
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2817.
+LaTeX Info: Redefining \] on input line 2818.
+)
+\@indexfile=\write3
+\openout3 = `manual.idx'.
+
+
+Writing index file manual.idx
+(./manual.aux)
+\openout1 = `manual.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+\AtBeginShipoutBox=\box29
+Package hyperref Info: Link coloring OFF on input line 40.
+ (/usr/share/texmf/tex/latex/hyperref/nameref.sty
+Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+
+(/usr/share/texmf/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count109
+)
+LaTeX Info: Redefining \ref on input line 40.
+LaTeX Info: Redefining \pageref on input line 40.
+LaTeX Info: Redefining \nameref on input line 40.
+ (./manual.out)
+(./manual.out)
+\@outlinefile=\write4
+\openout4 = `manual.out'.
+
+LaTeX Font Info:    Try loading font information for U+msa on input line 63.
+ (/usr/share/texmf/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 63.
+
+(/usr/share/texmf/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Overfull \hbox (0.52974pt too wide) in paragraph at lines 62--65
+\OT1/cmr/m/n/12 CC-BY 4.0 ([]$\OT1/cmtt/m/n/12 http : / / creativecommons . org
+ / licenses / by / 4 . 0/$[]\OT1/cmr/m/n/12 ), ex-cept some parts which
+ []
+
+[-1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./manual.toc
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 10.
+ [1]
+[2] [3] [4])
+\tf@toc=\write5
+\openout5 = `manual.toc'.
+
+ [5]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 112.
+
+ (/usr/share/texmf/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 112.
+ [6]
+Overfull \hbox (0.92238pt too wide) in paragraph at lines 167--169
+[]\OT1/cmr/m/n/12 The main di-rec-tory con-tains the files \OT1/cmtt/m/n/12 COP
+YING\OT1/cmr/m/n/12 , \OT1/cmtt/m/n/12 INSTRUCTIONS\OT1/cmr/m/n/12 , \OT1/cmtt/
+m/n/12 GUIDELINES \OT1/cmr/m/n/12 and a \OT1/cmtt/m/n/12 Makefile\OT1/cmr/m/n/1
+2 . 
+ []
+
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <17.28> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 227.
+[7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20]
+Underfull \hbox (badness 10000) in paragraph at lines 1127--1128
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1129--1133
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1134--1141
+
+ []
+
+[21]
+Underfull \hbox (badness 10000) in paragraph at lines 1149--1151
+
+ []
+
+
+Overfull \hbox (23.09581pt too wide) in paragraph at lines 1152--1154
+[]\OT1/cmr/m/n/12 Defined in \OT1/cmtt/m/n/12 inputsnf2.h\OT1/cmr/m/n/12 , im-p
+le-mented in \OT1/cmtt/m/n/12 inputsnf2.cc\OT1/cmr/m/n/12 , ex-am-ples of use i
+n \OT1/cmtt/m/n/12 testinputsnf2.cc\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1170--1171
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1172--1177
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1178--1185
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1192--1194
+
+ []
+
+
+Overfull \hbox (23.09581pt too wide) in paragraph at lines 1195--1197
+[]\OT1/cmr/m/n/12 Defined in \OT1/cmtt/m/n/12 inputsnf2.h\OT1/cmr/m/n/12 , im-p
+le-mented in \OT1/cmtt/m/n/12 inputsnf2.cc\OT1/cmr/m/n/12 , ex-am-ples of use i
+n \OT1/cmtt/m/n/12 testinputsnf2.cc\OT1/cmr/m/n/12 . 
+ []
+
+[22]
+Underfull \hbox (badness 10000) in paragraph at lines 1216--1217
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1218--1223
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1225--1232
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1239--1241
+
+ []
+
+
+Overfull \hbox (23.09581pt too wide) in paragraph at lines 1242--1244
+[]\OT1/cmr/m/n/12 Defined in \OT1/cmtt/m/n/12 inputsnf2.h\OT1/cmr/m/n/12 , im-p
+le-mented in \OT1/cmtt/m/n/12 inputsnf2.cc\OT1/cmr/m/n/12 , ex-am-ples of use i
+n \OT1/cmtt/m/n/12 testinputsnf2.cc\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1267--1268
+
+ []
+
+
+Overfull \hbox (5.08177pt too wide) in paragraph at lines 1269--1279
+\OT1/cmr/m/n/12 Sets the scale $\OML/cmm/m/it/12 ^^V$ \OT1/cmr/m/n/12 to the va
+lue \OT1/cmtt/m/n/12 muin\OT1/cmr/m/n/12 . This does \OT1/cmr/m/it/12 not \OT1/
+cmr/m/n/12 change the LECs, for that use \OT1/cmtt/m/n/12 changescale\OT1/cmr/m
+/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1269--1279
+
+ []
+
+[23]
+Underfull \hbox (badness 10000) in paragraph at lines 1280--1287
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1288--1292
+
+ []
+
+
+Overfull \hbox (8.579pt too wide) in paragraph at lines 1311--1312
+\OT1/cmtt/m/n/12 libar(l1bar=0.,l2bar=0.,l3bar=0.,l4bar=0.,l5bar=0.,l6bar=0.,l7
+r=0.,h1bar=0., 
+ []
+
+
+Overfull \hbox (5.19199pt too wide) in paragraph at lines 1321--1323
+[]\OT1/cmr/m/n/12 Protected data: \OT1/cmtt/m/n/12 double l1bar,l2bar,l3bar,l4b
+ar,l5bar,l6bar,l7r,h1bar,h2bar,h3r
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1329--1330
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1331--1336
+
+ []
+
+[24]
+Underfull \hbox (badness 10000) in paragraph at lines 1337--1339
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1340--1345
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1369--1370
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1371--1377
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1378--1387
+
+ []
+
+[25]
+Underfull \hbox (badness 10000) in paragraph at lines 1395--1397
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1416--1417
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1418--1424
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1425--1433
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1440--1442
+
+ []
+
+[26]
+Underfull \hbox (badness 10000) in paragraph at lines 1465--1466
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1467--1473
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1475--1483
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1490--1492
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1513--1514
+
+ []
+
+
+Overfull \hbox (5.08177pt too wide) in paragraph at lines 1515--1525
+\OT1/cmr/m/n/12 Sets the scale $\OML/cmm/m/it/12 ^^V$ \OT1/cmr/m/n/12 to the va
+lue \OT1/cmtt/m/n/12 muin\OT1/cmr/m/n/12 . This does \OT1/cmr/m/it/12 not \OT1/
+cmr/m/n/12 change the LECs, for that use \OT1/cmtt/m/n/12 changescale\OT1/cmr/m
+/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1515--1525
+
+ []
+
+[27]
+Underfull \hbox (badness 10000) in paragraph at lines 1526--1532
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1533--1537
+
+ []
+
+[28]
+Underfull \hbox (badness 10000) in paragraph at lines 1589--1590
+
+ []
+
+
+Overfull \hbox (5.08177pt too wide) in paragraph at lines 1591--1600
+\OT1/cmr/m/n/12 Sets the scale $\OML/cmm/m/it/12 ^^V$ \OT1/cmr/m/n/12 to the va
+lue \OT1/cmtt/m/n/12 muin\OT1/cmr/m/n/12 . This does \OT1/cmr/m/it/12 not \OT1/
+cmr/m/n/12 change the LECs, for that use \OT1/cmtt/m/n/12 changescale\OT1/cmr/m
+/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1591--1600
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1601--1608
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1609--1615
+
+ []
+
+[29]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1646.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 1646.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 1646.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1674--1679
+
+ []
+
+
+Overfull \hbox (8.579pt too wide) in paragraph at lines 1681--1692
+\OT1/cmtt/m/n/12 void out[](vector<double> &B0mq, double &f0out, double &muout,
+ int &nq) const; 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1681--1692
+
+ []
+
+[30]
+Underfull \hbox (badness 10000) in paragraph at lines 1699--1701
+
+ []
+
+
+Overfull \hbox (4.5708pt too wide) in paragraph at lines 1702--1704
+[]\OT1/cmr/m/n/12 Defined in \OT1/cmtt/m/n/12 inputsnf.h\OT1/cmr/m/n/12 , im-pl
+e-mented in \OT1/cmtt/m/n/12 inputsnf.cc\OT1/cmr/m/n/12 , ex-am-ples of use in 
+\OT1/cmtt/m/n/12 testinputsnf.cc\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1730--1735
+
+ []
+
+
+Overfull \hbox (2.40399pt too wide) in paragraph at lines 1737--1748
+\OT1/cmtt/m/n/12 void out[](vector<double> &massout, double &f0out, double &muo
+ut, int &nmass)
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1737--1748
+
+ []
+
+[31]
+Underfull \hbox (badness 10000) in paragraph at lines 1755--1757
+
+ []
+
+
+Overfull \hbox (4.5708pt too wide) in paragraph at lines 1758--1760
+[]\OT1/cmr/m/n/12 Defined in \OT1/cmtt/m/n/12 inputsnf.h\OT1/cmr/m/n/12 , im-pl
+e-mented in \OT1/cmtt/m/n/12 inputsnf.cc\OT1/cmr/m/n/12 , ex-am-ples of use in 
+\OT1/cmtt/m/n/12 testinputsnf.cc\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (2.40399pt too wide) in paragraph at lines 1764--1765
+\OT1/cmtt/m/n/12 Linf(l0r=0.,l1r=0.,l2r=0.,l3r=0.,l4r=0.,l5r=0.,l6r=0.,l7r=0.,l
+8r=0.,l9r=0., 
+ []
+
+
+Overfull \hbox (28.49583pt too wide) in paragraph at lines 1764--1765
+| \OT1/cmtt/m/n/12 l10r=0.,l11r=0.,h1r=0.,h2r=0.,mu=0.77,Name="nameless Linf",c
+onst int nfin=3) 
+ []
+
+
+Overfull \hbox (26.60182pt too wide) in paragraph at lines 1773--1775
+[]\OT1/cmr/m/n/12 Private data: \OT1/cmtt/m/n/12 double L0r,L1r,L2r,L3r,L4r,L5r
+,L6r,L7r,L8r,L9r,L10r,L11r,H1r,H2r,mu\OT1/cmr/m/n/12 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1784--1785
+
+ []
+
+
+Overfull \hbox (5.08177pt too wide) in paragraph at lines 1786--1797
+\OT1/cmr/m/n/12 Sets the scale $\OML/cmm/m/it/12 ^^V$ \OT1/cmr/m/n/12 to the va
+lue \OT1/cmtt/m/n/12 muin\OT1/cmr/m/n/12 . This does \OT1/cmr/m/it/12 not \OT1/
+cmr/m/n/12 change the LECs, for that use \OT1/cmtt/m/n/12 changescale\OT1/cmr/m
+/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1786--1797
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1798--1808
+
+ []
+
+[32]
+Underfull \hbox (badness 10000) in paragraph at lines 1809--1813
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1825--1832
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1858--1859
+
+ []
+
+
+Overfull \hbox (5.08177pt too wide) in paragraph at lines 1860--1869
+\OT1/cmr/m/n/12 Sets the scale $\OML/cmm/m/it/12 ^^V$ \OT1/cmr/m/n/12 to the va
+lue \OT1/cmtt/m/n/12 muin\OT1/cmr/m/n/12 . This does \OT1/cmr/m/it/12 not \OT1/
+cmr/m/n/12 change the LECs, for that use \OT1/cmtt/m/n/12 changescale\OT1/cmr/m
+/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1860--1869
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1870--1878
+
+ []
+
+[33]
+Underfull \hbox (badness 10000) in paragraph at lines 1879--1885
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1897--1904
+
+ []
+
+LaTeX Font Info:    Try loading font information for OMS+cmtt on input line 191
+9.
+LaTeX Font Info:    No file OMScmtt.fd. on input line 1919.
+
+LaTeX Font Warning: Font shape `OMS/cmtt/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textbraceleft' on input line 1919.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1923--1924
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1925--1929
+
+ []
+
+[34]
+Underfull \hbox (badness 10000) in paragraph at lines 1930--1935
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1936--1945
+
+ []
+
+
+Overfull \hbox (41.62082pt too wide) in paragraph at lines 1946--1948
+[]\OT1/cmr/m/n/12 Defined in \OT1/cmtt/m/n/12 fourvector.h\OT1/cmr/m/n/12 , im-
+ple-mented in \OT1/cmtt/m/n/12 fourvector.cc\OT1/cmr/m/n/12 , ex-am-ples of use
+ in \OT1/cmtt/m/n/12 testfourvector.cc\OT1/cmr/m/n/12 . 
+ []
+
+[35]
+Overfull \hbox (1.62817pt too wide) in paragraph at lines 2021--2021
+[] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2023--2038
+
+ []
+
+[36]
+Underfull \hbox (badness 10000) in paragraph at lines 2125--2126
+
+ []
+
+
+Overfull \hbox (0.73067pt too wide) in paragraph at lines 2130--2142
+\OT1/cmtt/m/n/12 dcomplex B22b[](msq, psq, mu2)\OT1/cmr/m/n/12 : re-turns $[][]
+(\OML/cmm/m/it/12 m[]; m[]; p[]; ^^V[]\OT1/cmr/m/n/12 )$ us-ing the sim-pler eq
+ual mass
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2130--2142
+
+ []
+
+[37]
+Underfull \hbox (badness 10000) in paragraph at lines 2158--2170
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2171--2172
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2174--2178
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2197--2200
+
+ []
+
+[38]
+Underfull \hbox (badness 10000) in paragraph at lines 2238--2240
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2241--2243
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2244--2256
+
+ []
+
+
+Overfull \hbox (10.58577pt too wide) in paragraph at lines 2259--2261
+[]\OT1/cmr/m/n/12 Defined in \OT1/cmtt/m/n/12 quenchedoneloopintegrals.h[]\OT1/
+cmr/m/n/12 , im-ple-mented in \OT1/cmtt/m/n/12 quenchedoneloopintegrals.cc[]\OT
+1/cmr/m/n/12 ,
+ []
+
+[39]
+Underfull \hbox (badness 10000) in paragraph at lines 2360--2365
+
+ []
+
+[40]
+Underfull \hbox (badness 10000) in paragraph at lines 2366--2368
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2369--2384
+
+ []
+
+
+Overfull \hbox (2.49783pt too wide) in paragraph at lines 2385--2400
+\OT1/cmtt/m/n/12 dcomplex zhh21d[](m1sq, m2sq, m3sq, psq, mu2) \OT1/cmr/m/n/12 
+re-turns $(\OML/cmm/m/it/12 @=@p[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 H[]\OT1/cmr
+/m/n/12 (\OML/cmm/m/it/12 m[]; m[]; m[]; p[]; ^^V[]\OT1/cmr/m/n/12 )$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2385--2400
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2401--2405
+
+ []
+
+[41]
+Underfull \hbox (badness 10000) in paragraph at lines 2480--2487
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2488--2492
+
+ []
+
+
+Overfull \hbox (1.41223pt too wide) in paragraph at lines 2493--2506
+\OT1/cmtt/m/n/12 double hh1d[](n,m1sq, m2sq, m3sq, psq, mu2) \OT1/cmr/m/n/12 re
+-turns $(\OML/cmm/m/it/12 @=@p[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 H[]\OT1/cmr/m
+/n/12 (\OML/cmm/m/it/12 n; m[]; m[]; m[]; p[]; ^^V[]\OT1/cmr/m/n/12 )$ 
+ []
+
+
+Overfull \hbox (8.60046pt too wide) in paragraph at lines 2493--2506
+\OT1/cmtt/m/n/12 double hh21d[](n,m1sq, m2sq, m3sq, psq, mu2) \OT1/cmr/m/n/12 r
+e-turns $(\OML/cmm/m/it/12 @=@p[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 H[]\OT1/cmr/
+m/n/12 (\OML/cmm/m/it/12 n; m[]; m[]; m[]; p[]; ^^V[]\OT1/cmr/m/n/12 )$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2493--2506
+
+ []
+
+[42]
+Overfull \hbox (9.40303pt too wide) in paragraph at lines 2507--2511
+\OT1/cmtt/m/n/12 double getprecisionquenchedsunsetintegrals[](void) \OT1/cmr/m/
+n/12 re-turns the present pre-ci-sion. The
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2507--2511
+
+ []
+
+
+Overfull \hbox (9.65054pt too wide) in paragraph at lines 2641--2641
+[] 
+ []
+
+[43]
+Underfull \hbox (badness 10000) in paragraph at lines 2645--2652
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2654--2656
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2657--2678
+
+ []
+
+[44]
+Underfull \hbox (badness 10000) in paragraph at lines 2679--2700
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2702--2708
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2709--2716
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2717--2726
+
+ []
+
+[45]
+Underfull \hbox (badness 10000) in paragraph at lines 2785--2788
+
+ []
+
+[46]
+Underfull \hbox (badness 10000) in paragraph at lines 2813--2819
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2820--2824
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2825--2830
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2831--2836
+
+ []
+
+
+Overfull \hbox (10.58577pt too wide) in paragraph at lines 2837--2840
+[]\OT1/cmr/m/n/12 Defined in \OT1/cmtt/m/n/12 finitevolumeonelooptwist.h[]\OT1/
+cmr/m/n/12 , im-ple-mented in \OT1/cmtt/m/n/12 finitevolumeonelooptwist.cc[]\OT
+1/cmr/m/n/12 ,
+ []
+
+[47]
+Underfull \hbox (badness 10000) in paragraph at lines 2888--2890
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2891--2898
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2899--2908
+
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2913.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2913.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2919--2924
+
+ []
+
+[48]
+Underfull \hbox (badness 10000) in paragraph at lines 2925--2930
+
+ []
+
+[49]
+Underfull \hbox (badness 10000) in paragraph at lines 3008--3010
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3041--3051
+
+ []
+
+
+Overfull \hbox (10.58577pt too wide) in paragraph at lines 3053--3056
+[]\OT1/cmr/m/n/12 Defined in \OT1/cmtt/m/n/12 finitevolumeonelooptwist.h[]\OT1/
+cmr/m/n/12 , im-ple-mented in \OT1/cmtt/m/n/12 finitevolumeonelooptwist.cc[]\OT
+1/cmr/m/n/12 ,
+ []
+
+[50] [51]
+Underfull \hbox (badness 10000) in paragraph at lines 3160--3162
+
+ []
+
+
+Overfull \hbox (5.3678pt too wide) in paragraph at lines 3163--3184
+\OT1/cmtt/m/n/12 double hh1dVt[](m1sq,m2sq,m3sq,psq,L,mu2)\OT1/cmr/m/n/12 : re-
+turns $(\OML/cmm/m/it/12 @=@p[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 H[]\OT1/cmr/m/
+n/12 (\OML/cmm/m/it/12 m[]; m[]; m[]; p[]; L; ^^V[]\OT1/cmr/m/n/12 )$. 
+ []
+
+
+Overfull \hbox (11.5428pt too wide) in paragraph at lines 3163--3184
+\OT1/cmtt/m/n/12 double hh21dVt[](m1sq,m2sq,m3sq,psq,L,mu2)\OT1/cmr/m/n/12 : re
+-turns $(\OML/cmm/m/it/12 @=@p[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 H[]\OT1/cmr/m
+/n/12 (\OML/cmm/m/it/12 m[]; m[]; m[]; p[]; L; ^^V[]\OT1/cmr/m/n/12 )$. 
+ []
+
+
+Overfull \hbox (11.5428pt too wide) in paragraph at lines 3163--3184
+\OT1/cmtt/m/n/12 double hh22dVt[](m1sq,m2sq,m3sq,psq,L,mu2)\OT1/cmr/m/n/12 : re
+-turns $(\OML/cmm/m/it/12 @=@p[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 H[]\OT1/cmr/m
+/n/12 (\OML/cmm/m/it/12 m[]; m[]; m[]; p[]; L; ^^V[]\OT1/cmr/m/n/12 )$. 
+ []
+
+
+Overfull \hbox (11.5428pt too wide) in paragraph at lines 3163--3184
+\OT1/cmtt/m/n/12 double hh27dVt[](m1sq,m2sq,m3sq,psq,L,mu2)\OT1/cmr/m/n/12 : re
+-turns $(\OML/cmm/m/it/12 @=@p[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 H[]\OT1/cmr/m
+/n/12 (\OML/cmm/m/it/12 m[]; m[]; m[]; p[]; L; ^^V[]\OT1/cmr/m/n/12 )$. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3163--3184
+
+ []
+
+
+Overfull \hbox (5.3678pt too wide) in paragraph at lines 3185--3206
+\OT1/cmtt/m/n/12 double hh1dVb[](m1sq,m2sq,m3sq,psq,L,mu2)\OT1/cmr/m/n/12 : re-
+turns $(\OML/cmm/m/it/12 @=@p[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 H[]\OT1/cmr/m/
+n/12 (\OML/cmm/m/it/12 m[]; m[]; m[]; p[]; L; ^^V[]\OT1/cmr/m/n/12 )$. 
+ []
+
+
+Overfull \hbox (11.5428pt too wide) in paragraph at lines 3185--3206
+\OT1/cmtt/m/n/12 double hh21dVb[](m1sq,m2sq,m3sq,psq,L,mu2)\OT1/cmr/m/n/12 : re
+-turns $(\OML/cmm/m/it/12 @=@p[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 H[]\OT1/cmr/m
+/n/12 (\OML/cmm/m/it/12 m[]; m[]; m[]; p[]; L; ^^V[]\OT1/cmr/m/n/12 )$. 
+ []
+
+
+Overfull \hbox (11.5428pt too wide) in paragraph at lines 3185--3206
+\OT1/cmtt/m/n/12 double hh22dVb[](m1sq,m2sq,m3sq,psq,L,mu2)\OT1/cmr/m/n/12 : re
+-turns $(\OML/cmm/m/it/12 @=@p[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 H[]\OT1/cmr/m
+/n/12 (\OML/cmm/m/it/12 m[]; m[]; m[]; p[]; L; ^^V[]\OT1/cmr/m/n/12 )$. 
+ []
+
+
+Overfull \hbox (11.5428pt too wide) in paragraph at lines 3185--3206
+\OT1/cmtt/m/n/12 double hh27dVb[](m1sq,m2sq,m3sq,psq,L,mu2)\OT1/cmr/m/n/12 : re
+-turns $(\OML/cmm/m/it/12 @=@p[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 H[]\OT1/cmr/m
+/n/12 (\OML/cmm/m/it/12 m[]; m[]; m[]; p[]; L; ^^V[]\OT1/cmr/m/n/12 )$. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3185--3206
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3207--3211
+
+ []
+
+[52]
+Underfull \hbox (badness 10000) in paragraph at lines 3212--3215
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3216--3225
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3226--3239
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3240--3243
+
+ []
+
+
+Overfull \hbox (44.37193pt too wide) in paragraph at lines 3244--3247
+[]\OT1/cmr/m/n/12 Defined in \OT1/cmtt/m/n/12 finitevolumesunsetintegrals.h[]\O
+T1/cmr/m/n/12 , im-ple-mented in \OT1/cmtt/m/n/12 finitevolumesunsetintegrals.c
+c[]
+ []
+
+[53]
+Underfull \hbox (badness 10000) in paragraph at lines 3302--3305
+
+ []
+
+
+Overfull \hbox (23.82043pt too wide) in paragraph at lines 3306--3327
+\OT1/cmtt/m/n/12 double hhdVt[](n,m1sq,m2sq,m3sq,psq,L,mu2)\OT1/cmr/m/n/12 : re
+-turns $(\OML/cmm/m/it/12 @=@p[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 H[]\OT1/cmr/m
+/n/12 (\OML/cmm/m/it/12 n; m[]; m[]; m[]; p[]; L; ^^V[]\OT1/cmr/m/n/12 )$. 
+ []
+
+
+Overfull \hbox (29.99544pt too wide) in paragraph at lines 3306--3327
+\OT1/cmtt/m/n/12 double hh1dVt[](n,m1sq,m2sq,m3sq,psq,L,mu2)\OT1/cmr/m/n/12 : r
+e-turns $(\OML/cmm/m/it/12 @=@p[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 H[]\OT1/cmr/
+m/n/12 (\OML/cmm/m/it/12 n; m[]; m[]; m[]; p[]; L; ^^V[]\OT1/cmr/m/n/12 )$. 
+ []
+
+
+Overfull \hbox (36.17044pt too wide) in paragraph at lines 3306--3327
+\OT1/cmtt/m/n/12 double hh21dVt[](n,m1sq,m2sq,m3sq,psq,L,mu2)\OT1/cmr/m/n/12 : 
+re-turns $(\OML/cmm/m/it/12 @=@p[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 H[]\OT1/cmr
+/m/n/12 (\OML/cmm/m/it/12 n; m[]; m[]; m[]; p[]; L; ^^V[]\OT1/cmr/m/n/12 )$. 
+ []
+
+
+Overfull \hbox (36.17044pt too wide) in paragraph at lines 3306--3327
+\OT1/cmtt/m/n/12 double hh22dVt[](n,m1sq,m2sq,m3sq,psq,L,mu2)\OT1/cmr/m/n/12 : 
+re-turns $(\OML/cmm/m/it/12 @=@p[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 H[]\OT1/cmr
+/m/n/12 (\OML/cmm/m/it/12 n; m[]; m[]; m[]; p[]; L; ^^V[]\OT1/cmr/m/n/12 )$. 
+ []
+
+
+Overfull \hbox (36.17044pt too wide) in paragraph at lines 3306--3327
+\OT1/cmtt/m/n/12 double hh27dVt[](n,m1sq,m2sq,m3sq,psq,L,mu2)\OT1/cmr/m/n/12 : 
+re-turns $(\OML/cmm/m/it/12 @=@p[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 H[]\OT1/cmr
+/m/n/12 (\OML/cmm/m/it/12 n; m[]; m[]; m[]; p[]; L; ^^V[]\OT1/cmr/m/n/12 )$. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3306--3327
+
+ []
+
+
+Overfull \hbox (23.82043pt too wide) in paragraph at lines 3328--3349
+\OT1/cmtt/m/n/12 double hhdVb[](n,m1sq,m2sq,m3sq,psq,L,mu2)\OT1/cmr/m/n/12 : re
+-turns $(\OML/cmm/m/it/12 @=@p[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 H[]\OT1/cmr/m
+/n/12 (\OML/cmm/m/it/12 n; m[]; m[]; m[]; p[]; L; ^^V[]\OT1/cmr/m/n/12 )$. 
+ []
+
+
+Overfull \hbox (29.99544pt too wide) in paragraph at lines 3328--3349
+\OT1/cmtt/m/n/12 double hh1dVb[](n,m1sq,m2sq,m3sq,psq,L,mu2)\OT1/cmr/m/n/12 : r
+e-turns $(\OML/cmm/m/it/12 @=@p[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 H[]\OT1/cmr/
+m/n/12 (\OML/cmm/m/it/12 n; m[]; m[]; m[]; p[]; L; ^^V[]\OT1/cmr/m/n/12 )$. 
+ []
+
+
+Overfull \hbox (36.17044pt too wide) in paragraph at lines 3328--3349
+\OT1/cmtt/m/n/12 double hh21dVb[](n,m1sq,m2sq,m3sq,psq,L,mu2)\OT1/cmr/m/n/12 : 
+re-turns $(\OML/cmm/m/it/12 @=@p[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 H[]\OT1/cmr
+/m/n/12 (\OML/cmm/m/it/12 n; m[]; m[]; m[]; p[]; L; ^^V[]\OT1/cmr/m/n/12 )$. 
+ []
+
+
+Overfull \hbox (36.17044pt too wide) in paragraph at lines 3328--3349
+\OT1/cmtt/m/n/12 double hh22dVb[](n,m1sq,m2sq,m3sq,psq,L,mu2)\OT1/cmr/m/n/12 : 
+re-turns $(\OML/cmm/m/it/12 @=@p[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 H[]\OT1/cmr
+/m/n/12 (\OML/cmm/m/it/12 n; m[]; m[]; m[]; p[]; L; ^^V[]\OT1/cmr/m/n/12 )$. 
+ []
+
+
+Overfull \hbox (36.17044pt too wide) in paragraph at lines 3328--3349
+\OT1/cmtt/m/n/12 double hh27dVb[](n,m1sq,m2sq,m3sq,psq,L,mu2)\OT1/cmr/m/n/12 : 
+re-turns $(\OML/cmm/m/it/12 @=@p[]\OT1/cmr/m/n/12 )\OML/cmm/m/it/12 H[]\OT1/cmr
+/m/n/12 (\OML/cmm/m/it/12 n; m[]; m[]; m[]; p[]; L; ^^V[]\OT1/cmr/m/n/12 )$. 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3328--3349
+
+ []
+
+[54]
+Underfull \hbox (badness 10000) in paragraph at lines 3350--3354
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3355--3358
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3359--3368
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3369--3382
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3383--3386
+
+ []
+
+
+Overfull \hbox (44.37193pt too wide) in paragraph at lines 3387--3390
+[]\OT1/cmr/m/n/12 Defined in \OT1/cmtt/m/n/12 finitevolumesunsetintegrals.h[]\O
+T1/cmr/m/n/12 , im-ple-mented in \OT1/cmtt/m/n/12 finitevolumesunsetintegrals.c
+c[]
+ []
+
+
+Overfull \hbox (5.9065pt too wide) in paragraph at lines 3394--3394
+|[]\OT1/cmr/bx/n/14.4 Mass, de-cay con-stant and vacuum-expectation-value: in p
+hys-
+ []
+
+[55]
+Underfull \hbox (badness 10000) in paragraph at lines 3427--3430
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3431--3439
+
+ []
+
+
+Overfull \hbox (8.90012pt too wide) in paragraph at lines 3440--3443
+[]\OT1/cmr/m/n/12 The func-tions are de-fined in \OT1/cmtt/m/n/12 massesdecayve
+vnf2.h[]\OT1/cmr/m/n/12 , im-ple-mented in \OT1/cmtt/m/n/12 massesdecayvevnf2.c
+c[]
+ []
+
+[56]
+Underfull \hbox (badness 10000) in paragraph at lines 3467--3470
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3471--3479
+
+ []
+
+
+Overfull \hbox (8.90012pt too wide) in paragraph at lines 3480--3483
+[]\OT1/cmr/m/n/12 The func-tions are de-fined in \OT1/cmtt/m/n/12 massesdecayve
+vnf2.h[]\OT1/cmr/m/n/12 , im-ple-mented in \OT1/cmtt/m/n/12 massesdecayvevnf2.c
+c[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3508--3511
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3512--3520
+
+ []
+
+
+Overfull \hbox (8.90012pt too wide) in paragraph at lines 3521--3524
+[]\OT1/cmr/m/n/12 The func-tions are de-fined in \OT1/cmtt/m/n/12 massesdecayve
+vnf2.h[]\OT1/cmr/m/n/12 , im-ple-mented in \OT1/cmtt/m/n/12 massesdecayvevnf2.c
+c[]
+ []
+
+[57]
+Underfull \hbox (badness 10000) in paragraph at lines 3568--3570
+
+ []
+
+
+Overfull \hbox (2.40399pt too wide) in paragraph at lines 3571--3580
+\OT1/cmtt/m/n/12 double mpi6lnf2Vt[](const physmassnf2 massin, const li liiin, 
+const double L) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3571--3580
+
+ []
+
+
+Overfull \hbox (2.40399pt too wide) in paragraph at lines 3581--3590
+\OT1/cmtt/m/n/12 double mpi6lnf2Vb[](const physmassnf2 massin, const li liiin, 
+const double L) 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3581--3590
+
+ []
+
+[58]
+Underfull \hbox (badness 10000) in paragraph at lines 3606--3610
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3611--3620
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3621--3630
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3647--3650
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3651--3654
+
+ []
+
+[59]
+Underfull \hbox (badness 10000) in paragraph at lines 3655--3658
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3700--3704
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3705--3720
+
+ []
+
+[60]
+Underfull \hbox (badness 10000) in paragraph at lines 3721--3736
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3737--3752
+
+ []
+
+[61]
+Underfull \hbox (badness 10000) in paragraph at lines 3790--3792
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3793--3808
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3809--3824
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3825--3840
+
+ []
+
+[62]
+Underfull \hbox (badness 10000) in paragraph at lines 3857--3865
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3932--3934
+
+ []
+
+[63]
+Underfull \hbox (badness 10000) in paragraph at lines 3935--3950
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 3951--3966
+
+ []
+
+[64]
+Underfull \hbox (badness 10000) in paragraph at lines 4010--4014
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4015--4030
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4031--4046
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4047--4062
+
+ []
+
+[65]
+Underfull \hbox (badness 10000) in paragraph at lines 4100--4102
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4103--4118
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4119--4134
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4135--4150
+
+ []
+
+[66]
+Underfull \hbox (badness 10000) in paragraph at lines 4205--4207
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4208--4223
+
+ []
+
+[67]
+Underfull \hbox (badness 10000) in paragraph at lines 4224--4239
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4283--4285
+
+ []
+
+
+Overfull \hbox (18.48712pt too wide) in paragraph at lines 4286--4295
+\OT1/cmtt/m/n/12 double mpi6Vt[](const physmass massin,const Li Liin,const doub
+le L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 m[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (24.66212pt too wide) in paragraph at lines 4286--4295
+\OT1/cmtt/m/n/12 double mpi6VLt[](const physmass massin,const Li Liin,const dou
+ble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 m[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4286--4295
+
+ []
+
+[68]
+Overfull \hbox (18.48712pt too wide) in paragraph at lines 4296--4305
+\OT1/cmtt/m/n/12 double mpi6Vb[](const physmass massin,const Li Liin,const doub
+le L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 m[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (24.66212pt too wide) in paragraph at lines 4296--4305
+\OT1/cmtt/m/n/12 double mpi6VLb[](const physmass massin,const Li Liin,const dou
+ble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 m[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4296--4305
+
+ []
+
+
+Overfull \hbox (12.31212pt too wide) in paragraph at lines 4306--4315
+\OT1/cmtt/m/n/12 double mk6Vt[](const physmass massin,const Li Liin,const doubl
+e L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 m[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (18.48712pt too wide) in paragraph at lines 4306--4315
+\OT1/cmtt/m/n/12 double mk6VLt[](const physmass massin,const Li Liin,const doub
+le L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 m[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4306--4315
+
+ []
+
+
+Overfull \hbox (12.31212pt too wide) in paragraph at lines 4316--4325
+\OT1/cmtt/m/n/12 double mk6Vb[](const physmass massin,const Li Liin,const doubl
+e L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 m[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (18.48712pt too wide) in paragraph at lines 4316--4325
+\OT1/cmtt/m/n/12 double mk6VLb[](const physmass massin,const Li Liin,const doub
+le L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 m[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4316--4325
+
+ []
+
+
+Overfull \hbox (24.66212pt too wide) in paragraph at lines 4326--4335
+\OT1/cmtt/m/n/12 double meta6Vt[](const physmass massin,const Li Liin,const dou
+ble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 m[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (30.83713pt too wide) in paragraph at lines 4326--4335
+\OT1/cmtt/m/n/12 double meta6VLt[](const physmass massin,const Li Liin,const do
+uble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 m[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4326--4335
+
+ []
+
+
+Overfull \hbox (24.66212pt too wide) in paragraph at lines 4336--4345
+\OT1/cmtt/m/n/12 double meta6Vb[](const physmass massin,const Li Liin,const dou
+ble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 m[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (30.83713pt too wide) in paragraph at lines 4336--4345
+\OT1/cmtt/m/n/12 double meta6VLb[](const physmass massin,const Li Liin,const do
+uble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 m[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4336--4345
+
+ []
+
+[69]
+Underfull \hbox (badness 10000) in paragraph at lines 4361--4367
+
+ []
+
+
+Overfull \hbox (13.19753pt too wide) in paragraph at lines 4368--4377
+\OT1/cmtt/m/n/12 double fpi6Vt[](const physmass massin,const Li Liin,const doub
+le L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (19.37253pt too wide) in paragraph at lines 4368--4377
+\OT1/cmtt/m/n/12 double fpi6VLt[](const physmass massin,const Li Liin,const dou
+ble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4368--4377
+
+ []
+
+
+Overfull \hbox (13.19753pt too wide) in paragraph at lines 4378--4387
+\OT1/cmtt/m/n/12 double fpi6Vb[](const physmass massin,const Li Liin,const doub
+le L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (19.37253pt too wide) in paragraph at lines 4378--4387
+\OT1/cmtt/m/n/12 double fpi6VLb[](const physmass massin,const Li Liin,const dou
+ble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4378--4387
+
+ []
+
+
+Overfull \hbox (7.02252pt too wide) in paragraph at lines 4388--4397
+\OT1/cmtt/m/n/12 double fk6Vt[](const physmass massin,const Li Liin,const doubl
+e L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (13.19753pt too wide) in paragraph at lines 4388--4397
+\OT1/cmtt/m/n/12 double fk6VLt[](const physmass massin,const Li Liin,const doub
+le L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4388--4397
+
+ []
+
+
+Overfull \hbox (7.02252pt too wide) in paragraph at lines 4398--4407
+\OT1/cmtt/m/n/12 double fk6Vb[](const physmass massin,const Li Liin,const doubl
+e L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (13.19753pt too wide) in paragraph at lines 4398--4407
+\OT1/cmtt/m/n/12 double fk6VLb[](const physmass massin,const Li Liin,const doub
+le L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4398--4407
+
+ []
+
+
+Overfull \hbox (19.37253pt too wide) in paragraph at lines 4408--4417
+\OT1/cmtt/m/n/12 double feta6Vt[](const physmass massin,const Li Liin,const dou
+ble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (25.54753pt too wide) in paragraph at lines 4408--4417
+\OT1/cmtt/m/n/12 double feta6VLt[](const physmass massin,const Li Liin,const do
+uble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4408--4417
+
+ []
+
+
+Overfull \hbox (19.37253pt too wide) in paragraph at lines 4418--4427
+\OT1/cmtt/m/n/12 double feta6Vb[](const physmass massin,const Li Liin,const dou
+ble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (25.54753pt too wide) in paragraph at lines 4418--4427
+\OT1/cmtt/m/n/12 double feta6VLb[](const physmass massin,const Li Liin,const do
+uble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4418--4427
+
+ []
+
+[70]
+Underfull \hbox (badness 10000) in paragraph at lines 4472--4474
+
+ []
+
+
+Overfull \hbox (22.73718pt too wide) in paragraph at lines 4475--4484
+\OT1/cmtt/m/n/12 double mpi6loVt[](const lomass massin,const Li Liin,const doub
+le L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 m[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (28.91219pt too wide) in paragraph at lines 4475--4484
+\OT1/cmtt/m/n/12 double mpi6LloVt[](const lomass massin,const Li Liin,const dou
+ble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 m[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4475--4484
+
+ []
+
+[71]
+Overfull \hbox (22.73718pt too wide) in paragraph at lines 4485--4494
+\OT1/cmtt/m/n/12 double mpi6loVb[](const lomass massin,const Li Liin,const doub
+le L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 m[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (28.91219pt too wide) in paragraph at lines 4485--4494
+\OT1/cmtt/m/n/12 double mpi6LloVb[](const lomass massin,const Li Liin,const dou
+ble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 m[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4485--4494
+
+ []
+
+
+Overfull \hbox (16.56218pt too wide) in paragraph at lines 4495--4504
+\OT1/cmtt/m/n/12 double mk6loVt[](const lomass massin,const Li Liin,const doubl
+e L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 m[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (22.73718pt too wide) in paragraph at lines 4495--4504
+\OT1/cmtt/m/n/12 double mk6LloVt[](const lomass massin,const Li Liin,const doub
+le L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 m[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4495--4504
+
+ []
+
+
+Overfull \hbox (16.56218pt too wide) in paragraph at lines 4505--4514
+\OT1/cmtt/m/n/12 double mk6loVb[](const lomass massin,const Li Liin,const doubl
+e L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 m[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (22.73718pt too wide) in paragraph at lines 4505--4514
+\OT1/cmtt/m/n/12 double mk6LloVb[](const lomass massin,const Li Liin,const doub
+le L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 m[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4505--4514
+
+ []
+
+
+Overfull \hbox (28.91219pt too wide) in paragraph at lines 4515--4524
+\OT1/cmtt/m/n/12 double meta6loVt[](const lomass massin,const Li Liin,const dou
+ble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 m[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (35.08719pt too wide) in paragraph at lines 4515--4524
+\OT1/cmtt/m/n/12 double meta6LloVt[](const lomass massin,const Li Liin,const do
+uble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 m[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4515--4524
+
+ []
+
+
+Overfull \hbox (28.91219pt too wide) in paragraph at lines 4525--4534
+\OT1/cmtt/m/n/12 double meta6loVb[](const lomass massin,const Li Liin,const dou
+ble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 m[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (35.08719pt too wide) in paragraph at lines 4525--4534
+\OT1/cmtt/m/n/12 double meta6LloVb[](const lomass massin,const Li Liin,const do
+uble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 m[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4525--4534
+
+ []
+
+[72]
+Underfull \hbox (badness 10000) in paragraph at lines 4550--4560
+
+ []
+
+
+Overfull \hbox (17.44759pt too wide) in paragraph at lines 4561--4570
+\OT1/cmtt/m/n/12 double fpi6loVt[](const lomass massin,const Li Liin,const doub
+le L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (23.62259pt too wide) in paragraph at lines 4561--4570
+\OT1/cmtt/m/n/12 double fpi6LloVt[](const lomass massin,const Li Liin,const dou
+ble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4561--4570
+
+ []
+
+
+Overfull \hbox (17.44759pt too wide) in paragraph at lines 4571--4580
+\OT1/cmtt/m/n/12 double fpi6loVb[](const lomass massin,const Li Liin,const doub
+le L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (23.62259pt too wide) in paragraph at lines 4571--4580
+\OT1/cmtt/m/n/12 double fpi6LloVb[](const lomass massin,const Li Liin,const dou
+ble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4571--4580
+
+ []
+
+
+Overfull \hbox (11.27258pt too wide) in paragraph at lines 4581--4590
+\OT1/cmtt/m/n/12 double fk6loVt[](const lomass massin,const Li Liin,const doubl
+e L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (17.44759pt too wide) in paragraph at lines 4581--4590
+\OT1/cmtt/m/n/12 double fk6LloVt[](const lomass massin,const Li Liin,const doub
+le L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4581--4590
+
+ []
+
+
+Overfull \hbox (11.27258pt too wide) in paragraph at lines 4591--4600
+\OT1/cmtt/m/n/12 double fk6loVb[](const lomass massin,const Li Liin,const doubl
+e L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (17.44759pt too wide) in paragraph at lines 4591--4600
+\OT1/cmtt/m/n/12 double fk6LloVb[](const lomass massin,const Li Liin,const doub
+le L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4591--4600
+
+ []
+
+
+Overfull \hbox (23.62259pt too wide) in paragraph at lines 4601--4610
+\OT1/cmtt/m/n/12 double feta6loVt[](const lomass massin,const Li Liin,const dou
+ble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (29.79759pt too wide) in paragraph at lines 4601--4610
+\OT1/cmtt/m/n/12 double feta6LloVt[](const lomass massin,const Li Liin,const do
+uble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4601--4610
+
+ []
+
+
+Overfull \hbox (23.62259pt too wide) in paragraph at lines 4611--4620
+\OT1/cmtt/m/n/12 double feta6loVb[](const lomass massin,const Li Liin,const dou
+ble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Overfull \hbox (29.79759pt too wide) in paragraph at lines 4611--4620
+\OT1/cmtt/m/n/12 double feta6LloVb[](const lomass massin,const Li Liin,const do
+uble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$\OT1/cmr/m/n/12 . 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4611--4620
+
+ []
+
+[73]
+Underfull \hbox (badness 10000) in paragraph at lines 4673--4675
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4682--4691
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4692--4701
+
+ []
+
+[74]
+Overfull \hbox (8.90012pt too wide) in paragraph at lines 4703--4706
+[]\OT1/cmr/m/n/12 The func-tions are de-fined in \OT1/cmtt/m/n/12 massesdecayve
+vloV.h[]\OT1/cmr/m/n/12 , im-ple-mented in \OT1/cmtt/m/n/12 massesdecayvevloV.c
+c[]
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4717--4723
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4748--4753
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4754--4764
+
+ []
+
+[75]
+Underfull \hbox (badness 10000) in paragraph at lines 4765--4776
+
+ []
+
+[76]
+Underfull \hbox (badness 10000) in paragraph at lines 4827--4834
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4835--4842
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4843--4850
+
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 4855.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\to' on input line 4855.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\pi' on input line 4855.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 4855.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 4855.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 4855.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\ell' on input line 4855.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 4855.
+
+[77]
+Underfull \hbox (badness 10000) in paragraph at lines 4896--4902
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4903--4909
+
+ []
+
+[78]
+Underfull \hbox (badness 10000) in paragraph at lines 4973--4975
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4976--4985
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4987--4996
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4997--5006
+
+ []
+
+[79]
+Underfull \hbox (badness 10000) in paragraph at lines 5007--5016
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5017--5026
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5027--5036
+
+ []
+
+[80]
+Underfull \hbox (badness 10000) in paragraph at lines 5059--5068
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5070--5079
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5080--5089
+
+ []
+
+[81]
+Underfull \hbox (badness 10000) in paragraph at lines 5090--5099
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5100--5109
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5110--5119
+
+ []
+
+[82]
+Underfull \hbox (badness 10000) in paragraph at lines 5164--5167
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5168--5174
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5176--5182
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5183--5189
+
+ []
+
+[83]
+Underfull \hbox (badness 10000) in paragraph at lines 5190--5196
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5197--5203
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5204--5210
+
+ []
+
+[84]
+Underfull \hbox (badness 10000) in paragraph at lines 5255--5258
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5259--5265
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5267--5273
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5274--5280
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5281--5287
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5288--5294
+
+ []
+
+[85]
+Underfull \hbox (badness 10000) in paragraph at lines 5295--5301
+
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 5307.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\to' on input line 5307.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\pi' on input line 5307.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 5307.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 5307.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 5307.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\ell' on input line 5307.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 5307.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5339--5341
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5342--5343
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5344--5347
+
+ []
+
+[86]
+Underfull \hbox (badness 10000) in paragraph at lines 5348--5351
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5352--5355
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5356--5359
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5360--5363
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5364--5367
+
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 5374.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 5374.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 5374.
+
+[87]
+Underfull \hbox (badness 10000) in paragraph at lines 5428--5443
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5444--5451
+
+ []
+
+[88]
+Underfull \hbox (badness 10000) in paragraph at lines 5463--5478
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5479--5486
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5501--5516
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5517--5524
+
+ []
+
+[89]
+Underfull \hbox (badness 10000) in paragraph at lines 5537--5540
+
+ []
+
+
+Overfull \hbox (11.39136pt too wide) in paragraph at lines 5550--5559
+\OT1/cmtt/m/n/12 double mnfXXX6Vx[](int nf, quarkmassnf mass, Liinf Liin, doubl
+e L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 M[]$ 
+ []
+
+
+Overfull \hbox (23.74136pt too wide) in paragraph at lines 5550--5559
+\OT1/cmtt/m/n/12 double mnfXXXp6LVx[](int nf, quarkmassnf mass, Liinf Liin, dou
+ble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 M[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5550--5559
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5560--5565
+
+ []
+
+
+Overfull \hbox (3.75867pt too wide) in paragraph at lines 5577--5586
+\OT1/cmtt/m/n/12 double fnfXXX6Vx[](int nf, quarkmassnf mass, Liinf Liin, doubl
+e L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$ 
+ []
+
+
+Overfull \hbox (16.10867pt too wide) in paragraph at lines 5577--5586
+\OT1/cmtt/m/n/12 double fnfXXXp6LVx[](int nf, quarkmassnf mass, Liinf Liin, dou
+ble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5577--5586
+
+ []
+
+[90]
+Underfull \hbox (badness 10000) in paragraph at lines 5587--5592
+
+ []
+
+
+Overfull \hbox (8.96063pt too wide) in paragraph at lines 5607--5616
+\OT1/cmtt/m/n/12 double qnfXXX6Vx[](int nf, quarkmassnf mass, Liinf Liin, Ki Ki
+in) \OT1/cmr/m/n/12 re-turns $\OMS/cmtt/m/n/12 h[]\OML/cmm/m/it/12 q\OMS/cmtt/m
+/n/12 i[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5607--5616
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5617--5622
+
+ []
+
+
+Overfull \hbox (44.54977pt too wide) in paragraph at lines 5626--5626
+|[]\OT1/cmr/bx/n/14.4 Partially quenched mass, de-cay con-stant and vacuum-expe
+ctation-
+ []
+
+[91]
+Underfull \hbox (badness 10000) in paragraph at lines 5648--5663
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5664--5671
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5683--5698
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5699--5706
+
+ []
+
+[92]
+Overfull \hbox (2.12164pt too wide) in paragraph at lines 5721--5736
+\OT1/cmtt/m/n/12 double qnfXXX6PQ[](int nf, quarkmassnf mass, Liinf Liin, Ki Ki
+in) \OT1/cmr/m/n/12 re-turns $\OMS/cmtt/m/n/12 h[]\OML/cmm/m/it/12 q\OMS/cmtt/m
+/n/12 i[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5721--5736
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5737--5744
+
+ []
+
+
+Overfull \hbox (44.54977pt too wide) in paragraph at lines 5748--5748
+|[]\OT1/cmr/bx/n/14.4 Partially quenched mass, de-cay con-stant and vacuum-expe
+ctation-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5758--5761
+
+ []
+
+[93]
+Overfull \hbox (23.74136pt too wide) in paragraph at lines 5771--5780
+\OT1/cmtt/m/n/12 double mnfXXX6PQVx[](int nf, quarkmassnf mass, Liinf Liin, dou
+ble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 M[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5771--5780
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5781--5786
+
+ []
+
+
+Overfull \hbox (16.10867pt too wide) in paragraph at lines 5798--5807
+\OT1/cmtt/m/n/12 double fnfXXX6PQVx[](int nf, quarkmassnf mass, Liinf Liin, dou
+ble L) \OT1/cmr/m/n/12 re-turns $\OML/cmm/m/it/12 F[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5798--5807
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5808--5813
+
+ []
+
+
+Overfull \hbox (21.31064pt too wide) in paragraph at lines 5828--5837
+\OT1/cmtt/m/n/12 double qnfXXX6PQVx[](int nf, quarkmassnf mass, Liinf Liin, Ki 
+Kiin) \OT1/cmr/m/n/12 re-turns $\OMS/cmtt/m/n/12 h[]\OML/cmm/m/it/12 q\OMS/cmtt
+/m/n/12 i[]$ 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 5828--5837
+
+ []
+
+[94]
+Underfull \hbox (badness 10000) in paragraph at lines 5838--5843
+
+ []
+
+[95] [96] [97] [98] [99]
+Underfull \hbox (badness 10000) in paragraph at lines 6220--6222
+
+ []
+
+[100]
+Underfull \hbox (badness 10000) in paragraph at lines 6262--6264
+
+ []
+
+[101] [102] [103] [104] [105]
+Overfull \hbox (22.58208pt too wide) in paragraph at lines 6438--6439
+[][]$\OT1/cmtt/m/n/10.95 http : / / www . gnu . org / licenses / gpl-[]2 . 0 . 
+html$[]http://www.gnu.org/licenses/gpl-2.0.html 
+ []
+
+[106]
+Underfull \hbox (badness 10000) in paragraph at lines 6452--6458
+[]\OT1/cmr/m/n/10.95 H. Frellesvig, D. Tom-masini and C. Wever, JHEP \OT1/cmr/b
+x/n/10.95 1603 \OT1/cmr/m/n/10.95 (2016) 189
+ []
+
+[107]
+Underfull \hbox (badness 10000) in paragraph at lines 6751--6757
+[]\OT1/cmr/m/n/10.95 G. Colan-gelo and C. Hae-feli, Nucl. Phys. B \OT1/cmr/bx/n
+/10.95 744 \OT1/cmr/m/n/10.95 (2006) 14
+ []
+
+[108] (./manual.ind [109
+
+] [110] [111] [112] [113] [114]
+Overfull \hbox (4.00919pt too wide) in paragraph at lines 635--637
+[]\OT1/cmtt/m/n/10.95 setprecisionfinitevolumeonelooptwistt\OT1/cmr/m/n/10.95 ,
+ []43[] 
+ []
+
+[115]
+Overfull \hbox (9.18016pt too wide) in paragraph at lines 648--650
+[]\OT1/cmtt/m/n/10.95 testfinitevolumeoneloopintegrals.cc\OT1/cmr/m/n/10.95 , [
+]38[], []41[] 
+ []
+
+
+Overfull \hbox (3.43147pt too wide) in paragraph at lines 652--654
+[]\OT1/cmtt/m/n/10.95 testfinitevolumesunsetintegrals.cc\OT1/cmr/m/n/10.95 , []
+46[], []48[] 
+ []
+
+[116])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 6763.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 6763.
+ (./manual.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 6763.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 6763.
+
+Package rerunfilecheck Info: File `manual.out' has not changed.
+(rerunfilecheck)             Checksum: C1737875856891DCFC1380214ACE7025;13360.
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 6763.
+ ) 
+Here is how much of TeX's memory you used:
+ 6612 strings out of 494035
+ 91506 string characters out of 6158520
+ 181837 words of memory out of 5000000
+ 9449 multiletter control sequences out of 15000+600000
+ 17944 words of font info for 71 fonts, out of 8000000 for 9000
+ 475 hyphenation exceptions out of 8191
+ 28i,12n,34p,677b,485s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf
+/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf/fonts/type1/public
+/amsfonts/cm/cmcsc10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmex1
+0.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/t
+exmf/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf/fonts/type1/pu
+blic/amsfonts/cm/cmmi6.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmm
+i7.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/t
+exmf/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf/fonts/type1/pub
+lic/amsfonts/cm/cmr12.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr6
+.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texm
+f/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf/fonts/type1/public/
+amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmsy8.p
+fb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texm
+f/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf/fonts/type1/publi
+c/amsfonts/cm/cmtt12.pfb></usr/share/texmf/fonts/type1/public/amsfonts/symbols/
+msbm10.pfb>
+Output written on manual.pdf (117 pages, 578280 bytes).
+PDF statistics:
+ 2795 PDF objects out of 2984 (max. 8388607)
+ 2629 compressed objects within 27 object streams
+ 490 named destinations out of 1000 (max. 500000)
+ 1337 words of extra memory for PDF output out of 10000 (max. 10000000)
+

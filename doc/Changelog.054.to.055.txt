@@ -1,0 +1,145 @@
+Changes from v0.54 to 0.55
+
+151208
+QCDlike publication added to manual and files
+fourvector class added (plus -std=c++0x added in Makefile) and in manual
+fourvector.h
+fourvector.cc
+testfourvector.cc
+testfourvector.dat
+
+151209
+Twisted finite volume one-loop integrals added (and in manual/Makefile)
+finitevolumeonelooptwist.h
+finitevolumeonelooptwist.cc
+testfinitevolumeonelooptwist.cc
+testfinitevolumeonelooptwist.dat
+
+160114
+jbdrteq3 added to jbnumlib and manual
+jbdrteq3.cc
+testjbdrteq3.cc
+testjbdrteq3.dat
+
+160126
+electromagnetic form-factors and Kl3 three flavour case
+up to p^4 in terms of lowest order masses added and to manual
+vectorformlo.h
+vectorformlo.cc
+testvectorformlo.cc
+
+160127
+infinite volume quenched bubble integrals with nprop=1,2,3 implemented
+and in manual
+quenchedoneloopintegrals.h
+quenchedoneloopintegrals.cc
+testquenchedoneloopintegrals.cc
+testquenchedoneloopintegrals.dat
+
+160128
+f_+ for partially quenched case added and in manual
+vectorformPQ.h
+vectorformPQ.cc
+testvectorformPQ.cc
+testvectorformPQ.dat
+testvectorformlo.dat
+
+160201
+f_+ for partially quenched staggered case added
+vectorformPQ.h
+vectorformPQ.cc
+testvectorformPQ.cc
+testvectorformPQ.dat
+testvectorformlo.dat
+twisted case for masses, standard ChPT added and to manual
+massdecayvevTV.h 
+massdecayvevTV.cc
+testmassdecayvevTV.cc
+testmassdecayvevTV.dat
+
+160208
+added setting component functions for a fourvector
+added lowering indices for a fourvector
+
+160514
+B21b,B32b added to oneloopintegrals.cc and small changes
+to oneloopintegrals.h and testoneloopintegrals.cc
+B21b,B32b added to quenchedoneloopintegrals.cc and small changes
+to quenchedoneloopintegrals.h and testquenchedoneloopintegrals.cc
+
+160603
+jbderiv3utheta3 added and in manual
+
+160621
+The tadpole with twisted boundary conditions added and to the manual
+
+160705
+AbVtwistt, BbVtwistt cases with three momenta on top added
+somewhat simpler interface added for the twisted cases as well
+
+160708
+jbdadmul, jbdad2, jbdad3 error switched to absolute below 1 and relative
+above one, now same as the one dimensional ones
+
+161004
+added the values at qsq=0 for B31b and B32b standard propagators
+added the values at qsq=0 for B1b,B21b,B22b,B31b,B32b also for the
+  quenched integrals cases 2 and 3
+
+161012
+fixed a bug in B33 at finite volume
+
+171026
+added version with a void pointer to jbdquad15,jbdquad21
+
+171108
+jbdli2, jbdli3, jbdli4 added as generalized polylogarithms and previous jbdli2
+renamed jbdli2p
+
+171129
+added version with a void pointer to jbwquad15,jbwquad21
+
+180228
+added version with a void pointer to jbdad2,jbdad3,jbdadmul
+
+190220
+Small typo fixed in section ChPT
+inputsnf2 added everywhere
+li.h li.cc testli.cc testli.dat added and in manual
+
+190221
+Mass, decay and vev added in physical mass for NLO 2-flavour ChPT as files
+and in manual infinite and finite volume
+
+190408
+jbdzerox added as files and in manual
+
+190416
+Mass and decay in physical mass for NNLO 2-flavour ChPT as files
+and in manual: finite volume
+
+210211
+filenames li.cc, li.h, testli.cc, testli.dat changed everywhere to include
+nf2, many mac people had problems with the system treating li.cc and Li.cc ...
+as the same files
+
+210312
+added version with void pointer to jbdgauss, jbdgauss2,jbwgauss, jbwgauss2
+the sunsetintegrals valid below threshold now only have the precision as
+a global variable, should be threadsafe for most applications.
+
+210419
+added the finite volume p^6 functions also as overall quantities
+(were in .h file and in manual but not in .cc file)
+
+221020
+added jbdPlm and jbdYlm to jbnumlib (associated Legendre polynomials and
+spherical harmonics)
+added += and -= to fourvector.h and fourvector.cc
+added a complex version of jbdadmul with the extra pointer
+
+To be done:
+f_+ for partially quenched staggered case to manual
+changes in fourvector to manual
+B31b,B32b to manual, both quenched and unquenched, and finite volume with twist
+jbdPlm and jbdYlm to manual

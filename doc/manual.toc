@@ -1,0 +1,167 @@
+\contentsline {section}{Contents}{1}{section*.1}
+\contentsline {section}{\numberline {1}Introduction}{5}{section.1}
+\contentsline {section}{\numberline {2}Guidelines}{5}{section.2}
+\contentsline {subsection}{\numberline {2.1}Main comments}{5}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Some caution for use}{6}{subsection.2.2}
+\contentsline {section}{\numberline {3}Files, installation and testroutines}{6}{section.3}
+\contentsline {subsection}{\numberline {3.1}Files}{7}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Installation}{7}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}testroutines}{7}{subsection.3.3}
+\contentsline {section}{\numberline {4}\texttt {jbnumlib}}{8}{section.4}
+\contentsline {subsection}{\numberline {4.1}Complex numbers}{8}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Special functions}{8}{subsection.4.2}
+\contentsline {subsubsection}{\numberline {4.2.1}Polylogarithms}{8}{subsubsection.4.2.1}
+\contentsline {paragraph}{\numberline {4.2.1.1}\texttt {jbdli2p}}{8}{paragraph.4.2.1.1}
+\contentsline {paragraph}{\numberline {4.2.1.2}\texttt {jbdli2}}{8}{paragraph.4.2.1.2}
+\contentsline {paragraph}{\numberline {4.2.1.3}\texttt {jbdli3}}{8}{paragraph.4.2.1.3}
+\contentsline {paragraph}{\numberline {4.2.1.4}\texttt {jbdli4}}{9}{paragraph.4.2.1.4}
+\contentsline {subsubsection}{\numberline {4.2.2}Bessel functions}{9}{subsubsection.4.2.2}
+\contentsline {paragraph}{\numberline {4.2.2.1}\texttt {jbdbesi0}}{9}{paragraph.4.2.2.1}
+\contentsline {paragraph}{\numberline {4.2.2.2}\texttt {jbdbesi1}}{9}{paragraph.4.2.2.2}
+\contentsline {paragraph}{\numberline {4.2.2.3}\texttt {jbdbesk0}}{9}{paragraph.4.2.2.3}
+\contentsline {paragraph}{\numberline {4.2.2.4}\texttt {jbdbesk1}}{10}{paragraph.4.2.2.4}
+\contentsline {paragraph}{\numberline {4.2.2.5}\texttt {jbdbesk2}}{10}{paragraph.4.2.2.5}
+\contentsline {paragraph}{\numberline {4.2.2.6}\texttt {jbdbesk3}}{10}{paragraph.4.2.2.6}
+\contentsline {paragraph}{\numberline {4.2.2.7}\texttt {jbdbesk4}}{10}{paragraph.4.2.2.7}
+\contentsline {subsubsection}{\numberline {4.2.3}Theta and related functions}{10}{subsubsection.4.2.3}
+\contentsline {paragraph}{\numberline {4.2.3.1}\texttt {jbdtheta30}}{10}{paragraph.4.2.3.1}
+\contentsline {paragraph}{\numberline {4.2.3.2}\texttt {jbdtheta30m1}}{11}{paragraph.4.2.3.2}
+\contentsline {paragraph}{\numberline {4.2.3.3}\texttt {jbdtheta32}}{11}{paragraph.4.2.3.3}
+\contentsline {paragraph}{\numberline {4.2.3.4}\texttt {jbdtheta34}}{11}{paragraph.4.2.3.4}
+\contentsline {paragraph}{\numberline {4.2.3.5}\texttt {jbdtheta3}}{11}{paragraph.4.2.3.5}
+\contentsline {paragraph}{\numberline {4.2.3.6}\texttt {jbderivutheta3}}{12}{paragraph.4.2.3.6}
+\contentsline {paragraph}{\numberline {4.2.3.7}\texttt {jbderiv2utheta3}}{12}{paragraph.4.2.3.7}
+\contentsline {paragraph}{\numberline {4.2.3.8}\texttt {jbderiv3utheta3}}{12}{paragraph.4.2.3.8}
+\contentsline {paragraph}{\numberline {4.2.3.9}\texttt {jbdtheta2d0}}{12}{paragraph.4.2.3.9}
+\contentsline {paragraph}{\numberline {4.2.3.10}\texttt {jbdtheta2d0m1}}{13}{paragraph.4.2.3.10}
+\contentsline {paragraph}{\numberline {4.2.3.11}\texttt {jbdtheta2d02}}{13}{paragraph.4.2.3.11}
+\contentsline {subsection}{\numberline {4.3}Root finders}{13}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Zero of a real function of one variable}{13}{subsubsection.4.3.1}
+\contentsline {paragraph}{\numberline {4.3.1.1}\texttt {jbdzerox}}{13}{paragraph.4.3.1.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Roots of a cubic equation}{13}{subsubsection.4.3.2}
+\contentsline {paragraph}{\numberline {4.3.2.1}\texttt {jbdrteq3}}{13}{paragraph.4.3.2.1}
+\contentsline {subsection}{\numberline {4.4}Integration routines}{14}{subsection.4.4}
+\contentsline {subsubsection}{\numberline {4.4.1}One dimension, real}{14}{subsubsection.4.4.1}
+\contentsline {paragraph}{\numberline {4.4.1.1}\texttt {jbdgauss}}{14}{paragraph.4.4.1.1}
+\contentsline {paragraph}{\numberline {4.4.1.2}\texttt {jbdgauss2}}{15}{paragraph.4.4.1.2}
+\contentsline {paragraph}{\numberline {4.4.1.3}\texttt {jbdquad15}}{15}{paragraph.4.4.1.3}
+\contentsline {paragraph}{\numberline {4.4.1.4}\texttt {jbdquad21}}{15}{paragraph.4.4.1.4}
+\contentsline {subsubsection}{\numberline {4.4.2}One dimension, real with singularity}{16}{subsubsection.4.4.2}
+\contentsline {paragraph}{\numberline {4.4.2.1}\texttt {jbdcauch}}{16}{paragraph.4.4.2.1}
+\contentsline {paragraph}{\numberline {4.4.2.2}\texttt {jbdcauch2}}{16}{paragraph.4.4.2.2}
+\contentsline {paragraph}{\numberline {4.4.2.3}\texttt {jbdsing15}}{17}{paragraph.4.4.2.3}
+\contentsline {paragraph}{\numberline {4.4.2.4}\texttt {jbdsing21}}{17}{paragraph.4.4.2.4}
+\contentsline {subsubsection}{\numberline {4.4.3}One dimension, complex}{18}{subsubsection.4.4.3}
+\contentsline {paragraph}{\numberline {4.4.3.1}\texttt {jbwgauss}}{18}{paragraph.4.4.3.1}
+\contentsline {paragraph}{\numberline {4.4.3.2}\texttt {jbwgauss2}}{18}{paragraph.4.4.3.2}
+\contentsline {paragraph}{\numberline {4.4.3.3}\texttt {jbwquad15}}{19}{paragraph.4.4.3.3}
+\contentsline {paragraph}{\numberline {4.4.3.4}\texttt {jbwquad21}}{19}{paragraph.4.4.3.4}
+\contentsline {subsubsection}{\numberline {4.4.4}Two dimensions, real}{20}{subsubsection.4.4.4}
+\contentsline {paragraph}{\numberline {4.4.4.1}\texttt {jbdad2}}{20}{paragraph.4.4.4.1}
+\contentsline {subsubsection}{\numberline {4.4.5}Three dimensions, real}{20}{subsubsection.4.4.5}
+\contentsline {paragraph}{\numberline {4.4.5.1}\texttt {jbdad3}}{20}{paragraph.4.4.5.1}
+\contentsline {section}{\numberline {5}Chiral Perturbation Theory}{21}{section.5}
+\contentsline {section}{\numberline {6}Data structures}{21}{section.6}
+\contentsline {subsection}{\numberline {6.1}Two flavour ChPT}{21}{subsection.6.1}
+\contentsline {subsubsection}{\numberline {6.1.1}Class: \texttt {physmassnf2}}{21}{subsubsection.6.1.1}
+\contentsline {subsubsection}{\numberline {6.1.2}Class: \texttt {lomassnf2}}{22}{subsubsection.6.1.2}
+\contentsline {subsubsection}{\numberline {6.1.3}Class: \texttt {quarkmassnf2}}{22}{subsubsection.6.1.3}
+\contentsline {subsubsection}{\numberline {6.1.4}NLO LECs: Class \texttt {li}}{23}{subsubsection.6.1.4}
+\contentsline {subsubsection}{\numberline {6.1.5}NLO LECs: Class \texttt {libar}}{24}{subsubsection.6.1.5}
+\contentsline {subsection}{\numberline {6.2}Three flavour ChPT}{25}{subsection.6.2}
+\contentsline {subsubsection}{\numberline {6.2.1}Class: \texttt {physmass}}{25}{subsubsection.6.2.1}
+\contentsline {subsubsection}{\numberline {6.2.2}Class: \texttt {lomass}}{26}{subsubsection.6.2.2}
+\contentsline {subsubsection}{\numberline {6.2.3}Class: \texttt {quarkmass}}{26}{subsubsection.6.2.3}
+\contentsline {subsubsection}{\numberline {6.2.4}NLO LECs: Class \texttt {Li}}{27}{subsubsection.6.2.4}
+\contentsline {subsubsection}{\numberline {6.2.5}NNLO LECs: Class \texttt {Ci}}{29}{subsubsection.6.2.5}
+\contentsline {subsection}{\numberline {6.3}$n_F$ flavour ChPT}{30}{subsection.6.3}
+\contentsline {subsubsection}{\numberline {6.3.1}Class: \texttt {quarkmassnf}}{30}{subsubsection.6.3.1}
+\contentsline {subsubsection}{\numberline {6.3.2}Class: \texttt {lomassnf}}{31}{subsubsection.6.3.2}
+\contentsline {subsubsection}{\numberline {6.3.3}NLO LECs: Class \texttt {Linf}}{32}{subsubsection.6.3.3}
+\contentsline {subsubsection}{\numberline {6.3.4}NNLO LECs: Class \texttt {Ki}}{33}{subsubsection.6.3.4}
+\contentsline {subsection}{\numberline {6.4}Vectors}{34}{subsection.6.4}
+\contentsline {subsubsection}{\numberline {6.4.1}Class: \texttt {fourvector}}{34}{subsubsection.6.4.1}
+\contentsline {section}{\numberline {7}Loop integrals}{35}{section.7}
+\contentsline {subsection}{\numberline {7.1}Tadpole or one-propagator integrals}{35}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Bubbles or two-propagator integrals}{36}{subsection.7.2}
+\contentsline {subsubsection}{\numberline {7.2.1}Definitions}{36}{subsubsection.7.2.1}
+\contentsline {subsubsection}{\numberline {7.2.2}Analytical implementation}{37}{subsubsection.7.2.2}
+\contentsline {subsubsection}{\numberline {7.2.3}Numerical implementation}{38}{subsubsection.7.2.3}
+\contentsline {subsection}{\numberline {7.3}Bubbles or two-propagator integrals with different powers of propagators}{38}{subsection.7.3}
+\contentsline {subsubsection}{\numberline {7.3.1}Definitions}{38}{subsubsection.7.3.1}
+\contentsline {subsubsection}{\numberline {7.3.2}Analytical implementation}{39}{subsubsection.7.3.2}
+\contentsline {subsection}{\numberline {7.4}Sunset integrals}{39}{subsection.7.4}
+\contentsline {subsubsection}{\numberline {7.4.1}Definition}{39}{subsubsection.7.4.1}
+\contentsline {subsubsection}{\numberline {7.4.2}Functions}{41}{subsubsection.7.4.2}
+\contentsline {subsection}{\numberline {7.5}Sunsetintegrals with different powers of propagators}{41}{subsection.7.5}
+\contentsline {subsubsection}{\numberline {7.5.1}Definition}{41}{subsubsection.7.5.1}
+\contentsline {subsubsection}{\numberline {7.5.2}Functions}{42}{subsubsection.7.5.2}
+\contentsline {subsection}{\numberline {7.6}Finite volume tadpole integrals: periodic boundary conditions}{43}{subsection.7.6}
+\contentsline {subsubsection}{\numberline {7.6.1}Definitions}{43}{subsubsection.7.6.1}
+\contentsline {subsubsection}{\numberline {7.6.2}Functions}{44}{subsubsection.7.6.2}
+\contentsline {subsection}{\numberline {7.7}Finite volume tadpole integrals: twisted boundary conditions}{46}{subsection.7.7}
+\contentsline {subsubsection}{\numberline {7.7.1}Definitions}{46}{subsubsection.7.7.1}
+\contentsline {subsubsection}{\numberline {7.7.2}Functions}{46}{subsubsection.7.7.2}
+\contentsline {subsection}{\numberline {7.8}Finite volume bubble integrals: periodic boundary conditions}{47}{subsection.7.8}
+\contentsline {subsubsection}{\numberline {7.8.1}Definitions}{47}{subsubsection.7.8.1}
+\contentsline {subsubsection}{\numberline {7.8.2}Functions}{48}{subsubsection.7.8.2}
+\contentsline {paragraph}{\numberline {7.8.2.1}$p=0$ and periodic boundary conditions}{48}{paragraph.7.8.2.1}
+\contentsline {subsection}{\numberline {7.9}Finite volume bubble integrals: twisted boundary conditions}{49}{subsection.7.9}
+\contentsline {subsubsection}{\numberline {7.9.1}Definitions}{49}{subsubsection.7.9.1}
+\contentsline {subsubsection}{\numberline {7.9.2}Functions}{50}{subsubsection.7.9.2}
+\contentsline {subsection}{\numberline {7.10}Finite volume sunsetintegrals}{51}{subsection.7.10}
+\contentsline {subsubsection}{\numberline {7.10.1}Definitions}{51}{subsubsection.7.10.1}
+\contentsline {subsubsection}{\numberline {7.10.2}Functions}{52}{subsubsection.7.10.2}
+\contentsline {subsection}{\numberline {7.11}Finite volume sunsetintegrals with different powers of propagators}{53}{subsection.7.11}
+\contentsline {subsubsection}{\numberline {7.11.1}Definitions}{53}{subsubsection.7.11.1}
+\contentsline {subsubsection}{\numberline {7.11.2}Functions}{54}{subsubsection.7.11.2}
+\contentsline {section}{\numberline {8}Two flavour isospin conserving results}{56}{section.8}
+\contentsline {subsection}{\numberline {8.1}Mass, decay constant and vacuum-expectation-value: in physical}{56}{subsection.8.1}
+\contentsline {subsubsection}{\numberline {8.1.1}Mass}{56}{subsubsection.8.1.1}
+\contentsline {subsubsection}{\numberline {8.1.2}Decay constant}{56}{subsubsection.8.1.2}
+\contentsline {subsubsection}{\numberline {8.1.3}vacuum-expectation-value}{57}{subsubsection.8.1.3}
+\contentsline {subsection}{\numberline {8.2}Mass, decay constant and vacuum-expectation-value at finite volume: in physical}{57}{subsection.8.2}
+\contentsline {subsubsection}{\numberline {8.2.1}Mass at finite volume: in physical}{58}{subsubsection.8.2.1}
+\contentsline {subsubsection}{\numberline {8.2.2}Decay constant at finite volume: in physical}{59}{subsubsection.8.2.2}
+\contentsline {subsubsection}{\numberline {8.2.3}Vacuum-expectation-value at finite volume: in physical}{59}{subsubsection.8.2.3}
+\contentsline {section}{\numberline {9}Three flavour isospin conserving results}{60}{section.9}
+\contentsline {subsection}{\numberline {9.1}Masses, decay constants and vacuum-expectation-values: in physical}{60}{subsection.9.1}
+\contentsline {subsubsection}{\numberline {9.1.1}Masses}{60}{subsubsection.9.1.1}
+\contentsline {subsubsection}{\numberline {9.1.2}Decay constants}{61}{subsubsection.9.1.2}
+\contentsline {subsubsection}{\numberline {9.1.3}\texttt {getfpimeta}}{62}{subsubsection.9.1.3}
+\contentsline {subsubsection}{\numberline {9.1.4}Vacuum-expectation-values}{63}{subsubsection.9.1.4}
+\contentsline {subsection}{\numberline {9.2}Masses, decay constants and vacuum-expectation-values: in lowest order}{64}{subsection.9.2}
+\contentsline {subsubsection}{\numberline {9.2.1}Masses: in lowest order}{64}{subsubsection.9.2.1}
+\contentsline {subsubsection}{\numberline {9.2.2}Decay constants: in lowest order}{66}{subsubsection.9.2.2}
+\contentsline {subsubsection}{\numberline {9.2.3}Vacuum-expectation-values: in lowest order}{67}{subsubsection.9.2.3}
+\contentsline {subsection}{\numberline {9.3}Masses and decay constants at finite volume: in physical}{68}{subsection.9.3}
+\contentsline {subsubsection}{\numberline {9.3.1}Masses at finite volume: in physical}{68}{subsubsection.9.3.1}
+\contentsline {subsubsection}{\numberline {9.3.2}Decay constants at finite volume: in physical}{70}{subsubsection.9.3.2}
+\contentsline {subsection}{\numberline {9.4}Masses, decay constants and vacuum expectation values at finite volume: in lowest order}{71}{subsection.9.4}
+\contentsline {subsubsection}{\numberline {9.4.1}Masses at finite volume: in lowest order}{71}{subsubsection.9.4.1}
+\contentsline {subsubsection}{\numberline {9.4.2}Decay constants at finite volume: in lowest order}{72}{subsubsection.9.4.2}
+\contentsline {subsubsection}{\numberline {9.4.3}Vacuum-expectation-values at finite volume: in lowest order}{74}{subsubsection.9.4.3}
+\contentsline {subsection}{\numberline {9.5}Masses, decay constants and vacuum expectation values at finite volume with twisted boundary conditions: in lowest order}{75}{subsection.9.5}
+\contentsline {subsubsection}{\numberline {9.5.1}Masses}{75}{subsubsection.9.5.1}
+\contentsline {subsection}{\numberline {9.6}Vector form-factors: in lowest order}{76}{subsection.9.6}
+\contentsline {subsubsection}{\numberline {9.6.1}Electromagnetic form-factors}{76}{subsubsection.9.6.1}
+\contentsline {paragraph}{\numberline {9.6.1.1}Functions}{77}{paragraph.9.6.1.1}
+\contentsline {subsubsection}{\numberline {9.6.2}$K\to \pi $ and $K_{\ell 3}$ form-factors}{77}{subsubsection.9.6.2}
+\contentsline {paragraph}{\numberline {9.6.2.1}Functions}{78}{paragraph.9.6.2.1}
+\contentsline {section}{\numberline {10}Three flavour partially quenched results}{78}{section.10}
+\contentsline {subsection}{\numberline {10.1}Masses}{79}{subsection.10.1}
+\contentsline {subsection}{\numberline {10.2}Decay constants}{81}{subsection.10.2}
+\contentsline {subsection}{\numberline {10.3}Masses at finite volume}{82}{subsection.10.3}
+\contentsline {subsection}{\numberline {10.4}Decay constants at finite volume}{84}{subsection.10.4}
+\contentsline {subsection}{\numberline {10.5}Vector form-factors}{86}{subsection.10.5}
+\contentsline {subsubsection}{\numberline {10.5.1}$K\to \pi $ or $K_{\ell 3}$ form-factors}{86}{subsubsection.10.5.1}
+\contentsline {subsubsection}{\numberline {10.5.2}Functions}{86}{subsubsection.10.5.2}
+\contentsline {section}{\numberline {11}QCD like theories for $N_F$ flavours}{87}{section.11}
+\contentsline {subsection}{\numberline {11.1}Mass, decay constant and vacuum-expectation-value: in lowest order}{88}{subsection.11.1}
+\contentsline {subsection}{\numberline {11.2}Mass, decay constant and vacuum-expectation-value at finite volume: in lowest order}{90}{subsection.11.2}
+\contentsline {subsection}{\numberline {11.3}Partially quenched mass, decay constant and vacuum-expectation-value: in lowest order}{91}{subsection.11.3}
+\contentsline {subsection}{\numberline {11.4}Partially quenched mass, decay constant and vacuum-expectation-value at finite volume: in lowest order}{93}{subsection.11.4}
+\contentsline {section}{\numberline {A}GNU GENERAL PUBLIC LICENSE}{95}{appendix.A}
+\contentsline {section}{\numberline {B}Creative Commons Attribution 4.0 International Public License}{102}{appendix.B}
+\contentsline {section}{References}{106}{section*.2}
+\contentsline {section}{Index}{109}{section*.3}
