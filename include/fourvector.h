@@ -25,6 +25,8 @@ public:
   fourvector(const std::vector<double> vv);
   fourvector operator-(const fourvector vv) const;
   fourvector operator+(const fourvector vv) const;
+  fourvector& operator-=(const fourvector vv);
+  fourvector& operator+=(const fourvector vv);
   fourvector operator-(void) const;
   fourvector operator*(const double aa) const;
   double operator*(const fourvector vv) const;

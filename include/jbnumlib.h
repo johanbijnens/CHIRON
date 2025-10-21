@@ -18,8 +18,12 @@ typedef std::complex<double> dcomplex;
 // real
 double jbdgauss(double (*f)(const double),const double a,const double b,
 		const double eps);
+double jbdgauss(double (*f)(const double, void*),const double a,const double b,
+		const double eps, void* ap);
 double jbdgauss2(double (*f)(const double),const double a,const double b,
 		const double eps);
+double jbdgauss2(double (*f)(const double, void*),const double a,const double b,
+		 const double eps, void* ap);
 double jbdquad15(double (*f)(const double),const double a,const double b,
 		const double eps);
 double jbdquad15(double (*f)(const double, void*),const double a,const double b,
@@ -32,18 +36,30 @@ double jbdquad21(double (*f)(const double, void*),const double a,const double b,
 // real with singularity
 double jbdcauch(double (*f)(const double),const double a,const double b,
 		const double s,const double eps);
+double jbdcauch(double (*f)(const double,void*),const double a,const double b,
+		const double s,const double eps, void* ap);
 double jbdcauch2(double (*f)(const double),const double a,const double b,
 		const double s,const double eps);
+double jbdcauch2(double (*f)(const double,void*),const double a,const double b,
+		const double s,const double eps, void* ap);
 double jbdsing15(double (*f)(const double),const double a,const double b,
 		const double s,const double eps);
+double jbdsing15(double (*f)(const double,void*),const double a,const double b,
+		const double s,const double eps, void* ap);
 double jbdsing21(double (*f)(const double),const double a,const double b,
 		const double s,const double eps);
+double jbdsing21(double (*f)(const double,void*),const double a,const double b,
+		const double s,const double eps, void* ap);
 
 // complex
 dcomplex jbwgauss(dcomplex (*f)(const dcomplex),const dcomplex a,
 		  const dcomplex b,const double eps);
+dcomplex jbwgauss(dcomplex (*f)(const dcomplex,void*),const dcomplex a,
+		  const dcomplex b,const double eps, void* ap);
 dcomplex jbwgauss2(dcomplex (*f)(const dcomplex),const dcomplex a,
 		  const dcomplex b,const double eps);
+dcomplex jbwgauss2(dcomplex (*f)(const dcomplex,void*),const dcomplex a,
+		   const dcomplex b,const double eps, void* ap);
 dcomplex jbwquad15(dcomplex (*f)(const dcomplex),const dcomplex a,
 		  const dcomplex b,const double eps);
 dcomplex jbwquad15(dcomplex (*f)(const dcomplex, void*),const dcomplex a,
@@ -68,18 +84,27 @@ double jbdad3(double (*fcn)(double x[], void*),void*, double a[],double b[],
 	      const double eps, double &relerr,int &ifail);
 double jbdad4(double (*fcn)(double x[], void*),void*, double a[],double b[],
 	      const double eps, double &relerr,int &ifail);
-
+// dimension 2 and 3 complex integration
+dcomplex jbdad2(dcomplex (*fcn)(dcomplex x[],void*),void* ap,dcomplex a[],
+		dcomplex b[],const double releps, double &relerr,int &ifail);
+dcomplex jbdad3(dcomplex (*fcn)(dcomplex x[],void*),void* ap, dcomplex a[],
+		dcomplex b[],const double releps, double &relerr,int &ifail);
+dcomplex jbdad4(dcomplex (*fcn)(dcomplex x[],void*),void* ap,dcomplex a[],
+		dcomplex b[],const double releps, double &relerr,int &ifail);
 //**************************************************************************
 // special functions
 dcomplex jbdli2(const dcomplex x);
 dcomplex jbdli2p(const dcomplex x);
 dcomplex jbdli3(const dcomplex x);
 dcomplex jbdli4(const dcomplex x);
+dcomplex jbdli5(const dcomplex x);
+dcomplex jbdli6(const dcomplex x);
+dcomplex jbdlinpow(const int n, const dcomplex x);
 double jbdbesi0(const double x); 
 double jbdbesi1(const double x); 
 double jbdbesk0(const double x); 
 double jbdbesk1(const double x); 
-// implemented via recursion:
+// bessel functions implemented via recursion:
 double jbdbesk2(const double x); 
 double jbdbesk3(const double x); 
 double jbdbesk4(const double x); 
@@ -95,6 +120,27 @@ double jbdtheta34(const double q);
 double jbdtheta2d0(const double alpha, const double beta, const double gamma);
 double jbdtheta2d0m1(const double alpha, const double beta, const double gamma);
 double jbdtheta2d02(const double alpha, const double beta, const double gamma);
+
+double jbdPlm(const int el, const int em, const double x);
+double jbdP00(const double x);
+double jbdP1m1(const double x);
+double jbdP10(const double x);
+double jbdP11(const double x);
+double jbdP30(const double x);
+double jbdP40(const double x);
+double jbdP41(const double x);
+double jbdP4m1(const double x);
+dcomplex jbdYlm(const int el, const int em, const double theta,
+		const double phi);
+dcomplex jbdY00(const double theta, const double phi);
+dcomplex jbdY10(const double theta, const double phi);
+dcomplex jbdY11(const double theta, const double phi);
+dcomplex jbdY1m1(const double theta, const double phi);
+dcomplex jbdY20(const double theta, const double phi);
+dcomplex jbdY21(const double theta, const double phi);
+dcomplex jbdY22(const double theta, const double phi);
+dcomplex jbdY2m1(const double theta, const double phi);
+dcomplex jbdY2m2(const double theta, const double phi);
 
 
 //***************************************************************************

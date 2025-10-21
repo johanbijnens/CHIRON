@@ -123,10 +123,26 @@ filenames li.cc, li.h, testli.cc, testli.dat changed everywhere to include
 nf2, many mac people had problems with the system treating li.cc and Li.cc ...
 as the same files
 
+210312
+added version with void pointer to jbdgauss, jbdgauss2,jbwgauss, jbwgauss2
+the sunsetintegrals valid below threshold now only have the precision as
+a global variable, should be threadsafe for most applications.
+
+210419
+added the finite volume p^6 functions also as overall quantities
+(were in .h file and in manual but not in .cc file)
+
+221020
+added jbdPlm and jbdYlm to jbnumlib (associated Legendre polynomials and
+spherical harmonics)
+added += and -= to fourvector.h and fourvector.cc
+added a complex version of jbdadmul with the extra pointer
+
+251020
+jbdli5 and jbdli6 added plus a testLinfunction.cc
+
 To be done:
 f_+ for partially quenched staggered case to manual
 changes in fourvector to manual
 B31b,B32b to manual, both quenched and unquenched, and finite volume with twist
-rename li.h li.cc testli.cc testli.dat with nf2 in the name (some macs seem
-  not to handle files with upper and lower case in name separately
-  Walker-Loud and Hector Tiblom had that problem)
+jbdPlm and jbdYlm to manual

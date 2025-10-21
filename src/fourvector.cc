@@ -34,8 +34,18 @@ fourvector fourvector::operator+(const fourvector vv) const{
   return fourvector(v[0]+vv.v[0],v[1]+vv.v[1],v[2]+vv.v[2],v[3]+vv.v[3]);
 }
 
+fourvector& fourvector::operator+=(const fourvector vv){
+  *this=*this+vv;
+  return *this;
+}
+
 fourvector fourvector::operator-(const fourvector vv) const{
   return fourvector(v[0]-vv.v[0],v[1]-vv.v[1],v[2]-vv.v[2],v[3]-vv.v[3]);
+}
+
+fourvector& fourvector::operator-=(const fourvector vv){
+  *this=*this-vv;
+  return *this;
 }
 
 fourvector fourvector::operator-(void) const{

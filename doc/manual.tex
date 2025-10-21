@@ -306,6 +306,50 @@ and then the Bernouilly series around zero or 1 as described in
 
 Defined in \mytt{jbnumlib.h} and implemented in \mytt{jbdlin.cc}.
 
+\paragraph{\newfunction{jbdli5}}
+
+\mytt{dcomplex jbdli5(const dcomplex x)}
+
+Returns the complex polylogarithm function defined by
+\begin{equation}
+\mathrm{Li_5}(x) = \int_0^1 dt \frac{\mathrm{Li}_4(xt)}{t}\,,
+\end{equation}
+where it converges and analytic continuation. Cut defined on the
+positive real axis from 1 to $\infty$.
+Uses the properties of the polylogarithm to transform the argument
+and then the Bernouilly series around zero or 1 as described in
+\cite{Frellesvig:2016ske}.
+
+Defined in \mytt{jbnumlib.h} and implemented in \mytt{jbdlin.cc}.
+
+\paragraph{\newfunction{jbdli6}}
+
+\mytt{dcomplex jbdli6(const dcomplex x)}
+
+Returns the complex polylogarithm function defined by
+\begin{equation}
+\mathrm{Li_6}(x) = \int_0^1 dt \frac{\mathrm{Li}_5(xt)}{t}\,,
+\end{equation}
+where it converges and analytic continuation. Cut defined on the
+positive real axis from 1 to $\infty$.
+Uses the properties of the polylogarithm to transform the argument
+and then the Bernouilly series around zero or 1 as described in
+\cite{Frellesvig:2016ske}.
+
+Defined in \mytt{jbnumlib.h} and implemented in \mytt{jbdlin.cc}.
+
+\paragraph{\newfunction{jbdlinpow}}
+
+\mytt{dcomplex jbdlinpow(cosnt int n,const dcomplex x)}
+
+Returns the complex polylogarithm function defined by
+\begin{equation}
+\mathrm{Li_n}(x) = \sum_{k=0,\infty}  \frac{x^n}{k^n}\,,
+\end{equation}
+where it converges. The sum is implemented as defined.
+
+Defined in \mytt{jbnumlib.h} and implemented in \mytt{jbdlin.cc}.
+
 \subsubsection{Bessel functions}
 
 \paragraph{\newfunction{jbdbesi0}}
@@ -638,10 +682,15 @@ An example program that shows the relative speeds is in
 
 \paragraph{\newfunction{jbdgauss}}
 
-\mytt{double jbdgauss(f,a,b,eps)}
+\mytt{double jbdgauss(f,a,b,eps)}\\
+\mytt{double jbdgauss(fp,a,b,eps,ap)}
 
+Two versions exist:\\
 \mytt{f}: \mytt{double (*f)(const double x)} The double precision
-function to be integrated over.
+function to be integrated over.\\
+\mytt{fp}: \mytt{double (*fp)(const double x, void*)} The double precision
+function to be integrated over, the pointer allows for extra parameters
+to be transferred through the integration routine.
 
 \mytt{a,b,eps}: \mytt{const double}
 
@@ -651,6 +700,8 @@ function to be integrated over.
 
 \mytt{eps}: Precision attempted to be reached: relative precision if absolute
 value of the integral is above 1, otherwise absolute precision.
+
+\mytt{ap}: \mytt{void*}
 
 Subroutine translated from the \cernlib\ routine \mytt{DGAUSS}. Uses
 8 and 16 point Gaussian rules with the 16 point for the estimate
@@ -660,10 +711,15 @@ Defined in \mytt{jbnumlib.h}, implemented in \mytt{jbdgauss.cc}.
 
 \paragraph{\newfunction{jbdgauss2}}
 
-\mytt{double jbdgauss2(f,a,b,eps)}
+\mytt{double jbdgauss2(f,a,b,eps)}\\
+\mytt{double jbdgauss2(fp,a,b,eps,ap)}
 
+Two versions exist:\\
 \mytt{f}: \mytt{double (*f)(const double x)} The double precision
-function to be integrated over.
+function to be integrated over.\\
+\mytt{fp}: \mytt{double (*fp)(const double x, void*)} The double precision
+function to be integrated over, the pointer allows for extra parameters
+to be transferred through the integration routine.
 
 \mytt{a,b,eps}: \mytt{const double}
 
@@ -673,6 +729,8 @@ function to be integrated over.
 
 \mytt{eps}: Precision attempted to be reached: relative precision if absolute
 value of the integral is above 1, otherwise absolute precision.
+
+\mytt{ap}: \mytt{void*}
 
 Uses 8 and 16 point Gaussian rules with the 16 point for the estimate
 and the difference for the error estimate. Adaptive with a subdivision strategy.
@@ -882,8 +940,13 @@ An example program that shows the relative speeds is in
 
 \mytt{dcomplex jbwgauss(f,a,b,eps)}
 
+\mytt{dcomplex jbwgauss(fp,a,b,eps,ap)}
+
 \mytt{f}: \mytt{dcomplex (*f)(const dcomplex x)} The complex double precision
 function to be integrated over.
+
+\mytt{fp}: \mytt{dcomplex (*fp)(const dcomplex x, void*)} The complex double precision
+function to be integrated over. The void* allows for extra parameters to be passed to the function.
 
 \mytt{a,b}: \mytt{const dcomplex}
 
@@ -894,6 +957,8 @@ function to be integrated over.
 \mytt{eps}: \mytt{const double} Precision attempted to be reached:
 relative precision if absolute
 value of the integral is above 1, otherwise absolute precision.
+
+\mytt{ap}: \mytt{void*}
 
 Subroutine translated from the \cernlib\ routine \mytt{WGAUSS}. Uses
 8 and 16 point Gaussian rules with the 16 point for the estimate
@@ -906,9 +971,13 @@ Defined in \mytt{jbnumlib.h}, implemented in \mytt{jbwgauss.cc}.
 \paragraph{\newfunction{jbwgauss2}}
 
 \mytt{dcomplex jbwgauss2(f,a,b,eps)}
+\mytt{dcomplex jbwgauss2(fp,a,b,eps,ap)}
 
 \mytt{f}: \mytt{dcomplex (*f)(const dcomplex x)} The complex double precision
 function to be integrated over.
+
+\mytt{fp}: \mytt{dcomplex (*fp)(const dcomplex x, void*)} The complex double precision
+function to be integrated over. The void* allows for extra parameters to be passed to the function.
 
 \mytt{a,b}: \mytt{const dcomplex}
 
@@ -919,6 +988,8 @@ function to be integrated over.
 \mytt{eps}: \mytt{const double} Precision attempted to be reached:
 relative precision if absolute
 value of the integral is above 1, otherwise absolute precision.
+
+\mytt{ap}: \mytt{void*}
 
 Subroutine translated from the \cernlib\ routine \mytt{WGAUSS}. Uses
 8 and 16 point Gaussian rules with the 16 point for the estimate
@@ -2272,7 +2343,7 @@ H_{\mu\nu\rho}(m_1^2,m_2^2,m_3^2,p,\mu^2) =\, &
  H_{32}(m_1^2,m_2^2,m_3^2,p^2,\mu^2)\,.
 \end{align}
 The needed integrals with $s_\mu$ replacing some of the $r_\mu$ in the
-definitions can be related to those without $s_\mu$ as descibed in
+definitions can be related to those without $s_\mu$ as described in
 \cite{Amoros:1999dp}.
 The evaluation of these sunsetintegrals has been done in
 \cite{Amoros:1999dp}. Further references can be found there.
@@ -2334,9 +2405,9 @@ a numerical integration as above.
 \subsubsection{Functions}
 
 The integration routines needed can be set using the macro \newfunction{DINTEGRAL}
-for the real integration, default is \mytt{jbdgauss}, and
+for the real integration, default is \mytt{jbquad15}, and
 \newfunction{SINTEGRAL} for the real integration with a singularity, default
-is \mytt{jbdcauch}. Any of the similar routines in \mytt{jbnumlib} can
+is \mytt{jbdsing15}. Any of the similar routines in \mytt{jbnumlib} can
 be used instead.\\
  
 \mytt{const double: m1sq,m2sq,m3sq,psq,mu2}: these are
@@ -2425,7 +2496,7 @@ H_{\mu\nu}(n,m_1^2,m_2^2,m_3^2,p,\mu^2) =\, &
 +g_{\mu\nu} H_{22}(n,m_1^2,m_2^2,m_3^2,p^2,\mu^2)\,.
 \end{align}
 The needed integrals with $s_\mu$ replacing some of the $r_\mu$ in the
-definitions can be related to those without $s_\mu$ as descibed in
+definitions can be related to those without $s_\mu$ as described in
 \cite{Bijnens:2006jv,Bijnens:2005pa,Bijnens:2005ae,Bijnens:2004hk}
 The evaluation of these sunsetintegrals is by the generalziation of
 the methods of

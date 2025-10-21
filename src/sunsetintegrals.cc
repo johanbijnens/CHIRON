@@ -23,12 +23,12 @@
 // allow to easily change integration routines
 // real integral (CHIRON v0.51 possible jbdgauss,jbdgauss2,jbquad15,jbdquad21)
 #ifndef DINTEGRAL
-#define DINTEGRAL jbdgauss
+#define DINTEGRAL jbdquad15
 #endif
 // real integral with singularity (CHIRON v0.51 possible jbdcauch,jbdcauch2,
 //                                                       jbdsing15,jbdsing21) 
 #ifndef SINTEGRAL
-#define SINTEGRAL jbdcauch
+#define SINTEGRAL jbdsing15
 #endif
 
 #include <cassert>
@@ -83,9 +83,9 @@ double dlam(const double x,const double y,const double z){
 }
 
 // xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-hbarcom hbardat;
 
-double hbar2(const double x){
+
+double hbar2(const double x, void* ap){
   //const double stretch1 = 1.;  //  x near zero
   //const double stretch1p = 1.;  //  x near 1
   //const double stretch2 = 1.;  // sigma near infinity
@@ -98,6 +98,7 @@ double hbar2(const double x){
   //  *(pow(x,(stretch1-1.))*stretch1)*(pow(1.-yyt,stretch2p-1.)*stretch2p)
   //  *(pow(1.-xxt,stretch1p-1.)*stretch1p);
   // no strectching at all
+  hbarcom hbardat = *((hbarcom*)ap);
   double xx = x;
   double yy = hbardat.sigm1;
   double hbar2t = 1.;
@@ -112,25 +113,26 @@ double hbar2(const double x){
   return hbar2t*xk2;
 }
 
-double hbar1(const double y){
-  hbardat.sigm1 = y;
-  return DINTEGRAL(hbar2,0.,1.,precisionsunsetintegrals/5.);
+double hbar1(const double y,void* ap){
+  (*((hbarcom*)ap)).sigm1 = y;
+  return DINTEGRAL(hbar2,0.,1.,precisionsunsetintegrals/5.,ap);
 }
 
 double hbar(const double xm12,const double xm22,const double xm32
 	    ,const double psq,const int i){
+  hbarcom hbardat;
   hbardat.ih = i;
   hbardat.psqh = psq;
   hbardat.xm12h = xm12;
   hbardat.xm22h = xm22;
   hbardat.xm32h = xm32;
-  return DINTEGRAL(hbar1,0.,1.,precisionsunsetintegrals);
+  return DINTEGRAL(hbar1,0.,1.,precisionsunsetintegrals,&hbardat);
 }
 
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-hbarcom hbarddat;
 
-double hbard2(const double x){
+double hbard2(const double x, void* ap){
+  hbarcom hbarddat = *((hbarcom*)ap);
   const double stretch1 = 1.;  //  x near zero
   const double stretch2 = 1.;  // sigma near infinity
   double xx = pow(x,stretch1);
@@ -147,19 +149,20 @@ double hbard2(const double x){
   return hbar2t*xk2;
 }
 
-double hbard1(const double y){
-  hbarddat.sigm1 = y;
-  return DINTEGRAL(hbard2,0.,1.,precisionsunsetintegrals/5.);
+double hbard1(const double y, void* ap){
+  (*((hbarcom*)ap)).sigm1 = y;
+  return DINTEGRAL(hbard2,0.,1.,precisionsunsetintegrals/5.,ap);
 }
 
 double hbard(const double xm12,const double xm22,const double xm32
 	    ,const double psq,const int i){
+  hbarcom hbarddat;
   hbarddat.ih = i;
   hbarddat.psqh = psq;
   hbarddat.xm12h = xm12;
   hbarddat.xm22h = xm22;
   hbarddat.xm32h = xm32;
-  return DINTEGRAL(hbard1,0.,1.,precisionsunsetintegrals);
+  return DINTEGRAL(hbard1,0.,1.,precisionsunsetintegrals,&hbarddat);
 }
 
 
@@ -278,9 +281,10 @@ dcomplex zhbar(const double xm12,const double xm22,const double xm32,
 }
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
-hbarpcom hbarpddat;
+//hbarpcom hbarpddat;
 
-double zimhbard(const double xxx){
+double zimhbard(const double xxx, void* ap){
+  hbarpcom hbarpddat = *((hbarpcom*)ap);
   double stretch1 = 2.; //   e1 near m1
   double stretch1p = 2.;//   e1 near e1max
   //double stretch2 = 1.; // z near infinity, not used here
@@ -336,7 +340,8 @@ double zimhbard(const double xxx){
   return hbarp2p/(-16.)/pow(2.*pi,3) *xt;
 }
 
-double hbarpd2(const double xxx){
+double hbarpd2(const double xxx, void* ap){
+  hbarpcom hbarpddat = *((hbarpcom*)ap);
   double stretch1 = 2.; //   e1 near m1
   double stretch1p = 2.;//   e1 near e1max
   double stretch2 = 1.; // z near infinity
@@ -395,9 +400,9 @@ double hbarpd2(const double xxx){
 return hbarp2p/(-16.)/pow(2.*pi,3)*xt;
 }
 
-double hbarpd1(const double y){
-  hbarpddat.zm1 = y;
-  return DINTEGRAL(hbarpd2,0.,1.,precisionsunsetintegrals/5.);
+double hbarpd1(const double y,void* ap){
+  (*((hbarpcom*)ap)).zm1 = y;
+  return DINTEGRAL(hbarpd2,0.,1.,precisionsunsetintegrals/5.,ap);
 }
 
 dcomplex zhbard(const double xm12,const double xm22,const double xm32,
@@ -405,6 +410,7 @@ dcomplex zhbard(const double xm12,const double xm22,const double xm32,
 //      if (psq <= pow(sqrt(xm12)+sqrt(xm22)+sqrt(xm32),2)){
 //        return hbar(xm12,xm22,xm32,psq,i);}
 // valid for stretch1 = 1
+  hbarpcom hbarpddat;
   hbarpddat.ihh = i;
   hbarpddat.psqhh = psq;
   hbarpddat.xm12hh = xm12;
@@ -412,16 +418,13 @@ dcomplex zhbard(const double xm12,const double xm22,const double xm32,
   hbarpddat.xm32hh = xm32;
   double zlow = pow(sqrt(xm12)+sqrt(xm22)+sqrt(xm32),2);
   double ysing = zlow/psq;
-  dcomplex zhbar2 = SINTEGRAL(hbarpd1,0.,1.,ysing,precisionsunsetintegrals);
+  dcomplex zhbar2 = SINTEGRAL(hbarpd1,0.,1.,ysing,precisionsunsetintegrals,&hbarpddat);
   if (psq >= zlow){
     hbarpddat.zm1 = ysing;
-    double zim = DINTEGRAL(zimhbard,0.,1.,precisionsunsetintegrals);
+    double zim = DINTEGRAL(zimhbard,0.,1.,precisionsunsetintegrals,&hbarpddat);
     zhbar2 = zhbar2+dcomplex(0.,zim);}
   return zhbar2;
 }
-
-
-
 
 //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 // clausen's function in terms of li2 and with the definition.

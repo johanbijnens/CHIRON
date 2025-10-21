@@ -84,6 +84,9 @@ jbwquad15
 jbwquad21
 jbdadmul.cc         higher dimensional real integration routine
 jbdrteq3.cc
+jbdYlm.cc
+jbdadmul2.cc
+jbdadmulc2.cc
 
 Chiron:
 inputs.cc
@@ -154,7 +157,7 @@ testquenchedoneloopintegrals.cc
 testvectorformlo.cc
 testvectorformPQ.cc
 testvectorformPQS.cc
- 
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 ouputs of the example and testing files in testoutputs:
 testintegralsreal.dat

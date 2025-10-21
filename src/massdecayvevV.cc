@@ -116,6 +116,10 @@ double mpi4V(const physmass mass, const double xl){
   return M4V/pow(mass.getfpi(),2);
 }
 
+double mpi6V(const physmass mass, const Li Liin, const double xl){
+  return mpi6LV(mass, Liin, xl)+ mpi6RV(mass, xl);
+}
+
 double mpi6LV(const physmass mass, const Li Liin, const double xl){
   double mp2 = pow(mass.getmpi(),2);
   double mk2 = pow(mass.getmk(),2);
@@ -239,6 +243,10 @@ double mk4V(const physmass mass, const double xl){
   double me2 = pow(mass.getmeta(),2);
   double M4V = (  - 1./4.*me2 - 1./12.*mp2 )*AbV(me2,xl);
   return M4V/pow(mass.getfpi(),2);
+}
+
+double mk6V(const physmass mass, const Li Liin, const double xl){
+  return mk6LV(mass, Liin, xl)+ mk6RV(mass, xl);
 }
 
 double mk6LV(const physmass mass, const Li Liin, const double xl){
@@ -379,6 +387,9 @@ double meta4V(const physmass mass, const double xl){
   return M4V/pow(mass.getfpi(),2);
 }
 
+double meta6V(const physmass mass, const Li Liin, const double xl){
+  return meta6LV(mass, Liin, xl)+ meta6RV(mass, xl);
+}
 double meta6LV(const physmass mass, const Li Liin, const double xl){
   double mp2 = pow(mass.getmpi(),2);
   double mk2 = pow(mass.getmk(),2);
@@ -523,6 +534,11 @@ double fpi4V(const physmass mass, const double xl){
   return F4V/pow(mass.getfpi(),1);
 }
 
+
+double fpi6V(const physmass mass, const Li Liin, const double xl){
+  return fpi6LV(mass, Liin, xl)+ fpi6RV(mass, xl);
+}
+
 double fpi6LV(const physmass mass, const Li Liin, const double xl){
   double mp2 = pow(mass.getmpi(),2);
   double mk2 = pow(mass.getmk(),2);
@@ -645,6 +661,10 @@ double fk4V(const physmass mass, const double xl){
 		 + AbV(mk2,xl) * ( 3./4. )
 		 + AbV(me2,xl) * ( 3./8. ));
   return F4V/pow(mass.getfpi(),1);
+}
+
+double fk6V(const physmass mass, const Li Liin, const double xl){
+  return fk6LV(mass, Liin, xl)+ fk6RV(mass, xl);
 }
 
 double fk6LV(const physmass mass, const Li Liin, const double xl){
@@ -800,6 +820,10 @@ double feta4V(const physmass mass, const double xl){
   double mk2 = pow(mass.getmk(),2);
   double F4V =  AbV(mk2,xl) * ( 3./2. );
   return F4V/pow(mass.getfpi(),1);
+}
+
+double feta6V(const physmass mass, const Li Liin, const double xl){
+  return feta6LV(mass, Liin, xl)+ feta6RV(mass, xl);
 }
 
 double feta6LV(const physmass mass, const Li Liin, const double xl){

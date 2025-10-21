@@ -11,7 +11,7 @@
 # -std=c++0x or -std=c++11 might be needed
 # OPTIONS:
 # in both testing and library
-CXX = g++-10 -O3  -I./include
+CXX = g++ -O3  -I./include
 #CXX = g++ -O3  -I./include -std=c++11
 # added for the compilation of the libraries
 CFLAGS = -Wall -Wextra -Wconversion
@@ -27,7 +27,7 @@ OBJECTSJBNUMLIB = jbdgauss.o jbdcauch.o jbwgauss.o \
   jbdbesik.o jbdtheta30.o jbdtheta30m1.o jbdtheta32.o jbdtheta34.o \
   jbdtheta2d0.o jbdtheta2d0m1.o jbdtheta2d02.o \
   jbdtheta3.o jbderivutheta3.o jbderiv2utheta3.o jbderiv3utheta3.o \
-  jbdrteq3.o jbdzerox.o
+  jbdrteq3.o jbdzerox.o jbdYlm.o jbdadmulc2.o
 
 OBJECTSCHIRON = inputs.o Li.o Ci.o inputsnf.o Linf.o Ki.o inputsnf2.o \
        linf2.o \
@@ -86,7 +86,7 @@ TESTCHIRON = testintegralsreal testintegralsrealsingular \
        testfinitevolumeonelooptwist testjbdrteq3 testvectorformlo \
        testquenchedoneloopintegrals testvectorformPQ testvectorformPQS \
        testmassdecayvevTV testmassdecayvevnf2 testmassdecayvevnf2V \
-       testjbdzerox
+       testjbdzerox testLinfunction
 all: libchiron.a libjbnumlib.a
 
 libchiron.a: $(OBJECTSCHIRON) $(OBJECTSCHIRON2)
