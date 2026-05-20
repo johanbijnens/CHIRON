@@ -12,7 +12,7 @@
 #include<string>
 #include<cmath>
 
-#include "li.h"
+#include "linf2.h"
 
 using namespace std;
 
