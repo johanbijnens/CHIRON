@@ -1,5 +1,5 @@
-// li.cc is part of the CHIRON ChPT at two loops program collection
-// Copyright (C) 2017 Johan Bijnens, v1.0
+// linf2.cc is part of the CHIRON ChPT at two loops program collection
+// Copyright (C) 2017 Johan Bijnens, v1.01
 // CHIRON is licenced under the GNU GPL version 2 or later,
 // see COPYING for details.
 // Please respect the Guidelines, see GUIDELINES for details.
